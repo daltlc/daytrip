@@ -1,0 +1,121 @@
+{
+  "date": "2026-09-14",
+  "name": "Mazda 787B",
+  "year": 1991,
+  "maker": "Mazda",
+  "country": "Japan",
+  "class": "lemans",
+  "hook": "It is still the only car without pistons ever to win the 24 Hours of Le Mans.",
+  "story": "June 1991. Mazda has been coming to Le Mans since the seventies with rotary engines that scream, drink fuel, and never quite finish near the front. Nobody rates them. The Sauber-Mercedes C11s are the favorites, Jaguar has depth, and the rules are about to change: from 1992, only 3.5-litre piston engines will be allowed. This is the rotary's last chance. The number 55 car, painted in Renown's orange and green, runs a four-rotor R26B that revs to nine thousand and sounds like a jet with a grudge. Johnny Herbert, Volker Weidler and Bertrand Gachot drive it flat out for twenty-four hours while the Mercedes cars break, one by one. At the flag the 787B is two laps clear after 362 laps. Herbert climbs out so drained he cannot make it to the podium. Mazda becomes the first Japanese manufacturer to win Le Mans, and the rotary walks away undefeated, because it never got to race there again.",
+  "description": "The 787B is a Group C sports prototype built by Mazdaspeed for the 1990 and 1991 seasons. A carbon and Kevlar chassis designed by Nigel Stroud wraps around the R26B, a naturally aspirated four-rotor Wankel engine making around 700 horsepower with no turbochargers. Three chassis were built. Its 1991 Le Mans win remained the only overall victory for a Japanese manufacturer until Toyota in 2018, and it is still the only one for a rotary engine of any kind.",
+  "stats": [
+    {
+      "label": "Engine",
+      "value": "2.6 L four-rotor R26B, naturally aspirated"
+    },
+    {
+      "label": "Power",
+      "value": "~700 hp @ 9,000 rpm"
+    },
+    {
+      "label": "Torque",
+      "value": "608 Nm (448 lb-ft)"
+    },
+    {
+      "label": "Weight",
+      "value": "830 kg"
+    },
+    {
+      "label": "Top speed",
+      "value": "~330 km/h (205 mph)"
+    },
+    {
+      "label": "Drivetrain",
+      "value": "Mid-engine, rear-wheel drive, 5-speed"
+    },
+    {
+      "label": "Le Mans 1991",
+      "value": "362 laps, first by 2 laps"
+    }
+  ],
+  "photos": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/R%C3%A9tromobile_2011_-_Mazda_787B_Le_Mans_-_1991_-_001.jpg/960px-R%C3%A9tromobile_2011_-_Mazda_787B_Le_Mans_-_1991_-_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/R%C3%A9tromobile_2011_-_Mazda_787B_Le_Mans_-_1991_-_001.jpg/960px-R%C3%A9tromobile_2011_-_Mazda_787B_Le_Mans_-_1991_-_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Thesupermat",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:R%C3%A9tromobile_2011_-_Mazda_787B_Le_Mans_-_1991_-_001.jpg",
+      "alt": "Rétromobile 2011 - Mazda 787B Le Mans - 1991 - 001"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Mazda_787B_in_the_Mazda_Museum.jpg/960px-Mazda_787B_in_the_Mazda_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Mazda_787B_in_the_Mazda_Museum.jpg/960px-Mazda_787B_in_the_Mazda_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "NAParish",
+      "license": "CC BY-SA 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Mazda_787B_in_the_Mazda_Museum.jpg",
+      "alt": "Mazda 787B in the Mazda Museum"
+    },
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Mazda-787B-FujiMotorSportsMuseum.jpg/960px-Mazda-787B-FujiMotorSportsMuseum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Mazda-787B-FujiMotorSportsMuseum.jpg/960px-Mazda-787B-FujiMotorSportsMuseum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "テレストレラッソ",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Mazda-787B-FujiMotorSportsMuseum.jpg",
+      "alt": "Mazda-787B-FujiMotorSportsMuseum"
+    }
+  ],
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "o": "#f26b1d",
+      "g": "#1f8a3c",
+      "k": "#111318",
+      "w": "#f4f4f4",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      ".....oooooo.....",
+      "....oooooooo....",
+      "...oooooooooo...",
+      ".kkooooooooookk.",
+      ".kkooggggggookk.",
+      ".kkooggggggookk.",
+      "..oooggggggooo..",
+      "..oobbbbbbbboo..",
+      "..obbbbbbbbbbo..",
+      "..obbkkkkkkbbo..",
+      "..oobkkkkkkboo..",
+      "..ooggkkkkggoo..",
+      "..oggggwwggggo..",
+      "..oggggwwggggo..",
+      "..ooggggggggoo..",
+      ".kkooggggggookk.",
+      ".kkooggggggookk.",
+      ".kkooooooooookk.",
+      "..oooooooooooo..",
+      "..orroooooorro..",
+      "..oooooooooooo..",
+      ".kkkkkkkkkkkkkk.",
+      "kkkkkkkkkkkkkkkk",
+      ".k............k."
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#f26b1d",
+    "laneCount": 3,
+    "baseSpeed": 1,
+    "stars": [
+      300,
+      800,
+      1500
+    ]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Mazda_787B",
+    "https://en.wikipedia.org/wiki/1991_24_Hours_of_Le_Mans"
+  ]
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d10">
+<title>Garage — Daytrip</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./">Daytrip</a>
+  <a class="garage-link" href="./">Today</a>
+</header>
+<main id="app">
+  <section class="card">
+    <h1>Garage</h1>
+    <p class="maker">Every car so far, newest first.</p>
+    <ul id="list" class="garage"></ul>
+  </section>
+</main>
+<script>
+(async () => {
+  const list = document.getElementById('list');
+  try {
+    const res = await fetch('days/index.json?v=' + Date.now(), { cache: 'no-store' });
+    const days = await res.json();
+    if (!days.length) { list.innerHTML = '<li class="muted">Nothing here yet.</li>'; return; }
+    for (const d of days) {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = 'index.html?d=' + encodeURIComponent(d.date);
+      a.innerHTML = '<span class="g-date">' + d.date + '</span><span class="g-name">' + (d.year ? d.year + ' ' : '') + d.name + '</span><span class="badge">' + d.class + '</span>';
+      li.append(a); list.append(li);
+    }
+  } catch (e) { list.innerHTML = '<li class="muted">Could not load the garage list.</li>'; }
+})();
+</script>
+</body>
+</html>

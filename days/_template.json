@@ -1,0 +1,37 @@
+{
+  "date": "2000-01-01",
+  "name": "Example Model (Trim)",
+  "year": 2000,
+  "maker": "Maker",
+  "country": "Country",
+  "class": "road",
+  "hook": "One sentence with the single most surprising true fact about this car.",
+  "story": "This is where the story goes, written the way a warm and curious guide would tell it to a friend on a morning drive. Pick one angle and stay on it: a race, a designer, a scandal, a record, a rivalry. Keep the sentences short, because a voice will read them aloud. Second person is fine. Open on a scene, not on a date of manufacture. Give one or two concrete details a car person would repeat later, like a sound, a number, or a decision somebody made under pressure. Land on why the car still matters, in one line, without saying in conclusion. The validator wants between one hundred and twenty and one hundred and eighty words here, and it counts. This example paragraph is padded out to pass that check so the template itself validates cleanly and shows the rough length you are aiming for every single day.",
+  "description": "Sixty to ninety words of plain fact. What it is, who built it and when, what engine and layout it has, how many were made, and what it is known for. No adjectives that do not carry information. This paragraph is here so the template validates and shows the intended length, which is about the size of this block of text right here, no longer than that.",
+  "stats": [
+    { "label": "Engine", "value": "2.0 L turbocharged inline-four" },
+    { "label": "Power", "value": "300 hp @ 6,000 rpm" },
+    { "label": "Torque", "value": "400 Nm (295 lb-ft)" },
+    { "label": "0–60 mph", "value": "4.9 s" },
+    { "label": "Top speed", "value": "250 km/h (155 mph)" },
+    { "label": "Weight", "value": "1,300 kg" },
+    { "label": "Built", "value": "1,000 units" }
+  ],
+  "photos": [
+    { "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/x/xx/Example.jpg/1280px-Example.jpg", "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/x/xx/Example.jpg/800px-Example.jpg", "credit": "Photographer Name", "license": "CC BY-SA 4.0", "source": "https://commons.wikimedia.org/wiki/File:Example.jpg", "alt": "Example car at a show" }
+  ],
+  "sprite": {
+    "w": 16, "h": 24,
+    "palette": { "a": "ACCENT", "k": "#111318", "w": "#f2f2f2", "b": "#8fd3ff", "r": "#ff3b3b" },
+    "rows": [
+      "......kkkk......", "....aaaaaaaa....", "...aaaaaaaaaa...", ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.", "..aaaaaaaaaaaa..", "..aabbbbbbbbaa..", "..abbbbbbbbbba..",
+      "..abbbbbbbbbba..", "..aakkkkkkkkaa..", "..aakkkkkkkkaa..", "..aakkkkkkkkaa..",
+      "..aakkkkkkkkaa..", "..aabbbbbbbbaa..", "..aabbbbbbbbaa..", ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.", "..aaaaaaaaaaaa..", "..arraaaaaarra..", "..aaaaaaaaaaaa..",
+      "...kkkkkkkkkk...", "................", "................", "................"
+    ]
+  },
+  "game": { "obstacle": "cone", "scenery": "city", "accent": "#ff8a3d", "laneCount": 3, "baseSpeed": 1.0, "stars": [300, 800, 1500] },
+  "sources": [ "https://en.wikipedia.org/wiki/Example", "https://example.com/heritage/example-model" ]
+}
