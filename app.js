@@ -269,7 +269,7 @@ class Game {
     this.day = day;
     this.lanes = Math.min(4, Math.max(2, gp.laneCount || 3));
     this.laneW = ROAD_W / this.lanes;
-    this.baseSpeed = 95 * (gp.baseSpeed || 1);
+    this.baseSpeed = 66 * (gp.baseSpeed || 1);
     this.maxSpeed = 320 * (gp.maxSpeed || 1);
     this.stars = gp.stars || [300, 800, 1500];
     this.accent = gp.accent || '#ff8a3d';
@@ -308,7 +308,7 @@ class Game {
   }
   reset() {
     this.state = 'idle'; this.lane = Math.floor(this.lanes / 2); this.carX = this.laneCenter(this.lane);
-    this.speed = this.baseSpeed; this.dist = 0; this.scroll = 0; this.obs = []; this.nextSpawn = 60; this.lastFree = this.lane;
+    this.speed = this.baseSpeed; this.dist = 0; this.scroll = 0; this.obs = []; this.nextSpawn = this.baseSpeed * 1.4; this.lastFree = this.lane;
     this.shake = 0; this.tick = 0;
   }
   laneCenter(i) { return ROAD_X + this.laneW * (i + 0.5); }
@@ -383,8 +383,10 @@ class Game {
       this.lastFree = l === this.lastFree ? (l + 1) % this.lanes : this.lastFree;
     }
     for (const l of lanes) this.obs.push({ lane: l, y: -14 });
-    const gapBase = Math.max(52, 96 - this.dist / 40);
-    this.nextSpawn = gapBase * (multi ? 1.7 : 1) * (0.85 + Math.random() * 0.4);
+    // Space rows by time, not pixels: a fixed pixel gap collapses into
+    // unreactable walls once the speed ramp bites. 1.15 s early, 0.6 s by ~1,400 m.
+    const gapTime = Math.max(0.6, 1.15 - this.dist / 2600);
+    this.nextSpawn = this.speed * gapTime * (multi ? 1.55 : 1) * (0.85 + Math.random() * 0.4);
   }
   frame(t) {
     const dt = Math.min(0.05, (t - this.last) / 1000); this.last = t; this.tick += dt;
@@ -394,7 +396,9 @@ class Game {
     requestAnimationFrame(tt => this.frame(tt));
   }
   update(dt) {
-    this.speed = Math.min(this.maxSpeed, this.baseSpeed + this.dist * 0.45);
+    // Ramp tuned so a default day (baseSpeed 1, stars 300/800/1500) reaches
+    // one star at ~45 s, two at ~91 s, three at ~2:12.
+    this.speed = Math.min(this.maxSpeed, this.baseSpeed + this.dist * 0.13);
     const dy = this.speed * dt; this.scroll += dy; this.dist += dy * 0.08;
     this.nextSpawn -= dy; if (this.nextSpawn <= 0) this.spawn();
     const target = this.laneCenter(this.lane); this.carX += (target - this.carX) * Math.min(1, dt * 18);

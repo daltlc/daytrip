@@ -22,8 +22,8 @@ Pick these to match the car's world: a Le Mans car gets `tire` + `track`; a Grou
 
 - `OBSTACLES` — 12×12 pixel drawings per obstacle type. Add a type here **and** to `scripts/check.mjs` and this doc.
 - `SCENERY` — ground color, far-layer color, and an `items(g, x, y, k)` painter for the side strips. Same rule for new types.
-- `Game.spawn()` — spacing and lane logic. It guarantees at least one open lane and keeps the open lane adjacent to the previous one when spawning multi-obstacle rows.
-- `Game.update()` — speed ramp (`baseSpeed + dist * 0.45`, capped), collision (AABB with a small inset), HUD updates.
+- `Game.spawn()` — spacing and lane logic. Spacing is a *time* gap (1.15 s early, easing to 0.6 s by ~1,400 m) multiplied by the current speed, so rows stay reactable as the ramp bites. It guarantees at least one open lane and keeps the open lane adjacent to the previous one when spawning multi-obstacle rows.
+- `Game.update()` — speed ramp (`baseSpeed + dist * 0.13`, capped), collision (AABB with a small inset), HUD updates. With the defaults (`baseSpeed` 66 px/s, stars 300/800/1500) a run hits one star at ~45 s, two at ~91 s, three at ~2:12.
 - `Game.draw()` — everything renders to the 160×240 buffer, then the buffer is blitted to the display canvas at an integer scale.
 - `Sound` — WebAudio engine hum (two oscillators through a lowpass) and a noise burst on crash. Unlocked on first tap. Mute persists in `localStorage`.
 - `Speaker` — read-aloud, sentence by sentence, highlighting the current sentence.
@@ -33,7 +33,7 @@ Pick these to match the car's world: a Le Mans car gets `tire` + `track`; a Grou
 One improvement per day, small and finished. Every new day-file field must be optional with a fallback so old days keep working. Run `node scripts/check.mjs` before committing. Keep it dependency-free and under ~600 lines; if it grows past that, the next improvement is a refactor.
 
 Ideas, roughly in order of payoff:
-1. Difficulty curve tuning based on how a run feels (it should take ~45 s to reach one star).
+1. ~~Difficulty curve tuning~~ — done 2026-09-15: one star lands at ~45 s and spacing is time-based.
 2. A near-miss bonus: passing an obstacle within 2 px adds a small multiplier and a spark.
 3. Road curvature: gently offset the road on a sine wave so long runs feel less static.
 4. Weather per scenery (rain streaks on `coast`, snowflakes on `snow`).
