@@ -4,7 +4,7 @@ You are building today's Daytrip: one real car, a short story, numbers, photos, 
 
 ## 0. Orient
 - `git pull --ff-only`.
-- Get today's date: `date -u +%F` (the file name and `date` field use this).
+- Get today's date in Pacific time: `TZ=America/Los_Angeles date +%F` (the file name and `date` field use this). If `days/<date>.json` already exists, skip steps 1–3 and only do the engine improvement.
 - Read `NOTES.md` (the last entry and its "Next up" list), `days/index.json`, `docs/SCHEMA.md`, `docs/SPRITES.md`, `docs/GAME.md`. Skim `app.js`.
 
 ## 1. Pick the car
