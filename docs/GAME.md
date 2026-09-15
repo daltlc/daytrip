@@ -23,7 +23,8 @@ Pick these to match the car's world: a Le Mans car gets `tire` + `track`; a Grou
 - `OBSTACLES` — 12×12 pixel drawings per obstacle type. Add a type here **and** to `scripts/check.mjs` and this doc.
 - `SCENERY` — ground color, far-layer color, and an `items(g, x, y, k)` painter for the side strips. Same rule for new types.
 - `Game.spawn()` — spacing and lane logic. Spacing is a *time* gap (1.15 s early, easing to 0.6 s by ~1,400 m) multiplied by the current speed, so rows stay reactable as the ramp bites. It guarantees at least one open lane and keeps the open lane adjacent to the previous one when spawning multi-obstacle rows.
-- `Game.update()` — speed ramp (`baseSpeed + dist * 0.13`, capped), collision (AABB with a small inset), HUD updates. With the defaults (`baseSpeed` 66 px/s, stars 300/800/1500) a run hits one star at ~45 s, two at ~91 s, three at ~2:12.
+- `Game.update()` — speed ramp (`baseSpeed + dist * 0.13`, capped), collision (AABB with a small inset), near misses, HUD updates. With the defaults (`baseSpeed` 66 px/s, stars 300/800/1500) a run hits one star at ~45 s, two at ~91 s, three at ~2:12.
+- Near misses — while an obstacle is alongside the car, `update()` keeps the tightest lateral gap between the two boxes; once the obstacle is fully past, a gap of `laneW - 11 - NEAR_MISS_SLACK` px or less scores one. Simply sitting in the next lane leaves exactly `laneW - 11` px, so the bonus only lands if you were still crossing lanes as it went by — a window of roughly 80–120 ms per obstacle at any speed or lane count. Each one adds 5% to the metres you earn (capped at five, ×1.25), holds for 2.5 s, and throws a few sparks off the car (skipped under `prefers-reduced-motion`). The live multiplier sits next to the distance in the HUD and clears on a crash.
 - `Game.draw()` — everything renders to the 160×240 buffer, then the buffer is blitted to the display canvas at an integer scale.
 - `Sound` — WebAudio engine hum (two oscillators through a lowpass) and a noise burst on crash. Unlocked on first tap. Mute persists in `localStorage`.
 - `Speaker` — read-aloud, sentence by sentence, highlighting the current sentence.
@@ -34,7 +35,7 @@ One improvement per day, small and finished. Every new day-file field must be op
 
 Ideas, roughly in order of payoff:
 1. ~~Difficulty curve tuning~~ — done 2026-09-15: one star lands at ~45 s and spacing is time-based.
-2. A near-miss bonus: passing an obstacle within 2 px adds a small multiplier and a spark.
+2. ~~A near-miss bonus~~ — done 2026-09-15: dodging late adds 5% per chained miss and a few sparks. The original "within 2 px" idea is not reachable; the threshold is lane-relative instead, see above.
 3. Road curvature: gently offset the road on a sine wave so long runs feel less static.
 4. Weather per scenery (rain streaks on `coast`, snowflakes on `snow`).
 5. Ghost of today's best run.

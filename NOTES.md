@@ -17,3 +17,14 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Near-miss bonus: passing an obstacle within ~2 px adds a small score multiplier and a spark. Keep it subtle.
   2. Gentle road curvature on a slow sine wave so long runs feel less static (offset ROAD_X per row, keep collision in lane space).
   3. Weather per scenery: rain streaks on `coast`, drifting flakes on `snow`, dust on `desert`. Respect `prefers-reduced-motion`.
+
+## 2026-09-15 (second run today) — no new car
+- Engine: near-miss bonus. While an obstacle is alongside the car, `update()` tracks the tightest lateral gap; once it is past, a gap of `laneW - 11 - 3` px or less scores a near miss — 5% more distance per chained miss (capped at five, ×1.25), held 2.5 s, with a few sparks off the car and a live multiplier beside the distance in the HUD. Sparks and multiplier clear on a crash; sparks are skipped under `prefers-reduced-motion`.
+  - The "within ~2 px" from the old next-up list is unreachable and had to be rethought: the lane-change lerp covers ~5 px per frame where it matters, so the tightest pass that does not crash is ~6.7 px, and a fixed 2 px threshold fired zero times in 8 bot-played runs in Chromium. Making it lane-relative instead gives a window of ~80–120 ms per obstacle that holds across 2/3/4 lanes and 66–320 px/s, and never fires on simply holding a lane (that always leaves exactly `laneW - 11` px).
+  - Also fixed while in there: the crash path used to `break` out of the collision loop and then immediately call `sound.engine(..., true)`, re-raising the engine hum that `crash()` had just faded out. It returns now.
+  - Verified in Chromium with Playwright: page renders clean (only the sandbox's blocked Commons request, which `app.js` already handles), the bonus fires and shows in the HUD during aggressive play, never fires while holding a lane, and leaves nothing on screen after a crash.
+- Content: none. The scheduled run fired twice on the same UTC date and `days/2026-09-15.json` was already built ten hours earlier (Audi Sport quattro S1 E2). A second car today could only go in by overwriting that file — which the hard rules forbid and `check.mjs` rejects as a duplicate date — or by dating it 2026-09-16, which would push every later run permanently a day ahead. Skipping the car keeps the cadence: tomorrow's run finds 2026-09-16 free and builds it normally.
+- Next up:
+  1. Gentle road curvature on a slow sine wave so long runs feel less static (offset ROAD_X per row, keep collision in lane space).
+  2. Weather per scenery: rain streaks on `coast`, drifting flakes on `snow`, dust on `desert`. Respect `prefers-reduced-motion`.
+  3. Show the near-miss count on the crash card ("4 near misses, best chain ×1.20") so the bonus is discoverable — right now you only see it mid-run.

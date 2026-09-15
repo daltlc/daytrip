@@ -70,6 +70,7 @@ a { color: var(--accent); }
 .game-wrap canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; image-rendering: crisp-edges; }
 .hud { position: absolute; top: 8px; left: 10px; right: 10px; display: flex; justify-content: space-between; font: 700 13px/1 ui-monospace, SFMono-Regular, Menlo, monospace; color: #fff; text-shadow: 0 1px 0 #000, 0 0 6px #000; pointer-events: none; }
 .hud .stars { letter-spacing: 2px; }
+.hud .mult { color: var(--accent); }
 .overlay { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 6px; background: rgba(0,0,0,.55); color: #fff; padding: 20px; pointer-events: none; }
 .overlay[hidden] { display: none; }
 .overlay .big { font-size: 34px; font-weight: 800; line-height: 1; }

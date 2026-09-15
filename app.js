@@ -263,12 +263,21 @@ class Sound {
 
 /* ---------- game ---------- */
 const W = 160, H = 240, ROAD_X = 28, ROAD_W = 104, CAR_Y = 196;
+// Near miss: pass an obstacle while still crossing lanes and the distance you earn is
+// multiplied, up to MAX_COMBO chained misses. Sitting in the next lane already leaves
+// exactly `laneW - 11` px of clear air (half the car plus half the obstacle), so the
+// threshold is that minus a few pixels: you only score it by dodging as the obstacle
+// arrives, or cutting back in behind it. A fixed pixel threshold does not work here —
+// the lane-change lerp covers ~5 px per frame where it matters, so anything tighter
+// than ~7 px is a crash and the window would be unhittable.
+const NEAR_MISS_SLACK = 3, NEAR_MISS_BONUS = 0.05, MAX_COMBO = 5, COMBO_HOLD = 2.5;
 class Game {
   constructor(mount, day) {
     const gp = day.game || {};
     this.day = day;
     this.lanes = Math.min(4, Math.max(2, gp.laneCount || 3));
     this.laneW = ROAD_W / this.lanes;
+    this.nearMissPx = Math.max(2, this.laneW - 11 - NEAR_MISS_SLACK);
     this.baseSpeed = 66 * (gp.baseSpeed || 1);
     this.maxSpeed = 320 * (gp.maxSpeed || 1);
     this.stars = gp.stars || [300, 800, 1500];
@@ -284,7 +293,9 @@ class Game {
     this.buf = document.createElement('canvas'); this.buf.width = W; this.buf.height = H;
     this.g = this.buf.getContext('2d');
     this.canvas = el('canvas', { 'aria-label': 'Driving game' });
-    this.hud = el('div', { class: 'hud' }, el('span', { class: 'dist' }, '0 m'), el('span', { class: 'stars' }, '☆☆☆'), el('span', { class: 'spd' }, '0 km/h'));
+    this.distEl = el('span', {}, '0 m'); this.multEl = el('span', { class: 'mult' }, '');
+    this.starEl = el('span', { class: 'stars' }, '☆☆☆'); this.spdEl = el('span', { class: 'spd' }, '0 km/h');
+    this.hud = el('div', { class: 'hud' }, el('span', { class: 'dist' }, this.distEl, this.multEl), this.starEl, this.spdEl);
     this.overlay = el('div', { class: 'overlay' });
     this.wrap = el('div', { class: 'game-wrap' }, this.canvas, this.hud, this.overlay);
     this.muteBtn = el('button', { type: 'button' }, this.sound.muted ? '🔇 Sound off' : '🔊 Sound on');
@@ -310,6 +321,14 @@ class Game {
     this.state = 'idle'; this.lane = Math.floor(this.lanes / 2); this.carX = this.laneCenter(this.lane);
     this.speed = this.baseSpeed; this.dist = 0; this.scroll = 0; this.obs = []; this.nextSpawn = this.baseSpeed * 1.4; this.lastFree = this.lane;
     this.shake = 0; this.tick = 0;
+    this.clearCombo(); this.sparks = [];
+  }
+  clearCombo() { this.combo = 0; this.comboT = 0; this._c = 0; if (this.multEl) this.multEl.textContent = ''; }
+  nearMiss() {
+    this.combo = Math.min(MAX_COMBO, this.combo + 1); this.comboT = COMBO_HOLD;
+    if (this.reduced) return;
+    for (let i = 0; i < 5; i++)
+      this.sparks.push({ x: this.carX + (Math.random() - 0.5) * 14, y: CAR_Y + 4 + Math.random() * 16, vx: (Math.random() - 0.5) * 50, vy: 40 + Math.random() * 60, t: 0.28 });
   }
   laneCenter(i) { return ROAD_X + this.laneW * (i + 0.5); }
   showIdle() {
@@ -333,6 +352,7 @@ class Game {
   resume() { this.state = 'running'; this.overlay.hidden = true; this.sound.unlock(); }
   crash() {
     this.state = 'crashed'; this.shake = this.reduced ? 0 : 0.35;
+    this.sparks.length = 0; this.clearCombo();
     this.sound.engine(0, false); this.sound.hit();
     try { navigator.vibrate?.(90); } catch {}
     const m = Math.floor(this.dist);
@@ -396,10 +416,11 @@ class Game {
     requestAnimationFrame(tt => this.frame(tt));
   }
   update(dt) {
+    if (this.comboT > 0 && (this.comboT -= dt) <= 0) this.clearCombo();
     // Ramp tuned so a default day (baseSpeed 1, stars 300/800/1500) reaches
     // one star at ~45 s, two at ~91 s, three at ~2:12.
     this.speed = Math.min(this.maxSpeed, this.baseSpeed + this.dist * 0.13);
-    const dy = this.speed * dt; this.scroll += dy; this.dist += dy * 0.08;
+    const dy = this.speed * dt; this.scroll += dy; this.dist += dy * 0.08 * (1 + this.combo * NEAR_MISS_BONUS);
     this.nextSpawn -= dy; if (this.nextSpawn <= 0) this.spawn();
     const target = this.laneCenter(this.lane); this.carX += (target - this.carX) * Math.min(1, dt * 18);
     for (const o of this.obs) o.y += dy;
@@ -407,12 +428,20 @@ class Game {
     const cx = this.carX - 6, cy = CAR_Y + 2, cw = 12, ch = 20;
     for (const o of this.obs) {
       const ox = this.laneCenter(o.lane) - 5, oy = o.y + 1, ow = 10, oh = 10;
-      if (cx < ox + ow && cx + cw > ox && cy < oy + oh && cy + ch > oy) { this.crashAt = performance.now(); this.crash(); break; }
+      if (cx < ox + ow && cx + cw > ox && cy < oy + oh && cy + ch > oy) { this.crashAt = performance.now(); this.crash(); return; }
+      // While the obstacle is alongside the car, remember the tightest clear air between
+      // them; once it is fully past, a small enough gap counts as a near miss. Horizontal
+      // overlap while alongside is a crash, caught above, so the gap is never negative.
+      if (oy + oh > cy && oy < cy + ch) o.gap = Math.min(o.gap ?? Infinity, Math.max(cx - (ox + ow), ox - (cx + cw)));
+      else if (oy >= cy + ch && !o.passed && o.gap != null) { o.passed = true; if (o.gap <= this.nearMissPx) this.nearMiss(); }
     }
+    for (const s of this.sparks) { s.x += s.vx * dt; s.y += s.vy * dt; s.t -= dt; }
+    if (this.sparks.length) this.sparks = this.sparks.filter(s => s.t > 0);
     this.sound.engine((this.speed - this.baseSpeed) / (this.maxSpeed - this.baseSpeed), true);
     const m = Math.floor(this.dist), kmh = Math.round(this.speed * 0.9);
-    if (m !== this._m) { this._m = m; this.hud.children[0].textContent = `${m} m`; this.hud.children[1].textContent = '★'.repeat(this.starsFor(m)) + '☆'.repeat(3 - this.starsFor(m)); }
-    if (kmh !== this._k) { this._k = kmh; this.hud.children[2].textContent = `${kmh} km/h`; }
+    if (m !== this._m) { this._m = m; this.distEl.textContent = `${m} m`; this.starEl.textContent = '★'.repeat(this.starsFor(m)) + '☆'.repeat(3 - this.starsFor(m)); }
+    if (kmh !== this._k) { this._k = kmh; this.spdEl.textContent = `${kmh} km/h`; }
+    if (this.combo !== this._c) { this._c = this.combo; this.multEl.textContent = this.combo ? ` ×${(1 + this.combo * NEAR_MISS_BONUS).toFixed(2)}` : ''; }
   }
   draw() {
     const g = this.g, sc = this.scenery, s = this.scroll;
@@ -430,6 +459,7 @@ class Game {
     g.fillStyle = '#e8e8e8';
     for (let l = 1; l < this.lanes; l++) { const x = Math.round(ROAD_X + this.laneW * l) - 1; for (let i = -1; i < 12; i++) g.fillRect(x, ((i * 24 + s) % (H + 24)) - 12, 2, 12); }
     for (const o of this.obs) g.drawImage(this.obst, Math.round(this.laneCenter(o.lane) - 6), Math.round(o.y));
+    for (const sp of this.sparks) { g.fillStyle = sp.t > 0.14 ? '#ffffff' : this.accent; g.fillRect(Math.round(sp.x), Math.round(sp.y), 1, 1); }
     if (this.state === 'crashed') { g.fillStyle = 'rgba(255,60,60,.35)'; g.fillRect(Math.round(this.carX - 9), CAR_Y - 3, 18, 30); }
     g.drawImage(this.sprite, Math.round(this.carX - 8), CAR_Y);
     if (this.state === 'running' && this.speed > this.baseSpeed * 1.6 && Math.floor(this.tick * 20) % 2) { g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(Math.round(this.carX - 4), CAR_Y + 24, 2, 5); g.fillRect(Math.round(this.carX + 2), CAR_Y + 24, 2, 5); }
