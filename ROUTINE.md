@@ -15,7 +15,8 @@ You are building today's Daytrip: one real car, a short story, numbers, photos, 
 - Use WebSearch and WebFetch. Two to four solid sources (manufacturer heritage pages, Wikipedia, reputable motoring press, museum pages).
 - Collect: one angle for the story, the plain description, 5–7 stats with units, and the source URLs.
 - Never invent a number. If a stat is disputed or missing, leave it out.
-- Photos: run `node scripts/commons.mjs "<year> <maker> <name>" 3`. If it prints `[]`, retry with a shorter name once. If still empty, ship with `"photos": []`.
+- Network in this sandbox: WebSearch works. WebFetch to Wikipedia, Wikimedia Commons and most motoring sites is blocked by the egress proxy. Do not probe, inspect or work around the proxy; search-result snippets plus manufacturer pages that do load are enough.
+- Photos: set `"photoQuery": "<year> <maker> <model>"` and `"photos": []`. The page fetches and attributes Commons photos itself when viewed. Only fill `photos` by hand if `node scripts/commons.mjs "<query>" 3` actually returns entries.
 
 ## 3. Write `days/YYYY-MM-DD.json`
 - Follow `docs/SCHEMA.md` exactly. Voice: a warm, curious guide talking to a friend on a morning drive. Short sentences (it is read aloud). Second person is fine. No filler, no "in conclusion".
@@ -49,7 +50,7 @@ You are building today's Daytrip: one real car, a short story, numbers, photos, 
 
 ## 7. Ship
 - `git add -A && git commit -m "day N: <year> <car>" && git push origin main` where N is the number of entries in `days/index.json`.
-- Do not open pull requests or branches. If the push fails, do not retry with force; stop and report the error plainly.
+- Do not open pull requests or branches. If the push is rejected, retry once, then stop and report the error verbatim in your final message. Do not push through any other tool or API, do not export patches, do not force.
 
 ## Hard rules
 - No dependencies, no build step, no frameworks. Plain HTML, CSS, JS.

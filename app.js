@@ -65,7 +65,7 @@ function render(day) {
       el('p', { class: 'maker' }, [day.maker, day.country].filter(Boolean).join(' · ')),
       day.hook ? el('p', { class: 'hook' }, hookS) : null,
       speakBtn),
-    day.photos?.length ? photoStrip(day.photos) : null,
+    el('div', { class: 'photo-slot' }),
     day.story ? el('section', { class: 'card' }, el('h2', {}, 'The story'), el('p', { class: 'story' }, storyS)) : null,
     day.description ? el('section', { class: 'card' }, el('h2', {}, 'What it is'), el('p', {}, descS)) : null,
     day.stats?.length ? el('section', { class: 'card' }, el('h2', {}, 'Numbers'), statsGrid(day.stats)) : null,
@@ -77,6 +77,41 @@ function render(day) {
       day.sources.map((s, i) => [i ? ' · ' : null, el('a', { href: s, target: '_blank', rel: 'noopener' }, hostOf(s))])) : null,
   );
   new Game($('#game'), day);
+
+  // Photos: hand-picked `photos` win; otherwise a `photoQuery` is resolved against Wikimedia Commons in the browser.
+  const slot = $('.photo-slot');
+  if (day.photos?.length) slot.replaceWith(photoStrip(day.photos));
+  else if (day.photoQuery) fetchCommonsPhotos(day.photoQuery, 3, day.date).then(ps => ps.length ? slot.replaceWith(photoStrip(ps)) : slot.remove()).catch(() => slot.remove());
+  else slot.remove();
+}
+
+/* ---------- photos from Wikimedia Commons (client-side; mirrors scripts/commons.mjs) ---------- */
+const OK_LICENSE = /^(cc0|public domain|pd[- ]|cc[- ]by(?:[- ]sa)?(?: \d(\.\d)?)?$)/i;
+const BAD_LICENSE = /(nc|nd|non-commercial|no derivatives|fair use|copyright)/i;
+const BAD_TITLE = /logo|badge|emblem|brochure|advert|scan|drawing|diagram|model car|toy|scale model|lego/i;
+const stripHtml = s => String(s || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+async function fetchCommonsPhotos(query, want = 3, cacheKey = '') {
+  const key = cacheKey ? `daytrip.photos.${cacheKey}` : '';
+  try { const c = key && JSON.parse(localStorage.getItem(key) || 'null'); if (c && Date.now() - c.t < 864e5 && Array.isArray(c.p) && c.p.length) return c.p; } catch {}
+  const api = new URL('https://commons.wikimedia.org/w/api.php');
+  api.search = new URLSearchParams({ action: 'query', format: 'json', origin: '*', generator: 'search', gsrsearch: `${query} filetype:bitmap`, gsrnamespace: '6', gsrlimit: '40', prop: 'imageinfo', iiprop: 'url|extmetadata|size|mime', iiurlwidth: '800' });
+  const res = await fetch(api); if (!res.ok) throw new Error(`Commons ${res.status}`);
+  const pages = Object.values((await res.json())?.query?.pages || {});
+  const tokens = query.split(/\s+/).filter(t => t.length > 2 && !/^(19|20)\d\d$/.test(t));
+  const picks = pages.map(p => {
+    const ii = p.imageinfo?.[0]; if (!ii) return null; const md = ii.extmetadata || {};
+    const license = stripHtml(md.LicenseShortName?.value), credit = stripHtml(md.Artist?.value) || stripHtml(md.Credit?.value) || 'Unknown';
+    if (!/^image\/(jpeg|png)$/.test(ii.mime || '') || !OK_LICENSE.test(license) || BAD_LICENSE.test(license) || (ii.width || 0) < 900) return null;
+    const title = stripHtml(p.title).replace(/^File:/, ''); if (BAD_TITLE.test(title)) return null;
+    const hits = tokens.filter(t => title.toLowerCase().includes(t.toLowerCase())).length; if (tokens.length && !hits) return null;
+    const score = hits * 1.5 + (ii.width >= ii.height ? 2 : 0) + Math.min(2, ii.width / 2000);
+    const url = ii.thumburl || ii.url; // use the API-issued URL verbatim; hand-edited sizes return 400
+    return { score, key: title.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 24), photo: { url, thumb: url, credit: credit.slice(0, 80), license, source: ii.descriptionurl, alt: title.replace(/\.(jpe?g|png)$/i, '').replace(/_/g, ' ') } };
+  }).filter(Boolean).sort((a, b) => b.score - a.score);
+  const seen = new Set(), out = [];
+  for (const p of picks) { if (seen.has(p.key)) continue; seen.add(p.key); out.push(p.photo); if (out.length >= want) break; }
+  try { if (key) localStorage.setItem(key, JSON.stringify({ t: Date.now(), p: out })); } catch {}
+  return out;
 }
 
 function photoStrip(photos) {

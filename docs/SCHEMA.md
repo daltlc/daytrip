@@ -15,6 +15,7 @@ One file per day. `days/latest.json` is an exact copy of the newest file. `days/
 | `description` | string | yes | 60–90 words. What it is, who built it, why it matters. Plain and factual. |
 | `stats` | `[{label, value}]` | yes | 5–7 items, both strings. Only stats you found in a source. Omit rather than guess. Suggested labels: `Engine`, `Power`, `Torque`, `0–60 mph`, `Top speed`, `Weight`, `Drivetrain`, `Built`. Values include units: `"700 hp @ 9,000 rpm"`, `"830 kg"`. |
 | `photos` | `[{url, thumb, credit, license, source, alt}]` | no | 0–3. Get them with `node scripts/commons.mjs "<car>" 3`. Page renders fine with none. Never hotlink from anywhere but Wikimedia Commons. |
+| `photoQuery` | string | no | `"<year> <maker> <model>"`, e.g. `"1975 Lancia Stratos HF"`. When `photos` is empty, the page searches Wikimedia Commons for this at view time (same filters as `scripts/commons.mjs`: free licenses only, title must mention the car, attribution shown). **Always set this**; the cloud sandbox cannot reach Commons, so this is how photos get on the page. |
 | `sprite` | `{w:16, h:24, palette, rows}` | yes | See `docs/SPRITES.md`. |
 | `game` | object | yes | See `docs/GAME.md`. `obstacle`, `scenery`, `accent` are the ones to set every day. |
 | `sources` | `[url]` | yes | 2–4 pages the facts came from. Shown in the footer. |

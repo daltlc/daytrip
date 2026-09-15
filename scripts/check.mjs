@@ -50,6 +50,8 @@ function checkDay(f, d) {
       });
     }
   }
+  if (d.photoQuery != null && (typeof d.photoQuery !== 'string' || d.photoQuery.trim().length < 4)) err(f, 'photoQuery must be a short search string like "1975 Lancia Stratos HF"');
+  if (!(Array.isArray(d.photos) && d.photos.length) && !d.photoQuery) warn(f, 'no photos and no photoQuery; the page will have no pictures');
   if (d.sprite) {
     const sp = d.sprite;
     if (sp.w !== 16 || sp.h !== 24) err(f, `sprite must be 16×24, got ${sp.w}×${sp.h}`);

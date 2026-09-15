@@ -20,6 +20,7 @@
   "photos": [
     { "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/x/xx/Example.jpg/1280px-Example.jpg", "thumb": "https://upload.wikimedia.org/wikipedia/commons/thumb/x/xx/Example.jpg/800px-Example.jpg", "credit": "Photographer Name", "license": "CC BY-SA 4.0", "source": "https://commons.wikimedia.org/wiki/File:Example.jpg", "alt": "Example car at a show" }
   ],
+  "photoQuery": "2000 Maker Example Model",
   "sprite": {
     "w": 16, "h": 24,
     "palette": { "a": "ACCENT", "k": "#111318", "w": "#f2f2f2", "b": "#8fd3ff", "r": "#ff3b3b" },
