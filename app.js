@@ -271,6 +271,14 @@ const W = 160, H = 240, ROAD_X = 28, ROAD_W = 104, CAR_Y = 196;
 // the lane-change lerp covers ~5 px per frame where it matters, so anything tighter
 // than ~7 px is a crash and the window would be unhittable.
 const NEAR_MISS_SLACK = 3, NEAR_MISS_BONUS = 0.05, MAX_COMBO = 5, COMBO_HOLD = 2.5;
+// Road curvature: the whole road slides left and right on one slow sine wave so a long
+// run stops feeling like a straight corridor. It is purely cosmetic. The shift depends
+// on `y - scroll`, i.e. where a row sits along the road rather than on the screen, so a
+// road feature keeps its own offset as it scrolls past and the car and an obstacle at
+// the same y are always shifted by the same amount. Everything the player can hit stays
+// in unbent lane space: collision and near misses are untouched. 13 px of swing keeps
+// the 104 px road inside the 160 px frame with its edge lines intact.
+const BEND_MAX = 13, BEND_WAVE = 760;
 class Game {
   constructor(mount, day) {
     const gp = day.game || {};
@@ -287,6 +295,11 @@ class Game {
     this.obst = buildObstacle(gp.obstacle);
     this.sound = new Sound();
     this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // `game.curve` is optional (0–1, default 0.6); a day that wants a dead-straight
+    // road sets 0. Reduced motion flattens it outright — the lateral drift is the
+    // whole point of the effect and the road already scrolls without it.
+    this.curve = this.reduced ? 0 : BEND_MAX * Math.min(1, Math.max(0, gp.curve ?? 0.6));
+    this.bends = new Int8Array(H);
     this.bestKey = `daytrip.best.${day.date || 'x'}`;
     this.best = +localStorage.getItem(this.bestKey) || 0;
 
@@ -331,6 +344,9 @@ class Game {
       this.sparks.push({ x: this.carX + (Math.random() - 0.5) * 14, y: CAR_Y + 4 + Math.random() * 16, vx: (Math.random() - 0.5) * 50, vy: 40 + Math.random() * 60, t: 0.28 });
   }
   laneCenter(i) { return ROAD_X + this.laneW * (i + 0.5); }
+  // Draw-time only. Never call these from update(): the lanes themselves do not move.
+  bend(y) { return this.curve ? this.curve * Math.sin((y - this.scroll) * (Math.PI * 2 / BEND_WAVE)) : 0; }
+  bendPx(y) { return Math.round(this.bend(y)); }
   showIdle() {
     this.overlay.hidden = false;
     this.overlay.replaceChildren(el('div', { class: 'big' }, 'Ready?'), el('div', { class: 'sub' }, `${this.day.year || ''} ${this.day.name || ''}`.trim()), el('div', { class: 'cta' }, 'Tap to drive'));
@@ -444,25 +460,36 @@ class Game {
     if (this.combo !== this._c) { this._c = this.combo; this.multEl.textContent = this.combo ? ` ×${(1 + this.combo * NEAR_MISS_BONUS).toFixed(2)}` : ''; }
   }
   draw() {
-    const g = this.g, sc = this.scenery, s = this.scroll;
+    const g = this.g, sc = this.scenery, s = this.scroll, bends = this.bends;
+    if (this.curve) for (let y = 0; y < H; y++) bends[y] = this.bendPx(y); // else it stays all zeros
+
+    const at = y => bends[y < 0 ? 0 : y > H - 1 ? H - 1 : Math.round(y)];
     g.fillStyle = sc.ground; g.fillRect(0, 0, W, H);
     g.fillStyle = sc.far;
-    for (let i = 0; i < 12; i++) { const y = ((i * 40 + s * 0.5) % (H + 40)) - 20; g.fillRect(0, y, ROAD_X - 6, 6); g.fillRect(ROAD_X + ROAD_W + 6, y, W, 6); }
+    for (let i = 0; i < 12; i++) { const y = ((i * 40 + s * 0.5) % (H + 40)) - 20, b = at(y); g.fillRect(0, y, ROAD_X - 6 + b, 6); g.fillRect(ROAD_X + ROAD_W + 6 + b, y, W, 6); }
     for (let i = 0; i < 14; i++) {
       const y = ((i * 46 + s) % (H + 60)) - 30, side = i % 2 ? 1 : -1;
       const x = side < 0 ? 4 + Math.floor(hash(i) * 14) : ROAD_X + ROAD_W + 6 + Math.floor(hash(i + 99) * 14);
-      sc.items(g, x, y, i + 7);
+      sc.items(g, x + at(y), y, i + 7);
     }
-    g.fillStyle = '#c9ccd2'; g.fillRect(ROAD_X - 3, 0, 3, H); g.fillRect(ROAD_X + ROAD_W, 0, 3, H);
-    g.fillStyle = '#3a3d44'; g.fillRect(ROAD_X, 0, ROAD_W, H);
-    g.fillStyle = '#5a5e66'; for (let i = 0; i < 40; i++) g.fillRect(ROAD_X + Math.floor(hash(i + 300) * ROAD_W), ((i * 37 + s * 1.0) % (H + 10)) - 5, 1, 1);
+    if (this.curve) {
+      g.fillStyle = '#c9ccd2';
+      for (let y = 0; y < H; y++) { const b = bends[y]; g.fillRect(ROAD_X - 3 + b, y, 3, 1); g.fillRect(ROAD_X + ROAD_W + b, y, 3, 1); }
+      g.fillStyle = '#3a3d44';
+      for (let y = 0; y < H; y++) g.fillRect(ROAD_X + bends[y], y, ROAD_W, 1);
+    } else {
+      g.fillStyle = '#c9ccd2'; g.fillRect(ROAD_X - 3, 0, 3, H); g.fillRect(ROAD_X + ROAD_W, 0, 3, H);
+      g.fillStyle = '#3a3d44'; g.fillRect(ROAD_X, 0, ROAD_W, H);
+    }
+    g.fillStyle = '#5a5e66'; for (let i = 0; i < 40; i++) { const y = ((i * 37 + s * 1.0) % (H + 10)) - 5; g.fillRect(ROAD_X + Math.floor(hash(i + 300) * ROAD_W) + at(y), y, 1, 1); }
     g.fillStyle = '#e8e8e8';
-    for (let l = 1; l < this.lanes; l++) { const x = Math.round(ROAD_X + this.laneW * l) - 1; for (let i = -1; i < 12; i++) g.fillRect(x, ((i * 24 + s) % (H + 24)) - 12, 2, 12); }
-    for (const o of this.obs) g.drawImage(this.obst, Math.round(this.laneCenter(o.lane) - 6), Math.round(o.y));
-    for (const sp of this.sparks) { g.fillStyle = sp.t > 0.14 ? '#ffffff' : this.accent; g.fillRect(Math.round(sp.x), Math.round(sp.y), 1, 1); }
-    if (this.state === 'crashed') { g.fillStyle = 'rgba(255,60,60,.35)'; g.fillRect(Math.round(this.carX - 9), CAR_Y - 3, 18, 30); }
-    g.drawImage(this.sprite, Math.round(this.carX - 8), CAR_Y);
-    if (this.state === 'running' && this.speed > this.baseSpeed * 1.6 && Math.floor(this.tick * 20) % 2) { g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(Math.round(this.carX - 4), CAR_Y + 24, 2, 5); g.fillRect(Math.round(this.carX + 2), CAR_Y + 24, 2, 5); }
+    for (let l = 1; l < this.lanes; l++) { const x = Math.round(ROAD_X + this.laneW * l) - 1; for (let i = -1; i < 12; i++) { const y = ((i * 24 + s) % (H + 24)) - 12; g.fillRect(x + at(y + 6), y, 2, 12); } }
+    for (const o of this.obs) g.drawImage(this.obst, Math.round(this.laneCenter(o.lane) - 6 + this.bend(o.y + 6)), Math.round(o.y));
+    for (const sp of this.sparks) { g.fillStyle = sp.t > 0.14 ? '#ffffff' : this.accent; g.fillRect(Math.round(sp.x + this.bend(sp.y)), Math.round(sp.y), 1, 1); }
+    const cb = this.bend(CAR_Y + 12);
+    if (this.state === 'crashed') { g.fillStyle = 'rgba(255,60,60,.35)'; g.fillRect(Math.round(this.carX - 9 + cb), CAR_Y - 3, 18, 30); }
+    g.drawImage(this.sprite, Math.round(this.carX - 8 + cb), CAR_Y);
+    if (this.state === 'running' && this.speed > this.baseSpeed * 1.6 && Math.floor(this.tick * 20) % 2) { g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(Math.round(this.carX - 4 + cb), CAR_Y + 24, 2, 5); g.fillRect(Math.round(this.carX + 2 + cb), CAR_Y + 24, 2, 5); }
     const d = this.dctx, k = this.canvas.width / W;
     const ox = this.shake ? Math.round((Math.random() - 0.5) * 6 * k) : 0, oy = this.shake ? Math.round((Math.random() - 0.5) * 6 * k) : 0;
     d.imageSmoothingEnabled = false;

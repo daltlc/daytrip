@@ -1,4 +1,5 @@
 [
+  { "date": "2026-09-16", "name": "Dodge Charger Daytona", "year": 1969, "class": "muscle" },
   { "date": "2026-09-15", "name": "Audi Sport quattro S1 E2", "year": 1985, "class": "rally" },
   { "date": "2026-09-14", "name": "Mazda 787B", "year": 1991, "class": "lemans" }
 ]

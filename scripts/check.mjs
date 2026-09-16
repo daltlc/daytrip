@@ -74,6 +74,7 @@ function checkDay(f, d) {
     if (gm.scenery && !SCENERY.includes(gm.scenery)) err(f, `game.scenery "${gm.scenery}" not one of ${SCENERY.join(', ')}`);
     if (gm.laneCount != null && ![2, 3, 4].includes(gm.laneCount)) err(f, 'game.laneCount must be 2, 3 or 4');
     if (gm.baseSpeed != null && !(gm.baseSpeed >= 0.6 && gm.baseSpeed <= 1.6)) err(f, 'game.baseSpeed must be between 0.6 and 1.6');
+    if (gm.curve != null && !(Number.isFinite(gm.curve) && gm.curve >= 0 && gm.curve <= 1)) err(f, 'game.curve must be between 0 and 1');
     if (gm.accent && !/^#[0-9a-f]{6}$/i.test(gm.accent)) err(f, 'game.accent must be #rrggbb');
     if (gm.stars && !(Array.isArray(gm.stars) && gm.stars.length === 3 && gm.stars.every((n, i, a) => Number.isFinite(n) && (i === 0 || n > a[i - 1])))) err(f, 'game.stars must be 3 ascending numbers');
   }
