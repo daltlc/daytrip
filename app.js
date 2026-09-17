@@ -226,6 +226,22 @@ const SCENERY = {
 };
 const hash = n => { let x = (n * 2654435761) >>> 0; x ^= x >>> 15; x = Math.imul(x, 2246822519) >>> 0; x ^= x >>> 13; return x / 4294967296; };
 
+/* ---------- weather (a drifting particle layer over everything) ---------- */
+// Three sceneries get weather on their own: `coast` rains, `snow` snows, `desert` blows
+// dust. A day can override with the optional `game.weather` — "auto" (the default, i.e.
+// whatever SCENERY_WEATHER says), "none", or a kind by name so a dry coast or a snowy
+// mountain pass is still possible. Old day files have no field and get "auto", so they
+// render exactly as before unless their scenery is one of the three.
+// `fall` is px/s of its own; `tow` is how much of the road speed the particle picks up,
+// which is what makes rain lean into a fast run and leaves snow hanging almost still.
+// Nothing here is read by update(): it cannot be hit and it does not move the car.
+const WEATHER = {
+  rain: { count: 44, fall: 210, tow: 0.85, drift: -18, len: 5, wobble: 0, color: 'rgba(176,206,240,.55)' },
+  snow: { count: 38, fall: 26, tow: 0.12, drift: 8, len: 1, wobble: 11, color: 'rgba(255,255,255,.85)' },
+  dust: { count: 30, fall: 48, tow: 0.45, drift: 44, len: 2, wobble: 5, color: 'rgba(224,192,130,.5)' },
+};
+const SCENERY_WEATHER = { coast: 'rain', snow: 'snow', desert: 'dust' };
+
 /* ---------- audio ---------- */
 class Sound {
   constructor() {
@@ -300,6 +316,11 @@ class Game {
     // whole point of the effect and the road already scrolls without it.
     this.curve = this.reduced ? 0 : BEND_MAX * Math.min(1, Math.max(0, gp.curve ?? 0.6));
     this.bends = new Int8Array(H);
+    // Reduced motion drops the weather entirely: it is drifting specks and nothing else.
+    const wk = !gp.weather || gp.weather === 'auto' ? SCENERY_WEATHER[gp.scenery] : gp.weather;
+    this.weather = this.reduced ? null : WEATHER[wk] || null;
+    this.drops = [];
+    if (this.weather) for (let i = 0; i < this.weather.count; i++) this.drops.push(this.newDrop(true));
     this.bestKey = `daytrip.best.${day.date || 'x'}`;
     this.best = +localStorage.getItem(this.bestKey) || 0;
 
@@ -344,6 +365,22 @@ class Game {
       this.sparks.push({ x: this.carX + (Math.random() - 0.5) * 14, y: CAR_Y + 4 + Math.random() * 16, vx: (Math.random() - 0.5) * 50, vy: 40 + Math.random() * 60, t: 0.28 });
   }
   laneCenter(i) { return ROAD_X + this.laneW * (i + 0.5); }
+  newDrop(spread) {
+    const c = this.weather;
+    return { x: Math.random() * (W + 24) - 12, y: spread ? Math.random() * H : -c.len - Math.random() * 24, s: 0.7 + Math.random() * 0.6, ph: Math.random() * Math.PI * 2 };
+  }
+  // Runs every frame, not only while driving, so the idle and crash cards sit in weather too.
+  stepWeather(dt) {
+    const c = this.weather; if (!c) return;
+    const tow = c.tow * (this.state === 'running' ? this.speed : this.baseSpeed * 0.4);
+    for (const p of this.drops) {
+      p.y += (c.fall * p.s + tow) * dt;
+      p.x += (c.drift * p.s + (c.wobble ? Math.cos(this.tick * 1.7 + p.ph) * c.wobble : 0)) * dt;
+      if (p.y > H) Object.assign(p, this.newDrop(false));
+      else if (p.x < -12) p.x = W + 12;
+      else if (p.x > W + 12) p.x = -12;
+    }
+  }
   // Draw-time only. Never call these from update(): the lanes themselves do not move.
   bend(y) { return this.curve ? this.curve * Math.sin((y - this.scroll) * (Math.PI * 2 / BEND_WAVE)) : 0; }
   bendPx(y) { return Math.round(this.bend(y)); }
@@ -428,6 +465,7 @@ class Game {
     const dt = Math.min(0.05, (t - this.last) / 1000); this.last = t; this.tick += dt;
     if (this.state === 'running') this.update(dt);
     if (this.shake > 0) this.shake = Math.max(0, this.shake - dt);
+    this.stepWeather(dt);
     this.draw();
     requestAnimationFrame(tt => this.frame(tt));
   }
@@ -490,6 +528,10 @@ class Game {
     if (this.state === 'crashed') { g.fillStyle = 'rgba(255,60,60,.35)'; g.fillRect(Math.round(this.carX - 9 + cb), CAR_Y - 3, 18, 30); }
     g.drawImage(this.sprite, Math.round(this.carX - 8 + cb), CAR_Y);
     if (this.state === 'running' && this.speed > this.baseSpeed * 1.6 && Math.floor(this.tick * 20) % 2) { g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(Math.round(this.carX - 4 + cb), CAR_Y + 24, 2, 5); g.fillRect(Math.round(this.carX + 2 + cb), CAR_Y + 24, 2, 5); }
+    if (this.weather) { // last, so it falls in front of the car as well as the road
+      const c = this.weather; g.fillStyle = c.color;
+      for (const p of this.drops) g.fillRect(Math.round(p.x), Math.round(p.y), 1, Math.max(1, Math.round(c.len * p.s)));
+    }
     const d = this.dctx, k = this.canvas.width / W;
     const ox = this.shake ? Math.round((Math.random() - 0.5) * 6 * k) : 0, oy = this.shake ? Math.round((Math.random() - 0.5) * 6 * k) : 0;
     d.imageSmoothingEnabled = false;

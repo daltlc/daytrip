@@ -11,6 +11,7 @@ const errs = [], warns = [];
 const CLASSES = ['road', 'exotic', 'rally', 'f1', 'gt3', 'lemans', 'jdm', 'muscle', 'offroad', 'vintage', 'touring', 'concept'];
 const OBSTACLES = ['cone', 'barrel', 'tire', 'rock', 'snow', 'crate', 'puddle'];
 const SCENERY = ['city', 'mountain', 'desert', 'coast', 'forest', 'track', 'snow'];
+const WEATHER = ['auto', 'none', 'rain', 'snow', 'dust'];
 const BANNED = /\b(forza|horizon festival|playground games|gran turismo|need for speed)\b/i;
 const words = s => String(s || '').trim().split(/\s+/).filter(Boolean).length;
 const isUrl = u => /^https?:\/\/\S+$/.test(String(u || ''));
@@ -72,6 +73,7 @@ function checkDay(f, d) {
     const gm = d.game;
     if (gm.obstacle && !OBSTACLES.includes(gm.obstacle)) err(f, `game.obstacle "${gm.obstacle}" not one of ${OBSTACLES.join(', ')}`);
     if (gm.scenery && !SCENERY.includes(gm.scenery)) err(f, `game.scenery "${gm.scenery}" not one of ${SCENERY.join(', ')}`);
+    if (gm.weather != null && !WEATHER.includes(gm.weather)) err(f, `game.weather "${gm.weather}" not one of ${WEATHER.join(', ')}`);
     if (gm.laneCount != null && ![2, 3, 4].includes(gm.laneCount)) err(f, 'game.laneCount must be 2, 3 or 4');
     if (gm.baseSpeed != null && !(gm.baseSpeed >= 0.6 && gm.baseSpeed <= 1.6)) err(f, 'game.baseSpeed must be between 0.6 and 1.6');
     if (gm.curve != null && !(Number.isFinite(gm.curve) && gm.curve >= 0 && gm.curve <= 1)) err(f, 'game.curve must be between 0 and 1');
