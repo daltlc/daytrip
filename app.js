@@ -355,11 +355,15 @@ class Game {
     this.state = 'idle'; this.lane = Math.floor(this.lanes / 2); this.carX = this.laneCenter(this.lane);
     this.speed = this.baseSpeed; this.dist = 0; this.scroll = 0; this.obs = []; this.nextSpawn = this.baseSpeed * 1.4; this.lastFree = this.lane;
     this.shake = 0; this.tick = 0;
+    // Tally for the whole run, so the crash card can report it. Deliberately not touched
+    // by clearCombo(): the chain expiring, and the crash itself, both have to leave it.
+    this.misses = 0; this.bestCombo = 0;
     this.clearCombo(); this.sparks = [];
   }
   clearCombo() { this.combo = 0; this.comboT = 0; this._c = 0; if (this.multEl) this.multEl.textContent = ''; }
   nearMiss() {
     this.combo = Math.min(MAX_COMBO, this.combo + 1); this.comboT = COMBO_HOLD;
+    this.misses++; if (this.combo > this.bestCombo) this.bestCombo = this.combo;
     if (this.reduced) return;
     for (let i = 0; i < 5; i++)
       this.sparks.push({ x: this.carX + (Math.random() - 0.5) * 14, y: CAR_Y + 4 + Math.random() * 16, vx: (Math.random() - 0.5) * 50, vy: 40 + Math.random() * 60, t: 0.28 });
@@ -391,12 +395,17 @@ class Game {
   showCrash() {
     const m = Math.floor(this.dist), s = this.starsFor(m);
     this.overlay.hidden = false;
-    this.overlay.replaceChildren(
+    // The near-miss line is otherwise only visible mid-run, in a HUD nobody is reading while
+    // dodging. A clean run says nothing at all: "0 near misses" reads like a telling-off.
+    const rows = [
       el('div', { class: 'stars' }, '★'.repeat(s) + '☆'.repeat(3 - s)),
       el('div', { class: 'big' }, `${m} m`),
       el('div', { class: 'sub' }, m >= this.best && m > 0 ? 'New best today' : `Best today: ${this.best} m`),
       el('div', { class: 'sub' }, s < 3 ? `${this.stars[s]} m for ${['one star', 'two stars', 'three stars'][s]}` : 'Full marks'),
-      el('div', { class: 'cta' }, 'Tap to go again'));
+    ];
+    if (this.misses) rows.push(el('div', { class: 'sub' }, `${this.misses} near miss${this.misses > 1 ? 'es' : ''} · best chain ×${(1 + this.bestCombo * NEAR_MISS_BONUS).toFixed(2)}`));
+    rows.push(el('div', { class: 'cta' }, 'Tap to go again'));
+    this.overlay.replaceChildren(...rows);
   }
   showPaused() { this.overlay.hidden = false; this.overlay.replaceChildren(el('div', { class: 'big' }, 'Paused'), el('div', { class: 'cta' }, 'Tap to resume')); }
   starsFor(m) { return this.stars.filter(t => m >= t).length; }
