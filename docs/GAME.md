@@ -31,7 +31,7 @@ Pick these to match the car's world: a Le Mans car gets `tire` + `track`; a Grou
 - Weather — `WEATHER` holds three particle kinds and `SCENERY_WEATHER` maps `coast` → `rain`, `snow` → `snow`, `desert` → `dust`. Every other scenery is dry. A day can override with `game.weather`: `auto` (the default) means "whatever the scenery says", `none` turns it off, or name a kind for a dry coast or a snowy mountain pass. Each particle carries its own fall speed plus a share (`tow`) of the current road speed, so rain leans hard into a fast run while snow hangs almost still, and `drift`/`wobble` blow it sideways. It is drawn last, over the car, and `update()` never touches it — nothing here can be hit. `prefers-reduced-motion` drops the layer entirely. Add a kind here **and** to `scripts/check.mjs` and this doc.
 - `Game.draw()` — everything renders to the 160×240 buffer, then the buffer is blitted to the display canvas at an integer scale.
 - `Sound` — WebAudio engine hum (two oscillators through a lowpass) and a noise burst on crash. Unlocked on first tap. Mute persists in `localStorage`.
-- `Speaker` — read-aloud, sentence by sentence, highlighting the current sentence.
+- `Speaker` — read-aloud, sentence by sentence, highlighting the current sentence. `splitSentences` feeds it: it breaks on `.`/`!`/`?` only when the break is followed by whitespace and an upper-case letter, digit or opening quote, and never on a decimal point (`1.6-litre`), a single-letter initial (`J. Bugatti`) or a known abbreviation (`St.`, `Dr.`, `e.g.`). Runs of terminators and trailing closing quotes stay with the sentence they end. Joining the pieces always reproduces the input, so nothing can be dropped on the way into the spans.
 
 ## Improving the engine
 
@@ -43,7 +43,8 @@ Ideas, roughly in order of payoff:
 3. ~~Road curvature~~ — done 2026-09-16: the road slides on a sine wave, drawing only, see above.
 4. ~~Weather per scenery~~ — done 2026-09-17: rain, snow and dust, picked from the scenery or set with `game.weather`, see above.
 5. ~~Near-miss count on the crash card~~ — done 2026-09-18, see above.
-6. Ghost of today's best run.
-7. A tiny "car card" render of the sprite at 4× above the game with the accent glow.
-8. Per-class feel: rally cars slide a little on lane change, F1 cars snap.
-9. Sound: a gear-shift blip every 200 m.
+6. ~~Sentence splitter that survives decimals, initials and abbreviations~~ — done 2026-09-19, see `Speaker` above.
+7. Ghost of today's best run.
+8. A tiny "car card" render of the sprite at 4× above the game with the accent glow.
+9. Per-class feel: rally cars slide a little on lane change, F1 cars snap.
+10. Sound: a gear-shift blip every 200 m.

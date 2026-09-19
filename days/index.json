@@ -1,4 +1,5 @@
 [
+  { "date": "2026-09-19", "name": "Lancia Stratos Zero (Bertone)", "year": 1970, "class": "concept" },
   { "date": "2026-09-18", "name": "Bugatti Type 57SC Atlantic", "year": 1936, "class": "vintage" },
   { "date": "2026-09-17", "name": "Mini Cooper S (works rally)", "year": 1966, "class": "touring" },
   { "date": "2026-09-16", "name": "Dodge Charger Daytona", "year": 1969, "class": "muscle" },

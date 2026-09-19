@@ -36,7 +36,37 @@ async function loadDay() {
 }
 
 /* ---------- text helpers ---------- */
-const splitSentences = t => ((t || '').replace(/\s+/g, ' ').trim().match(/[^.!?]+[.!?]+["')\]]*|[^.!?]+$/g) || []).map(s => s.trim()).filter(Boolean);
+/* A full stop only ends a sentence if what follows looks like a new one. Guards, in order:
+   a decimal point ("3.3-litre"), a single-letter initial ("J. Bugatti"), a known abbreviation
+   ("St. Moritz"), no whitespace after, or a lower-case word next. Everything else splits. */
+const ABBREV = /(?:^|[\s("'‘“])(?:mr|mrs|ms|dr|prof|rev|st|mt|sr|jr|vs|etc|no|fig|approx|dept|vol|co|inc|ltd|ave|rd|e\.g|i\.e|a\.m|p\.m|u\.s|u\.k)\.$/i;
+const INITIAL = /(?:^|[\s("'‘“])[A-Z]\.$/;
+function splitSentences(t) {
+  const text = (t || '').replace(/\s+/g, ' ').trim();
+  if (!text) return [];
+  const out = [];
+  let start = 0;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (c !== '.' && c !== '!' && c !== '?') continue;
+    if (c === '.' && /\d/.test(text[i - 1] || '') && /\d/.test(text[i + 1] || '')) continue;
+    let j = i;                                                              // "?!" and closing quotes ride along
+    while (j + 1 < text.length && '.!?'.includes(text[j + 1])) j++;
+    while (j + 1 < text.length && '"\')]’”'.includes(text[j + 1])) j++;
+    const rest = text.slice(j + 1);
+    if (rest && rest[0] !== ' ') { i = j; continue; }
+    const nxt = rest.slice(1)[0];
+    if (nxt && !/[A-Z0-9"'(‘“]/.test(nxt)) { i = j; continue; }
+    const head = text.slice(start, i + 1);
+    if (c === '.' && (INITIAL.test(head) || ABBREV.test(head))) { i = j; continue; }
+    out.push(text.slice(start, j + 1).trim());
+    start = j + 1;
+    i = j;
+  }
+  const tail = text.slice(start).trim();
+  if (tail) out.push(tail);
+  return out.filter(Boolean);
+}
 const sentenceSpans = text => splitSentences(text).map(s => el('span', { class: 'sent' }, s + ' '));
 const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch { return u; } };
 const fmtDate = d => { try { return new Date(d + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }); } catch { return d; } };
