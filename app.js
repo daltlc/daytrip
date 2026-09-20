@@ -325,6 +325,14 @@ const NEAR_MISS_SLACK = 3, NEAR_MISS_BONUS = 0.05, MAX_COMBO = 5, COMBO_HOLD = 2
 // in unbent lane space: collision and near misses are untouched. 13 px of swing keeps
 // the 104 px road inside the 160 px frame with its edge lines intact.
 const BEND_MAX = 13, BEND_WAVE = 760;
+// Ghost of today's best run. The run records the car's x every GHOST_STEP metres of
+// distance, and a run that beats the day's best stores that trace next to the best
+// number. A later run then draws a faint car at the x the best run held *at the same
+// metre mark*, so it is a pace ghost: level with you means you are level with your best.
+// Distance, not time, is the index — the near-miss multiplier makes the two disagree,
+// and the metre mark is what the score, the stars and the best are all counted in.
+// Nothing here is read by update(): the ghost is drawn and never collides.
+const GHOST_STEP = 2, GHOST_MAX = 1600, GHOST_ALPHA = 0.32;
 class Game {
   constructor(mount, day) {
     const gp = day.game || {};
@@ -353,6 +361,8 @@ class Game {
     if (this.weather) for (let i = 0; i < this.weather.count; i++) this.drops.push(this.newDrop(true));
     this.bestKey = `daytrip.best.${day.date || 'x'}`;
     this.best = +localStorage.getItem(this.bestKey) || 0;
+    this.ghostKey = `daytrip.ghost.${day.date || 'x'}`;
+    this.ghost = this.loadGhost();
 
     this.buf = document.createElement('canvas'); this.buf.width = W; this.buf.height = H;
     this.g = this.buf.getContext('2d');
@@ -389,6 +399,29 @@ class Game {
     // by clearCombo(): the chain expiring, and the crash itself, both have to leave it.
     this.misses = 0; this.bestCombo = 0;
     this.clearCombo(); this.sparks = [];
+    this.trace = [];
+  }
+  // A stored ghost is just a list of x positions. Anything else — an older key, a hand-edited
+  // value, a half-written string — is dropped rather than drawn: a bad ghost must never be
+  // able to break the run that is racing it.
+  loadGhost() {
+    try {
+      const p = JSON.parse(localStorage.getItem(this.ghostKey) || 'null');
+      if (Array.isArray(p) && p.length > 1 && p.every(n => Number.isFinite(n))) return p;
+    } catch {}
+    return null;
+  }
+  saveGhost(p) {
+    this.ghost = p;
+    try { localStorage.setItem(this.ghostKey, JSON.stringify(p)); } catch {} // quota: the run still keeps its ghost in memory
+  }
+  // Where the best run sat at metre `m`, interpolated between samples. null past its end,
+  // which is the point where you have beaten it.
+  ghostX(m) {
+    const p = this.ghost; if (!p) return null;
+    const f = m / GHOST_STEP, i = Math.floor(f);
+    if (i < 0 || i >= p.length - 1) return null;
+    return p[i] + (p[i + 1] - p[i]) * (f - i);
   }
   clearCombo() { this.combo = 0; this.comboT = 0; this._c = 0; if (this.multEl) this.multEl.textContent = ''; }
   nearMiss() {
@@ -420,7 +453,12 @@ class Game {
   bendPx(y) { return Math.round(this.bend(y)); }
   showIdle() {
     this.overlay.hidden = false;
-    this.overlay.replaceChildren(el('div', { class: 'big' }, 'Ready?'), el('div', { class: 'sub' }, `${this.day.year || ''} ${this.day.name || ''}`.trim()), el('div', { class: 'cta' }, 'Tap to drive'));
+    // The ghost line only appears once there is a ghost to explain, so a first run is not
+    // told about a faint car it will not see.
+    const rows = [el('div', { class: 'big' }, 'Ready?'), el('div', { class: 'sub' }, `${this.day.year || ''} ${this.day.name || ''}`.trim())];
+    if (this.ghost) rows.push(el('div', { class: 'sub' }, 'The faint car is your best run'));
+    rows.push(el('div', { class: 'cta' }, 'Tap to drive'));
+    this.overlay.replaceChildren(...rows);
   }
   showCrash() {
     const m = Math.floor(this.dist), s = this.starsFor(m);
@@ -448,7 +486,11 @@ class Game {
     this.sound.engine(0, false); this.sound.hit();
     try { navigator.vibrate?.(90); } catch {}
     const m = Math.floor(this.dist);
-    if (m > this.best) { this.best = m; localStorage.setItem(this.bestKey, String(m)); this.bestEl.textContent = `Best today: ${m} m`; }
+    if (m > this.best) {
+      this.best = m; localStorage.setItem(this.bestKey, String(m)); this.bestEl.textContent = `Best today: ${m} m`;
+      // The ghost and the best come from the same run, so they only ever change together.
+      if (this.trace.length > 1) this.saveGhost(this.trace.slice());
+    }
     this.showCrash();
   }
   move(dir) { if (this.state !== 'running') return; this.lane = Math.max(0, Math.min(this.lanes - 1, this.lane + dir)); }
@@ -516,6 +558,9 @@ class Game {
     const dy = this.speed * dt; this.scroll += dy; this.dist += dy * 0.08 * (1 + this.combo * NEAR_MISS_BONUS);
     this.nextSpawn -= dy; if (this.nextSpawn <= 0) this.spawn();
     const target = this.laneCenter(this.lane); this.carX += (target - this.carX) * Math.min(1, dt * 18);
+    // One sample per GHOST_STEP metres. A fast frame can cross more than one step, so the
+    // gap is filled with the position we are at now rather than left as a hole.
+    while (this.trace.length <= this.dist / GHOST_STEP && this.trace.length < GHOST_MAX) this.trace.push(Math.round(this.carX));
     for (const o of this.obs) o.y += dy;
     this.obs = this.obs.filter(o => o.y < H + 16);
     const cx = this.carX - 6, cy = CAR_Y + 2, cw = 12, ch = 20;
@@ -564,6 +609,14 @@ class Game {
     for (const o of this.obs) g.drawImage(this.obst, Math.round(this.laneCenter(o.lane) - 6 + this.bend(o.y + 6)), Math.round(o.y));
     for (const sp of this.sparks) { g.fillStyle = sp.t > 0.14 ? '#ffffff' : this.accent; g.fillRect(Math.round(sp.x + this.bend(sp.y)), Math.round(sp.y), 1, 1); }
     const cb = this.bend(CAR_Y + 12);
+    // Under the car, so you can always see yourself; it shares the car's bend, since it is
+    // the same road at the same y. It is a picture and nothing else: it cannot be hit.
+    const gx = this.state === 'running' ? this.ghostX(this.dist) : null;
+    if (gx != null) {
+      g.globalAlpha = GHOST_ALPHA;
+      g.drawImage(this.sprite, Math.round(gx - 8 + cb), CAR_Y);
+      g.globalAlpha = 1;
+    }
     if (this.state === 'crashed') { g.fillStyle = 'rgba(255,60,60,.35)'; g.fillRect(Math.round(this.carX - 9 + cb), CAR_Y - 3, 18, 30); }
     g.drawImage(this.sprite, Math.round(this.carX - 8 + cb), CAR_Y);
     if (this.state === 'running' && this.speed > this.baseSpeed * 1.6 && Math.floor(this.tick * 20) % 2) { g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(Math.round(this.carX - 4 + cb), CAR_Y + 24, 2, 5); g.fillRect(Math.round(this.carX + 2 + cb), CAR_Y + 24, 2, 5); }
