@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Validates every day file, index/latest consistency, app.js syntax, and local asset references.
 // Usage: node scripts/check.mjs   (exit 1 on any error)
-import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync, statSync, mkdtempSync, copyFileSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -114,11 +115,19 @@ if (index) {
 }
 
 // --- engine syntax
-for (const f of ['app.js', 'scripts/check.mjs', 'scripts/commons.mjs']) {
-  if (!existsSync(path.join(root, f))) { err(f, 'missing'); continue; }
-  try { execFileSync(process.execPath, ['--check', path.join(root, f)], { stdio: 'pipe' }); }
-  catch (e) { err(f, `syntax error\n${String(e.stderr || e.message).trim()}`); }
+// The browser files are ES modules with a .js extension, which only older Node parses as
+// CommonJS; checking a temp .mjs copy instead means `import` is never a false error here.
+const BROWSER_MODULES = new Set(['app.js', 'dom.js', 'page.js', 'game.js']);
+const tmp = mkdtempSync(path.join(tmpdir(), 'daytrip-'));
+for (const f of [...BROWSER_MODULES, 'scripts/check.mjs', 'scripts/commons.mjs']) {
+  const abs = path.join(root, f);
+  if (!existsSync(abs)) { err(f, 'missing'); continue; }
+  let target = abs;
+  if (BROWSER_MODULES.has(f)) { target = path.join(tmp, `${path.basename(f, '.js')}.mjs`); copyFileSync(abs, target); }
+  try { execFileSync(process.execPath, ['--check', target], { stdio: 'pipe' }); }
+  catch (e) { err(f, `syntax error\n${String(e.stderr || e.message).trim().replaceAll(target, abs)}`); }
 }
+rmSync(tmp, { recursive: true, force: true });
 
 // --- local references in html
 for (const f of ['index.html', 'archive.html']) {
@@ -130,7 +139,7 @@ for (const f of ['index.html', 'archive.html']) {
 }
 
 // --- weight
-let total = 0; for (const f of ['index.html', 'style.css', 'app.js', 'days/latest.json']) if (existsSync(path.join(root, f))) total += statSync(path.join(root, f)).size;
+let total = 0; for (const f of ['index.html', 'style.css', 'app.js', 'dom.js', 'page.js', 'game.js', 'days/latest.json']) if (existsSync(path.join(root, f))) total += statSync(path.join(root, f)).size;
 if (total > 400 * 1024) warn('page', `core files total ${(total / 1024).toFixed(0)} KB; keep the engine lean`);
 
 for (const w of warns) console.log(`warn  ${w}`);

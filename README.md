@@ -14,7 +14,10 @@ The daily page is written by a scheduled Claude routine (Opus) that follows `ROU
 ```
 index.html      the page shell
 style.css       mobile-first styles
-app.js          engine: render, read-aloud, game
+app.js          entry point (ES module)
+page.js         the day page: render, photos, read-aloud
+game.js         the pixel game: sprites, scenery, weather, sound
+dom.js          the two DOM helpers both halves use
 archive.html    garage list
 days/           one JSON per day, latest.json, index.json
 data/           car-pool.json — candidate cars with a hook each
@@ -26,4 +29,4 @@ NOTES.md        build log + next-up list
 
 ## Run locally
 
-Any static server works, e.g. `python3 -m http.server 8080` then open http://localhost:8080/. Validate with `node scripts/check.mjs` (Node 18+).
+Any static server works, e.g. `python3 -m http.server 8080` then open http://localhost:8080/. The page is ES modules, so it needs a server — opening `index.html` as a `file://` path will not load it. Validate with `node scripts/check.mjs` (Node 18+).

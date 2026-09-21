@@ -20,7 +20,17 @@ A top-down lane dodge at 160×240 logical pixels, scaled up with no smoothing. T
 
 Pick these to match the car's world: a Le Mans car gets `tire` + `track`; a Group B rally car `rock` + `forest` or `snow` + `snow`; a JDM street car `cone` + `city`; a desert racer `barrel` + `desert`; a coastal GT `puddle` + `coast`. Make an exotic slightly faster (`baseSpeed` 1.15) and a vintage car slower (`0.8`) with more forgiving stars.
 
-## Where things live in `app.js`
+## Where the code lives
+
+Four ES modules, no build step. `index.html` loads `app.js` with `type="module"`, so the
+page has to be served over http (`python3 -m http.server`), not opened as a `file://` path.
+
+- `app.js` — the entry point. Imports `boot` and calls it. Nothing else.
+- `page.js` — the day page: `loadDay`, `splitSentences`, `render`, the Commons photo lookup, `Speaker`, `showError`.
+- `game.js` — everything below: pixel art, obstacles, scenery, weather, `Sound`, `Game`.
+- `dom.js` — the two helpers (`$`, `el`) both halves use.
+
+## Where things live in `game.js`
 
 - `OBSTACLES` — 12×12 pixel drawings per obstacle type. Add a type here **and** to `scripts/check.mjs` and this doc.
 - `SCENERY` — ground color, far-layer color, and an `items(g, x, y, k)` painter for the side strips. Same rule for new types.
@@ -32,11 +42,11 @@ Pick these to match the car's world: a Le Mans car gets `tire` + `track`; a Grou
 - Weather — `WEATHER` holds three particle kinds and `SCENERY_WEATHER` maps `coast` → `rain`, `snow` → `snow`, `desert` → `dust`. Every other scenery is dry. A day can override with `game.weather`: `auto` (the default) means "whatever the scenery says", `none` turns it off, or name a kind for a dry coast or a snowy mountain pass. Each particle carries its own fall speed plus a share (`tow`) of the current road speed, so rain leans hard into a fast run while snow hangs almost still, and `drift`/`wobble` blow it sideways. It is drawn last, over the car, and `update()` never touches it — nothing here can be hit. `prefers-reduced-motion` drops the layer entirely. Add a kind here **and** to `scripts/check.mjs` and this doc.
 - `Game.draw()` — everything renders to the 160×240 buffer, then the buffer is blitted to the display canvas at an integer scale.
 - `Sound` — WebAudio engine hum (two oscillators through a lowpass) and a noise burst on crash. Unlocked on first tap. Mute persists in `localStorage`.
-- `Speaker` — read-aloud, sentence by sentence, highlighting the current sentence. `splitSentences` feeds it: it breaks on `.`/`!`/`?` only when the break is followed by whitespace and an upper-case letter, digit or opening quote, and never on a decimal point (`1.6-litre`), a single-letter initial (`J. Bugatti`) or a known abbreviation (`St.`, `Dr.`, `e.g.`). Runs of terminators and trailing closing quotes stay with the sentence they end. Joining the pieces always reproduces the input, so nothing can be dropped on the way into the spans.
+- `Speaker` (in `page.js`) — read-aloud, sentence by sentence, highlighting the current sentence. `splitSentences` feeds it: it breaks on `.`/`!`/`?` only when the break is followed by whitespace and an upper-case letter, digit or opening quote, and never on a decimal point (`1.6-litre`), a single-letter initial (`J. Bugatti`) or a known abbreviation (`St.`, `Dr.`, `e.g.`). Runs of terminators and trailing closing quotes stay with the sentence they end. Joining the pieces always reproduces the input, so nothing can be dropped on the way into the spans.
 
 ## Improving the engine
 
-One improvement per day, small and finished. Every new day-file field must be optional with a fallback so old days keep working. Run `node scripts/check.mjs` before committing. Keep it dependency-free and under ~600 lines; if it grows past that, the next improvement is a refactor.
+One improvement per day, small and finished. Every new day-file field must be optional with a fallback so old days keep working. Run `node scripts/check.mjs` before committing. Keep it dependency-free and keep each module under ~600 lines; if one grows past that, the next improvement is a refactor.
 
 Ideas, roughly in order of payoff:
 1. ~~Difficulty curve tuning~~ — done 2026-09-15: one star lands at ~45 s and spacing is time-based.
@@ -46,6 +56,7 @@ Ideas, roughly in order of payoff:
 5. ~~Near-miss count on the crash card~~ — done 2026-09-18, see above.
 6. ~~Sentence splitter that survives decimals, initials and abbreviations~~ — done 2026-09-19, see `Speaker` above.
 7. ~~Ghost of today's best run~~ — done 2026-09-20: a faint car at the best run's position for the metre you are on, see above.
-8. A tiny "car card" render of the sprite at 4× above the game with the accent glow.
-9. Per-class feel: rally cars slide a little on lane change, F1 cars snap.
-10. Sound: a gear-shift blip every 200 m.
+8. ~~Split `app.js`~~ — done 2026-09-21: it passed 600 lines, so it became four modules, see above. Pure code motion; the only edited line made `Game` an export.
+9. A tiny "car card" render of the sprite at 4× above the game with the accent glow.
+10. Per-class feel: rally cars slide a little on lane change, F1 cars snap.
+11. Sound: a gear-shift blip every 200 m.
