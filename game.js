@@ -1,80 +1,9 @@
-/* Daytrip — the game: pixel art, scenery, weather, sound and the lane dodge
-   itself. Everything renders to a 160×240 buffer that is blitted up at an
-   integer scale. Nothing in here touches the page outside its own mount. */
+/* Daytrip — the game: state, input, and the lane dodge itself. Everything that
+   turns into pixels lives in render.js; this file owns what the player can hit.
+   Nothing in here touches the page outside its own mount. */
 import { el } from './dom.js';
-
-/* ---------- pixel art ---------- */
-const DEFAULT_SPRITE = {
-  w: 16, h: 24,
-  palette: { a: 'ACCENT', k: '#111318', w: '#e9eef5', b: '#8fd3ff', r: '#ff3b3b', l: 'ACCENT_LIGHT' },
-  rows: [
-    '.....aaaaaa.....', '....aaaaaaaa....', '...aaaaaaaaaa...', '.kkaaaaaaaaaakk.',
-    '.kkaaalaaaaaakk.', '.kkaaalaaaaaakk.', '..aaaalaaaaaaa..', '..aabbbbbbbbaa..',
-    '..abbbbbbbbbba..', '..abkkkkkkkkba..', '..aakkkkkkkkaa..', '..aaaalaaaaaaa..',
-    '..aaaalaaaaaaa..', '..aaaalaaaaaaa..', '..aaaaaaaaaaaa..', '.kkaaaaaaaaaakk.',
-    '.kkaaalaaaaaakk.', '.kkaaalaaaaaakk.', '..aaaaaaaaaaaa..', '..arraaaaaarra..',
-    '..arraaaaaarra..', '..aaaaaaaaaaaa..', '...kkkkkkkkkk...', '................',
-  ],
-};
-function lighten(hex, amt = 0.35) {
-  const m = /^#?([0-9a-f]{6})$/i.exec(hex); if (!m) return hex;
-  const n = parseInt(m[1], 16), c = i => Math.min(255, Math.round(((n >> i) & 255) + (255 - ((n >> i) & 255)) * amt));
-  return '#' + [16, 8, 0].map(i => c(i).toString(16).padStart(2, '0')).join('');
-}
-function buildSprite(sp, accent) {
-  const c = document.createElement('canvas'); c.width = sp.w; c.height = sp.h;
-  const g = c.getContext('2d'); const pal = sp.palette || {};
-  sp.rows.forEach((row, y) => {
-    for (let x = 0; x < row.length; x++) {
-      const ch = row[x]; if (ch === '.' || !pal[ch]) continue;
-      let col = pal[ch]; if (col === 'ACCENT') col = accent; else if (col === 'ACCENT_LIGHT') col = lighten(accent);
-      g.fillStyle = col; g.fillRect(x, y, 1, 1);
-    }
-  });
-  return c;
-}
-function px(g, x, y, w, h, col) { g.fillStyle = col; g.fillRect(x, y, w, h); }
-const OBSTACLES = {
-  cone: g => { px(g, 5, 1, 2, 2, '#ff7a00'); px(g, 4, 3, 4, 2, '#ff7a00'); px(g, 4, 5, 4, 1, '#fff'); px(g, 3, 6, 6, 3, '#ff7a00'); px(g, 2, 9, 8, 2, '#ff7a00'); px(g, 1, 11, 10, 1, '#c04f00'); },
-  barrel: g => { px(g, 2, 1, 8, 10, '#3b82f6'); px(g, 2, 3, 8, 1, '#1e3a8a'); px(g, 2, 8, 8, 1, '#1e3a8a'); px(g, 3, 0, 6, 1, '#60a5fa'); px(g, 3, 11, 6, 1, '#1e3a8a'); },
-  tire: g => { px(g, 3, 0, 6, 12, '#111'); px(g, 1, 2, 10, 8, '#111'); px(g, 0, 3, 12, 6, '#111'); px(g, 4, 4, 4, 4, '#444'); px(g, 5, 5, 2, 2, '#777'); },
-  rock: g => { px(g, 3, 2, 6, 8, '#7c7f86'); px(g, 1, 4, 10, 5, '#7c7f86'); px(g, 4, 1, 3, 1, '#a3a7ae'); px(g, 2, 4, 2, 2, '#a3a7ae'); px(g, 2, 9, 8, 2, '#4b4e55'); },
-  snow: g => { px(g, 3, 3, 6, 7, '#eaf4ff'); px(g, 1, 5, 10, 4, '#eaf4ff'); px(g, 4, 2, 3, 1, '#fff'); px(g, 2, 9, 8, 2, '#b9d3ea'); },
-  crate: g => { px(g, 1, 1, 10, 10, '#b5742a'); px(g, 1, 1, 10, 1, '#d99a4a'); px(g, 1, 1, 1, 10, '#d99a4a'); px(g, 1, 10, 10, 1, '#7a4a15'); px(g, 10, 1, 1, 10, '#7a4a15'); for (let i = 0; i < 8; i++) { px(g, 2 + i, 2 + i, 1, 1, '#7a4a15'); px(g, 9 - i, 2 + i, 1, 1, '#7a4a15'); } },
-  puddle: g => { px(g, 2, 3, 8, 6, '#2d6cdf'); px(g, 0, 5, 12, 3, '#2d6cdf'); px(g, 3, 4, 3, 1, '#9cc4ff'); px(g, 7, 7, 2, 1, '#9cc4ff'); },
-};
-function buildObstacle(type) {
-  const c = document.createElement('canvas'); c.width = 12; c.height = 12;
-  (OBSTACLES[type] || OBSTACLES.cone)(c.getContext('2d')); return c;
-}
-
-/* ---------- scenery (top-down side strips, two parallax layers) ---------- */
-const SCENERY = {
-  forest:   { ground: '#1f3d22', far: '#254a29', items: (g, x, y, k) => { const s = 5 + (k % 3); px(g, x - s, y - s, s * 2, s * 2, '#2f6b35'); px(g, x - s + 1, y - s + 1, s, s, '#3d8a45'); } },
-  city:     { ground: '#2a2d33', far: '#33373e', items: (g, x, y, k) => { const w = 8 + (k % 3) * 2, h = 10 + (k % 4) * 3; px(g, x - w / 2, y - h / 2, w, h, '#4a4f58'); for (let i = 1; i < h - 1; i += 3) for (let j = 1; j < w - 1; j += 3) px(g, x - w / 2 + j, y - h / 2 + i, 1, 1, (k + i + j) % 3 ? '#ffd76b' : '#2a2d33'); } },
-  mountain: { ground: '#4b3d32', far: '#5a4a3d', items: (g, x, y, k) => { const s = 6 + (k % 4); px(g, x - s, y - 2, s * 2, 4, '#6f5d4c'); px(g, x - s + 2, y - 5, s * 2 - 4, 4, '#857160'); px(g, x - 2, y - 7, 4, 3, '#a89482'); } },
-  desert:   { ground: '#c9a25c', far: '#d4b06c', items: (g, x, y, k) => { px(g, x - 1, y - 6, 3, 12, '#3f7a3b'); if (k % 2) px(g, x - 4, y - 3, 3, 2, '#3f7a3b'), px(g, x - 4, y - 6, 2, 4, '#3f7a3b'); else px(g, x + 2, y - 2, 3, 2, '#3f7a3b'), px(g, x + 3, y - 5, 2, 4, '#3f7a3b'); } },
-  coast:    { ground: '#e3cf9a', far: '#1e6fb5', items: (g, x, y, k) => { if (x < 80) { px(g, x - 5, y, 8, 1, '#8fd0ff'); px(g, x - 2, y + 3, 6, 1, '#8fd0ff'); } else { px(g, x - 1, y - 6, 2, 10, '#8a5a2b'); px(g, x - 5, y - 8, 10, 3, '#2f8f3e'); px(g, x - 3, y - 10, 6, 2, '#2f8f3e'); } } },
-  track:    { ground: '#6b6f76', far: '#7d828a', items: (g, x, y, k) => { if (k % 3 === 0) { px(g, x - 7, y - 6, 14, 12, '#3a3d44'); for (let i = 0; i < 4; i++) px(g, x - 6, y - 5 + i * 3, 12, 1, (k + i) % 2 ? '#e33' : '#fff'); } else { px(g, x - 4, y - 4, 8, 8, '#5b5f66'); px(g, x - 3, y - 3, 6, 6, '#8a8f97'); } } },
-  snow:     { ground: '#e6eef6', far: '#f2f6fa', items: (g, x, y, k) => { const s = 4 + (k % 3); px(g, x - s, y + 2, s * 2, 3, '#1f3a2a'); px(g, x - s + 1, y - 1, s * 2 - 2, 3, '#25482f'); px(g, x - s + 2, y - 4, s * 2 - 4, 3, '#2f5c3a'); px(g, x - 1, y - 6, 2, 2, '#2f5c3a'); px(g, x - s + 1, y - 1, s * 2 - 2, 1, '#fff'); } },
-};
-const hash = n => { let x = (n * 2654435761) >>> 0; x ^= x >>> 15; x = Math.imul(x, 2246822519) >>> 0; x ^= x >>> 13; return x / 4294967296; };
-
-/* ---------- weather (a drifting particle layer over everything) ---------- */
-// Three sceneries get weather on their own: `coast` rains, `snow` snows, `desert` blows
-// dust. A day can override with the optional `game.weather` — "auto" (the default, i.e.
-// whatever SCENERY_WEATHER says), "none", or a kind by name so a dry coast or a snowy
-// mountain pass is still possible. Old day files have no field and get "auto", so they
-// render exactly as before unless their scenery is one of the three.
-// `fall` is px/s of its own; `tow` is how much of the road speed the particle picks up,
-// which is what makes rain lean into a fast run and leaves snow hanging almost still.
-// Nothing here is read by update(): it cannot be hit and it does not move the car.
-const WEATHER = {
-  rain: { count: 44, fall: 210, tow: 0.85, drift: -18, len: 5, wobble: 0, color: 'rgba(176,206,240,.55)' },
-  snow: { count: 38, fall: 26, tow: 0.12, drift: 8, len: 1, wobble: 11, color: 'rgba(255,255,255,.85)' },
-  dust: { count: 30, fall: 48, tow: 0.45, drift: 44, len: 2, wobble: 5, color: 'rgba(224,192,130,.5)' },
-};
-const SCENERY_WEATHER = { coast: 'rain', snow: 'snow', desert: 'dust' };
+import { W, H, ROAD_X, ROAD_W, CAR_Y } from './geom.js';
+import { DEFAULT_SPRITE, SCENERY, WEATHER, SCENERY_WEATHER, BEND_MAX, buildSprite, buildObstacle, newDrop, stepWeather, draw } from './render.js';
 
 /* ---------- audio ---------- */
 class Sound {
@@ -112,7 +41,6 @@ class Sound {
 }
 
 /* ---------- game ---------- */
-const W = 160, H = 240, ROAD_X = 28, ROAD_W = 104, CAR_Y = 196;
 // Near miss: pass an obstacle while still crossing lanes and the distance you earn is
 // multiplied, up to MAX_COMBO chained misses. Sitting in the next lane already leaves
 // exactly `laneW - 11` px of clear air (half the car plus half the obstacle), so the
@@ -121,14 +49,6 @@ const W = 160, H = 240, ROAD_X = 28, ROAD_W = 104, CAR_Y = 196;
 // the lane-change lerp covers ~5 px per frame where it matters, so anything tighter
 // than ~7 px is a crash and the window would be unhittable.
 const NEAR_MISS_SLACK = 3, NEAR_MISS_BONUS = 0.05, MAX_COMBO = 5, COMBO_HOLD = 2.5;
-// Road curvature: the whole road slides left and right on one slow sine wave so a long
-// run stops feeling like a straight corridor. It is purely cosmetic. The shift depends
-// on `y - scroll`, i.e. where a row sits along the road rather than on the screen, so a
-// road feature keeps its own offset as it scrolls past and the car and an obstacle at
-// the same y are always shifted by the same amount. Everything the player can hit stays
-// in unbent lane space: collision and near misses are untouched. 13 px of swing keeps
-// the 104 px road inside the 160 px frame with its edge lines intact.
-const BEND_MAX = 13, BEND_WAVE = 760;
 // Ghost of today's best run. The run records the car's x every GHOST_STEP metres of
 // distance, and a run that beats the day's best stores that trace next to the best
 // number. A later run then draws a faint car at the x the best run held *at the same
@@ -136,7 +56,7 @@ const BEND_MAX = 13, BEND_WAVE = 760;
 // Distance, not time, is the index — the near-miss multiplier makes the two disagree,
 // and the metre mark is what the score, the stars and the best are all counted in.
 // Nothing here is read by update(): the ghost is drawn and never collides.
-const GHOST_STEP = 2, GHOST_MAX = 1600, GHOST_ALPHA = 0.32;
+const GHOST_STEP = 2, GHOST_MAX = 1600;
 export class Game {
   constructor(mount, day) {
     const gp = day.game || {};
@@ -155,14 +75,15 @@ export class Game {
     this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     // `game.curve` is optional (0–1, default 0.6); a day that wants a dead-straight
     // road sets 0. Reduced motion flattens it outright — the lateral drift is the
-    // whole point of the effect and the road already scrolls without it.
+    // whole point of the effect and the road already scrolls without it. The bend
+    // itself is drawn in render.js; this is only how far it is allowed to swing.
     this.curve = this.reduced ? 0 : BEND_MAX * Math.min(1, Math.max(0, gp.curve ?? 0.6));
     this.bends = new Int8Array(H);
     // Reduced motion drops the weather entirely: it is drifting specks and nothing else.
     const wk = !gp.weather || gp.weather === 'auto' ? SCENERY_WEATHER[gp.scenery] : gp.weather;
     this.weather = this.reduced ? null : WEATHER[wk] || null;
     this.drops = [];
-    if (this.weather) for (let i = 0; i < this.weather.count; i++) this.drops.push(this.newDrop(true));
+    if (this.weather) for (let i = 0; i < this.weather.count; i++) this.drops.push(newDrop(this, true));
     this.bestKey = `daytrip.best.${day.date || 'x'}`;
     this.best = +localStorage.getItem(this.bestKey) || 0;
     this.ghostKey = `daytrip.ghost.${day.date || 'x'}`;
@@ -236,25 +157,6 @@ export class Game {
       this.sparks.push({ x: this.carX + (Math.random() - 0.5) * 14, y: CAR_Y + 4 + Math.random() * 16, vx: (Math.random() - 0.5) * 50, vy: 40 + Math.random() * 60, t: 0.28 });
   }
   laneCenter(i) { return ROAD_X + this.laneW * (i + 0.5); }
-  newDrop(spread) {
-    const c = this.weather;
-    return { x: Math.random() * (W + 24) - 12, y: spread ? Math.random() * H : -c.len - Math.random() * 24, s: 0.7 + Math.random() * 0.6, ph: Math.random() * Math.PI * 2 };
-  }
-  // Runs every frame, not only while driving, so the idle and crash cards sit in weather too.
-  stepWeather(dt) {
-    const c = this.weather; if (!c) return;
-    const tow = c.tow * (this.state === 'running' ? this.speed : this.baseSpeed * 0.4);
-    for (const p of this.drops) {
-      p.y += (c.fall * p.s + tow) * dt;
-      p.x += (c.drift * p.s + (c.wobble ? Math.cos(this.tick * 1.7 + p.ph) * c.wobble : 0)) * dt;
-      if (p.y > H) Object.assign(p, this.newDrop(false));
-      else if (p.x < -12) p.x = W + 12;
-      else if (p.x > W + 12) p.x = -12;
-    }
-  }
-  // Draw-time only. Never call these from update(): the lanes themselves do not move.
-  bend(y) { return this.curve ? this.curve * Math.sin((y - this.scroll) * (Math.PI * 2 / BEND_WAVE)) : 0; }
-  bendPx(y) { return Math.round(this.bend(y)); }
   showIdle() {
     this.overlay.hidden = false;
     // The ghost line only appears once there is a ghost to explain, so a first run is not
@@ -350,8 +252,8 @@ export class Game {
     const dt = Math.min(0.05, (t - this.last) / 1000); this.last = t; this.tick += dt;
     if (this.state === 'running') this.update(dt);
     if (this.shake > 0) this.shake = Math.max(0, this.shake - dt);
-    this.stepWeather(dt);
-    this.draw();
+    stepWeather(this, dt);
+    draw(this);
     requestAnimationFrame(tt => this.frame(tt));
   }
   update(dt) {
@@ -384,54 +286,5 @@ export class Game {
     if (m !== this._m) { this._m = m; this.distEl.textContent = `${m} m`; this.starEl.textContent = '★'.repeat(this.starsFor(m)) + '☆'.repeat(3 - this.starsFor(m)); }
     if (kmh !== this._k) { this._k = kmh; this.spdEl.textContent = `${kmh} km/h`; }
     if (this.combo !== this._c) { this._c = this.combo; this.multEl.textContent = this.combo ? ` ×${(1 + this.combo * NEAR_MISS_BONUS).toFixed(2)}` : ''; }
-  }
-  draw() {
-    const g = this.g, sc = this.scenery, s = this.scroll, bends = this.bends;
-    if (this.curve) for (let y = 0; y < H; y++) bends[y] = this.bendPx(y); // else it stays all zeros
-
-    const at = y => bends[y < 0 ? 0 : y > H - 1 ? H - 1 : Math.round(y)];
-    g.fillStyle = sc.ground; g.fillRect(0, 0, W, H);
-    g.fillStyle = sc.far;
-    for (let i = 0; i < 12; i++) { const y = ((i * 40 + s * 0.5) % (H + 40)) - 20, b = at(y); g.fillRect(0, y, ROAD_X - 6 + b, 6); g.fillRect(ROAD_X + ROAD_W + 6 + b, y, W, 6); }
-    for (let i = 0; i < 14; i++) {
-      const y = ((i * 46 + s) % (H + 60)) - 30, side = i % 2 ? 1 : -1;
-      const x = side < 0 ? 4 + Math.floor(hash(i) * 14) : ROAD_X + ROAD_W + 6 + Math.floor(hash(i + 99) * 14);
-      sc.items(g, x + at(y), y, i + 7);
-    }
-    if (this.curve) {
-      g.fillStyle = '#c9ccd2';
-      for (let y = 0; y < H; y++) { const b = bends[y]; g.fillRect(ROAD_X - 3 + b, y, 3, 1); g.fillRect(ROAD_X + ROAD_W + b, y, 3, 1); }
-      g.fillStyle = '#3a3d44';
-      for (let y = 0; y < H; y++) g.fillRect(ROAD_X + bends[y], y, ROAD_W, 1);
-    } else {
-      g.fillStyle = '#c9ccd2'; g.fillRect(ROAD_X - 3, 0, 3, H); g.fillRect(ROAD_X + ROAD_W, 0, 3, H);
-      g.fillStyle = '#3a3d44'; g.fillRect(ROAD_X, 0, ROAD_W, H);
-    }
-    g.fillStyle = '#5a5e66'; for (let i = 0; i < 40; i++) { const y = ((i * 37 + s * 1.0) % (H + 10)) - 5; g.fillRect(ROAD_X + Math.floor(hash(i + 300) * ROAD_W) + at(y), y, 1, 1); }
-    g.fillStyle = '#e8e8e8';
-    for (let l = 1; l < this.lanes; l++) { const x = Math.round(ROAD_X + this.laneW * l) - 1; for (let i = -1; i < 12; i++) { const y = ((i * 24 + s) % (H + 24)) - 12; g.fillRect(x + at(y + 6), y, 2, 12); } }
-    for (const o of this.obs) g.drawImage(this.obst, Math.round(this.laneCenter(o.lane) - 6 + this.bend(o.y + 6)), Math.round(o.y));
-    for (const sp of this.sparks) { g.fillStyle = sp.t > 0.14 ? '#ffffff' : this.accent; g.fillRect(Math.round(sp.x + this.bend(sp.y)), Math.round(sp.y), 1, 1); }
-    const cb = this.bend(CAR_Y + 12);
-    // Under the car, so you can always see yourself; it shares the car's bend, since it is
-    // the same road at the same y. It is a picture and nothing else: it cannot be hit.
-    const gx = this.state === 'running' ? this.ghostX(this.dist) : null;
-    if (gx != null) {
-      g.globalAlpha = GHOST_ALPHA;
-      g.drawImage(this.sprite, Math.round(gx - 8 + cb), CAR_Y);
-      g.globalAlpha = 1;
-    }
-    if (this.state === 'crashed') { g.fillStyle = 'rgba(255,60,60,.35)'; g.fillRect(Math.round(this.carX - 9 + cb), CAR_Y - 3, 18, 30); }
-    g.drawImage(this.sprite, Math.round(this.carX - 8 + cb), CAR_Y);
-    if (this.state === 'running' && this.speed > this.baseSpeed * 1.6 && Math.floor(this.tick * 20) % 2) { g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(Math.round(this.carX - 4 + cb), CAR_Y + 24, 2, 5); g.fillRect(Math.round(this.carX + 2 + cb), CAR_Y + 24, 2, 5); }
-    if (this.weather) { // last, so it falls in front of the car as well as the road
-      const c = this.weather; g.fillStyle = c.color;
-      for (const p of this.drops) g.fillRect(Math.round(p.x), Math.round(p.y), 1, Math.max(1, Math.round(c.len * p.s)));
-    }
-    const d = this.dctx, k = this.canvas.width / W;
-    const ox = this.shake ? Math.round((Math.random() - 0.5) * 6 * k) : 0, oy = this.shake ? Math.round((Math.random() - 0.5) * 6 * k) : 0;
-    d.imageSmoothingEnabled = false;
-    d.fillStyle = '#000'; d.fillRect(0, 0, this.canvas.width, this.canvas.height);
-    d.drawImage(this.buf, ox, oy, this.canvas.width, this.canvas.height);
   }
 }

@@ -117,7 +117,7 @@ if (index) {
 // --- engine syntax
 // The browser files are ES modules with a .js extension, which only older Node parses as
 // CommonJS; checking a temp .mjs copy instead means `import` is never a false error here.
-const BROWSER_MODULES = new Set(['app.js', 'dom.js', 'page.js', 'game.js']);
+const BROWSER_MODULES = new Set(['app.js', 'dom.js', 'geom.js', 'page.js', 'render.js', 'game.js']);
 const tmp = mkdtempSync(path.join(tmpdir(), 'daytrip-'));
 for (const f of [...BROWSER_MODULES, 'scripts/check.mjs', 'scripts/commons.mjs']) {
   const abs = path.join(root, f);
@@ -139,7 +139,7 @@ for (const f of ['index.html', 'archive.html']) {
 }
 
 // --- weight
-let total = 0; for (const f of ['index.html', 'style.css', 'app.js', 'dom.js', 'page.js', 'game.js', 'days/latest.json']) if (existsSync(path.join(root, f))) total += statSync(path.join(root, f)).size;
+let total = 0; for (const f of ['index.html', 'style.css', 'app.js', 'dom.js', 'geom.js', 'page.js', 'render.js', 'game.js', 'days/latest.json']) if (existsSync(path.join(root, f))) total += statSync(path.join(root, f)).size;
 if (total > 400 * 1024) warn('page', `core files total ${(total / 1024).toFixed(0)} KB; keep the engine lean`);
 
 for (const w of warns) console.log(`warn  ${w}`);

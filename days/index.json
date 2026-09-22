@@ -1,4 +1,5 @@
 [
+  { "date": "2026-09-22", "name": "Meyers Manx", "year": 1967, "class": "offroad" },
   { "date": "2026-09-21", "name": "Tyrrell P34", "year": 1976, "class": "f1" },
   { "date": "2026-09-20", "name": "Lexus LFA", "year": 2010, "class": "jdm" },
   { "date": "2026-09-19", "name": "Lancia Stratos Zero (Bertone)", "year": 1970, "class": "concept" },
