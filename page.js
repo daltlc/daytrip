@@ -3,6 +3,7 @@
    a fallback here. */
 import { $, el } from './dom.js';
 import { Game } from './game.js';
+import { buildSprite, DEFAULT_SPRITE } from './render.js';
 
 const CLASS_LABEL = {
   road: 'Road car', exotic: 'Exotic', rally: 'Rally', f1: 'Formula 1', gt3: 'GT3',
@@ -85,6 +86,7 @@ function render(day) {
     day.stats?.length ? el('section', { class: 'card' }, el('h2', {}, 'Numbers'), statsGrid(day.stats)) : null,
     el('section', { class: 'card game-card' },
       el('h2', {}, 'Take it for a drive'),
+      carCard(day, accent),
       el('p', { class: 'hint' }, 'Tap left or right to change lanes. Swipe works too. One hit ends the run.'),
       el('div', { id: 'game' })),
     day.sources?.length ? el('footer', { class: 'sources' }, 'Sources: ',
@@ -133,6 +135,25 @@ function photoStrip(photos) {
     el('img', { src: p.thumb || p.url, alt: p.alt || '', loading: 'lazy', decoding: 'async', onerror: e => e.target.closest('figure').remove() }),
     el('figcaption', {}, [p.credit, p.license].filter(Boolean).join(' · '), p.source ? [' · ', el('a', { href: p.source, target: '_blank', rel: 'noopener' }, 'source')] : null),
   )));
+}
+
+/* ---------- car card ---------- */
+/* The day's sprite blown up above the game, so the pixel art gets looked at rather than
+   glimpsed at 16 px. It reads the same `sprite` block the game does — no new day-file
+   field — falls back to the engine's default sprite, and returns null (no card at all)
+   if the sprite cannot be drawn, which is why every day before this one still renders. */
+const CARD_SCALE = 6;
+const usableSprite = sp => sp && sp.w > 0 && sp.h > 0 && Array.isArray(sp.rows) && sp.rows.length ? sp : DEFAULT_SPRITE;
+function carCard(day, accent) {
+  try {
+    const art = buildSprite(usableSprite(day.sprite), accent);
+    const label = `Pixel drawing of the ${[day.year, day.name].filter(Boolean).join(' ')}`;
+    const c = el('canvas', { class: 'car-art', width: art.width * CARD_SCALE, height: art.height * CARD_SCALE, role: 'img', 'aria-label': label });
+    const g = c.getContext('2d');
+    g.imageSmoothingEnabled = false;
+    g.drawImage(art, 0, 0, c.width, c.height);
+    return el('div', { class: 'car-card' }, c);
+  } catch { return null; }
 }
 
 function statsGrid(stats) {
