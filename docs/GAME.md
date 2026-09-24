@@ -66,5 +66,6 @@ Ideas, roughly in order of payoff:
 8. ~~Split `app.js`~~ — done 2026-09-21: it passed 600 lines, so it became four modules, see above. Pure code motion; the only edited line made `Game` an export.
 9. ~~Split `game.js`~~ — done 2026-09-22: the drawing half moved to `render.js` and the shared geometry to `geom.js`, leaving `Game` as state, input and `update()`. Code motion again, plus the method-to-function call sites.
 10. ~~A tiny "car card" render of the sprite above the game with the accent glow~~ — done 2026-09-23, at 6× rather than 4×, see above.
-11. Per-class feel: rally cars slide a little on lane change, F1 cars snap.
-12. Sound: a gear-shift blip every 200 m.
+11. ~~A stats grid that survives a narrow phone~~ — done 2026-09-24: `repeat(2, minmax(0, 1fr))` plus `min-width: 0` and `overflow-wrap: anywhere`, so a long value can no longer widen its column and push the page sideways; one column below 360px.
+12. Per-class feel: rally cars slide a little on lane change, F1 cars snap.
+13. Sound: a gear-shift blip every 200 m.

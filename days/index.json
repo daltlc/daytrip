@@ -1,4 +1,5 @@
 [
+  { "date": "2026-09-24", "name": "Tatra 87", "year": 1947, "class": "road" },
   { "date": "2026-09-23", "name": "Mercedes-AMG GT3", "year": 2016, "class": "gt3" },
   { "date": "2026-09-22", "name": "Meyers Manx", "year": 1967, "class": "offroad" },
   { "date": "2026-09-21", "name": "Tyrrell P34", "year": 1976, "class": "f1" },
