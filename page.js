@@ -3,7 +3,7 @@
    a fallback here. */
 import { $, el } from './dom.js';
 import { Game } from './game.js';
-import { buildSprite, DEFAULT_SPRITE } from './render.js';
+import { buildSprite } from './render.js';
 
 const CLASS_LABEL = {
   road: 'Road car', exotic: 'Exotic', rally: 'Rally', f1: 'Formula 1', gt3: 'GT3',
@@ -140,13 +140,14 @@ function photoStrip(photos) {
 /* ---------- car card ---------- */
 /* The day's sprite blown up above the game, so the pixel art gets looked at rather than
    glimpsed at 16 px. It reads the same `sprite` block the game does — no new day-file
-   field — falls back to the engine's default sprite, and returns null (no card at all)
-   if the sprite cannot be drawn, which is why every day before this one still renders. */
+   field — and `buildSprite` falls back to the engine's default sprite for anything
+   unusable, which is why every day before this one still renders. The try/catch stays as
+   the backstop: a card that cannot be drawn at all is left out rather than taking the
+   page down with it. */
 const CARD_SCALE = 6;
-const usableSprite = sp => sp && sp.w > 0 && sp.h > 0 && Array.isArray(sp.rows) && sp.rows.length ? sp : DEFAULT_SPRITE;
 function carCard(day, accent) {
   try {
-    const art = buildSprite(usableSprite(day.sprite), accent);
+    const art = buildSprite(day.sprite, accent);
     const label = `Pixel drawing of the ${[day.year, day.name].filter(Boolean).join(' ')}`;
     const c = el('canvas', { class: 'car-art', width: art.width * CARD_SCALE, height: art.height * CARD_SCALE, role: 'img', 'aria-label': label });
     const g = c.getContext('2d');

@@ -22,10 +22,20 @@ function lighten(hex, amt = 0.35) {
   const n = parseInt(m[1], 16), c = i => Math.min(255, Math.round(((n >> i) & 255) + (255 - ((n >> i) & 255)) * amt));
   return '#' + [16, 8, 0].map(i => c(i).toString(16).padStart(2, '0')).join('');
 }
-export function buildSprite(sp, accent) {
+/* The one guard on a day file's `sprite`. Both the game and the page's car card build a
+   canvas from it, and a sprite that is missing, zero-sized or row-less makes a 0×0 canvas
+   that throws inside the drawImage that follows — in the render loop, in the game's case.
+   No real day file can reach it (scripts/check.mjs rejects any sprite that is not 16×24),
+   but the two call sites used to carry different versions of the check and only the card's
+   caught it, so the check lives here now and neither side can skip it. */
+export const usableSprite = sp =>
+  sp && sp.w > 0 && sp.h > 0 && Array.isArray(sp.rows) && sp.rows.length ? sp : DEFAULT_SPRITE;
+export function buildSprite(raw, accent) {
+  const sp = usableSprite(raw);
   const c = document.createElement('canvas'); c.width = sp.w; c.height = sp.h;
   const g = c.getContext('2d'); const pal = sp.palette || {};
   sp.rows.forEach((row, y) => {
+    if (typeof row !== 'string') return;                                  // a row that is not text draws nothing
     for (let x = 0; x < row.length; x++) {
       const ch = row[x]; if (ch === '.' || !pal[ch]) continue;
       let col = pal[ch]; if (col === 'ACCENT') col = accent; else if (col === 'ACCENT_LIGHT') col = lighten(accent);

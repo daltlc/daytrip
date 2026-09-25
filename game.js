@@ -3,7 +3,7 @@
    Nothing in here touches the page outside its own mount. */
 import { el } from './dom.js';
 import { W, H, ROAD_X, ROAD_W, CAR_Y } from './geom.js';
-import { DEFAULT_SPRITE, SCENERY, WEATHER, SCENERY_WEATHER, BEND_MAX, buildSprite, buildObstacle, newDrop, stepWeather, draw } from './render.js';
+import { SCENERY, WEATHER, SCENERY_WEATHER, BEND_MAX, buildSprite, buildObstacle, newDrop, stepWeather, draw } from './render.js';
 
 /* ---------- audio ---------- */
 class Sound {
@@ -69,7 +69,7 @@ export class Game {
     this.stars = gp.stars || [300, 800, 1500];
     this.accent = gp.accent || '#ff8a3d';
     this.scenery = SCENERY[gp.scenery] || SCENERY.track;
-    this.sprite = buildSprite(day.sprite && Array.isArray(day.sprite.rows) ? day.sprite : DEFAULT_SPRITE, this.accent);
+    this.sprite = buildSprite(day.sprite, this.accent);   // buildSprite owns the fallback for an unusable sprite
     this.obst = buildObstacle(gp.obstacle);
     this.sound = new Sound();
     this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
