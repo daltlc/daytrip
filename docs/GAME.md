@@ -13,12 +13,15 @@ A top-down lane dodge at 160×240 logical pixels, scaled up with no smoothing. T
   "baseSpeed": 1.0,         // optional, 0.6–1.6 multiplier, default 1
   "maxSpeed": 1.0,          // optional multiplier on the speed cap, default 1
   "curve": 0.6,             // optional, 0–1 road curvature, default 0.6 (0 = dead straight)
+  "grip": 0.5,              // optional, 0–1 lane-change bite, default 0.5 (0 = slides, 1 = snaps)
   "weather": "auto",        // optional, auto | none | rain | snow | dust, default auto
   "stars": [300, 800, 1500] // optional, meters for 1/2/3 stars
 }
 ```
 
 Pick these to match the car's world: a Le Mans car gets `tire` + `track`; a Group B rally car `rock` + `forest` or `snow` + `snow`; a JDM street car `cone` + `city`; a desert racer `barrel` + `desert`; a coastal GT `puddle` + `coast`. Make an exotic slightly faster (`baseSpeed` 1.15) and a vintage car slower (`0.8`) with more forgiving stars.
+
+Use `grip` for how the car changes lanes: a rally car on gravel around `0.2`, a road car or a GT at the default `0.5`, a prototype `0.8`, a formula car `1`.
 
 ## Where the code lives
 
@@ -41,6 +44,7 @@ nothing drawn can move the car or end a run. The arrow only points one way —
 - `OBSTACLES` (render.js) — 12×12 pixel drawings per obstacle type. Add a type here **and** to `scripts/check.mjs` and this doc.
 - `SCENERY` (render.js) — ground color, far-layer color, and an `items(g, x, y, k)` painter for the side strips. Same rule for new types.
 - `Game.spawn()` — spacing and lane logic. Spacing is a *time* gap (1.15 s early, easing to 0.6 s by ~1,400 m) multiplied by the current speed, so rows stay reactable as the ramp bites. It guarantees at least one open lane and keeps the open lane adjacent to the previous one when spawning multi-obstacle rows.
+- Lane-change grip (`game.js`) — `game.grip` (0–1, optional) is the rate of the lane lerp in `update()`, mapped onto `GRIP_MIN`–`GRIP_MAX` (9–27). 0.5 lands on `GRIP_DEFAULT`, the fixed 18 every day before 2026-09-26 ran, and a day without the field gets that exact number, so no old day's handling moves. Low grip lets the nose slide across the lane; high grip snaps it over. It is clamped to 0–1 and anything that is not a finite number falls back to the default. The near-miss threshold stays lane-relative rather than a fixed pixel gap (see above): grip only changes how long the car spends inside the window, not how wide it is.
 - `Game.update()` — speed ramp (`baseSpeed + dist * 0.13`, capped), collision (AABB with a small inset), near misses, HUD updates. With the defaults (`baseSpeed` 66 px/s, stars 300/800/1500) a run hits one star at ~45 s, two at ~91 s, three at ~2:12.
 - Near misses — while an obstacle is alongside the car, `update()` keeps the tightest lateral gap between the two boxes; once the obstacle is fully past, a gap of `laneW - 11 - NEAR_MISS_SLACK` px or less scores one. Simply sitting in the next lane leaves exactly `laneW - 11` px, so the bonus only lands if you were still crossing lanes as it went by — a window of roughly 80–120 ms per obstacle at any speed or lane count. Each one adds 5% to the metres you earn (capped at five, ×1.25), holds for 2.5 s, and throws a few sparks off the car (skipped under `prefers-reduced-motion`). The live multiplier sits next to the distance in the HUD and clears on a crash. The crash card reports the run's tally ("4 near misses · best chain ×1.20") — `misses` and `bestCombo` are counted per run in `reset()`/`nearMiss()` and survive `clearCombo()`, which both the chain expiring and the crash itself call. A run with none says nothing.
 - Road curvature (render.js) — `bend(game, y)` shifts a row sideways on one slow sine wave (13 px of swing at `curve: 1`, wavelength 760 px). The shift is a function of `y - scroll`, so a road feature carries its own offset as it scrolls past and the car and an obstacle at the same `y` always move together. It is drawn on and nothing else: `update()` never calls it, so collision, lane centres and near misses all stay in unbent lane space. The road and its edge lines are painted row by row when the curve is on and as three tall rects when it is off. `prefers-reduced-motion` forces it to 0.
@@ -69,5 +73,5 @@ Ideas, roughly in order of payoff:
 10. ~~A tiny "car card" render of the sprite above the game with the accent glow~~ — done 2026-09-23, at 6× rather than 4×, see above.
 11. ~~A stats grid that survives a narrow phone~~ — done 2026-09-24: `repeat(2, minmax(0, 1fr))` plus `min-width: 0` and `overflow-wrap: anywhere`, so a long value can no longer widen its column and push the page sideways; one column below 360px.
 12. ~~One shared guard on the day's `sprite`~~ — done 2026-09-25: `usableSprite` moved into `render.js` and inside `buildSprite`, so the game and the car card cannot disagree about what is drawable, see above.
-13. Per-class feel: rally cars slide a little on lane change, F1 cars snap.
+13. ~~Per-class feel: rally cars slide a little on lane change, F1 cars snap~~ — done 2026-09-26: optional `game.grip`, see above.
 14. Sound: a gear-shift blip every 200 m.

@@ -47,7 +47,9 @@ class Sound {
 // threshold is that minus a few pixels: you only score it by dodging as the obstacle
 // arrives, or cutting back in behind it. A fixed pixel threshold does not work here —
 // the lane-change lerp covers ~5 px per frame where it matters, so anything tighter
-// than ~7 px is a crash and the window would be unhittable.
+// than ~7 px is a crash and the window would be unhittable. `game.grip` scales that
+// per-frame step (roughly 2.5 px at grip 0 to 7.5 px at grip 1), which is why the
+// threshold stays lane-relative: a slidier car simply spends longer inside it.
 const NEAR_MISS_SLACK = 3, NEAR_MISS_BONUS = 0.05, MAX_COMBO = 5, COMBO_HOLD = 2.5;
 // Ghost of today's best run. The run records the car's x every GHOST_STEP metres of
 // distance, and a run that beats the day's best stores that trace next to the best
@@ -57,6 +59,13 @@ const NEAR_MISS_SLACK = 3, NEAR_MISS_BONUS = 0.05, MAX_COMBO = 5, COMBO_HOLD = 2
 // and the metre mark is what the score, the stars and the best are all counted in.
 // Nothing here is read by update(): the ghost is drawn and never collides.
 const GHOST_STEP = 2, GHOST_MAX = 1600;
+// Per-class feel. `game.grip` (0–1, optional) is how hard the car bites when you change
+// lanes: it becomes the rate of the lane lerp, so 0 lets the nose slide across like a
+// rally car on gravel and 1 snaps it over like a formula car. 0.5 maps to GRIP_DEFAULT,
+// the 18 every day before this one ran, and a day that leaves the field out gets that
+// number exactly — so nothing about an old day's handling changes. It is clamped rather
+// than rejected, and anything that is not a finite number falls back to the default.
+const GRIP_MIN = 9, GRIP_MAX = 27, GRIP_DEFAULT = 18;
 export class Game {
   constructor(mount, day) {
     const gp = day.game || {};
@@ -67,6 +76,7 @@ export class Game {
     this.baseSpeed = 66 * (gp.baseSpeed || 1);
     this.maxSpeed = 320 * (gp.maxSpeed || 1);
     this.stars = gp.stars || [300, 800, 1500];
+    this.grip = Number.isFinite(gp.grip) ? GRIP_MIN + (GRIP_MAX - GRIP_MIN) * Math.min(1, Math.max(0, gp.grip)) : GRIP_DEFAULT;
     this.accent = gp.accent || '#ff8a3d';
     this.scenery = SCENERY[gp.scenery] || SCENERY.track;
     this.sprite = buildSprite(day.sprite, this.accent);   // buildSprite owns the fallback for an unusable sprite
@@ -263,7 +273,7 @@ export class Game {
     this.speed = Math.min(this.maxSpeed, this.baseSpeed + this.dist * 0.13);
     const dy = this.speed * dt; this.scroll += dy; this.dist += dy * 0.08 * (1 + this.combo * NEAR_MISS_BONUS);
     this.nextSpawn -= dy; if (this.nextSpawn <= 0) this.spawn();
-    const target = this.laneCenter(this.lane); this.carX += (target - this.carX) * Math.min(1, dt * 18);
+    const target = this.laneCenter(this.lane); this.carX += (target - this.carX) * Math.min(1, dt * this.grip);
     // One sample per GHOST_STEP metres. A fast frame can cross more than one step, so the
     // gap is filled with the position we are at now rather than left as a hole.
     while (this.trace.length <= this.dist / GHOST_STEP && this.trace.length < GHOST_MAX) this.trace.push(Math.round(this.carX));
