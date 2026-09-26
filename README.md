@@ -1,4 +1,4 @@
-# Daytrip
+# Daytrip - Inspired by Forza Horizon 6
 
 One car a day. Read it, hear it, drive it.
 
