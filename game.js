@@ -29,6 +29,24 @@ class Sound {
     this.osc2.frequency.setTargetAtTime(19 + ratio * 75, t, 0.06);
     this.gain.gain.setTargetAtTime(on && !this.muted ? 0.035 : 0, t, 0.08);
   }
+  // One upshift blip. It gets its own oscillator and gain rather than bending the
+  // engine nodes, because engine() re-aims those every frame with setTargetAtTime and
+  // would wipe any envelope scheduled on them. A short square note at roughly the
+  // engine's own pitch, falling away as it fades, so it reads as a shift and not a beep.
+  shift(ratio) {
+    if (!this.ctx || this.muted) return; const t = this.ctx.currentTime;
+    const r = Math.min(1, Math.max(0, Number.isFinite(ratio) ? ratio : 0));
+    const f = 150 + r * 250;
+    const o = this.ctx.createOscillator(); o.type = 'square';
+    o.frequency.setValueAtTime(f, t);
+    o.frequency.exponentialRampToValueAtTime(f * 0.55, t + SHIFT_LEN);
+    const g = this.ctx.createGain();
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.045, t + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + SHIFT_LEN);
+    o.connect(g).connect(this.ctx.destination);
+    o.start(t); o.stop(t + SHIFT_LEN + 0.02);
+  }
   hit() {
     if (!this.ctx || this.muted) return; const t = this.ctx.currentTime;
     const len = 0.25, buf = this.ctx.createBuffer(1, this.ctx.sampleRate * len, this.ctx.sampleRate), d = buf.getChannelData(0);
@@ -66,6 +84,13 @@ const GHOST_STEP = 2, GHOST_MAX = 1600;
 // number exactly — so nothing about an old day's handling changes. It is clamped rather
 // than rejected, and anything that is not a finite number falls back to the default.
 const GRIP_MIN = 9, GRIP_MAX = 27, GRIP_DEFAULT = 18;
+// Gear shifts. The engine hum is one continuous note whose pitch tracks the speed ramp,
+// which gives a run no landmarks at all. A blip every SHIFT_STEP metres puts them in.
+// Metres rather than seconds on purpose: metres are what the speed ramp, the stars, the
+// best and the ghost are all counted in, and because distance accrues faster as the ramp
+// bites, the shifts arrive closer together the quicker you are going — which is the
+// shape a car climbing through its gears actually has.
+const SHIFT_STEP = 200, SHIFT_LEN = 0.11;
 export class Game {
   constructor(mount, day) {
     const gp = day.game || {};
@@ -133,6 +158,7 @@ export class Game {
     // Tally for the whole run, so the crash card can report it. Deliberately not touched
     // by clearCombo(): the chain expiring, and the crash itself, both have to leave it.
     this.misses = 0; this.bestCombo = 0;
+    this.gear = 0;   // shifts blipped so far this run; 0 so the first one lands at SHIFT_STEP, not at the line
     this.clearCombo(); this.sparks = [];
     this.trace = [];
   }
@@ -291,7 +317,12 @@ export class Game {
     }
     for (const s of this.sparks) { s.x += s.vx * dt; s.y += s.vy * dt; s.t -= dt; }
     if (this.sparks.length) this.sparks = this.sparks.filter(s => s.t > 0);
-    this.sound.engine((this.speed - this.baseSpeed) / (this.maxSpeed - this.baseSpeed), true);
+    const rev = (this.speed - this.baseSpeed) / (this.maxSpeed - this.baseSpeed);
+    this.sound.engine(rev, true);
+    // dist only ever grows, so a crossed step is a shift. A frame long enough to cross
+    // two steps still blips once: the gear jumps to where we are rather than queueing.
+    const gear = Math.floor(this.dist / SHIFT_STEP);
+    if (gear > this.gear) { this.gear = gear; this.sound.shift(rev); }
     const m = Math.floor(this.dist), kmh = Math.round(this.speed * 0.9);
     if (m !== this._m) { this._m = m; this.distEl.textContent = `${m} m`; this.starEl.textContent = '★'.repeat(this.starsFor(m)) + '☆'.repeat(3 - this.starsFor(m)); }
     if (kmh !== this._k) { this._k = kmh; this.spdEl.textContent = `${kmh} km/h`; }
