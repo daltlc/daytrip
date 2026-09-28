@@ -5,11 +5,12 @@ You are building today's Daytrip: one real car, a short story, numbers, photos, 
 ## 0. Orient
 - `git pull --ff-only`.
 - Get today's date in Pacific time: `TZ=America/Los_Angeles date +%F` (the file name and `date` field use this). If `days/<date>.json` already exists, skip steps 1–3 and only do the engine improvement.
-- Read `NOTES.md` (the last entry and its "Next up" list), `days/index.json`, `docs/SCHEMA.md`, `docs/SPRITES.md`, `docs/GAME.md`. Skim `app.js`.
+- Read `NOTES.md` (the last entry and its "Next up" list), `docs/SCHEMA.md`, `docs/SPRITES.md`, `docs/GAME.md`. Skim `app.js`.
 
 ## 1. Pick the car
-- Look at the last 5 entries in `days/index.json`. Pick a `class` that is not among them.
-- Pick one specific, real, well-documented car in that class that is **not** already in `days/index.json` (compare names loosely; a different generation of the same model is fine only if it has its own story). `data/car-pool.json` has candidates with a hook each; you may go off-list. Mix eras and countries over time. Be specific: "1999 Nissan Skyline GT-R V-Spec (R34)", not "a Skyline".
+- Run `node scripts/roll.mjs`. It prints a random brief: a class (hard rule; never one used in the last 5 days), plus a decade, a region and an angle (strong hints), and the list of cars already covered.
+- Search the web from that brief (2–3 WebSearch queries with different phrasings) and choose ONE specific, real, well-documented car that fits it and is not already covered. Prefer a car an enthusiast would be delighted to discover over the most famous car in that class. Be specific: "1999 Nissan Skyline GT-R V-Spec (R34)", not "a Skyline". A different generation of a covered model is fine only if it has its own story.
+- If nothing good turns up, roll again (at most 3 rolls). Never keep a candidate list in the repo; the daily surprise is the point.
 
 ## 2. Research
 - Use WebSearch and WebFetch. Two to four solid sources (manufacturer heritage pages, Wikipedia, reputable motoring press, museum pages).
