@@ -81,6 +81,13 @@ a { color: var(--accent); }
   image-rendering: pixelated; image-rendering: crisp-edges;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .6));
 }
+/* Landscape phone: the 6x card would eat a third of the viewport above the game, so drop to 4x
+   (64 CSS px, still a whole number of CSS px per sprite pixel) and tighten the glow and padding. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .car-card { padding: 0 0 8px; }
+  .car-card::before { width: 120px; }
+  .car-art { width: 64px; }
+}
 .hint { color: var(--muted); font-size: 14px; margin-bottom: 10px !important; }
 .game-card { padding: 16px 12px 14px; }
 .game-wrap { position: relative; width: 100%; max-width: 360px; margin: 0 auto; aspect-ratio: 2 / 3; border-radius: 12px; overflow: hidden; background: #000; touch-action: none; user-select: none; -webkit-user-select: none; }
