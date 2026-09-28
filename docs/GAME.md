@@ -25,10 +25,13 @@ Use `grip` for how the car changes lanes: a rally car on gravel around `0.2`, a 
 
 ## Where the code lives
 
-Six ES modules, no build step. `index.html` loads `app.js` with `type="module"`, so the
+ES modules, no build step, JSDoc-typed and checked by TypeScript. `index.html` loads `app.js` with `type="module"`, so the
 page has to be served over http (`python3 -m http.server`), not opened as a `file://` path.
 
 - `app.js` — the entry point. Imports `boot` and calls it. Nothing else.
+- `types.js` — the JSDoc types every module shares (`DayFile`, `GameParams`, `Obstacle`, …). Add a day-file field here first.
+- `dom.js` / `storage.js` — `el`, `must`, `ctx2d`, `present` and the localStorage wrappers that never throw.
+- `garage.js` — the archive page list.
 - `page.js` — the day page: `loadDay`, `splitSentences`, `render`, `carCard`, the Commons photo lookup, `Speaker`, `showError`.
 - `game.js` — the simulation: `Sound`, and `Game` as state, input, `spawn()` and `update()`.
 - `render.js` — the drawing: pixel art, obstacles, scenery, weather, road curvature, `draw(game)`.
@@ -56,6 +59,14 @@ nothing drawn can move the car or end a run. The arrow only points one way —
 - `Sound` — WebAudio engine hum (two oscillators through a lowpass), a noise burst on crash, and an upshift blip. Unlocked on first tap. Mute persists in `localStorage`.
 - Gear shifts (`game.js`) — `update()` blips once every `SHIFT_STEP` (200) metres of distance, so the hum has landmarks instead of being one continuous slide. `this.gear` is the number of shifts made this run, zeroed in `reset()` so the first one lands at 200 m rather than on the line; it is set to the step the run is *at* rather than incremented, so a single long frame that crosses several steps blips once instead of firing a burst. Metres rather than seconds on purpose: metres are what the speed ramp, the stars, the best and the ghost are all counted in, and distance accrues faster as the ramp bites, so the shifts close up as you speed up — the shape of a car climbing through its gears. `Sound.shift(rev)` takes the same 0–1 rev figure `engine()` gets and plays a short square note at roughly the engine's own pitch, falling as it fades. It builds its own oscillator and gain rather than bending the engine nodes, because `engine()` re-aims those every frame with `setTargetAtTime` and would wipe any envelope scheduled on them. It is silent when muted, a no-op with no `AudioContext`, and clamps a rev that is not a finite number to 0. No day-file field: every day gets it.
 - `Speaker` (in `page.js`) — read-aloud, sentence by sentence, highlighting the current sentence. `splitSentences` feeds it: it breaks on `.`/`!`/`?` only when the break is followed by whitespace and an upper-case letter, digit or opening quote, and never on a decimal point (`1.6-litre`), a single-letter initial (`J. Bugatti`) or a known abbreviation (`St.`, `Dr.`, `e.g.`). Runs of terminators and trailing closing quotes stay with the sentence they end. Joining the pieces always reproduces the input, so nothing can be dropped on the way into the spans.
+
+## Code rules
+
+- Every module starts with `// @ts-check` and is typed with JSDoc. `node scripts/check.mjs` runs `tsc` over all of it and fails on any type error; run `npm install` once to get TypeScript (dev only, nothing ships).
+- No `console.*` in page code. The validator rejects it. Errors surface in the UI or are swallowed on purpose with a comment saying why.
+- `===` only, `const` by default, named constants instead of magic numbers, private class state behind `#fields`.
+- Hot paths (`update()`, `draw()`) allocate nothing per frame: compact arrays in place, touch the DOM only when a displayed value changes.
+- No runtime dependencies, no bundler, no framework.
 
 ## Improving the engine
 

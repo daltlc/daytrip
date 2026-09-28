@@ -12,19 +12,21 @@ The daily page is written by a scheduled Claude routine (Opus) that follows `ROU
 ## Layout
 
 ```
-index.html      the page shell
-style.css       mobile-first styles
-app.js          entry point (ES module)
-page.js         the day page: render, photos, read-aloud
-game.js         the pixel game: sprites, scenery, weather, sound
-dom.js          the two DOM helpers both halves use
-archive.html    garage list
+index.html      the page shell            archive.html    the garage shell
+style.css       mobile-first styles       jsconfig.json   TypeScript checks the JS (no build)
+app.js          entry point               garage.js       the garage list
+page.js         page render + read-aloud  game.js         simulation, input, sound
+render.js       drawing                   geom.js         shared logical-pixel numbers
+dom.js          DOM helpers               storage.js      localStorage that never throws
+types.js        JSDoc types shared by everything
 days/           one JSON per day, latest.json, index.json
-scripts/        roll.mjs (random search brief for the day), check.mjs (validator), commons.mjs (photo finder)
+scripts/        roll.mjs (random search brief), check.mjs (validator + tsc), commons.mjs (photo finder)
 docs/           SCHEMA.md, SPRITES.md, GAME.md
 ROUTINE.md      what the daily run does
 NOTES.md        build log + next-up list
 ```
+
+Plain ES modules with JSDoc types, checked by TypeScript (`npm run typecheck`) but never compiled. No runtime dependencies, no bundler. Page code contains no console output.
 
 ## Run locally
 

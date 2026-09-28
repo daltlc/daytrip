@@ -3,7 +3,7 @@
 You are building today's Daytrip: one real car, a short story, numbers, photos, a pixel sprite, and one small engine improvement. Work in this repo. Everything you need is here. Finish in one pass and push.
 
 ## 0. Orient
-- `git pull --ff-only`.
+- `git pull --ff-only`, then `npm install --no-audit --no-fund` (TypeScript for the type check; dev only, nothing ships). If the install fails, continue; the validator will warn instead of type-checking.
 - Get today's date in Pacific time: `TZ=America/Los_Angeles date +%F` (the file name and `date` field use this). If `days/<date>.json` already exists, skip steps 1–3 and only do the engine improvement.
 - Read `NOTES.md` (the last entry and its "Next up" list), `docs/SCHEMA.md`, `docs/SPRITES.md`, `docs/GAME.md`. Skim `app.js`.
 
@@ -54,7 +54,7 @@ You are building today's Daytrip: one real car, a short story, numbers, photos, 
 - Do not open pull requests or branches. If the push is rejected, retry once, then stop and report the error verbatim in your final message. Do not push through any other tool or API, do not export patches, do not force.
 
 ## Hard rules
-- No dependencies, no build step, no frameworks. Plain HTML, CSS, JS.
+- No runtime dependencies, no build step, no frameworks. Plain HTML, CSS, JS modules with JSDoc types, checked by TypeScript (`jsconfig.json`). Every module starts with `// @ts-check`; no `console.*` in page code. See `docs/GAME.md` → Code rules.
 - Core page weight (html + css + js + latest.json) under 400 KB; photos are hotlinked from Wikimedia Commons only.
 - The whole page should be readable in under two minutes.
 - Do not change the `days/` schema in a breaking way. Do not delete or rewrite past day files.

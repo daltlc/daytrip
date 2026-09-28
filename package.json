@@ -1,0 +1,14 @@
+{
+  "name": "daytrip",
+  "private": true,
+  "type": "module",
+  "description": "One car a day. Read it, hear it, drive it. Static site, no runtime dependencies.",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "typecheck": "tsc -p jsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.0",
+    "typescript": "^5.9.0"
+  }
+}

@@ -19,22 +19,6 @@
     <ul id="list" class="garage"></ul>
   </section>
 </main>
-<script>
-(async () => {
-  const list = document.getElementById('list');
-  try {
-    const res = await fetch('days/index.json?v=' + Date.now(), { cache: 'no-store' });
-    const days = await res.json();
-    if (!days.length) { list.innerHTML = '<li class="muted">Nothing here yet.</li>'; return; }
-    for (const d of days) {
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = 'index.html?d=' + encodeURIComponent(d.date);
-      a.innerHTML = '<span class="g-date">' + d.date + '</span><span class="g-name">' + (d.year ? d.year + ' ' : '') + d.name + '</span><span class="badge">' + d.class + '</span>';
-      li.append(a); list.append(li);
-    }
-  } catch (e) { list.innerHTML = '<li class="muted">Could not load the garage list.</li>'; }
-})();
-</script>
+<script type="module" src="garage.js"></script>
 </body>
 </html>

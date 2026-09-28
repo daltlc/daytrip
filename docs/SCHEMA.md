@@ -23,4 +23,4 @@ One file per day. `days/latest.json` is an exact copy of the newest file. `days/
 Rules:
 - No game franchise names, characters, or festivals anywhere. The validator rejects them.
 - Content stands alone: someone who has never played a racing game should enjoy it.
-- Do not add new top-level fields without also handling them (with a fallback) in `app.js` and documenting them here.
+- Do not add new top-level fields without adding them to `types.js`, handling them (with a fallback) in `page.js` or `game.js`, validating them in `scripts/check.mjs`, and documenting them here.
