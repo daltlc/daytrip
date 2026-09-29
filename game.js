@@ -39,6 +39,12 @@ const GHOST_STEP = 2, GHOST_MAX = 1600;
 // gravel, 1 snaps like a formula car. 0.5 maps to GRIP_DEFAULT, which is what days without the
 // field get, so their handling never changes.
 const GRIP_MIN = 9, GRIP_MAX = 27, GRIP_DEFAULT = 18;
+// Below grip 0.5 the drawn car carries a little momentum: an underdamped spring (SLIDE_OMEGA rad/s,
+// SLIDE_ZETA damping) chases the car's x, and whatever it swings *past* the car in the direction of
+// the last lane change is drawn as `slide`, scaled by how loose the day is and capped at SLIDE_MAX px.
+// The lag on the way out is never drawn, and nothing the simulation reads uses it: the hit box stays
+// on `carX`. Grip 0.5 and up, a day without the field, and reduced motion all get no slide at all.
+const SLIDE_OMEGA = 18, SLIDE_ZETA = 0.3, SLIDE_MAX = 4;
 // A gear-shift blip every SHIFT_STEP metres gives the engine hum landmarks. Metres, not seconds,
 // so the shifts arrive closer together the faster you go, like a car climbing through its gears.
 const SHIFT_STEP = 200, SHIFT_LEN = 0.11;
@@ -154,6 +160,7 @@ export class Game {
   maxSpeed = MAX_SPEED;
   /** @type {[number, number, number]} */ stars = DEFAULT_STARS;
   grip = GRIP_DEFAULT;
+  loose = 0;
   accent = DEFAULT_ACCENT;
   /** @type {Scenery} */ scenery = SCENERY.track;
   /** @type {HTMLCanvasElement} */ sprite;
@@ -173,6 +180,10 @@ export class Game {
   /** @type {GameState} */ state = 'idle';
   lane = 0;
   carX = 0;
+  body = 0;
+  bodyV = 0;
+  slideDir = 0;
+  slide = 0;
   speed = BASE_SPEED;
   dist = 0;
   scroll = 0;
@@ -221,6 +232,7 @@ export class Game {
     this.maxSpeed = MAX_SPEED * (gp.maxSpeed ?? 1);
     this.stars = gp.stars ?? DEFAULT_STARS;
     this.grip = Number.isFinite(gp.grip) ? GRIP_MIN + (GRIP_MAX - GRIP_MIN) * clamp01(/** @type {number} */ (gp.grip)) : GRIP_DEFAULT;
+    this.loose = this.reduced || !Number.isFinite(gp.grip) ? 0 : Math.max(0, 1 - 2 * clamp01(/** @type {number} */ (gp.grip)));
     this.accent = gp.accent ?? DEFAULT_ACCENT;
     this.scenery = (gp.scenery && SCENERY[gp.scenery]) || SCENERY.track;
     this.sprite = buildSprite(day.sprite, this.accent);
@@ -270,6 +282,7 @@ export class Game {
     this.state = 'idle';
     this.lane = Math.floor(this.lanes / 2);
     this.carX = this.laneCenter(this.lane);
+    this.body = this.carX; this.bodyV = 0; this.slideDir = 0; this.slide = 0;
     this.speed = this.baseSpeed;
     this.dist = 0; this.scroll = 0; this.tick = 0; this.shake = 0;
     this.obs.length = 0;
@@ -386,6 +399,7 @@ export class Game {
   move(dir) {
     if (this.state !== 'running') return;
     this.lane = Math.max(0, Math.min(this.lanes - 1, this.lane + dir));
+    this.slideDir = Math.sign(dir);
   }
 
   /** @returns {boolean} true if the tap started or resumed a run */
@@ -457,6 +471,18 @@ export class Game {
     requestAnimationFrame(next => this.frame(next));
   }
 
+  /**
+   * Swing the drawn body after the car and keep only the overshoot. Drawing only, see SLIDE_OMEGA.
+   * @param {number} dt seconds
+   */
+  stepSlide(dt) {
+    const h = Math.min(dt, MAX_DT); // the spring is stable well past MAX_DT, but not at any dt
+    this.bodyV += (SLIDE_OMEGA * SLIDE_OMEGA * (this.carX - this.body) - 2 * SLIDE_ZETA * SLIDE_OMEGA * this.bodyV) * h;
+    this.body += this.bodyV * h;
+    const past = (this.body - this.carX) * this.slideDir * this.loose;
+    this.slide = Number.isFinite(past) ? this.slideDir * Math.min(SLIDE_MAX, Math.max(0, past)) : 0;
+  }
+
   /** @param {number} dt seconds */
   update(dt) {
     if (this.comboT > 0 && (this.comboT -= dt) <= 0) this.clearCombo();
@@ -468,6 +494,7 @@ export class Game {
     if (this.nextSpawn <= 0) this.spawn();
     const target = this.laneCenter(this.lane);
     this.carX += (target - this.carX) * Math.min(1, dt * this.grip);
+    if (this.loose > 0) this.stepSlide(dt);
     // One ghost sample per GHOST_STEP metres; a long frame fills the gap with the current x.
     while (this.trace.length <= this.dist / GHOST_STEP && this.trace.length < GHOST_MAX) this.trace.push(Math.round(this.carX));
 

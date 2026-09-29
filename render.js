@@ -292,12 +292,13 @@ export function draw(game) {
     g.fillStyle = s.t > SPARK_FLASH_T ? '#ffffff' : game.accent;
     g.fillRect(Math.round(s.x + bend(game, s.y)), Math.round(s.y), 1, 1);
   }
-  const carBend = bend(game, CAR_Y + 12);
+  const roadBend = bend(game, CAR_Y + 12);
+  const carBend = roadBend + game.slide; // slide: drawn overshoot on a low-grip day, 0 otherwise
   // The pace ghost sits under the car so you can always see yourself. It is a picture only.
   const ghostX = game.state === 'running' ? game.ghostX(game.dist) : null;
   if (ghostX !== null) {
     g.globalAlpha = GHOST_ALPHA;
-    g.drawImage(game.sprite, Math.round(ghostX - SPRITE_HALF_W + carBend), CAR_Y);
+    g.drawImage(game.sprite, Math.round(ghostX - SPRITE_HALF_W + roadBend), CAR_Y);
     g.globalAlpha = 1;
   }
   if (game.state === 'crashed') { g.fillStyle = CRASH_TINT; g.fillRect(Math.round(game.carX - 9 + carBend), CAR_Y - 3, 18, 30); }
