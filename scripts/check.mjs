@@ -111,6 +111,7 @@ function checkDay(f, d) {
     if (gm.baseSpeed !== undefined && !(gm.baseSpeed >= 0.6 && gm.baseSpeed <= 1.6)) err(f, 'game.baseSpeed must be between 0.6 and 1.6');
     if (gm.curve !== undefined && !(Number.isFinite(gm.curve) && gm.curve >= 0 && gm.curve <= 1)) err(f, 'game.curve must be between 0 and 1');
     if (gm.grip !== undefined && !(Number.isFinite(gm.grip) && gm.grip >= 0 && gm.grip <= 1)) err(f, 'game.grip must be between 0 and 1');
+    if (gm.gears !== undefined && !(Number.isInteger(gm.gears) && gm.gears >= 3 && gm.gears <= 8)) err(f, 'game.gears must be a whole number from 3 to 8');
     if (gm.accent && !HEX_COLOR.test(gm.accent)) err(f, 'game.accent must be #rrggbb');
     if (gm.stars && !(Array.isArray(gm.stars) && gm.stars.length === 3 && gm.stars.every((n, i, a) => Number.isFinite(n) && (i === 0 || n > a[i - 1])))) err(f, 'game.stars must be 3 ascending numbers');
   }

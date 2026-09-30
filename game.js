@@ -47,7 +47,10 @@ const GRIP_MIN = 9, GRIP_MAX = 27, GRIP_DEFAULT = 18;
 const SLIDE_OMEGA = 18, SLIDE_ZETA = 0.3, SLIDE_MAX = 4;
 // A gear-shift blip every SHIFT_STEP metres gives the engine hum landmarks. Metres, not seconds,
 // so the shifts arrive closer together the faster you go, like a car climbing through its gears.
-const SHIFT_STEP = 200, SHIFT_LEN = 0.11;
+// `game.gears` (MIN_GEARS–MAX_GEARS, default DEFAULT_GEARS) divides SHIFT_SPAN into the step, so
+// a close-ratio racer shifts more often than an old saloon; 5 gears is the fixed 200 m every day
+// before 2026-09-30 ran, and a day without the field gets exactly that.
+const SHIFT_SPAN = 1000, SHIFT_LEN = 0.11, MIN_GEARS = 3, MAX_GEARS = 8, DEFAULT_GEARS = 5;
 const DEFAULT_CURVE = 0.6;
 const SHAKE_S = 0.35, CRASH_LOCKOUT_MS = 500, SWIPE_PX = 28, MAX_DT = 0.05, VIBRATE_MS = 90;
 const MAX_DPR = 3, FALLBACK_WIDTH = 320;
@@ -161,6 +164,7 @@ export class Game {
   /** @type {[number, number, number]} */ stars = DEFAULT_STARS;
   grip = GRIP_DEFAULT;
   loose = 0;
+  shiftStep = SHIFT_SPAN / DEFAULT_GEARS;
   accent = DEFAULT_ACCENT;
   /** @type {Scenery} */ scenery = SCENERY.track;
   /** @type {HTMLCanvasElement} */ sprite;
@@ -233,6 +237,8 @@ export class Game {
     this.stars = gp.stars ?? DEFAULT_STARS;
     this.grip = Number.isFinite(gp.grip) ? GRIP_MIN + (GRIP_MAX - GRIP_MIN) * clamp01(/** @type {number} */ (gp.grip)) : GRIP_DEFAULT;
     this.loose = this.reduced || !Number.isFinite(gp.grip) ? 0 : Math.max(0, 1 - 2 * clamp01(/** @type {number} */ (gp.grip)));
+    const gears = Number.isInteger(gp.gears) ? Math.min(MAX_GEARS, Math.max(MIN_GEARS, /** @type {number} */ (gp.gears))) : DEFAULT_GEARS;
+    this.shiftStep = SHIFT_SPAN / gears;
     this.accent = gp.accent ?? DEFAULT_ACCENT;
     this.scenery = (gp.scenery && SCENERY[gp.scenery]) || SCENERY.track;
     this.sprite = buildSprite(day.sprite, this.accent);
@@ -523,7 +529,7 @@ export class Game {
 
     const rev = (this.speed - this.baseSpeed) / (this.maxSpeed - this.baseSpeed);
     this.sound.engine(rev, true);
-    const gear = Math.floor(this.dist / SHIFT_STEP);
+    const gear = Math.floor(this.dist / this.shiftStep);
     if (gear > this.gear) { this.gear = gear; this.sound.shift(rev); }
     this.updateHud();
   }

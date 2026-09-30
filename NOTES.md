@@ -183,3 +183,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Optional `game.gears` (default 5) so the shift-blip interval can follow the car.
   2. The garage list could show each day's accent as a small swatch so the archive reads as a row of liveries.
   3. game.js is at ~560 lines; move `Sound` into its own `sound.js` before the next feature pushes it past 600.
+
+## 2026-09-30 — 1968 Matra MS11
+- Engine: optional `game.gears` (whole number 3–8, default 5), the top of yesterday's list. The shift blip now fires every `1000 / gears` metres (`this.shiftStep`), so 5 is the old fixed 200 m and a day without the field is unchanged; non-integers fall back to 5 and out-of-range values clamp. Validated in `scripts/check.mjs`, typed in `types.js`, documented in `docs/GAME.md`. Checked in Chromium on a real `Game`: undefined → 200, 5 → 200, 8 → 125, 3 → 333.3, 12 → 125, 2.5 and "x" → 200; no page errors.
+- Content: roll was f1 / 1960s / France / a commercial flop that became a cult classic. The MS11 fits: Matra's own V12 car was hot, thirsty and outpaced by its Cosworth sibling, but it was the loudest car on the grid, and the engine family won Le Mans 1972–74 and Ligier's 1977 Swedish GP. The Matra MS84 4WD was the runner-up. No photos (Commons 403); `photoQuery` carries it. Power omitted: sources give both ~390 hp and 450 bhp. Weight omitted (single source). Sprite: slim French-blue cigar, no wings, grey engine bay and pipes; 156 pixels. `gears: 5` for the Hewland five-speed, `weather: "rain"` for Zandvoort.
+- Next up:
+  1. The garage list could show each day's accent as a small swatch so the archive reads as a row of liveries.
+  2. game.js is at ~570 lines; move `Sound` into its own `sound.js` before the next feature pushes it past 600.
+  3. The shift blip could vary its pitch with `gears` too, so a close-ratio car's shifts sound tighter, not just more frequent.

@@ -21,6 +21,7 @@
  * @property {[number, number, number]} [stars] metres for one, two and three stars
  * @property {number} [curve] 0–1, how far the road swings
  * @property {number} [grip] 0–1, how sharply the car changes lanes
+ * @property {number} [gears] 3–8, how often the engine blips a shift (default 5, every 200 m)
  * @property {'auto' | 'none' | WeatherKind} [weather]
  */
 
