@@ -191,3 +191,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. The garage list could show each day's accent as a small swatch so the archive reads as a row of liveries.
   2. game.js is at ~570 lines; move `Sound` into its own `sound.js` before the next feature pushes it past 600.
   3. The shift blip could vary its pitch with `gears` too, so a close-ratio car's shifts sound tighter, not just more frequent.
+
+## 2026-10-01 — 1966 Saab Sonett II
+- Engine: garage accent swatches, the top of yesterday's list. `days/index.json` entries carry an optional `accent` (backfilled for all 17 earlier days from their `game.accent`; no day file touched), `garage.js` draws it as a 12 px dot between the date and the name, and an entry without one gets an empty ring so the grid still lines up. `IndexEntry` typed, `scripts/check.mjs` rejects a non-#rrggbb accent or one that disagrees with the day file (verified by breaking one), ROUTINE/SCHEMA/GAME docs updated. Checked in Chromium: swatches render the right colors, no page errors on archive or index.
+- Content: roll was gt3 / 1960s / Sweden / a car that started or ended a racing era. The two-stroke Sonett II fits: built to race, ran against Sprites and Spitfires in SCCA, caught short by the 500-car rule, and its two-stroke was dropped for a Ford V4 mid-1967 — Saab's last two-stroke sports car. No photos (Commons 403); `photoQuery` carries it. Torque omitted (sources give 91 and 93 Nm); weight omitted (single source); power given without rpm (5,200 vs 5,300). Accent is a guess at a classic Saab red, not a documented works livery. Sprite: rounded red coupé with a light bonnet bulge and two amber lamps; `gears: 4`.
+- Next up:
+  1. game.js is at ~570 lines; move `Sound` into its own `sound.js` before the next feature pushes it past 600.
+  2. The shift blip could vary its pitch with `gears` too, so a close-ratio car's shifts sound tighter, not just more frequent.
+  3. The garage could filter by class (tap a badge to show only that class), now that the list is long enough to want it.

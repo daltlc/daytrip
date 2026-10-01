@@ -44,7 +44,7 @@
  * @property {string[]} [sources]
  */
 
-/** @typedef {{ date: string, name: string, year?: number, class: CarClass }} IndexEntry */
+/** @typedef {{ date: string, name: string, year?: number, class: CarClass, accent?: string }} IndexEntry */
 
 /** @typedef {{ lane: number, y: number, gap: number, passed: boolean }} Obstacle */
 /** @typedef {{ x: number, y: number, vx: number, vy: number, t: number }} Spark */

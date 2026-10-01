@@ -143,6 +143,13 @@ if (index) {
     entries.forEach((e, i) => {
       if (!e.date || !e.name || !e.class) err('days/index.json', `entry ${i} needs date, name, class`);
       if (e.date && !existsSync(path.join(daysDir, `${e.date}.json`))) err('days/index.json', `entry ${e.date} has no days/${e.date}.json`);
+      else if (e.accent !== undefined) {
+        if (typeof e.accent !== 'string' || !HEX_COLOR.test(e.accent)) err('days/index.json', `entry ${e.date}: accent must be #rrggbb`);
+        else {
+          const day = /** @type {DayFile | null} */ (readJson(`days/${e.date}.json`));
+          if (day && day.game?.accent?.toLowerCase() !== e.accent.toLowerCase()) err('days/index.json', `entry ${e.date}: accent ${e.accent} does not match game.accent in days/${e.date}.json`);
+        }
+      }
     });
     for (const n of dayFiles) if (!dates.includes(n.replace('.json', ''))) err('days/index.json', `missing entry for days/${n}`);
     const latest = readJson('days/latest.json');

@@ -1,6 +1,6 @@
 # Day file schema — `days/YYYY-MM-DD.json`
 
-One file per day. `days/latest.json` is an exact copy of the newest file. `days/index.json` lists every day, newest first. `node scripts/check.mjs` enforces all of this.
+One file per day. `days/latest.json` is an exact copy of the newest file. `days/index.json` lists every day, newest first, as `{date, name, year, class, accent}`; `accent` is optional, must equal the day's `game.accent`, and colors the garage swatch (an entry without it shows an empty ring). `node scripts/check.mjs` enforces all of this.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|

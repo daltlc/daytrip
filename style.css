@@ -106,7 +106,8 @@ a { color: var(--accent); }
 .game-tools button { appearance: none; background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 6px 12px; font: inherit; min-height: 32px; }
 .sources { font-size: 12px; color: var(--muted); text-align: center; padding: 6px 12px; word-break: break-word; }
 .garage { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
-.garage a { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; background: var(--card-2); border-radius: 12px; padding: 12px 14px; text-decoration: none; color: var(--text); }
+.garage a { display: grid; grid-template-columns: auto auto 1fr auto; gap: 10px; align-items: center; background: var(--card-2); border-radius: 12px; padding: 12px 14px; text-decoration: none; color: var(--text); }
 .g-date { font: 600 12px ui-monospace, Menlo, monospace; color: var(--muted); }
 .g-name { font-weight: 600; }
+.g-swatch { width: 12px; height: 12px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
 @media (prefers-reduced-motion: reduce) { .overlay .cta { animation: none; } }

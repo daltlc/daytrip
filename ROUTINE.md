@@ -26,7 +26,7 @@ You are building today's Daytrip: one real car, a short story, numbers, photos, 
 - `description`: 60–90 words.
 - Draw the `sprite` per `docs/SPRITES.md`. Match the real livery or a famous color.
 - Set `game.obstacle`, `game.scenery`, `game.accent` to match the car's world (see `docs/GAME.md`).
-- Copy the file to `days/latest.json` (exact copy). Prepend `{date, name, year, class}` to `days/index.json`.
+- Copy the file to `days/latest.json` (exact copy). Prepend `{date, name, year, class, accent}` to `days/index.json` (`accent` is `game.accent`, for the garage swatch).
 - Content rule: no game franchise names, characters or events. The validator rejects them.
 
 ## 4. Improve the engine (one thing)
