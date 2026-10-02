@@ -199,3 +199,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. game.js is at ~570 lines; move `Sound` into its own `sound.js` before the next feature pushes it past 600.
   2. The shift blip could vary its pitch with `gears` too, so a close-ratio car's shifts sound tighter, not just more frequent.
   3. The garage could filter by class (tap a badge to show only that class), now that the list is long enough to want it.
+
+## 2026-10-02 — 2018 Hyundai i30 N TCR
+- Engine: moved `Sound` and its audio constants out of `game.js` into a new `sound.js` (pure code motion; game.js 569 → ~475 lines), added it to the validator's module list and to docs/GAME.md.
+- Content: roll was touring / 2010s / South Korea / "one engineer or designer"; the angle is Gabriele Tarquini, the development driver who did the first test laps at Aragón in April 2017 and won the 2018 WTCR title in the car at 56. Margin is "three points" (FIA standings: 306 to 303); one search summary said one point, so the FIA figure wins. Weight left out: 1,265 kg is quoted but it reads as the TCR rule minimum, not a measured car. No photos fetched in the sandbox; `photoQuery` set.
+- Next up:
+  1. The shift blip could vary its pitch with `gears` too, so a close-ratio car's shifts sound tighter, not just more frequent (now a small change inside sound.js).
+  2. The garage could filter by class (tap a badge to show only that class), now that the list is long enough to want it.
+  3. Add a favicon (the page logs a 404 for it on every load).

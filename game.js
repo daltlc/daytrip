@@ -6,6 +6,7 @@
 import { ctx2d, el, present } from './dom.js';
 import { W, H, ROAD_X, ROAD_W, CAR_Y } from './geom.js';
 import { BEND_MAX, SCENERY, SCENERY_WEATHER, WEATHER, buildObstacle, buildSprite, draw, newDrop, stepWeather } from './render.js';
+import { Sound } from './sound.js';
 import { getItem, getJson, setItem, setJson } from './storage.js';
 
 /** @typedef {'idle' | 'running' | 'paused' | 'crashed'} GameState */
@@ -50,107 +51,12 @@ const SLIDE_OMEGA = 18, SLIDE_ZETA = 0.3, SLIDE_MAX = 4;
 // `game.gears` (MIN_GEARS–MAX_GEARS, default DEFAULT_GEARS) divides SHIFT_SPAN into the step, so
 // a close-ratio racer shifts more often than an old saloon; 5 gears is the fixed 200 m every day
 // before 2026-09-30 ran, and a day without the field gets exactly that.
-const SHIFT_SPAN = 1000, SHIFT_LEN = 0.11, MIN_GEARS = 3, MAX_GEARS = 8, DEFAULT_GEARS = 5;
+const SHIFT_SPAN = 1000, MIN_GEARS = 3, MAX_GEARS = 8, DEFAULT_GEARS = 5;
 const DEFAULT_CURVE = 0.6;
 const SHAKE_S = 0.35, CRASH_LOCKOUT_MS = 500, SWIPE_PX = 28, MAX_DT = 0.05, VIBRATE_MS = 90;
 const MAX_DPR = 3, FALLBACK_WIDTH = 320;
-const MUTE_KEY = 'daytrip.mute';
 const SOUND_ON = '🔊 Sound on', SOUND_OFF = '🔇 Sound off';
 const STAR_WORDS = ['one star', 'two stars', 'three stars'];
-
-/* ---------- audio ---------- */
-const ENGINE_GAIN = 0.035, HIT_LEN = 0.25, HIT_GAIN = 0.25, SHIFT_GAIN = 0.045;
-
-/** @returns {typeof AudioContext | undefined} */
-function audioContextCtor() {
-  const w = /** @type {{ AudioContext?: typeof AudioContext, webkitAudioContext?: typeof AudioContext }} */ (/** @type {unknown} */ (window));
-  return w.AudioContext ?? w.webkitAudioContext;
-}
-
-class Sound {
-  /** @type {AudioContext | null} */ #ctx = null;
-  /** @type {OscillatorNode | null} */ #osc = null;
-  /** @type {OscillatorNode | null} */ #osc2 = null;
-  /** @type {GainNode | null} */ #gain = null;
-  muted = getItem(MUTE_KEY) === '1';
-
-  constructor() {
-    // never make noise from a background tab
-    document.addEventListener('visibilitychange', () => { if (document.hidden) this.suspend(); });
-  }
-
-  /** Create the audio graph on the first user gesture, or resume it after a suspend. */
-  unlock() {
-    if (this.#ctx) { if (this.#ctx.state === 'suspended') void this.#ctx.resume(); return; }
-    const Ctor = audioContextCtor();
-    if (!Ctor) return;
-    const ctx = new Ctor();
-    const osc = ctx.createOscillator(); osc.type = 'sawtooth';
-    const osc2 = ctx.createOscillator(); osc2.type = 'square';
-    const filter = ctx.createBiquadFilter(); filter.type = 'lowpass'; filter.frequency.value = 500;
-    const gain = ctx.createGain(); gain.gain.value = 0;
-    osc.connect(filter); osc2.connect(filter); filter.connect(gain).connect(ctx.destination);
-    osc.start(); osc2.start();
-    this.#ctx = ctx; this.#osc = osc; this.#osc2 = osc2; this.#gain = gain;
-  }
-
-  suspend() { if (this.#ctx?.state === 'running') void this.#ctx.suspend(); }
-
-  /**
-   * @param {number} ratio 0–1 of the speed range
-   * @param {boolean} on
-   */
-  engine(ratio, on) {
-    if (!this.#ctx || !this.#osc || !this.#osc2 || !this.#gain) return;
-    const t = this.#ctx.currentTime;
-    this.#osc.frequency.setTargetAtTime(38 + ratio * 150, t, 0.06);
-    this.#osc2.frequency.setTargetAtTime(19 + ratio * 75, t, 0.06);
-    this.#gain.gain.setTargetAtTime(on && !this.muted ? ENGINE_GAIN : 0, t, 0.08);
-  }
-
-  /**
-   * One upshift blip on its own oscillator, since engine() re-aims the shared nodes every frame.
-   * @param {number} ratio 0–1 of the speed range
-   */
-  shift(ratio) {
-    if (!this.#ctx || this.muted) return;
-    const ctx = this.#ctx, t = ctx.currentTime;
-    const r = Math.min(1, Math.max(0, Number.isFinite(ratio) ? ratio : 0));
-    const f = 150 + r * 250;
-    const osc = ctx.createOscillator(); osc.type = 'square';
-    osc.frequency.setValueAtTime(f, t);
-    osc.frequency.exponentialRampToValueAtTime(f * 0.55, t + SHIFT_LEN);
-    const gain = ctx.createGain();
-    gain.gain.setValueAtTime(0.0001, t);
-    gain.gain.exponentialRampToValueAtTime(SHIFT_GAIN, t + 0.012);
-    gain.gain.exponentialRampToValueAtTime(0.0001, t + SHIFT_LEN);
-    osc.connect(gain).connect(ctx.destination);
-    osc.start(t); osc.stop(t + SHIFT_LEN + 0.02);
-  }
-
-  /** A short burst of fading noise. */
-  hit() {
-    if (!this.#ctx || this.muted) return;
-    const ctx = this.#ctx, t = ctx.currentTime;
-    const buffer = ctx.createBuffer(1, Math.round(ctx.sampleRate * HIT_LEN), ctx.sampleRate);
-    const data = buffer.getChannelData(0);
-    for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
-    const src = ctx.createBufferSource(); src.buffer = buffer;
-    const gain = ctx.createGain();
-    gain.gain.setValueAtTime(HIT_GAIN, t);
-    gain.gain.exponentialRampToValueAtTime(0.001, t + HIT_LEN);
-    src.connect(gain).connect(ctx.destination);
-    src.start();
-  }
-
-  /** @returns {boolean} the new muted state */
-  toggle() {
-    this.muted = !this.muted;
-    setItem(MUTE_KEY, this.muted ? '1' : '0');
-    if (this.#ctx && this.#gain) this.#gain.gain.setTargetAtTime(0, this.#ctx.currentTime, 0.02);
-    return this.muted;
-  }
-}
 
 /* ---------- game ---------- */
 export class Game {
