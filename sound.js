@@ -5,6 +5,7 @@
 import { getItem, setItem } from './storage.js';
 
 const ENGINE_GAIN = 0.035, HIT_LEN = 0.25, HIT_GAIN = 0.25, SHIFT_GAIN = 0.045, SHIFT_LEN = 0.11;
+const SHIFT_DROP = 0.45, SHIFT_DROP_MIN = 0.1, SHIFT_DROP_MAX = 0.8;
 const MUTE_KEY = 'daytrip.mute';
 
 /** @returns {typeof AudioContext | undefined} */
@@ -57,15 +58,17 @@ export class Sound {
   /**
    * One upshift blip on its own oscillator, since engine() re-aims the shared nodes every frame.
    * @param {number} ratio 0–1 of the speed range
+   * @param {number} [drop] share of its pitch the note falls by (default 0.45; fewer gears fall further)
    */
-  shift(ratio) {
+  shift(ratio, drop = SHIFT_DROP) {
     if (!this.#ctx || this.muted) return;
     const ctx = this.#ctx, t = ctx.currentTime;
     const r = Math.min(1, Math.max(0, Number.isFinite(ratio) ? ratio : 0));
     const f = 150 + r * 250;
     const osc = ctx.createOscillator(); osc.type = 'square';
     osc.frequency.setValueAtTime(f, t);
-    osc.frequency.exponentialRampToValueAtTime(f * 0.55, t + SHIFT_LEN);
+    const d = Number.isFinite(drop) ? Math.min(SHIFT_DROP_MAX, Math.max(SHIFT_DROP_MIN, drop)) : SHIFT_DROP;
+    osc.frequency.exponentialRampToValueAtTime(f * (1 - d), t + SHIFT_LEN);
     const gain = ctx.createGain();
     gain.gain.setValueAtTime(0.0001, t);
     gain.gain.exponentialRampToValueAtTime(SHIFT_GAIN, t + 0.012);

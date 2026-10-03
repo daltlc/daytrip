@@ -207,3 +207,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. The shift blip could vary its pitch with `gears` too, so a close-ratio car's shifts sound tighter, not just more frequent (now a small change inside sound.js).
   2. The garage could filter by class (tap a badge to show only that class), now that the list is long enough to want it.
   3. Add a favicon (the page logs a 404 for it on every load).
+
+## 2026-10-03 — 1986 Ford RS200
+- Engine: the shift blip's pitch now follows `game.gears`: it falls by `2.25 / gears` of itself (5 gears = the old fixed 45%, 8 = 28%, 3 = 75%), passed from `Game` as `shiftDrop` into `Sound.shift(rev, drop)`, which clamps it to 0.1–0.8 and falls back to 0.45 for a non-finite value. A day without `gears` sounds exactly as before. docs/GAME.md updated. Checked by the validator's type check only; not listened to in a browser this run.
+- Content: roll was exotic / 1980s / Sweden / homologation special. No Swedish exotic from the 1980s exists, so the region hint is carried by Stig Blomqvist's 3.07 s 0–60 mph record run in an RS200 Evolution, and the angle by the 200-car Group B rule. Country is UK (built by Reliant at Shenstone). No photos (Commons blocked); `photoQuery` set. Top speed omitted (not checked across sources). "About 156 sold complete" is Wikipedia's figure; the record's venue is not given because no source found names it. Sprite: white road car with a Ford-blue centre stripe, grey engine louvres, rear wing on mounts.
+- Next up:
+  1. The garage could filter by class (tap a badge to show only that class), now that the list is long enough to want it.
+  2. Add a favicon (the page logs a 404 for it on every load).
+  3. The crash card could show the day's best alongside this run ("best 812 m"), so the ghost's number is visible without a second run.
