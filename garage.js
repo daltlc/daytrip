@@ -21,6 +21,44 @@ function row(day) {
     el('span', { class: 'badge' }, day.class)));
 }
 
+/**
+ * Filter chips: "all" plus every class in the list, in order of first appearance (newest first).
+ * Tapping one shows only that class; the choice rides in `?class=` so a filtered garage can be linked.
+ * @param {IndexEntry[]} days
+ * @param {HTMLElement} list
+ * @returns {HTMLElement}
+ */
+function filters(days, list) {
+  /** @type {string[]} */
+  const classes = [...new Set(days.map(d => d.class).filter(Boolean))];
+  const asked = new URLSearchParams(location.search).get('class');
+  let current = asked && classes.includes(asked) ? asked : '';
+  const bar = el('div', { class: 'g-filters', role: 'group', 'aria-label': 'Filter by class' });
+  /** @type {HTMLButtonElement[]} */
+  const chips = [];
+  const show = () => {
+    const shown = current ? days.filter(d => d.class === current) : days;
+    list.replaceChildren(...shown.map(row));
+    for (const chip of chips) chip.setAttribute('aria-pressed', String(chip.value === current));
+  };
+  for (const cls of ['', ...classes]) {
+    const chip = el('button', {
+      type: 'button', class: 'g-chip', value: cls,
+      onclick: () => {
+        current = current === cls ? '' : cls;
+        const url = new URL(location.href);
+        if (current) url.searchParams.set('class', current); else url.searchParams.delete('class');
+        history.replaceState(null, '', url);
+        show();
+      },
+    }, cls || 'all');
+    chips.push(chip);
+  }
+  bar.replaceChildren(...chips);
+  show();
+  return bar;
+}
+
 async function main() {
   const list = must('#list');
   try {
@@ -28,7 +66,10 @@ async function main() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     /** @type {IndexEntry[]} */
     const days = await res.json();
-    list.replaceChildren(...(days.length ? days.map(row) : [el('li', { class: 'muted' }, 'Nothing here yet.')]));
+    if (!days.length) { list.replaceChildren(el('li', { class: 'muted' }, 'Nothing here yet.')); return; }
+    // A class with one car still gets a chip; the bar only stays hidden for a single-class garage.
+    if (new Set(days.map(d => d.class)).size > 1) list.before(filters(days, list));
+    else list.replaceChildren(...days.map(row));
   } catch {
     list.replaceChildren(el('li', { class: 'muted' }, 'Could not load the garage list.'));
   }

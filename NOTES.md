@@ -215,3 +215,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. The garage could filter by class (tap a badge to show only that class), now that the list is long enough to want it.
   2. Add a favicon (the page logs a 404 for it on every load).
   3. The crash card could show the day's best alongside this run ("best 812 m"), so the ghost's number is visible without a second run.
+
+## 2026-10-04 — 1971 Škoda 110 Super Sport
+- Engine: garage class filter, the top of yesterday's list. `garage.js` builds a row of chips above the list ("all" plus each class present, newest first); a tap shows only that class, a second tap clears it, and the choice rides in `?class=` via `history.replaceState` so a filtered garage can be linked. Unknown `?class=` values show everything. Chips are real buttons with `aria-pressed`. No new field; reads `class`. docs/GAME.md updated. Checked in Chromium: `?class=rally` → 2 rows, concept chip → 2 rows and URL updates, second tap → all 21, `?class=bogus` → all 21; day page renders; no page errors.
+- Content: roll was concept / 1970s / Czechia / a strange engine or drivetrain layout. The 110 Super Sport (type 724) fits: rear engine with luggage and spare wheel in the nose, and the doors, windscreen and roof all tipping up as one canopy; later the Ferat Vampire RSR of the 1981 film. Škoda 742 P (front-drive test mule) was the runner-up. No photos (all source sites blocked); `photoQuery` set. Top speed omitted (the ~210 km/h figure is with the 1,147 cc test engine). Power is 54 kW from Wikipedia; one other source says 72 hp. Accent is the tail-lamp red, a choice rather than a livery: the car was white. Sprite: white wedge, pop-up lamp bar, grey engine-lid vents, a row of red lamps across the tail; 254 pixels.
+- Next up:
+  1. Add a favicon (the page logs a 404 for it on every load).
+  2. The crash card could show the day's best alongside this run ("best 812 m"), so the ghost's number is visible without a second run.
+  3. The garage filter chips could show a count per class ("rally · 2").
