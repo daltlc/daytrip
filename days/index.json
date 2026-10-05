@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-05", "name": "Otomo", "year": 1925, "class": "road", "accent": "#2f6b4f" },
   { "date": "2026-10-04", "name": "Škoda 110 Super Sport", "year": 1971, "class": "concept", "accent": "#d32f2f" },
   { "date": "2026-10-03", "name": "Ford RS200", "year": 1986, "class": "exotic", "accent": "#1d4fa0" },
   { "date": "2026-10-02", "name": "Hyundai i30 N TCR", "year": 2018, "class": "touring", "accent": "#3d8bd9" },

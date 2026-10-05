@@ -223,3 +223,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Add a favicon (the page logs a 404 for it on every load).
   2. The crash card could show the day's best alongside this run ("best 812 m"), so the ghost's number is visible without a second run.
   3. The garage filter chips could show a count per class ("rally · 2").
+
+## 2026-10-05 — 1925 Otomo
+- Engine: favicon, the top of yesterday's list. Both pages carry the same 16×16 inline SVG data URI (an orange top-down car on the page background), so there's no file to fetch and no 404. docs/GAME.md notes it. Checked in Chromium: index and archive load with no 4xx responses and no page errors.
+- Content: the roll was road / 1920s or earlier / Japan / an underdog that beat the favourites. The Otomo fits: Hakuyosha's air-cooled light car was the only Japanese entry in a 1925 Tokyo race against more powerful foreign cars. A Japanese source says it won its qualifying heat, and Wikipedia says it took second place. The story says "by the accounts that survive" to cover that. No photos (every source site blocked); `photoQuery` set. Displacement is "about 943 cc" because sources give 943 and 944. Power is left out because the "9 hp" figure came from one search summary only. The 1924 Tokyo–Osaka test run and the Prime Minister's launch ride are left out because each came from a single snippet. End of production is given as 1927 (Wikipedia); one source says 1928. Maker is "Hakuyosha". The accent is a dark green I chose, not a documented colour. Sprite: open tourer with separate fenders, a chrome radiator, two lamps, brown seats and a spare wheel on the tail; 194 pixels.
+- Next up:
+  1. The crash card could show the day's best alongside this run ("best 812 m"), so the ghost's number is visible without a second run.
+  2. The garage filter chips could show a count per class ("rally · 2").
+  3. A pre-1930 day could switch off the shift blip or lower the hum's pitch. That would need an optional `game.era` or reuse of `gears: 3`. Decide which before adding a field.
