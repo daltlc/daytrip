@@ -23,6 +23,7 @@ function row(day) {
 
 /**
  * Filter chips: "all" plus every class in the list, in order of first appearance (newest first).
+ * Each chip carries its count ("rally · 2"; "all" counts every day).
  * Tapping one shows only that class; the choice rides in `?class=` so a filtered garage can be linked.
  * @param {IndexEntry[]} days
  * @param {HTMLElement} list
@@ -31,6 +32,9 @@ function row(day) {
 function filters(days, list) {
   /** @type {string[]} */
   const classes = [...new Set(days.map(d => d.class).filter(Boolean))];
+  /** @type {Map<string, number>} */
+  const counts = new Map();
+  for (const d of days) if (d.class) counts.set(d.class, (counts.get(d.class) ?? 0) + 1);
   const asked = new URLSearchParams(location.search).get('class');
   let current = asked && classes.includes(asked) ? asked : '';
   const bar = el('div', { class: 'g-filters', role: 'group', 'aria-label': 'Filter by class' });
@@ -51,7 +55,7 @@ function filters(days, list) {
         history.replaceState(null, '', url);
         show();
       },
-    }, cls || 'all');
+    }, `${cls || 'all'} · ${cls ? counts.get(cls) ?? 0 : days.length}`);
     chips.push(chip);
   }
   bar.replaceChildren(...chips);

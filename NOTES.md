@@ -231,3 +231,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. The crash card could show the day's best alongside this run ("best 812 m"), so the ghost's number is visible without a second run.
   2. The garage filter chips could show a count per class ("rally · 2").
   3. A pre-1930 day could switch off the shift blip or lower the hum's pitch. That would need an optional `game.era` or reuse of `gears: 3`. Decide which before adding a field.
+
+## 2026-10-06 — 1955 Sibal
+- Engine: each garage filter chip now shows its count ("rally · 2", "all · 23"), counted once from `days/index.json` in `filters()`. No new field. Yesterday's top item turned out to be done already: the crash card has always said "Best today: N m". docs/GAME.md updated, and the duplicated "20." entries in its ideas list are now one. Checked in Chromium: `?class=vintage` shows 2 rows and that chip is pressed, all 13 chips carry counts, the day page has no page errors.
+- Content: the roll was vintage / 1980s / South Korea / a strange engine or drivetrain layout. The 1980s hint can't fit a pre-1970 class. The Sibal fits the other hints: jeep-salvaged drivetrain with home-made cylinder heads and a body beaten from oil drums. Displacement left out because sources disagree (1,322–1,323 cc vs a 2.2-litre Willys engine). Production total left out too (about 2,235 vs about 3,000). "Price quadrupled" after the award came from one snippet, so it isn't used. Maker is given as "Choi brothers (Gukje workshop)" because English sources romanise 국제차량제작 differently. The olive accent is my choice, a nod to the jeep; it isn't a documented colour. No photos (all sources blocked); `photoQuery` set. Sprite: a boxy jeep-like hardtop with a cream roof, chrome grille bar, amber lamps and a spare wheel on the tail; 248 pixels.
+- Next up:
+  1. The crash card says "New best today" on a run that only ties the best; it should say that only when the run beats it (compare against the best from before the run).
+  2. A pre-1930 day could switch off the shift blip or lower the hum's pitch. That would need an optional `game.era` or reuse of `gears: 3`. Decide which before adding a field.
+  3. The garage could show how many days it holds in the page heading, now that the "all" chip counts it anyway, or drop the duplication.
