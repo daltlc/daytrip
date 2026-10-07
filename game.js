@@ -267,13 +267,14 @@ export class Game {
     ].filter(present));
   }
 
-  showCrash() {
+  /** @param {boolean} newBest whether this run beat the best from before it (a tie does not) */
+  showCrash(newBest) {
     const m = Math.floor(this.dist), s = this.starsFor(m);
     this.overlay.hidden = false;
     this.overlay.replaceChildren(...[
       el('div', { class: 'stars' }, '★'.repeat(s) + '☆'.repeat(3 - s)),
       el('div', { class: 'big' }, `${m} m`),
-      el('div', { class: 'sub' }, m >= this.best && m > 0 ? 'New best today' : `Best today: ${this.best} m`),
+      el('div', { class: 'sub' }, newBest ? 'New best today' : `Best today: ${this.best} m`),
       el('div', { class: 'sub' }, s < 3 ? `${this.stars[s]} m for ${STAR_WORDS[s]}` : 'Full marks'),
       this.misses ? el('div', { class: 'sub' }, `${this.misses} near miss${this.misses > 1 ? 'es' : ''} · best chain ×${(1 + this.bestCombo * NEAR_MISS_BONUS).toFixed(2)}`) : null,
       el('div', { class: 'cta' }, 'Tap to go again'),
@@ -302,13 +303,14 @@ export class Game {
     this.sound.hit();
     if ('vibrate' in navigator) navigator.vibrate(VIBRATE_MS);
     const m = Math.floor(this.dist);
-    if (m > this.best) {
+    const newBest = m > this.best && m > 0;
+    if (newBest) {
       this.best = m;
       setItem(this.bestKey, String(m));
       this.bestEl.textContent = `Best today: ${m} m`;
       if (this.trace.length > 1) this.saveGhost(this.trace.slice()); // the ghost and the best come from the same run
     }
-    this.showCrash();
+    this.showCrash(newBest);
   }
 
   /** @param {number} dir lanes to move, negative is left */
