@@ -54,6 +54,9 @@ const SLIDE_OMEGA = 18, SLIDE_ZETA = 0.3, SLIDE_MAX = 4;
 // The blip's pitch falls by SHIFT_DROP_K / gears of itself, so a close-ratio box sounds tighter, not
 // just busier: 5 gears is the old fixed 45% fall, 8 gears 28%, 3 gears 75%.
 const SHIFT_SPAN = 1000, MIN_GEARS = 3, MAX_GEARS = 8, DEFAULT_GEARS = 5, SHIFT_DROP_K = 2.25;
+// A car from before ERA_YEAR (read from the day's `year`, no new field) hums lower: ERA_PITCH of the
+// usual pitch for the hum and the shift blip, so a 1920s tourer chugs instead of buzzing.
+const ERA_YEAR = 1930, ERA_PITCH = 0.7;
 const DEFAULT_CURVE = 0.6;
 const SHAKE_S = 0.35, CRASH_LOCKOUT_MS = 500, SWIPE_PX = 28, MAX_DT = 0.05, VIBRATE_MS = 90;
 const MAX_DPR = 3, FALLBACK_WIDTH = 320;
@@ -149,6 +152,7 @@ export class Game {
     const gears = Number.isInteger(gp.gears) ? Math.min(MAX_GEARS, Math.max(MIN_GEARS, /** @type {number} */ (gp.gears))) : DEFAULT_GEARS;
     this.shiftStep = SHIFT_SPAN / gears;
     this.shiftDrop = SHIFT_DROP_K / gears;
+    if (Number.isFinite(day.year) && /** @type {number} */ (day.year) < ERA_YEAR) this.sound.setPitch(ERA_PITCH);
     this.accent = gp.accent ?? DEFAULT_ACCENT;
     this.scenery = (gp.scenery && SCENERY[gp.scenery]) || SCENERY.track;
     this.sprite = buildSprite(day.sprite, this.accent);

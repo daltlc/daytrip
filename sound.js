@@ -7,6 +7,7 @@ import { getItem, setItem } from './storage.js';
 const ENGINE_GAIN = 0.035, HIT_LEN = 0.25, HIT_GAIN = 0.25, SHIFT_GAIN = 0.045, SHIFT_LEN = 0.11;
 const SHIFT_DROP = 0.45, SHIFT_DROP_MIN = 0.1, SHIFT_DROP_MAX = 0.8;
 const MUTE_KEY = 'daytrip.mute';
+const PITCH_MIN = 0.5, PITCH_MAX = 1.5;
 
 /** @returns {typeof AudioContext | undefined} */
 function audioContextCtor() {
@@ -20,6 +21,8 @@ export class Sound {
   /** @type {OscillatorNode | null} */ #osc2 = null;
   /** @type {GainNode | null} */ #gain = null;
   muted = getItem(MUTE_KEY) === '1';
+  /** Multiplier on the hum's and the blip's pitch; Game lowers it for a pre-1930 car. */
+  #pitch = 1;
 
   constructor() {
     // never make noise from a background tab
@@ -41,6 +44,13 @@ export class Sound {
     this.#ctx = ctx; this.#osc = osc; this.#osc2 = osc2; this.#gain = gain;
   }
 
+  /**
+   * Set the pitch multiplier for the hum and the blip. Clamped to 0.5–1.5; anything that is not a
+   * finite number falls back to 1.
+   * @param {number} k
+   */
+  setPitch(k) { this.#pitch = Number.isFinite(k) ? Math.min(PITCH_MAX, Math.max(PITCH_MIN, k)) : 1; }
+
   suspend() { if (this.#ctx?.state === 'running') void this.#ctx.suspend(); }
 
   /**
@@ -50,8 +60,8 @@ export class Sound {
   engine(ratio, on) {
     if (!this.#ctx || !this.#osc || !this.#osc2 || !this.#gain) return;
     const t = this.#ctx.currentTime;
-    this.#osc.frequency.setTargetAtTime(38 + ratio * 150, t, 0.06);
-    this.#osc2.frequency.setTargetAtTime(19 + ratio * 75, t, 0.06);
+    this.#osc.frequency.setTargetAtTime((38 + ratio * 150) * this.#pitch, t, 0.06);
+    this.#osc2.frequency.setTargetAtTime((19 + ratio * 75) * this.#pitch, t, 0.06);
     this.#gain.gain.setTargetAtTime(on && !this.muted ? ENGINE_GAIN : 0, t, 0.08);
   }
 
@@ -64,7 +74,7 @@ export class Sound {
     if (!this.#ctx || this.muted) return;
     const ctx = this.#ctx, t = ctx.currentTime;
     const r = Math.min(1, Math.max(0, Number.isFinite(ratio) ? ratio : 0));
-    const f = 150 + r * 250;
+    const f = (150 + r * 250) * this.#pitch;
     const osc = ctx.createOscillator(); osc.type = 'square';
     osc.frequency.setValueAtTime(f, t);
     const d = Number.isFinite(drop) ? Math.min(SHIFT_DROP_MAX, Math.max(SHIFT_DROP_MIN, drop)) : SHIFT_DROP;
