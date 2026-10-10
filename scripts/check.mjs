@@ -19,6 +19,7 @@ const OBSTACLES = ['cone', 'barrel', 'tire', 'rock', 'snow', 'crate', 'puddle'];
 const SCENERY = ['city', 'mountain', 'desert', 'coast', 'forest', 'track', 'snow'];
 const WEATHER = ['auto', 'none', 'rain', 'snow', 'dust'];
 const LANE_COUNTS = [2, 3, 4];
+const STAT_TAG_MAX = 16;
 const BANNED = /\b(forza|horizon festival|playground games|gran turismo|need for speed)\b/i;
 const BROWSER_MODULES = ['app.js', 'dom.js', 'storage.js', 'geom.js', 'types.js', 'page.js', 'render.js', 'sound.js', 'game.js', 'garage.js'];
 const SCRIPTS = ['scripts/check.mjs', 'scripts/commons.mjs', 'scripts/roll.mjs'];
@@ -67,6 +68,7 @@ function checkDay(f, d) {
   if (Array.isArray(d.stats)) {
     if (d.stats.length < 3 || d.stats.length > 8) err(f, `stats has ${d.stats.length} items; target 5–7`);
     d.stats.forEach((s, i) => { if (!s || typeof s.label !== 'string' || typeof s.value !== 'string' || !s.label || !s.value) err(f, `stats[${i}] needs string label and value`); });
+    d.stats.forEach((s, i) => { if (s && s.tag !== undefined && (typeof s.tag !== 'string' || !s.tag.trim() || s.tag.length > STAT_TAG_MAX)) err(f, `stats[${i}].tag must be a non-empty string of at most ${STAT_TAG_MAX} chars`); });
   } else if (d.stats !== undefined) err(f, 'stats must be an array');
 
   if (d.photos !== undefined) {

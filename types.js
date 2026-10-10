@@ -6,7 +6,7 @@
 /** @typedef {'city' | 'mountain' | 'desert' | 'coast' | 'forest' | 'track' | 'snow'} SceneryKind */
 /** @typedef {'rain' | 'snow' | 'dust'} WeatherKind */
 
-/** @typedef {{ label: string, value: string }} Stat */
+/** @typedef {{ label: string, value: string, tag?: string }} Stat */
 /** @typedef {{ url: string, thumb?: string, credit?: string, license?: string, source?: string, alt?: string }} Photo */
 /** @typedef {{ w: number, h: number, palette: Record<string, string>, rows: string[] }} Sprite */
 

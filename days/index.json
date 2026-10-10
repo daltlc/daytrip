@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-10", "name": "Bricklin SV-1", "year": 1974, "class": "exotic", "accent": "#e8762b" },
   { "date": "2026-10-09", "name": "PX33", "year": 1934, "class": "offroad", "accent": "#6f6a3c" },
   { "date": "2026-10-08", "name": "240 Turbo Evolution", "year": 1983, "class": "touring", "accent": "#1d4f9c" },
   { "date": "2026-10-07", "name": "Prince Skyline GT (S54A)", "year": 1964, "class": "jdm", "accent": "#1f5fae" },

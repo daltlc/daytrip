@@ -254,7 +254,16 @@ function carCard(day, accent) {
 
 /** @param {Stat[]} stats */
 function statsGrid(stats) {
-  return el('div', { class: 'stats' }, stats.map(s => el('div', { class: 'stat' }, el('b', {}, s.value), el('span', {}, s.label))));
+  return el('div', { class: 'stats' }, stats.map(s => el('div', { class: 'stat' }, el('b', {}, s.value), el('span', {}, s.label), statTag(s.tag))));
+}
+
+/**
+ * The optional small tag after a stat's label ("race", "1974"). Anything that is
+ * not a non-empty string draws nothing, so old days and odd values look as before.
+ * @param {unknown} tag
+ */
+function statTag(tag) {
+  return typeof tag === 'string' && tag.trim() ? el('i', { class: 'tag' }, tag.trim()) : null;
 }
 
 /** @param {string} message */
