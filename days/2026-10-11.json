@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-11",
+  "name": "Opala Diplomata SE Collectors",
+  "year": 1992,
+  "maker": "Chevrolet",
+  "country": "Brazil",
+  "class": "muscle",
+  "hook": "When Brazil started its own stock car series in 1979, every single car on the grid was this sedan's ancestor, a six-cylinder Chevrolet Opala.",
+  "story": "Picture a southern Brazilian track in April 1979. Tarumã, Rio Grande do Sul. A brand new championship is about to start. Nineteen cars line up. Every one of them is a Chevrolet Opala with a six-cylinder engine.\n\nThat's how Stock Car Brasil began. One family sedan, made in Brazil, racing itself. Affonso Giaffone wins that very first race.\n\nThe Opala was a mash-up. A German Opel body. American Chevrolet engines. Big, simple and tough. Brazilians loved it on the road and on the track.\n\nThe racing cars changed shape over the years. But underneath, the Opala stayed the heart of the series for a long time.\n\nThen time catches up. In April 1992, after more than twenty-three years, the last Opalas leave the line. Chevrolet sends it off with a small farewell run, the Diplomata SE Collectors. Each buyer gets a videotape of the car's history.\n\nTwo years later, the stock cars switch to its successor, the Omega. An era ends where it started.",
+  "description": "The Chevrolet Opala was GM Brazil's big rear-wheel-drive car, built from November 1968 to April 1992. It mixed an Opel body with Chevrolet engines, including a 4.1-litre inline six. More than a million were made. The Diplomata was the top trim from 1980. The SE Collectors was a limited farewell series of the final years, sold with a videotape of the Opala's history. The Opala was the founding car of Stock Car Brasil in 1979 and was replaced there by the Omega in 1994.",
+  "stats": [
+    { "label": "Engine", "value": "4.1 L (4,093 cc) inline six" },
+    { "label": "Drivetrain", "value": "Front engine, rear-wheel drive" },
+    { "label": "Weight", "tag": "Diplomata 4.1", "value": "1,375 kg" },
+    { "label": "Top speed", "tag": "Diplomata 4.1", "value": "182 km/h" },
+    { "label": "Built", "tag": "all Opalas", "value": "Nov 1968 – Apr 1992" },
+    { "label": "Production", "tag": "all Opalas", "value": "More than 1 million" },
+    { "label": "Collectors run", "value": "100–200 (sources vary)" }
+  ],
+  "photos": [],
+  "photoQuery": "Chevrolet Opala Diplomata",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b",
+      "c": "#d9dde3",
+      "y": "#ffd54a"
+    },
+    "rows": [
+      "................",
+      "...cccccccccc...",
+      "..ycaaaaaaaacy..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..alllllllllla..",
+      "..alllllllllla..",
+      "..alllllllllla..",
+      "..alllllllllla..",
+      "..alllllllllla..",
+      "..abbbbbbbbbba..",
+      "..aabbbbbbbbaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..rraaaaaaaarr..",
+      "...cccccccccc...",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#7a1f2b",
+    "baseSpeed": 1.0,
+    "grip": 0.4,
+    "gears": 4,
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Chevrolet_Opala",
+    "https://en.wikipedia.org/wiki/1979_Stock_Car_Brasil_season",
+    "https://en.wikipedia.org/wiki/Stock_Car_Pro_Series",
+    "https://www.fichacompleta.com.br/carros/comparativo/opala-diplomata-4-1-at-1985-vs-opala-diplomata-4-1-1992"
+  ]
+}

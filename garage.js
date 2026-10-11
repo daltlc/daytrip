@@ -5,12 +5,31 @@ import { el, must } from './dom.js';
 
 const HEX_COLOR = /^#[0-9a-f]{6}$/i;
 
+/** The days the list is showing right now (all, or one class); the surprise link draws from these. @type {IndexEntry[]} */
+let shown = [];
+
+/** @param {IndexEntry} day */
+const dayHref = day => `index.html?d=${encodeURIComponent(day.date)}`;
+
+/**
+ * "Surprise me": jumps to a random car from the list as it is filtered right now.
+ * The pick happens on click, so every tap is a fresh draw; with nothing shown it just goes to today.
+ * @returns {HTMLAnchorElement}
+ */
+function surpriseLink() {
+  const link = el('a', { class: 'g-surprise', href: 'index.html' }, 'Surprise me →');
+  link.addEventListener('click', () => {
+    if (shown.length) link.href = dayHref(shown[Math.floor(Math.random() * shown.length)]);
+  });
+  return link;
+}
+
 /**
  * @param {IndexEntry} day
  * @returns {HTMLLIElement}
  */
 function row(day) {
-  const href = `index.html?d=${encodeURIComponent(day.date)}`;
+  const href = dayHref(day);
   // Always present so the grid columns line up; an entry without an accent gets an empty ring.
   const swatch = el('span', { class: 'g-swatch', 'aria-hidden': 'true' });
   if (day.accent && HEX_COLOR.test(day.accent)) swatch.style.backgroundColor = day.accent;
@@ -54,7 +73,7 @@ function filters(days, list, count) {
   /** @type {HTMLButtonElement[]} */
   const chips = [];
   const show = () => {
-    const shown = current ? days.filter(d => d.class === current) : days;
+    shown = current ? days.filter(d => d.class === current) : days;
     list.replaceChildren(...shown.map(row));
     if (count) count.textContent = countLine(shown.length, days.length, current);
     for (const chip of chips) chip.setAttribute('aria-pressed', String(chip.value === current));
@@ -88,6 +107,8 @@ async function main() {
     /** @type {IndexEntry[]} */
     const days = await res.json();
     if (!days.length) { list.replaceChildren(el('li', { class: 'muted' }, 'Nothing here yet.')); return; }
+    shown = days;
+    list.before(surpriseLink());
     // A class with one car still gets a chip; the bar only stays hidden for a single-class garage.
     if (new Set(days.map(d => d.class)).size > 1) list.before(filters(days, list, counter));
     else {

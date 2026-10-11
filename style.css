@@ -114,4 +114,5 @@ a { color: var(--accent); }
 @media (prefers-reduced-motion: reduce) { .overlay .cta { animation: none; } }
 .g-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
 .g-chip { appearance: none; font-family: inherit; font-size: 11px; font-weight: 700; line-height: 1; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 7px 10px; min-height: 30px; cursor: pointer; }
+.g-surprise { display: inline-block; margin-top: 10px; font-size: 14px; font-weight: 700; color: var(--accent); text-decoration: none; padding: 6px 0; }
 .g-chip[aria-pressed="true"] { color: var(--bg); background: var(--accent); border-color: var(--accent); }
