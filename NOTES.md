@@ -279,3 +279,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. Have `scripts/roll.mjs` print a one-line reminder that `stats[].tag` exists, so new days use it instead of labels with parentheses.
   3. The surprise link could skip the day you came from (read `document.referrer`'s `?d=`), so two taps in a row never land on the same car.
+
+## 2026-10-12 — 1997 Jösse Car Indigo 3000
+- Engine: `scripts/roll.mjs` now ends its brief with a one-line reminder that `stats[].tag` exists ("Power" + tag "race", not "Power (race)"), pointing at docs/SCHEMA.md. This was item 2 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener. Script only, no page code or field changes.
+- Content: the roll was road / 1990s / Sweden / a car defined by one engineer or designer. The Indigo 3000 fits: Jösse Car of Arvika hired Hans Philip Zackau as chief designer, and it was the company's only car. The story says the Volvo 850 is "on his résumé" rather than that he designed it, because other sources credit the 850 to Jan Wilsgaard's team and Rolf Malmgren. The production count is "fewer than 50 (44–47 by source)", and the end year (1999, 2000 or 2001) is left out. 0–100 km/h (6.5 s) is left out because one summary gave it as 0–60 mph. The 1996 design award and the founders' TVR-showroom story each came from only one source, so neither is used. Top speed is tagged "claimed". The indigo accent comes from the name and is my choice, not a documented colour. No photos (Commons blocked); `photoQuery` set. Sprite: an indigo open two-seater with a lighter bonnet bulge, amber corner lamps, a windscreen strip and two grey seats; no roof. `gears: 5`, forest scenery (Värmland), rocks.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. The surprise link could skip the day you came from (read `document.referrer`'s `?d=`), so two taps in a row never land on the same car.
+  3. `scripts/check.mjs` could warn when a stat label contains parentheses, to back up today's roll reminder.

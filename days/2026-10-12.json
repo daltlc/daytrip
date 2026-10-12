@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-12",
+  "name": "Indigo 3000",
+  "year": 1997,
+  "maker": "Jösse Car",
+  "country": "Sweden",
+  "class": "road",
+  "hook": "Sweden's forgotten roadster was drawn by a Volvo 850 designer, and under its plastic skin sit a Volvo straight six and a Saab 900 fuel tank.",
+  "story": "Imagine you've spent years drawing sensible Swedish cars. Square shoulders. Safe proportions. Your name is Hans Philip Zackau, and the Volvo 850 is on your résumé.\n\nThen a tiny new company calls from Arvika. It's a small town in Värmland, deep in the forests of western Sweden. They want a sports car. Two seats, no roof, engine up front, power to the rear. And they want you as chief designer.\n\nSo you pick up the pen and let go. Long nose. Low sides. A skin of composite panels over a space frame. The whole car weighs about a thousand kilograms.\n\nUnderneath, it's a Swedish parts bin. A three-litre Volvo straight six. The gearbox from a Volvo 960. A Saab 900 fuel tank. The steering column from the 850 you already know.\n\nWith around two hundred horsepower in a car that light, it's quick. But the money runs out. Fewer than fifty are built. Zackau's roadster becomes the only car the company ever makes.",
+  "description": "The Indigo 3000 is a two-seat, front-engined, rear-wheel-drive roadster built by Jösse Car of Arvika, Sweden, from 1996. Its chief designer was Hans Philip Zackau, known for the Volvo 850. The body is composite panels on a space frame. It uses a 3.0-litre all-aluminium Volvo straight six and a Volvo 960 gearbox, plus parts from Saab and Volvo. Fewer than fifty were made before the company folded. It was Jösse Car's only model.",
+  "stats": [
+    {
+      "label": "Engine",
+      "value": "3.0 L all-aluminium Volvo straight six"
+    },
+    {
+      "label": "Power",
+      "value": "204 PS (about 200 bhp)"
+    },
+    {
+      "label": "Gearbox",
+      "value": "5-speed manual, from the Volvo 960"
+    },
+    {
+      "label": "Drivetrain",
+      "value": "Front engine, rear-wheel drive"
+    },
+    {
+      "label": "Weight",
+      "value": "About 1,000 kg"
+    },
+    {
+      "label": "Top speed",
+      "tag": "claimed",
+      "value": "250 km/h"
+    },
+    {
+      "label": "Production",
+      "value": "Fewer than 50 (44–47 by source)"
+    }
+  ],
+  "photos": [],
+  "photoQuery": "1997 Jösse Indigo 3000",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b",
+      "y": "#ffd54a",
+      "g": "#3a3d44"
+    },
+    "rows": [
+      "................",
+      ".....aaaaaa.....",
+      "...yaaaaaaaay...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaallllaaakk.",
+      ".kkaaallllaaakk.",
+      "..aaaallllaaaa..",
+      "..aaaallllaaaa..",
+      "..aaaaaaaaaaaa..",
+      "..abbbbbbbbbba..",
+      "..akkkkaakkkka..",
+      "..akggkaakggka..",
+      "..akggkaakggka..",
+      "..akkkkaakkkka..",
+      "..aaaaaaaaaaaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..rraaaaaaaarr..",
+      "...aaaaaaaaaa...",
+      "................",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "rock",
+    "scenery": "forest",
+    "accent": "#3d3f9e",
+    "baseSpeed": 1.1,
+    "grip": 0.6,
+    "gears": 5,
+    "stars": [
+      300,
+      800,
+      1500
+    ]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Indigo_3000",
+    "https://en.wikipedia.org/wiki/J%C3%B6sse_Car",
+    "https://www.ultimatespecs.com/car-specs/Josse/5542/Josse-Indigo-3000-(Volvo-engine).html",
+    "https://www.influx.co.uk/features/josse-indigo-3000/"
+  ]
+}

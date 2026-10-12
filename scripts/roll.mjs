@@ -73,5 +73,6 @@ process.stdout.write([
   `Angle:   ${angle}  <- strong hint`,
   `Search:  try phrasings like "${decade} ${region} ${label} ${angle}" and "obscure ${label} ${decade} ${region}"`,
   `Avoid (already covered): ${index.map(e => `${e.year ?? ''} ${e.name}`.trim()).join('; ') || 'nothing yet'}`,
+  `Stats:   two figures with one label? Use "tag" ({"label": "Power", "tag": "race", ...}), not "Power (race)"; see docs/SCHEMA.md`,
   '',
 ].join('\n'));
