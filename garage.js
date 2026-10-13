@@ -12,14 +12,35 @@ let shown = [];
 const dayHref = day => `index.html?d=${encodeURIComponent(day.date)}`;
 
 /**
- * "Surprise me": jumps to a random car from the list as it is filtered right now.
- * The pick happens on click, so every tap is a fresh draw; with nothing shown it just goes to today.
+ * The date of the day page that sent you here, read from `document.referrer`: its `?d=`, or the newest
+ * day for a bare day page. Anything else (another site, the garage itself, no referrer) gives ''.
+ * @param {string} newest the newest date in the index, which a day page without `?d=` shows
+ * @returns {string}
+ */
+function cameFrom(newest) {
+  try {
+    const url = new URL(document.referrer);
+    if (url.origin !== location.origin || url.pathname.endsWith('archive.html')) return '';
+    return url.searchParams.get('d') || newest;
+  } catch {
+    // No referrer (typed URL, privacy settings) is an empty string, which `new URL` rejects: nothing to skip.
+    return '';
+  }
+}
+
+/**
+ * "Surprise me": jumps to a random car from the list as it is filtered right now, never the day you came from
+ * unless it is the only one shown. The pick happens on click, so every tap is a fresh draw; with nothing shown
+ * it just goes to today.
+ * @param {string} skip the date to leave out of the draw ('' for none)
  * @returns {HTMLAnchorElement}
  */
-function surpriseLink() {
+function surpriseLink(skip) {
   const link = el('a', { class: 'g-surprise', href: 'index.html' }, 'Surprise me →');
   link.addEventListener('click', () => {
-    if (shown.length) link.href = dayHref(shown[Math.floor(Math.random() * shown.length)]);
+    const others = shown.filter(d => d.date !== skip);
+    const pool = others.length ? others : shown;
+    if (pool.length) link.href = dayHref(pool[Math.floor(Math.random() * pool.length)]);
   });
   return link;
 }
@@ -108,7 +129,7 @@ async function main() {
     const days = await res.json();
     if (!days.length) { list.replaceChildren(el('li', { class: 'muted' }, 'Nothing here yet.')); return; }
     shown = days;
-    list.before(surpriseLink());
+    list.before(surpriseLink(cameFrom(days[0].date)));
     // A class with one car still gets a chip; the bar only stays hidden for a single-class garage.
     if (new Set(days.map(d => d.class)).size > 1) list.before(filters(days, list, counter));
     else {

@@ -287,3 +287,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. The surprise link could skip the day you came from (read `document.referrer`'s `?d=`), so two taps in a row never land on the same car.
   3. `scripts/check.mjs` could warn when a stat label contains parentheses, to back up today's roll reminder.
+
+## 2026-10-13 — 2007 Diatto Ottovù
+- Engine: the garage's "Surprise me" link no longer lands on the day you came from. `cameFrom` reads `document.referrer` once: a same-origin day page gives its `?d=`, or the newest date for a bare `index.html`, and the draw leaves that date out unless it's the only car shown. Another site, the garage itself or no referrer skips nothing. This was item 2 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener. No new field. docs/GAME.md updated. Not clicked through in a browser this run; only the validator's type check ran.
+- Content: the roll was concept / 2000s / Italy / obscure one-off. I considered the Stola S81 (2000), but it was a non-running model with no real stats. The Ottovù is Zagato's two-car commission for private clients, shown at Geneva 2007. Some press reported a planned 99-car run. The description calls that "announced but not confirmed", and the Built stat says two. Power is given as "about 530 bhp". The 650 bhp and 500 PS figures, and the alternative claim of a Maserati engine, are left out. Torque, weight and speed are left out too: the only figures were claims I couldn't confirm. Diatto's end date is given as 1929, the date most sources use; one says 1955. The dark red accent is my choice; the two cars' real colours weren't found. No photos (Commons blocked); `photoQuery` set. Sprite: a long-nosed dark red 2+2 coupé with a lighter bonnet bulge, a black grille mouth, silver lamps, a double-bubble roof hint and a silver rear valance. `gears: 6`, mountain scenery, cones.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. `scripts/check.mjs` could warn when a stat label contains parentheses, to back up the roll reminder.
+  3. The day page could offer a "Surprise me" link too, reusing the garage's draw and skipping the current day directly.

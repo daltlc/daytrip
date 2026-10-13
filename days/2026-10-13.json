@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-13",
+  "name": "Diatto Ottovù",
+  "year": 2007,
+  "maker": "Zagato",
+  "country": "Italy",
+  "class": "concept",
+  "hook": "Its name means V8 in Italian, and it brought back a Turin badge whose cars were once tuned by the Maserati brothers, eighty years after it vanished.",
+  "story": "Picture Turin in the 1920s. A firm called Diatto builds fast cars. Its tuners are three brothers from Bologna named Maserati. They even design Diatto a straight-eight Grand Prix car. Then, in 1926, Alfieri Maserati leaves to put his own name on the bonnet.\n\nBy 1929, Diatto has stopped building cars. The name goes quiet for nearly eighty years.\n\nBut one old friendship survives. Back in 1921, a young coachbuilder called Ugo Zagato shaped a light aluminium body for a Diatto chassis.\n\nFast forward to Geneva, 2007. Two private collectors have asked Zagato for something nobody else owns. Zagato wakes the old name up. The car is called Ottovù. Say it slowly. Otto vu. It's Italian for V8.\n\nUnder a hand-formed aluminium skin sits a supercharged Ford V8, tuned by Roush and Cosworth. Around 530 horsepower. Room for four.\n\nOnly two are built. They differ in colour and a few details at the nose. A long-dead Turin badge, back on the road for two people.",
+  "description": "The Diatto Ottovù is a front-engined grand tourer built by the Italian coachbuilder Zagato for two private clients and shown at the 2007 Geneva Motor Show. It revived the name of Diatto, a Turin maker whose cars were tuned by the Maserati brothers and which stopped building cars in 1929. The body is aluminium over a steel frame. Power comes from a supercharged 4.6-litre Ford V8 tuned by Roush and Cosworth. A 99-car run was announced but not confirmed.",
+  "stats": [
+    {
+      "label": "Engine",
+      "value": "Supercharged 4.6 L Ford V8, tuned by Roush and Cosworth"
+    },
+    {
+      "label": "Power",
+      "value": "About 530 bhp"
+    },
+    {
+      "label": "Gearbox",
+      "value": "6-speed manual or automatic"
+    },
+    {
+      "label": "Body",
+      "value": "Aluminium on a steel frame"
+    },
+    {
+      "label": "Seats",
+      "value": "Four"
+    },
+    {
+      "label": "Debut",
+      "value": "Geneva Motor Show, March 2007"
+    },
+    {
+      "label": "Built",
+      "value": "Two, for private clients"
+    }
+  ],
+  "photos": [],
+  "photoQuery": "2007 Diatto Ottovù Zagato",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b",
+      "w": "#d9dde3",
+      "g": "#3a3d44"
+    },
+    "rows": [
+      "................",
+      ".....aaaaaa.....",
+      "...wakkkkkkaw...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaallllaaakk.",
+      ".kkaaallllaaakk.",
+      "..aaaallllaaaa..",
+      "..aaaaaaaaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..abaaalaaaaba..",
+      "..aaallllllaaa..",
+      "..aalllaalllaa..",
+      "..aaallllllaaa..",
+      "..aabbbbbbbbaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..rraaaaaaaarr..",
+      "...aawwwwwwaa...",
+      "................",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "cone",
+    "scenery": "mountain",
+    "accent": "#8e2430",
+    "baseSpeed": 1.15,
+    "grip": 0.5,
+    "gears": 6,
+    "stars": [
+      300,
+      800,
+      1500
+    ]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Diatto_Ottov%C3%B9_Zagato",
+    "https://en.wikipedia.org/wiki/Diatto",
+    "http://www.archivioprototipi.it/carrozzieri/zagato/diatto8v.html",
+    "https://www.autoblog.com/2007/07/26/zagato-puts-diatto-gt-ottovu-into-limited-production/"
+  ]
+}

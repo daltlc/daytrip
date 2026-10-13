@@ -1,46 +1,45 @@
 {
-  "date": "2026-10-12",
-  "name": "Indigo 3000",
-  "year": 1997,
-  "maker": "Jösse Car",
-  "country": "Sweden",
-  "class": "road",
-  "hook": "Sweden's forgotten roadster was drawn by a Volvo 850 designer, and under its plastic skin sit a Volvo straight six and a Saab 900 fuel tank.",
-  "story": "Imagine you've spent years drawing sensible Swedish cars. Square shoulders. Safe proportions. Your name is Hans Philip Zackau, and the Volvo 850 is on your résumé.\n\nThen a tiny new company calls from Arvika. It's a small town in Värmland, deep in the forests of western Sweden. They want a sports car. Two seats, no roof, engine up front, power to the rear. And they want you as chief designer.\n\nSo you pick up the pen and let go. Long nose. Low sides. A skin of composite panels over a space frame. The whole car weighs about a thousand kilograms.\n\nUnderneath, it's a Swedish parts bin. A three-litre Volvo straight six. The gearbox from a Volvo 960. A Saab 900 fuel tank. The steering column from the 850 you already know.\n\nWith around two hundred horsepower in a car that light, it's quick. But the money runs out. Fewer than fifty are built. Zackau's roadster becomes the only car the company ever makes.",
-  "description": "The Indigo 3000 is a two-seat, front-engined, rear-wheel-drive roadster built by Jösse Car of Arvika, Sweden, from 1996. Its chief designer was Hans Philip Zackau, known for the Volvo 850. The body is composite panels on a space frame. It uses a 3.0-litre all-aluminium Volvo straight six and a Volvo 960 gearbox, plus parts from Saab and Volvo. Fewer than fifty were made before the company folded. It was Jösse Car's only model.",
+  "date": "2026-10-13",
+  "name": "Diatto Ottovù",
+  "year": 2007,
+  "maker": "Zagato",
+  "country": "Italy",
+  "class": "concept",
+  "hook": "Its name means V8 in Italian, and it brought back a Turin badge whose cars were once tuned by the Maserati brothers, eighty years after it vanished.",
+  "story": "Picture Turin in the 1920s. A firm called Diatto builds fast cars. Its tuners are three brothers from Bologna named Maserati. They even design Diatto a straight-eight Grand Prix car. Then, in 1926, Alfieri Maserati leaves to put his own name on the bonnet.\n\nBy 1929, Diatto has stopped building cars. The name goes quiet for nearly eighty years.\n\nBut one old friendship survives. Back in 1921, a young coachbuilder called Ugo Zagato shaped a light aluminium body for a Diatto chassis.\n\nFast forward to Geneva, 2007. Two private collectors have asked Zagato for something nobody else owns. Zagato wakes the old name up. The car is called Ottovù. Say it slowly. Otto vu. It's Italian for V8.\n\nUnder a hand-formed aluminium skin sits a supercharged Ford V8, tuned by Roush and Cosworth. Around 530 horsepower. Room for four.\n\nOnly two are built. They differ in colour and a few details at the nose. A long-dead Turin badge, back on the road for two people.",
+  "description": "The Diatto Ottovù is a front-engined grand tourer built by the Italian coachbuilder Zagato for two private clients and shown at the 2007 Geneva Motor Show. It revived the name of Diatto, a Turin maker whose cars were tuned by the Maserati brothers and which stopped building cars in 1929. The body is aluminium over a steel frame. Power comes from a supercharged 4.6-litre Ford V8 tuned by Roush and Cosworth. A 99-car run was announced but not confirmed.",
   "stats": [
     {
       "label": "Engine",
-      "value": "3.0 L all-aluminium Volvo straight six"
+      "value": "Supercharged 4.6 L Ford V8, tuned by Roush and Cosworth"
     },
     {
       "label": "Power",
-      "value": "204 PS (about 200 bhp)"
+      "value": "About 530 bhp"
     },
     {
       "label": "Gearbox",
-      "value": "5-speed manual, from the Volvo 960"
+      "value": "6-speed manual or automatic"
     },
     {
-      "label": "Drivetrain",
-      "value": "Front engine, rear-wheel drive"
+      "label": "Body",
+      "value": "Aluminium on a steel frame"
     },
     {
-      "label": "Weight",
-      "value": "About 1,000 kg"
+      "label": "Seats",
+      "value": "Four"
     },
     {
-      "label": "Top speed",
-      "tag": "claimed",
-      "value": "250 km/h"
+      "label": "Debut",
+      "value": "Geneva Motor Show, March 2007"
     },
     {
-      "label": "Production",
-      "value": "Fewer than 50 (44–47 by source)"
+      "label": "Built",
+      "value": "Two, for private clients"
     }
   ],
   "photos": [],
-  "photoQuery": "1997 Jösse Indigo 3000",
+  "photoQuery": "2007 Diatto Ottovù Zagato",
   "sprite": {
     "w": 16,
     "h": 24,
@@ -50,43 +49,43 @@
       "k": "#111318",
       "b": "#8fd3ff",
       "r": "#ff3b3b",
-      "y": "#ffd54a",
+      "w": "#d9dde3",
       "g": "#3a3d44"
     },
     "rows": [
       "................",
       ".....aaaaaa.....",
-      "...yaaaaaaaay...",
+      "...wakkkkkkaw...",
       ".kkaaaaaaaaaakk.",
       ".kkaaallllaaakk.",
       ".kkaaallllaaakk.",
       "..aaaallllaaaa..",
-      "..aaaallllaaaa..",
       "..aaaaaaaaaaaa..",
+      "..aabbbbbbbbaa..",
       "..abbbbbbbbbba..",
-      "..akkkkaakkkka..",
-      "..akggkaakggka..",
-      "..akggkaakggka..",
-      "..akkkkaakkkka..",
-      "..aaaaaaaaaaaa..",
+      "..abaaalaaaaba..",
+      "..aaallllllaaa..",
+      "..aalllaalllaa..",
+      "..aaallllllaaa..",
+      "..aabbbbbbbbaa..",
       ".kkaaaaaaaaaakk.",
       ".kkaaaaaaaaaakk.",
       ".kkaaaaaaaaaakk.",
       "..aaaaaaaaaaaa..",
       "..rraaaaaaaarr..",
-      "...aaaaaaaaaa...",
+      "...aawwwwwwaa...",
       "................",
       "................",
       "................"
     ]
   },
   "game": {
-    "obstacle": "rock",
-    "scenery": "forest",
-    "accent": "#3d3f9e",
-    "baseSpeed": 1.1,
-    "grip": 0.6,
-    "gears": 5,
+    "obstacle": "cone",
+    "scenery": "mountain",
+    "accent": "#8e2430",
+    "baseSpeed": 1.15,
+    "grip": 0.5,
+    "gears": 6,
     "stars": [
       300,
       800,
@@ -94,9 +93,9 @@
     ]
   },
   "sources": [
-    "https://en.wikipedia.org/wiki/Indigo_3000",
-    "https://en.wikipedia.org/wiki/J%C3%B6sse_Car",
-    "https://www.ultimatespecs.com/car-specs/Josse/5542/Josse-Indigo-3000-(Volvo-engine).html",
-    "https://www.influx.co.uk/features/josse-indigo-3000/"
+    "https://en.wikipedia.org/wiki/Diatto_Ottov%C3%B9_Zagato",
+    "https://en.wikipedia.org/wiki/Diatto",
+    "http://www.archivioprototipi.it/carrozzieri/zagato/diatto8v.html",
+    "https://www.autoblog.com/2007/07/26/zagato-puts-diatto-gt-ottovu-into-limited-production/"
   ]
 }
