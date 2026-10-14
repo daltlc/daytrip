@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-14",
+  "name": "Anasagasti",
+  "year": 1912,
+  "maker": "Anasagasti",
+  "country": "Argentina",
+  "class": "vintage",
+  "hook": "Argentina's first car maker shipped its little tourers across the Atlantic to race in Europe, then closed after building about fifty, because the war cut off its engines.",
+  "story": "Buenos Aires, 1909. A young engineer called Horacio Anasagasti opens a workshop. He fixes car engines, aircraft engines, farm engines. Then he decides to build a whole car.\n\nThe heart is French, a four-cylinder Ballot. Almost everything around it is made at home, in Argentina. In 1911 the first one runs a road race from Rosario to Córdoba and back. In 1912 it goes on sale. Nobody in the country has done this before.\n\nAnd he doesn't stop at home. He sends cars to Europe. They run in long French road events, and in the Coupe de l'Auto. One report says three cars went over and were simply sold there afterwards.\n\nThen 1914 arrives. War closes the factories that supplied his parts. By 1915 the company is gone, after roughly fifty cars.\n\nOnly two are known to survive. One sits with the Argentine Air Force. The other belongs to a classic car club. Both, they say, still run.",
+  "description": "The Anasagasti was the first car built in Argentina. Engineer Horacio Anasagasti founded his Buenos Aires company in 1909 to repair engines, and showed a prototype with a four-cylinder engine and four-speed gearbox in 1910. Production tourers used a French Ballot four-cylinder of about 2.1 litres in a locally built body. Sales began in 1912. Cars were entered in French road events and the 1913 Coupe de l'Auto. Wartime parts shortages closed the firm in 1915, after about fifty cars.",
+  "stats": [
+    { "label": "Engine", "value": "Ballot 4-cylinder, about 2.1 litres" },
+    { "label": "Gearbox", "value": "4-speed and reverse" },
+    { "label": "Built", "value": "About 50" },
+    { "label": "Production", "value": "1912–1915, Buenos Aires" },
+    { "label": "Survivors", "value": "2 known" }
+  ],
+  "photos": [],
+  "photoQuery": "1912 Anasagasti",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "c": "#c9a646",
+      "y": "#ffe9a8",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "n": "#6b4226",
+      "d": "#2a2b26",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      "......cccc......",
+      "......cccc......",
+      ".yy...aaaa...yy.",
+      ".kk..aaaaaa..kk.",
+      "kkkk.aaaaaa.kkkk",
+      "kkkk.aaaaaa.kkkk",
+      ".kk.aallllaa.kk.",
+      "...aaaaaaaaaa...",
+      "...abbbbbbbba...",
+      "..aannnnnnnnaa..",
+      "..aannnnnnnnaa..",
+      "..aaaaaaaaaaaa..",
+      "..aannnnnnnnaa..",
+      "..aannnnnnnnaa..",
+      "..aannnnnnnnaa..",
+      "..aaaaaaaaaaaa..",
+      ".kk.aaaaaaaa.kk.",
+      "kkkk.aaaaaa.kkkk",
+      "kkkk.aaaaaa.kkkk",
+      ".kk.adddddda.kk.",
+      "....rddddddr....",
+      ".....dddddd.....",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "rock",
+    "scenery": "desert",
+    "accent": "#1f4f3a",
+    "baseSpeed": 0.8,
+    "grip": 0.35,
+    "gears": 4,
+    "curve": 0.6,
+    "stars": [250, 650, 1200]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Anasagasti",
+    "https://en.wikipedia.org/wiki/Horacio_Anasagasti",
+    "https://www.prewarcar.de/a-1912-anasagasti-from-buenos-aires",
+    "https://www.lmneuquen.com/el-primer-fabricante-autos-y-repuestos-n253158"
+  ]
+}

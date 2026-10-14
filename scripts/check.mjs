@@ -50,8 +50,9 @@ function readJson(rel) {
 /**
  * @param {string} f
  * @param {DayFile} d
+ * @param {boolean} [newest] the newest day file; style warnings past days can't act on are kept to it
  */
-function checkDay(f, d) {
+function checkDay(f, d, newest = false) {
   for (const k of /** @type {const} */ (['date', 'name', 'year', 'maker', 'class', 'hook', 'story', 'description', 'stats', 'sprite', 'game', 'sources']))
     if (d[k] === undefined || d[k] === null) err(f, `missing "${k}"`);
   if (d.date && !/^\d{4}-\d{2}-\d{2}$/.test(d.date)) err(f, `date must be YYYY-MM-DD, got "${d.date}"`);
@@ -68,6 +69,7 @@ function checkDay(f, d) {
   if (Array.isArray(d.stats)) {
     if (d.stats.length < 3 || d.stats.length > 8) err(f, `stats has ${d.stats.length} items; target 5–7`);
     d.stats.forEach((s, i) => { if (!s || typeof s.label !== 'string' || typeof s.value !== 'string' || !s.label || !s.value) err(f, `stats[${i}] needs string label and value`); });
+    if (newest) d.stats.forEach((s, i) => { if (s && typeof s.label === 'string' && /[()]/.test(s.label)) warn(f, `stats[${i}].label "${s.label}" has parentheses; move the qualifier into "tag"`); });
     d.stats.forEach((s, i) => { if (s && s.tag !== undefined && (typeof s.tag !== 'string' || !s.tag.trim() || s.tag.length > STAT_TAG_MAX)) err(f, `stats[${i}].tag must be a non-empty string of at most ${STAT_TAG_MAX} chars`); });
   } else if (d.stats !== undefined) err(f, 'stats must be an array');
 
@@ -127,7 +129,7 @@ function checkDay(f, d) {
 // --- day files
 const daysDir = path.join(root, 'days');
 const dayFiles = readdirSync(daysDir).filter(n => /^\d{4}-\d{2}-\d{2}\.json$/.test(n)).sort().reverse();
-for (const n of dayFiles) { const d = readJson(`days/${n}`); if (d) checkDay(`days/${n}`, /** @type {DayFile} */ (d)); }
+for (const n of dayFiles) { const d = readJson(`days/${n}`); if (d) checkDay(`days/${n}`, /** @type {DayFile} */ (d), n === dayFiles[0]); }
 const template = readJson('days/_template.json');
 if (template) checkDay('days/_template.json', /** @type {DayFile} */ (template));
 

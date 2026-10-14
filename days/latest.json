@@ -1,101 +1,77 @@
 {
-  "date": "2026-10-13",
-  "name": "Diatto Ottovù",
-  "year": 2007,
-  "maker": "Zagato",
-  "country": "Italy",
-  "class": "concept",
-  "hook": "Its name means V8 in Italian, and it brought back a Turin badge whose cars were once tuned by the Maserati brothers, eighty years after it vanished.",
-  "story": "Picture Turin in the 1920s. A firm called Diatto builds fast cars. Its tuners are three brothers from Bologna named Maserati. They even design Diatto a straight-eight Grand Prix car. Then, in 1926, Alfieri Maserati leaves to put his own name on the bonnet.\n\nBy 1929, Diatto has stopped building cars. The name goes quiet for nearly eighty years.\n\nBut one old friendship survives. Back in 1921, a young coachbuilder called Ugo Zagato shaped a light aluminium body for a Diatto chassis.\n\nFast forward to Geneva, 2007. Two private collectors have asked Zagato for something nobody else owns. Zagato wakes the old name up. The car is called Ottovù. Say it slowly. Otto vu. It's Italian for V8.\n\nUnder a hand-formed aluminium skin sits a supercharged Ford V8, tuned by Roush and Cosworth. Around 530 horsepower. Room for four.\n\nOnly two are built. They differ in colour and a few details at the nose. A long-dead Turin badge, back on the road for two people.",
-  "description": "The Diatto Ottovù is a front-engined grand tourer built by the Italian coachbuilder Zagato for two private clients and shown at the 2007 Geneva Motor Show. It revived the name of Diatto, a Turin maker whose cars were tuned by the Maserati brothers and which stopped building cars in 1929. The body is aluminium over a steel frame. Power comes from a supercharged 4.6-litre Ford V8 tuned by Roush and Cosworth. A 99-car run was announced but not confirmed.",
+  "date": "2026-10-14",
+  "name": "Anasagasti",
+  "year": 1912,
+  "maker": "Anasagasti",
+  "country": "Argentina",
+  "class": "vintage",
+  "hook": "Argentina's first car maker shipped its little tourers across the Atlantic to race in Europe, then closed after building about fifty, because the war cut off its engines.",
+  "story": "Buenos Aires, 1909. A young engineer called Horacio Anasagasti opens a workshop. He fixes car engines, aircraft engines, farm engines. Then he decides to build a whole car.\n\nThe heart is French, a four-cylinder Ballot. Almost everything around it is made at home, in Argentina. In 1911 the first one runs a road race from Rosario to Córdoba and back. In 1912 it goes on sale. Nobody in the country has done this before.\n\nAnd he doesn't stop at home. He sends cars to Europe. They run in long French road events, and in the Coupe de l'Auto. One report says three cars went over and were simply sold there afterwards.\n\nThen 1914 arrives. War closes the factories that supplied his parts. By 1915 the company is gone, after roughly fifty cars.\n\nOnly two are known to survive. One sits with the Argentine Air Force. The other belongs to a classic car club. Both, they say, still run.",
+  "description": "The Anasagasti was the first car built in Argentina. Engineer Horacio Anasagasti founded his Buenos Aires company in 1909 to repair engines, and showed a prototype with a four-cylinder engine and four-speed gearbox in 1910. Production tourers used a French Ballot four-cylinder of about 2.1 litres in a locally built body. Sales began in 1912. Cars were entered in French road events and the 1913 Coupe de l'Auto. Wartime parts shortages closed the firm in 1915, after about fifty cars.",
   "stats": [
-    {
-      "label": "Engine",
-      "value": "Supercharged 4.6 L Ford V8, tuned by Roush and Cosworth"
-    },
-    {
-      "label": "Power",
-      "value": "About 530 bhp"
-    },
-    {
-      "label": "Gearbox",
-      "value": "6-speed manual or automatic"
-    },
-    {
-      "label": "Body",
-      "value": "Aluminium on a steel frame"
-    },
-    {
-      "label": "Seats",
-      "value": "Four"
-    },
-    {
-      "label": "Debut",
-      "value": "Geneva Motor Show, March 2007"
-    },
-    {
-      "label": "Built",
-      "value": "Two, for private clients"
-    }
+    { "label": "Engine", "value": "Ballot 4-cylinder, about 2.1 litres" },
+    { "label": "Gearbox", "value": "4-speed and reverse" },
+    { "label": "Built", "value": "About 50" },
+    { "label": "Production", "value": "1912–1915, Buenos Aires" },
+    { "label": "Survivors", "value": "2 known" }
   ],
   "photos": [],
-  "photoQuery": "2007 Diatto Ottovù Zagato",
+  "photoQuery": "1912 Anasagasti",
   "sprite": {
     "w": 16,
     "h": 24,
     "palette": {
       "a": "ACCENT",
       "l": "ACCENT_LIGHT",
+      "c": "#c9a646",
+      "y": "#ffe9a8",
       "k": "#111318",
       "b": "#8fd3ff",
-      "r": "#ff3b3b",
-      "w": "#d9dde3",
-      "g": "#3a3d44"
+      "n": "#6b4226",
+      "d": "#2a2b26",
+      "r": "#ff3b3b"
     },
     "rows": [
-      "................",
-      ".....aaaaaa.....",
-      "...wakkkkkkaw...",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaallllaaakk.",
-      ".kkaaallllaaakk.",
-      "..aaaallllaaaa..",
+      "......cccc......",
+      "......cccc......",
+      ".yy...aaaa...yy.",
+      ".kk..aaaaaa..kk.",
+      "kkkk.aaaaaa.kkkk",
+      "kkkk.aaaaaa.kkkk",
+      ".kk.aallllaa.kk.",
+      "...aaaaaaaaaa...",
+      "...abbbbbbbba...",
+      "..aannnnnnnnaa..",
+      "..aannnnnnnnaa..",
       "..aaaaaaaaaaaa..",
-      "..aabbbbbbbbaa..",
-      "..abbbbbbbbbba..",
-      "..abaaalaaaaba..",
-      "..aaallllllaaa..",
-      "..aalllaalllaa..",
-      "..aaallllllaaa..",
-      "..aabbbbbbbbaa..",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
+      "..aannnnnnnnaa..",
+      "..aannnnnnnnaa..",
+      "..aannnnnnnnaa..",
       "..aaaaaaaaaaaa..",
-      "..rraaaaaaaarr..",
-      "...aawwwwwwaa...",
-      "................",
+      ".kk.aaaaaaaa.kk.",
+      "kkkk.aaaaaa.kkkk",
+      "kkkk.aaaaaa.kkkk",
+      ".kk.adddddda.kk.",
+      "....rddddddr....",
+      ".....dddddd.....",
       "................",
       "................"
     ]
   },
   "game": {
-    "obstacle": "cone",
-    "scenery": "mountain",
-    "accent": "#8e2430",
-    "baseSpeed": 1.15,
-    "grip": 0.5,
-    "gears": 6,
-    "stars": [
-      300,
-      800,
-      1500
-    ]
+    "obstacle": "rock",
+    "scenery": "desert",
+    "accent": "#1f4f3a",
+    "baseSpeed": 0.8,
+    "grip": 0.35,
+    "gears": 4,
+    "curve": 0.6,
+    "stars": [250, 650, 1200]
   },
   "sources": [
-    "https://en.wikipedia.org/wiki/Diatto_Ottov%C3%B9_Zagato",
-    "https://en.wikipedia.org/wiki/Diatto",
-    "http://www.archivioprototipi.it/carrozzieri/zagato/diatto8v.html",
-    "https://www.autoblog.com/2007/07/26/zagato-puts-diatto-gt-ottovu-into-limited-production/"
+    "https://en.wikipedia.org/wiki/Anasagasti",
+    "https://en.wikipedia.org/wiki/Horacio_Anasagasti",
+    "https://www.prewarcar.de/a-1912-anasagasti-from-buenos-aires",
+    "https://www.lmneuquen.com/el-primer-fabricante-autos-y-repuestos-n253158"
   ]
 }

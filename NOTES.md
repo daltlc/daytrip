@@ -295,3 +295,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. `scripts/check.mjs` could warn when a stat label contains parentheses, to back up the roll reminder.
   3. The day page could offer a "Surprise me" link too, reusing the garage's draw and skipping the current day directly.
+
+## 2026-10-14 — 1912 Anasagasti
+- Engine: `scripts/check.mjs` now warns when the newest day's stat label contains parentheses ("Power (race)"), pointing at `tag` instead. Item 2 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener. Only the newest day file is checked, because 10-07, 10-08 and 10-09 already carry such labels and past days are never rewritten. Tested by adding "(x)" to today's label: the warning fired, then cleared. docs/GAME.md updated. No new field.
+- Content: the roll was vintage / 1920s or earlier / South America / commercial flop turned cult classic. The Anasagasti is Argentina's first car: about fifty built from 1912, and the firm closed in 1915 when the war cut off its imported parts. Two survivors. Power is left out: sources give 12 HP, 15 HP and 20 CV fiscal ratings and a claimed 40–50 hp. The European race record is disputed (1912 vs 1913 Tour de France; a Paris–Madrid win some sources report), so the story only says the cars ran in French road events and the Coupe de l'Auto. The price ("$6,500") is left out because the currency was unclear. The dark green accent is my choice; no period colour was found. No photos (Commons blocked); `photoQuery` set. Sprite: a narrow open tourer with a brass radiator, separate cycle wings, spoked-wheel blocks, brown seats and a dark rear. `gears: 4`, desert scenery for the Rosario–Córdoba road, rocks.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. The day page could offer a "Surprise me" link too, reusing the garage's draw and skipping the current day directly.
+  3. `scripts/check.mjs` could check the story and description word counts against the 120–180 and 60–90 targets in docs/SCHEMA.md, warning on the newest day only.
