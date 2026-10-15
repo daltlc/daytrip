@@ -303,3 +303,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. The day page could offer a "Surprise me" link too, reusing the garage's draw and skipping the current day directly.
   3. `scripts/check.mjs` could check the story and description word counts against the 120–180 and 60–90 targets in docs/SCHEMA.md, warning on the newest day only.
+
+## 2026-10-15 — 1999 Peugeot 206 GT
+- Engine: the day page now ends with a "Surprise me →" link (`surpriseLink` in `page.js`) that jumps to a random other car. It fetches `days/index.json` only on tap and leaves out the date on screen; a failed fetch or no other day falls back to the garage. Item 2 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener. No new field. Checked in Chromium at 375 px: three taps in a row each landed on a different day than the one shown, no page errors. docs/GAME.md updated.
+- Content: the roll was rally / 2000s / France / homologation special. The 206 GT fits the angle exactly: 4,000 road cars with longer, aerodynamically useless bumpers so the 206 WRC could meet the 4-metre minimum. Year is 1999 (the FIA homologation date, May 1999) rather than the 2000s hint; cars were sold into 2000 and the WRC car's titles came in 2000–2002. Power is left out: listings say 137 hp, other sources 136 hp for the related GTI. Weight is left out (no source). The numbered plate's position is disputed (door pillar vs boot), so the story only says each car got one. The "about 4.0 m" length is rounded; no source gave the exact figure. The blue accent is my choice. No photos (Commons blocked); `photoQuery` set. Sprite: a blue hatch with a white centre stripe, grey extended bumpers front and rear, light-blue windows, yellow lamps. `gears: 5`, forest, rocks, grip 0.25.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. `scripts/check.mjs` could check the story and description word counts against the 120–180 and 60–90 targets in docs/SCHEMA.md, warning on the newest day only.
+  3. The day page's surprise link could honour a class (e.g. a small "another rally car" link), reusing the same on-tap fetch.

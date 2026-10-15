@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-15", "name": "206 GT", "year": 1999, "class": "rally", "accent": "#1d4fa8" },
   { "date": "2026-10-14", "name": "Anasagasti", "year": 1912, "class": "vintage", "accent": "#1f4f3a" },
   { "date": "2026-10-13", "name": "Diatto Ottovù", "year": 2007, "class": "concept", "accent": "#8e2430" },
   { "date": "2026-10-12", "name": "Indigo 3000", "year": 1997, "class": "road", "accent": "#3d3f9e" },

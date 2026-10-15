@@ -13,6 +13,7 @@ const PHOTO_COUNT = 3;
 const PHOTO_CACHE_MS = 24 * 60 * 60 * 1000;
 const PHOTO_MIN_WIDTH = 900;
 const CARD_SCALE = 6;
+const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 /** @type {Record<CarClass, string>} */
 const CLASS_LABEL = {
@@ -25,7 +26,7 @@ const CLASS_LABEL = {
 /** @returns {Promise<DayFile>} */
 async function loadDay() {
   const requested = new URLSearchParams(location.search).get('d');
-  const file = requested && /^\d{4}-\d{2}-\d{2}$/.test(requested) ? `days/${requested}.json` : 'days/latest.json';
+  const file = requested && DATE.test(requested) ? `days/${requested}.json` : 'days/latest.json';
   const res = await fetch(`${file}?v=${Date.now()}`, { cache: 'no-store' });
   if (!res.ok) throw new Error(`${file}: HTTP ${res.status}`);
   return /** @type {Promise<DayFile>} */ (res.json());
@@ -135,6 +136,7 @@ function render(day) {
       gameMount),
     day.sources?.length ? el('footer', { class: 'sources' }, 'Sources: ',
       day.sources.map((s, i) => [i ? ' · ' : null, el('a', { href: s, target: '_blank', rel: 'noopener' }, hostOf(s))])) : null,
+    el('p', { class: 'day-surprise' }, surpriseLink(day.date)),
   ].filter(present));
   new Game(gameMount, day);
 
@@ -145,6 +147,31 @@ function render(day) {
       .then(photos => { if (photos.length) photoSlot.replaceWith(photoStrip(photos)); else photoSlot.remove(); })
       .catch(() => photoSlot.remove());
   } else photoSlot.remove();
+}
+
+/**
+ * "Surprise me" at the foot of the day: a random other car from `days/index.json`, never the one on screen.
+ * The index is fetched on tap, not on load, so a reader who never taps pays nothing. If the fetch fails or
+ * there is no other day, the link falls through to its plain `href`, the garage.
+ * @param {string} current the date on screen
+ * @returns {HTMLAnchorElement}
+ */
+function surpriseLink(current) {
+  const link = el('a', { class: 'g-surprise', href: 'archive.html' }, 'Surprise me →');
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    void fetch(`days/index.json?v=${Date.now()}`, { cache: 'no-store' })
+      .then(res => (res.ok ? res.json() : []))
+      .then((/** @type {unknown} */ days) => {
+        const dates = Array.isArray(days)
+          ? days.map(d => (d && typeof d.date === 'string' ? d.date : '')).filter(d => DATE.test(d) && d !== current)
+          : [];
+        location.href = dates.length ? `index.html?d=${encodeURIComponent(dates[Math.floor(Math.random() * dates.length)])}` : link.href;
+      })
+      // Offline or a bad index: the garage is the next best thing.
+      .catch(() => { location.href = link.href; });
+  });
+  return link;
 }
 
 /* ---------- photos from Wikimedia Commons (mirrors scripts/commons.mjs) ---------- */

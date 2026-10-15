@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-15",
+  "name": "206 GT",
+  "year": 1999,
+  "maker": "Peugeot",
+  "country": "France",
+  "class": "rally",
+  "hook": "Peugeot built four thousand road cars with longer bumpers that did nothing, just so its rally car could be seventeen centimetres longer.",
+  "story": "Picture the Peugeot 206. A little French hatchback. Cheap, cheerful, everywhere. Now picture Peugeot wanting to win the World Rally Championship with it.\n\nThere was one problem. The rules said a World Rally Car had to be at least four metres long. The 206 was about 3.83. It was simply too small.\n\nSo Peugeot did something wonderfully cheeky. It did not stretch the car. It stretched the bumpers. New, longer ones went on the front and back. They had no job to do in the wind. Their only job was the tape measure.\n\nBut the rules also wanted proof that this was a real road car. So Peugeot built four thousand of them, called the 206 GT, and sold them to the public. Each one got a numbered plate.\n\nThe homologation papers were signed in May 1999. The rally car took the manufacturers' title in 2000, 2001 and 2002. And somewhere out there, four thousand shoppers are still carrying the extra bumper that made it legal.",
+  "description": "The 206 GT, short for Grand Tourisme, was a limited road version of the Peugeot 206 hatchback. The standard car measured about 3.83 metres, short of the four-metre minimum for a World Rally Car. Peugeot fitted longer front and rear bumpers to reach it, then built 4,000 cars to satisfy homologation. The FIA papers date from May 1999. The 206 WRC it made legal won three manufacturers' titles and two drivers' titles.",
+  "stats": [
+    { "label": "Engine", "value": "2.0-litre 16-valve four" },
+    { "label": "Drivetrain", "value": "Front-wheel drive" },
+    { "label": "Length", "value": "About 4.0 m", "tag": "GT" },
+    { "label": "Length", "value": "About 3.83 m", "tag": "standard 206" },
+    { "label": "Built", "value": "4,000" },
+    { "label": "Homologated", "value": "May 1999 (FIA)" },
+    { "label": "WRC titles", "value": "Manufacturers' 2000–2002" }
+  ],
+  "photos": [],
+  "photoQuery": "1999 Peugeot 206 GT",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "g": "#9aa0a8",
+      "w": "#f2f2f2",
+      "y": "#ffe9a8",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      "....gggggggg....",
+      "...gyyggggyyg...",
+      "...aaaaaaaaaa...",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
+      "..aaaaawwaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..aalllwwlllaa..",
+      "..aalllwwlllaa..",
+      "..aalllwwlllaa..",
+      "..aalllwwlllaa..",
+      "..aabbbbbbbbaa..",
+      "..aaaaawwaaaaa..",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
+      "..arraaaaaarra..",
+      "...aaaaaaaaaa...",
+      "...gggggggggg...",
+      "....gggggggg....",
+      "....k......k....",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "rock",
+    "scenery": "forest",
+    "accent": "#1d4fa8",
+    "baseSpeed": 1.05,
+    "grip": 0.25,
+    "gears": 5,
+    "curve": 0.8,
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Peugeot_206_WRC",
+    "https://historicdb.fia.com/node/323458",
+    "https://topgear.nl/autonieuws/peugeot-206-gt-stiekeme-reden-lange-bumpers/",
+    "https://benzin.fr/en/auctions/show/2060gt0sans0reserve-5ad5becfb74b2"
+  ]
+}
