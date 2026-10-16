@@ -311,3 +311,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. `scripts/check.mjs` could check the story and description word counts against the 120–180 and 60–90 targets in docs/SCHEMA.md, warning on the newest day only.
   3. The day page's surprise link could honour a class (e.g. a small "another rally car" link), reusing the same on-tap fetch.
+
+## 2026-10-16 — 1974 Porsche 911 Carrera RSR Turbo 2.1
+- Engine: `scripts/check.mjs` now warns when the newest day's story is outside 120–180 words or its description outside 60–90 (the wider 100–220 / 40–120 bounds stay errors on every day). Item 2 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener. Tested by cutting today's description to 50 words: the warning fired, then cleared. docs/GAME.md updated. No new field.
+- Content: the roll was gt3 / 1970s / Germany / a car that started or ended a racing era. The RSR Turbo 2.1 was the first turbocharged 911 and Porsche's first turbo racer at Le Mans; its 2,142 cc came from the 1.4 turbo factor against the 3-litre limit, and it led to the 934/935. Power is left out: sources give 470 to 500 hp. Which chassis finished second at Le Mans 1974 is muddled across sources (R13 vs a sister car), so the story only names the drivers (van Lennep / Müller). The Monza debut result came from one source, so it isn't used. The navy accent is the Martini stripe; the body colour (white vs silver) varies by source, so the sprite uses a pale silver-white. No photos (Commons blocked); `photoQuery` set. Sprite: a wide-arched 911 with Martini stripes down one side and a full-width rear wing striped navy/red/light blue; 286 filled pixels, a touch over the 260 aim. `gears: 5`, track, tires, baseSpeed 1.15.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. The day page's surprise link could honour a class (e.g. a small "another GT car" link), reusing the same on-tap fetch.
+  3. `scripts/check.mjs` could warn when the newest sprite's filled-pixel count is above the 260 aim in docs/SPRITES.md, as it already does below 120.

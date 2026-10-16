@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-16",
+  "name": "911 Carrera RSR Turbo 2.1",
+  "year": 1974,
+  "maker": "Porsche",
+  "country": "Germany",
+  "class": "gt3",
+  "hook": "Porsche's odd 2.1-litre engine size came from one line of arithmetic: three litres divided by 1.4.",
+  "story": "Here is a racing engine designed with a calculator.\n\nIn 1974 the rules for big sports cars allowed three litres. But a turbocharged engine was counted as if it were 1.4 times its real size. So Porsche's engineers did the sum. Three divided by 1.4 is about 2.14. That is exactly what they built. A flat-six of 2,142 cc, with a turbo bolted on.\n\nThey put it in a 911. Not a sleek prototype, a 911, with a giant wing on the back. It weighed about 820 kilograms. And it was up against purpose-built racers from Matra and others.\n\nAt Le Mans that June, Gijs van Lennep and Herbert Müller drove it through the night. It finished second overall, behind a Matra.\n\nA silhouette you could almost buy in a showroom, beaten only by a prototype. Porsche had found its future. The turbo 911s that ruled the rest of the decade all started with this one sum.",
+  "description": "The Carrera RSR Turbo 2.1 was a factory racing 911 built by Porsche for the 1974 season and run in Martini colours. Its turbocharged flat-six displaced 2,142 cc, sized so the 1.4 turbo factor kept it under the three-litre limit. Only four were built. It was the first turbocharged 911 and Porsche's first turbo racer at Le Mans, where it finished second overall in 1974. It led directly to the 934 and 935.",
+  "stats": [
+    { "label": "Engine", "value": "2,142 cc turbocharged flat-six" },
+    { "label": "Weight", "value": "About 820 kg" },
+    { "label": "Gearbox", "value": "5-speed (Type 915)" },
+    { "label": "Turbo factor", "value": "×1.4 (rated as 2,999 cc)" },
+    { "label": "Built", "value": "4" },
+    { "label": "Le Mans", "value": "2nd overall", "tag": "1974" }
+  ],
+  "photos": [],
+  "photoQuery": "1974 Porsche 911 Carrera RSR Turbo",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "#e9ebef",
+      "s": "ACCENT",
+      "r": "#d8262e",
+      "l": "#5fa8e0",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "y": "#ffe9a8",
+      "t": "#ff3b3b"
+    },
+    "rows": [
+      "................",
+      ".....aaaaaa.....",
+      "...yaaaaaaaay...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..aaabbbbbbaaa..",
+      "..aabbbbbbbbaa..",
+      "..aabaaaaaabaa..",
+      "..aasrlaaaaaaa..",
+      "..aasrlaaaaaaa..",
+      "..aasrlaaaaaaa..",
+      "..aabbbbbbbbaa..",
+      ".kaasrlaaaaaaak.",
+      "kkkaaaaaaaaaakkk",
+      "kkkaaaaaaaaaakkk",
+      "kkkaaaaaaaaaakkk",
+      ".kaaaaaaaaaaaak.",
+      "..taaaaaaaaaat..",
+      "..aaaaaaaaaaaa..",
+      ".kkkkkkkkkkkkkk.",
+      "kssssrrrrllllssk",
+      ".k............k."
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#1c2f6b",
+    "baseSpeed": 1.15,
+    "grip": 0.55,
+    "gears": 5,
+    "curve": 0.5,
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://www.motorsportmagazine.com/archive/article/june-2013/70/perfection-power/",
+    "https://www.goodingco.com/press/article/three-historic-turbocharged-competition-porsches-race-to-gooding-and",
+    "https://www.classicandsportscar.com/node/46389",
+    "https://stuttcars.com/porsche-911-carrera-rsr-turbo-2-1-1974-specifications-performance"
+  ]
+}

@@ -64,6 +64,8 @@ function checkDay(f, d, newest = false) {
   if (d.story && (storyWords < 100 || storyWords > 220)) err(f, `story is ${storyWords} words; target 120–180`);
   const descWords = words(d.description);
   if (d.description && (descWords < 40 || descWords > 120)) err(f, `description is ${descWords} words; target 60–90`);
+  if (newest && d.story && storyWords >= 100 && storyWords <= 220 && (storyWords < 120 || storyWords > 180)) warn(f, `story is ${storyWords} words; aim for 120–180`);
+  if (newest && d.description && descWords >= 40 && descWords <= 120 && (descWords < 60 || descWords > 90)) warn(f, `description is ${descWords} words; aim for 60–90`);
   for (const k of /** @type {const} */ (['hook', 'story', 'description'])) if (BANNED.test(d[k] ?? '')) err(f, `"${k}" mentions a game franchise; content must stand on its own`);
 
   if (Array.isArray(d.stats)) {
