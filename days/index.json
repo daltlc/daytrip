@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-17", "name": "F1/87/88C", "year": 1988, "class": "f1", "accent": "#cc1414" },
   { "date": "2026-10-16", "name": "911 Carrera RSR Turbo 2.1", "year": 1974, "class": "gt3", "accent": "#1c2f6b" },
   { "date": "2026-10-15", "name": "206 GT", "year": 1999, "class": "rally", "accent": "#1d4fa8" },
   { "date": "2026-10-14", "name": "Anasagasti", "year": 1912, "class": "vintage", "accent": "#1f4f3a" },

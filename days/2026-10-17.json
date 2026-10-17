@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-17",
+  "name": "F1/87/88C",
+  "year": 1988,
+  "maker": "Ferrari",
+  "country": "Italy",
+  "class": "f1",
+  "hook": "In 1988 McLaren won fifteen of sixteen Grands Prix, and the one it lost went to a year-old Ferrari, at Monza, four weeks after Enzo Ferrari died.",
+  "story": "Picture Monza in September 1988. The grandstands are packed, and they are grieving.\n\nEnzo Ferrari had died four weeks earlier. And that season, nobody could touch McLaren. Its cars had won every race so far.\n\nFerrari's car was a patched-up veteran. It was last year's design, with last year's turbo V6 reworked for tighter rules. It drank too much fuel. Ayrton Senna put his McLaren on pole. Gerhard Berger and Michele Alboreto lined up third and fourth.\n\nThen the luck turned. Alain Prost's engine faltered, and he retired on lap 35. Senna kept leading. With two laps to go, he came up to lap a stand-in Williams driver, Jean-Louis Schlesser. Schlesser's brakes locked. The Williams ran wide, the cars touched, and Senna was out with broken suspension.\n\nBerger inherited the lead and won. Alboreto came home second. A Ferrari one-two, at Monza, weeks after the old man's death.\n\nIt was the only race McLaren lost all year.",
+  "description": "The F1/87/88C was Scuderia Ferrari's Formula One car for 1988, an update of the 1987 F1/87. Gustav Brunner led the design, with John Barnard as technical director. It used a carbon and Kevlar monocoque and the Tipo 033A, a 1,496 cc turbocharged V6 held to 2.5 bar of boost and 150 litres of fuel a race. Gerhard Berger and Michele Alboreto drove it. Its famous day was the 1988 Italian Grand Prix, where it finished first and second.",
+  "stats": [
+    { "label": "Engine", "value": "1,496 cc turbo V6 (Tipo 033A)" },
+    { "label": "Boost", "value": "2.5 bar", "tag": "rule limit" },
+    { "label": "Fuel", "value": "150 litres per race", "tag": "rule limit" },
+    { "label": "Weight", "value": "542 kg" },
+    { "label": "Chassis", "value": "Carbon and Kevlar monocoque" },
+    { "label": "Monza", "value": "1st and 2nd", "tag": "1988" }
+  ],
+  "photos": [],
+  "photoQuery": "1988 Ferrari F1/87/88C",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "w": "#f2f2f2",
+      "y": "#ffd21f",
+      "t": "#ff3b3b"
+    },
+    "rows": [
+      "kaaaaaaaaaaaaaak",
+      ".k.....aa.....k.",
+      "......aaaa......",
+      ".kk...aaaa...kk.",
+      ".kk..aawwaa..kk.",
+      ".kk..aawwaa..kk.",
+      ".....aaaaaa.....",
+      ".....aabbaa.....",
+      ".....abbbba.....",
+      ".....akyyka.....",
+      ".....aakkaa.....",
+      "....aaaaaaaa....",
+      "...aaaaaaaaaa...",
+      "...aawaaaawaa...",
+      ".kk.aaaaaaaa.kk.",
+      ".kkkaaaaaaaakkk.",
+      ".kkkaaaaaaaakkk.",
+      ".kk..aaaaaa..kk.",
+      ".....aaaaaa.....",
+      "......atta......",
+      ".kaaaaaaaaaaaak.",
+      "kaaaawwwwwwaaaak",
+      ".k............k.",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#cc1414",
+    "baseSpeed": 1.25,
+    "grip": 1,
+    "gears": 6,
+    "curve": 0.35,
+    "stars": [350, 900, 1700]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Ferrari_F1/87",
+    "https://en.wikipedia.org/wiki/1988_Italian_Grand_Prix",
+    "https://motorsportmagazine.com/special-article/100-greatest-gps-bookazine/6/100th-1988-italian-gp",
+    "https://www.grandprix247.com/formula-1-news/flashback-the-day-ferrari-stumped-mclaren-at-monza"
+  ]
+}

@@ -319,3 +319,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. The day page's surprise link could honour a class (e.g. a small "another GT car" link), reusing the same on-tap fetch.
   3. `scripts/check.mjs` could warn when the newest sprite's filled-pixel count is above the 260 aim in docs/SPRITES.md, as it already does below 120.
+
+## 2026-10-17 — 1988 Ferrari F1/87/88C
+- Engine: `scripts/check.mjs` now warns when the newest day's sprite has more than 260 filled pixels (the top of the docs/SPRITES.md aim); the under-120 warning still covers every day. Item 3 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener, and item 2 (class-aware surprise link) is bigger than one small change. Tested by filling today's sprite solid (384 px): the warning fired, then cleared. docs/GAME.md updated. No new field.
+- Content: the roll was f1 / 1980s / Italy / a car famous for a single race. The F1/87/88C won the 1988 Italian Grand Prix one-two (Berger, Alboreto), four weeks after Enzo Ferrari died. It was the only race McLaren lost that year, after Senna tangled with the lapped Schlesser two laps from the end. Power is left out: sources give 650–720 hp. Boost is given as the 2.5 bar rule limit, as Wikipedia has it; one source said 2.2 bar. The gearbox is left out: sources call it six-speed but don't agree on the type. Accent is Ferrari red, my pick of shade. No photos (Commons blocked); `photoQuery` set. Sprite: a red 1988 open-wheeler with wide front and rear wings, a white nose stripe and rear-wing panel, yellow behind the cockpit, black exposed wheels; 202 px. `gears: 6`, `grip: 1`, track, tires, curve 0.35 for Monza's straights.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. The day page's surprise link could honour a class (e.g. a small "another F1 car" link), reusing the same on-tap fetch.
+  3. `scripts/roll.mjs` could print the last five classes used, so the "never in the last 5 days" rule is visible in the brief.

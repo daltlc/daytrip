@@ -104,6 +104,7 @@ function checkDay(f, d, newest = false) {
       });
       const filled = sp.rows.join('').replace(/\./g, '').length;
       if (filled < 120) warn(f, `sprite only has ${filled} filled pixels; it may look like a smudge`);
+      else if (newest && filled > 260) warn(f, `sprite has ${filled} filled pixels; docs/SPRITES.md aims for 130–260`);
     }
     if (sp.palette) for (const [k, v] of Object.entries(sp.palette)) if (k.length !== 1 || !(v === 'ACCENT' || v === 'ACCENT_LIGHT' || HEX_COLOR.test(v))) err(f, `palette "${k}": "${v}" must be #rrggbb, ACCENT or ACCENT_LIGHT`);
   }
