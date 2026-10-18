@@ -1,4 +1,5 @@
-# Daytrip - Inspired by Forza Horizon 6 - THIS IS VIBECODED
+# Daytrip - Inspired by Forza Horizon 6
+# THIS IS VIBECODED - ONLY FOR FUN - CHECK FACTS
 
 One car a day. Read it, hear it, drive it.
 
