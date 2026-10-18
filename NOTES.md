@@ -327,3 +327,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. The day page's surprise link could honour a class (e.g. a small "another F1 car" link), reusing the same on-tap fetch.
   3. `scripts/roll.mjs` could print the last five classes used, so the "never in the last 5 days" rule is visible in the brief.
+
+## 2026-10-18 — 1958 Datsun 210 "Fuji"
+- Engine: `scripts/roll.mjs` now prints a `Recent:` line under the class with the last five days' classes, newest first, so the "never in the last 5 days" rule is visible in the brief. Item 3 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener, and item 2 (class-aware surprise link on the day page) is still bigger than one small change. ROUTINE.md step 1 mentions the line. No new field; script only.
+- Content: the roll was jdm / 1950s / somewhere you would not expect a car company / a privateer or small team taking on the factories. The Datsun 210 "Fuji" fits the angle loosely: Katayama's two-car effort, pushed through over his own management's objections, in the outback rather than at home. Distance is "more than sixteen thousand kilometres": Nissan pages give 16,000 km and 16,600 km. Fuji's co-driver is left out (sources disagree: Okuyama or Oya). Sakura is "fourth in class", as Nissan's pages say; one account says first and second. Fuji's red comes from Nissan's Heritage Collection listing; the accent shade is my pick. No photos (Commons blocked); `photoQuery` set. Sprite: a red 1950s saloon with chrome bumpers, yellow headlamps, a lighter bonnet strip, a white roof roundel for the number and a split rear window hint; 260 px. `gears: 3`, `grip: 0.3`, desert, rocks, slower `baseSpeed` 0.85 with gentler stars.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. The day page's surprise link could honour a class (e.g. a small "another JDM car" link), reusing the same on-tap fetch.
+  3. `scripts/roll.mjs` could print the count per class next to the `Recent:` line, so the least-covered weighting is visible too.
