@@ -69,6 +69,7 @@ const label = LABEL[cls].toLowerCase();
 process.stdout.write([
   `Class:   ${cls} (${LABEL[cls]})  <- hard rule`,
   `Recent:  ${index.slice(0, RECENT_DAYS).map(e => e.class).join(', ') || 'none'}  <- the last ${RECENT_DAYS} days, newest first; never reuse these`,
+  `Counts:  ${CLASSES.map(c => `${c} ${counts[c]}`).join(', ')}  <- days per class; rolls favour the fewest${recent.size ? ' (recent ones excluded)' : ''}`,
   `Decade:  ${decade}  <- strong hint`,
   `Region:  ${region}  <- strong hint`,
   `Angle:   ${angle}  <- strong hint`,

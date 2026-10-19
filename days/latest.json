@@ -1,77 +1,100 @@
 {
-  "date": "2026-10-18",
-  "name": "Datsun 210 \"Fuji\"",
-  "year": 1958,
-  "maker": "Nissan",
-  "country": "Japan",
-  "class": "jdm",
-  "hook": "Nissan's bosses feared their first race abroad would humiliate them, and instead a one-litre Datsun drove all the way around Australia and won its class.",
-  "story": "Picture Australia in August 1958. Sixty-seven cars are lining up to drive right around the continent.\n\nTwo of them are small Japanese saloons almost nobody outside Japan has heard of. They are Datsun 210s, with one-litre engines and 34 horsepower. One is red, and named Fuji. The other is white, and named Sakura, for the cherry blossom.\n\nThe man behind them is Yutaka Katayama, a Nissan manager. His bosses hated the idea. If the cars broke down abroad, the company would be humiliated. He pushed and argued until he got his cars and his crews.\n\nThen came nineteen days of dust, gravel and long empty roads. More than sixteen thousand kilometres, clockwise around Australia.\n\nOnly thirty-six cars reached the finish. Both Datsuns were among them. Fuji won its class, for cars under a thousand cc. Sakura came fourth.\n\nThe next spring, Fuji went on show in New York. And Katayama? In 1960 he was sent to America, to help sell Datsuns there.",
-  "description": "The Datsun 1000, type 210, was Nissan's small family saloon, launched in November 1957. It used Nissan's first one-litre overhead-valve engine, a 988 cc four-cylinder, with leaf springs and drum brakes all round. Two 210s, named Fuji and Sakura, ran the 1958 Mobilgas Trial around Australia. It was Nissan's first international competition. Fuji, car number 19, won Class A and finished 25th overall. The red car survives in Nissan's Heritage Collection.",
+  "date": "2026-10-19",
+  "name": "Cunningham C-4R",
+  "year": 1952,
+  "maker": "Cunningham",
+  "country": "United States",
+  "class": "lemans",
+  "hook": "At Le Mans in 1952, Briggs Cunningham drove his own car for almost twenty of the twenty-four hours and finished fourth.",
+  "story": "Briggs Cunningham wanted to win Le Mans in an American car with his own name on it. There was a catch. To enter under your own badge, you had to be a car maker. So he became one. His shop in West Palm Beach built a road car called the C-3. The chassis were shipped to Vignale in Turin for elegant Italian bodies. The target was twenty-five cars, enough to make the racers legal. The racer was the point. It was the C-4R: a big white roadster with two blue stripes and a Chrysler Hemi V8 up front. In June 1952, Cunningham took one to the Sarthe and drove it himself. He was forty-five. He stayed in the seat for almost twenty of the twenty-four hours. Bill Spear drove the rest. They finished fourth overall and won their class. The next spring, a C-4R won the Sebring 12 Hours. It was the first all-American car to win an international sports car race.",
+  "description": "The C-4R was a sports racing car built in 1952 by Briggs Cunningham's small company in West Palm Beach, Florida. It used a 331 cubic inch Chrysler Hemi V8 in a tubular chassis under a light open body. Two roadsters and one coupe were made. The roadsters won their class at Le Mans in 1952 and 1954, and one won the Sebring 12 Hours in 1953. The road-going C-3, bodied by Vignale, existed largely so these racers counted as a manufacturer's cars.",
   "stats": [
-    { "label": "Engine", "value": "988 cc OHV inline-four" },
-    { "label": "Power", "value": "34 PS @ 4,400 rpm" },
-    { "label": "Torque", "value": "65 N·m @ 2,400 rpm" },
-    { "label": "Top speed", "value": "95 km/h" },
-    { "label": "Weight", "value": "925 kg" },
-    { "label": "Result", "value": "1st in Class A, 25th overall", "tag": "1958 trial" }
+    {
+      "label": "Engine",
+      "value": "331 cu in (5.4 L) Chrysler Hemi V8"
+    },
+    {
+      "label": "Wheelbase",
+      "value": "100 in (2,540 mm)"
+    },
+    {
+      "label": "Built",
+      "value": "2 roadsters, 1 coupe"
+    },
+    {
+      "label": "Le Mans",
+      "tag": "1952",
+      "value": "4th overall, 1st in class"
+    },
+    {
+      "label": "Drivers",
+      "tag": "1952",
+      "value": "Cunningham / Spear"
+    },
+    {
+      "label": "Sebring 12 Hours",
+      "tag": "1953",
+      "value": "Outright win (Fitch / Walters)"
+    }
   ],
   "photos": [],
-  "photoQuery": "1958 Datsun 210",
+  "photoQuery": "1952 Cunningham C-4R",
   "sprite": {
     "w": 16,
     "h": 24,
     "palette": {
-      "a": "ACCENT",
-      "l": "ACCENT_LIGHT",
+      "w": "#f2f2ee",
+      "s": "ACCENT",
       "k": "#111318",
       "b": "#8fd3ff",
-      "s": "#c9ccd1",
-      "w": "#f2f2f2",
-      "y": "#ffe08a",
-      "t": "#ff3b3b"
+      "n": "#1b2a4a",
+      "r": "#ff3b3b"
     },
     "rows": [
+      "......swws......",
+      "....wwswwsww....",
+      "...wwwswwswww...",
+      "..wwwwswwswwww..",
+      ".kwwwwswwswwwwk.",
+      ".kwwwwswwswwwwk.",
+      ".kwwwwswwswwwwk.",
+      "..wwwwswwswwww..",
+      "..wwwwswwswwww..",
+      "..wbbbbwwswwww..",
+      "..wnnnnwwswwww..",
+      "..wnnnnwwswwww..",
+      "..wnnnnwwswwww..",
+      "..wwwwswwswwww..",
+      "..wwwwswwswwww..",
+      "..wwwwswwswwww..",
+      ".kwwwwswwswwwwk.",
+      ".kwwwwswwswwwwk.",
+      ".kwwwwswwswwwwk.",
+      "..wwwwswwswwww..",
+      "..rwwwswwswwwr..",
+      "...wwwswwswww...",
       "................",
-      "....ssssssss....",
-      "...yaaaaaaaay...",
-      "...aaaaaaaaaa...",
-      ".kkaaaallaaaakk.",
-      ".kkaaaallaaaakk.",
-      ".kkaaaallaaaakk.",
-      "..aaaaaaaaaaaa..",
-      "..aabbbbbbbbaa..",
-      "..abbbbbbbbbba..",
-      "..aaaaaaaaaaaa..",
-      "..aaaaawwaaaaa..",
-      "..aaaawwwwaaaa..",
-      "..aaaawwwwaaaa..",
-      "..aaaaawwaaaaa..",
-      "..abbbbbbbbbba..",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      "...aaaaaaaaaa...",
-      "..ataaaaaaaata..",
-      "...aaaaaaaaaa...",
-      "....ssssssss....",
       "................"
     ]
   },
   "game": {
-    "obstacle": "rock",
-    "scenery": "desert",
-    "accent": "#c41e2a",
-    "baseSpeed": 0.85,
-    "grip": 0.3,
-    "gears": 3,
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#1f4fa0",
+    "baseSpeed": 1.05,
+    "grip": 0.6,
+    "gears": 4,
     "curve": 0.4,
-    "stars": [250, 650, 1200]
+    "stars": [
+      300,
+      800,
+      1500
+    ]
   },
   "sources": [
-    "https://www.nissan-global.com/EN/HERITAGE_COLLECTION/datsun_1000_sedan_fuji.html",
-    "https://www.nissan-global.com/EN/HERITAGE/short_story/en_p11-01.html",
-    "https://japanesenostalgiccar.com/fuji-go-and-sakura-go-ride-again/",
-    "https://ateupwithmotor.com/model-histories/datsun-510-yutaka-katayama/"
+    "https://en.wikipedia.org/wiki/Cunningham_C-4R",
+    "https://en.wikipedia.org/wiki/Cunningham_C-3",
+    "https://www.motorsportmagazine.com/archive/article/february-1976/62/the-le-mans-cunninghams/",
+    "https://en.wikipedia.org/wiki/1953_12_Hours_of_Sebring"
   ]
 }

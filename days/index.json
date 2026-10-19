@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-19", "name": "Cunningham C-4R", "year": 1952, "class": "lemans", "accent": "#1f4fa0" },
   { "date": "2026-10-18", "name": "Datsun 210 \"Fuji\"", "year": 1958, "class": "jdm", "accent": "#c41e2a" },
   { "date": "2026-10-17", "name": "F1/87/88C", "year": 1988, "class": "f1", "accent": "#cc1414" },
   { "date": "2026-10-16", "name": "911 Carrera RSR Turbo 2.1", "year": 1974, "class": "gt3", "accent": "#1c2f6b" },
