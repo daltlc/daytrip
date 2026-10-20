@@ -343,3 +343,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. The day page's surprise link could honour a class (e.g. a small "another Le Mans car" link), reusing the same on-tap fetch.
   3. `scripts/check.mjs` could warn when the newest day's `sources` has fewer than 2 or more than 4 entries, matching docs/SCHEMA.md.
+
+## 2026-10-20 — 2009 Melkus RS2000
+- Engine: `scripts/check.mjs` now warns when the newest day's `sources` has fewer than 2 or more than 4 entries (the docs/SCHEMA.md range); an empty list is still an error on every day. Item 3 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener, and item 2 (class-aware surprise link) is still bigger than one small change. Tested by cutting today's sources to one: the warning fired, then cleared. docs/GAME.md updated. No new field.
+- Content: the roll was exotic / 2010s / Germany / a car built in a country not known for building cars. The RS2000 fits through its lineage: the RS 1000 was an East German sports car, from a state known for the Trabant, and the RS2000 revived the name in Dresden thirty years after the last one. Year is 2009 (IAA reveal; built 2009–2012) rather than the 2010s hint. Specs follow AUTO BILD's data sheet (270 PS @ 7,800 rpm, 260 Nm, 950 kg, 4.9 s, 250 km/h). Torque rpm is left out (6,500 vs 5,500 rpm). Total production is left out (sources give 18 to "max 75"), and so is the Lotus basis, which AUTO BILD only suspected. Price is "roughly 100,000 euros" (sources give 100,000 and 107,500). The red body and accent are my pick, not a documented launch colour. No photos (Commons blocked); `photoQuery` set. Sprite: a red mid-engined coupe with a dark roof over the upward-opening doors, a rear window, slatted engine cover, yellow headlamps and a black diffuser; 260 px. `gears: 6`, `grip: 0.6`, city, cones, baseSpeed 1.15.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. The day page's surprise link could honour a class (e.g. a small "another exotic" link), reusing the same on-tap fetch.
+  3. `scripts/check.mjs` could warn when the newest day's `stats` has fewer than 5 or more than 7 entries, matching docs/SCHEMA.md.

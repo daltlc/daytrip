@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-20",
+  "name": "Melkus RS2000",
+  "year": 2009,
+  "maker": "Melkus",
+  "country": "Germany",
+  "class": "exotic",
+  "hook": "Thirty years after the last East German Melkus left Dresden, the founder's grandson brought the name back with a supercharged car whose doors still swing up toward the roof.",
+  "story": "East Germany was not a place for sports cars. It built Trabants, and people waited years for one. Heinz Melkus, a racer from Dresden, wanted something else. In 1968 he asked the state for permission to build a road-going racer. His pitch: a gift for the republic's twentieth birthday. It worked. The RS 1000 used a Wartburg frame and a tiny three-cylinder two-stroke, mounted in the middle. Its doors opened upward, like wings. Only 101 were made, the last in 1979. Then the country itself disappeared. Thirty years after that last car, in September 2009, the name came back at the Frankfurt motor show. Heinz's grandson Sepp ran the new company. The car was the RS2000. It kept the doors that swing up toward the roof. Behind your head sat a supercharged Toyota four-cylinder, with 270 PS in a car of 950 kilograms. Every one was built by hand in Dresden. Then, in 2012, the money ran out.",
+  "description": "The Melkus RS2000 was a hand-built, mid-engined two-seat coupe from Melkus in Dresden. It was shown at the 2009 Frankfurt motor show as the successor to the RS 1000, the East German sports car built from 1969 to 1979. Power came from a supercharged 1.8-litre Toyota four-cylinder making 270 PS. Its upward-opening doors echoed the original. Melkus planned about 25 cars a year at roughly 100,000 euros each, but the company filed for insolvency in 2012.",
+  "stats": [
+    {
+      "label": "Engine",
+      "value": "1.8 L supercharged Toyota inline-4"
+    },
+    {
+      "label": "Power",
+      "value": "270 PS (198 kW) @ 7,800 rpm"
+    },
+    {
+      "label": "Torque",
+      "value": "260 Nm"
+    },
+    {
+      "label": "Weight",
+      "value": "950 kg"
+    },
+    {
+      "label": "0–100 km/h",
+      "value": "4.9 s"
+    },
+    {
+      "label": "Top speed",
+      "value": "250 km/h"
+    },
+    {
+      "label": "Built",
+      "value": "2009–2012, Dresden"
+    }
+  ],
+  "photos": [],
+  "photoQuery": "2009 Melkus RS2000",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "d": "#2a2c33",
+      "y": "#ffd84a",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      ".....aaaaaa.....",
+      "....aaaaaaaa....",
+      "..ayaaaaaaaaya..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..adddddddddda..",
+      "..adddddddddda..",
+      "..aaddddddddaa..",
+      "..aabbbbbbbbaa..",
+      "..aaakakakakaa..",
+      "..aaakakakakaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..arraaaaaarra..",
+      "...aaaaaaaaaa...",
+      "....kkkkkkkk....",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "cone",
+    "scenery": "city",
+    "accent": "#b3202a",
+    "baseSpeed": 1.15,
+    "grip": 0.6,
+    "gears": 6,
+    "curve": 0.6,
+    "stars": [
+      300,
+      800,
+      1500
+    ]
+  },
+  "sources": [
+    "https://www.autobild.de/artikel/melkus-rs-2000-870849.html",
+    "https://www.kfz-auskunft.de/news/9824.html",
+    "https://www.autoblog.com/2012/08/21/germanys-melkus-files-for-bankruptcy/",
+    "https://en.wikipedia.org/wiki/Melkus_RS_1000"
+  ]
+}

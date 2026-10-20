@@ -125,6 +125,7 @@ function checkDay(f, d, newest = false) {
 
   if (Array.isArray(d.sources)) {
     if (!d.sources.length) err(f, 'sources is empty');
+    else if (newest && (d.sources.length < 2 || d.sources.length > 4)) warn(f, `${d.sources.length} sources; docs/SCHEMA.md asks for 2–4`);
     d.sources.forEach((s, i) => { if (!isUrl(s)) err(f, `sources[${i}] must be an http(s) URL`); });
   } else if (d.sources !== undefined) err(f, 'sources must be an array of URLs');
 }
