@@ -1,91 +1,91 @@
 {
-  "date": "2026-10-20",
-  "name": "Melkus RS2000",
-  "year": 2009,
-  "maker": "Melkus",
-  "country": "Germany",
-  "class": "exotic",
-  "hook": "Thirty years after the last East German Melkus left Dresden, the founder's grandson brought the name back with a supercharged car whose doors still swing up toward the roof.",
-  "story": "East Germany was not a place for sports cars. It built Trabants, and people waited years for one. Heinz Melkus, a racer from Dresden, wanted something else. In 1968 he asked the state for permission to build a road-going racer. His pitch: a gift for the republic's twentieth birthday. It worked. The RS 1000 used a Wartburg frame and a tiny three-cylinder two-stroke, mounted in the middle. Its doors opened upward, like wings. Only 101 were made, the last in 1979. Then the country itself disappeared. Thirty years after that last car, in September 2009, the name came back at the Frankfurt motor show. Heinz's grandson Sepp ran the new company. The car was the RS2000. It kept the doors that swing up toward the roof. Behind your head sat a supercharged Toyota four-cylinder, with 270 PS in a car of 950 kilograms. Every one was built by hand in Dresden. Then, in 2012, the money ran out.",
-  "description": "The Melkus RS2000 was a hand-built, mid-engined two-seat coupe from Melkus in Dresden. It was shown at the 2009 Frankfurt motor show as the successor to the RS 1000, the East German sports car built from 1969 to 1979. Power came from a supercharged 1.8-litre Toyota four-cylinder making 270 PS. Its upward-opening doors echoed the original. Melkus planned about 25 cars a year at roughly 100,000 euros each, but the company filed for insolvency in 2012.",
+  "date": "2026-10-21",
+  "name": "850 Estate (BTCC)",
+  "year": 1994,
+  "maker": "Volvo",
+  "country": "Sweden",
+  "class": "touring",
+  "hook": "In 1994 Volvo went touring car racing in a family estate, and its drivers had covered only a few hundred metres in it before the first race.",
+  "story": "Spring, 1994. Volvo was joining the British Touring Car Championship with Tom Walkinshaw Racing. The deal ran three seasons, and year one was for learning. Nobody expected to win. So the question became: how do we get noticed? The answer was the family estate. Two Volvo 850 estates rolled onto the grid at Thruxton in April. Rickard Rydell and Jan Lammers had driven them only a few hundred metres, outside the workshop. Rydell had signed that Christmas without knowing about the plan. Rivals grumbled that a load carrier had no place on a race grid. The cameras loved it. And the long roof helped a little. Rydell said the estate's aerodynamics were slightly better than the saloon's. Up front, a two-litre five-cylinder sat sideways, set well back for balance. The best finish was fifth, at Oulton Park. Then bigger wings arrived for 1995, and Volvo switched to the saloon. The estate raced for one season. People still talk about it.",
+  "description": "The Volvo 850 Estate was Volvo's entry in the 1994 British Touring Car Championship. Tom Walkinshaw Racing built and ran two cars, for Rickard Rydell and Jan Lammers. Each used a naturally aspirated two-litre five-cylinder developed from Volvo's road engine, driving the front wheels through a six-speed sequential gearbox. The estate body was chosen mainly to draw attention. Its best finish was fifth, and it raced only that one season before Volvo moved to the 850 saloon for 1995.",
   "stats": [
     {
       "label": "Engine",
-      "value": "1.8 L supercharged Toyota inline-4"
+      "value": "2.0 L naturally aspirated inline-5, transverse"
     },
     {
-      "label": "Power",
-      "value": "270 PS (198 kW) @ 7,800 rpm"
+      "label": "Gearbox",
+      "value": "6-speed sequential"
     },
     {
-      "label": "Torque",
-      "value": "260 Nm"
+      "label": "Drivetrain",
+      "value": "Front-wheel drive"
     },
     {
       "label": "Weight",
       "value": "950 kg"
     },
     {
-      "label": "0–100 km/h",
-      "value": "4.9 s"
+      "label": "Debut",
+      "value": "Thruxton, April 1994"
     },
     {
-      "label": "Top speed",
-      "value": "250 km/h"
+      "label": "Best finish",
+      "value": "5th, Oulton Park"
     },
     {
-      "label": "Built",
-      "value": "2009–2012, Dresden"
+      "label": "Championship",
+      "value": "14th (Rydell), 15th (Lammers)"
     }
   ],
   "photos": [],
-  "photoQuery": "2009 Melkus RS2000",
+  "photoQuery": "1994 Volvo 850 Estate BTCC",
   "sprite": {
     "w": 16,
     "h": 24,
     "palette": {
+      "w": "#f2f2f2",
       "a": "ACCENT",
       "k": "#111318",
       "b": "#8fd3ff",
-      "d": "#2a2c33",
       "y": "#ffd84a",
       "r": "#ff3b3b"
     },
     "rows": [
-      ".....aaaaaa.....",
-      "....aaaaaaaa....",
-      "..ayaaaaaaaaya..",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      "..aaaaaaaaaaaa..",
-      "..aabbbbbbbbaa..",
-      "..abbbbbbbbbba..",
-      "..adddddddddda..",
-      "..adddddddddda..",
-      "..aaddddddddaa..",
-      "..aabbbbbbbbaa..",
-      "..aaakakakakaa..",
-      "..aaakakakakaa..",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      "..aaaaaaaaaaaa..",
-      "..arraaaaaarra..",
-      "...aaaaaaaaaa...",
+      "....wwwwwwww....",
+      "...wwwawwawww...",
+      "..ywwwawwawwwy..",
+      ".kkwwwawwawwwkk.",
+      ".kkwwwawwawwwkk.",
+      ".kkwwwawwawwwkk.",
+      "..wwbbbbbbbbww..",
+      "..wbbbbbbbbbbw..",
+      "..wbwwawwawwbw..",
+      "..wbwwawwawwbw..",
+      "..wbwwawwawwbw..",
+      "..wbwwawwawwbw..",
+      "..wbwwawwawwbw..",
+      "..wbwwawwawwbw..",
+      ".kkbwwawwawwbkk.",
+      ".kkbwwawwawwbkk.",
+      ".kkbwwawwawwbkk.",
+      "..wwbbbbbbbbww..",
+      "..wrrwwwwwwrrw..",
       "....kkkkkkkk....",
+      "................",
+      "................",
       "................",
       "................"
     ]
   },
   "game": {
-    "obstacle": "cone",
-    "scenery": "city",
-    "accent": "#b3202a",
-    "baseSpeed": 1.15,
-    "grip": 0.6,
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#1f3f7a",
+    "baseSpeed": 1.0,
+    "grip": 0.5,
     "gears": 6,
-    "curve": 0.6,
+    "curve": 0.5,
     "stars": [
       300,
       800,
@@ -93,9 +93,9 @@
     ]
   },
   "sources": [
-    "https://www.autobild.de/artikel/melkus-rs-2000-870849.html",
-    "https://www.kfz-auskunft.de/news/9824.html",
-    "https://www.autoblog.com/2012/08/21/germanys-melkus-files-for-bankruptcy/",
-    "https://en.wikipedia.org/wiki/Melkus_RS_1000"
+    "https://www.driving.co.uk/?p=32630",
+    "https://www.matthewsvolvosite.com/volvo-850-wagon-btcc/",
+    "https://www.worldofvolvo.com/en/exhibition-deep-dive/volvo-850-btcc/",
+    "https://touringcartimes.com/2009/11/29/road-cars-of-touring-car-racing-volvo-850-estate"
   ]
 }

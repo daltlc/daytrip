@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-21",
+  "name": "850 Estate (BTCC)",
+  "year": 1994,
+  "maker": "Volvo",
+  "country": "Sweden",
+  "class": "touring",
+  "hook": "In 1994 Volvo went touring car racing in a family estate, and its drivers had covered only a few hundred metres in it before the first race.",
+  "story": "Spring, 1994. Volvo was joining the British Touring Car Championship with Tom Walkinshaw Racing. The deal ran three seasons, and year one was for learning. Nobody expected to win. So the question became: how do we get noticed? The answer was the family estate. Two Volvo 850 estates rolled onto the grid at Thruxton in April. Rickard Rydell and Jan Lammers had driven them only a few hundred metres, outside the workshop. Rydell had signed that Christmas without knowing about the plan. Rivals grumbled that a load carrier had no place on a race grid. The cameras loved it. And the long roof helped a little. Rydell said the estate's aerodynamics were slightly better than the saloon's. Up front, a two-litre five-cylinder sat sideways, set well back for balance. The best finish was fifth, at Oulton Park. Then bigger wings arrived for 1995, and Volvo switched to the saloon. The estate raced for one season. People still talk about it.",
+  "description": "The Volvo 850 Estate was Volvo's entry in the 1994 British Touring Car Championship. Tom Walkinshaw Racing built and ran two cars, for Rickard Rydell and Jan Lammers. Each used a naturally aspirated two-litre five-cylinder developed from Volvo's road engine, driving the front wheels through a six-speed sequential gearbox. The estate body was chosen mainly to draw attention. Its best finish was fifth, and it raced only that one season before Volvo moved to the 850 saloon for 1995.",
+  "stats": [
+    {
+      "label": "Engine",
+      "value": "2.0 L naturally aspirated inline-5, transverse"
+    },
+    {
+      "label": "Gearbox",
+      "value": "6-speed sequential"
+    },
+    {
+      "label": "Drivetrain",
+      "value": "Front-wheel drive"
+    },
+    {
+      "label": "Weight",
+      "value": "950 kg"
+    },
+    {
+      "label": "Debut",
+      "value": "Thruxton, April 1994"
+    },
+    {
+      "label": "Best finish",
+      "value": "5th, Oulton Park"
+    },
+    {
+      "label": "Championship",
+      "value": "14th (Rydell), 15th (Lammers)"
+    }
+  ],
+  "photos": [],
+  "photoQuery": "1994 Volvo 850 Estate BTCC",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "w": "#f2f2f2",
+      "a": "ACCENT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "y": "#ffd84a",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      "....wwwwwwww....",
+      "...wwwawwawww...",
+      "..ywwwawwawwwy..",
+      ".kkwwwawwawwwkk.",
+      ".kkwwwawwawwwkk.",
+      ".kkwwwawwawwwkk.",
+      "..wwbbbbbbbbww..",
+      "..wbbbbbbbbbbw..",
+      "..wbwwawwawwbw..",
+      "..wbwwawwawwbw..",
+      "..wbwwawwawwbw..",
+      "..wbwwawwawwbw..",
+      "..wbwwawwawwbw..",
+      "..wbwwawwawwbw..",
+      ".kkbwwawwawwbkk.",
+      ".kkbwwawwawwbkk.",
+      ".kkbwwawwawwbkk.",
+      "..wwbbbbbbbbww..",
+      "..wrrwwwwwwrrw..",
+      "....kkkkkkkk....",
+      "................",
+      "................",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#1f3f7a",
+    "baseSpeed": 1.0,
+    "grip": 0.5,
+    "gears": 6,
+    "curve": 0.5,
+    "stars": [
+      300,
+      800,
+      1500
+    ]
+  },
+  "sources": [
+    "https://www.driving.co.uk/?p=32630",
+    "https://www.matthewsvolvosite.com/volvo-850-wagon-btcc/",
+    "https://www.worldofvolvo.com/en/exhibition-deep-dive/volvo-850-btcc/",
+    "https://touringcartimes.com/2009/11/29/road-cars-of-touring-car-racing-volvo-850-estate"
+  ]
+}

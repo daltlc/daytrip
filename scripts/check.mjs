@@ -70,6 +70,7 @@ function checkDay(f, d, newest = false) {
 
   if (Array.isArray(d.stats)) {
     if (d.stats.length < 3 || d.stats.length > 8) err(f, `stats has ${d.stats.length} items; target 5–7`);
+    else if (newest && (d.stats.length < 5 || d.stats.length > 7)) warn(f, `${d.stats.length} stats; docs/SCHEMA.md asks for 5–7`);
     d.stats.forEach((s, i) => { if (!s || typeof s.label !== 'string' || typeof s.value !== 'string' || !s.label || !s.value) err(f, `stats[${i}] needs string label and value`); });
     if (newest) d.stats.forEach((s, i) => { if (s && typeof s.label === 'string' && /[()]/.test(s.label)) warn(f, `stats[${i}].label "${s.label}" has parentheses; move the qualifier into "tag"`); });
     d.stats.forEach((s, i) => { if (s && s.tag !== undefined && (typeof s.tag !== 'string' || !s.tag.trim() || s.tag.length > STAT_TAG_MAX)) err(f, `stats[${i}].tag must be a non-empty string of at most ${STAT_TAG_MAX} chars`); });
