@@ -6,6 +6,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { splitSentences } from '../text.js';
 
 /** @import { DayFile, IndexEntry } from '../types.js' */
 
@@ -21,7 +22,7 @@ const WEATHER = ['auto', 'none', 'rain', 'snow', 'dust'];
 const LANE_COUNTS = [2, 3, 4];
 const STAT_TAG_MAX = 16;
 const BANNED = /\b(forza|horizon festival|playground games|gran turismo|need for speed)\b/i;
-const BROWSER_MODULES = ['app.js', 'dom.js', 'storage.js', 'geom.js', 'types.js', 'page.js', 'render.js', 'sound.js', 'game.js', 'garage.js'];
+const BROWSER_MODULES = ['app.js', 'dom.js', 'storage.js', 'geom.js', 'types.js', 'page.js', 'render.js', 'sound.js', 'game.js', 'garage.js', 'text.js'];
 const SCRIPTS = ['scripts/check.mjs', 'scripts/commons.mjs', 'scripts/roll.mjs'];
 const CORE_FILES = ['index.html', 'archive.html', 'style.css', ...BROWSER_MODULES, 'days/latest.json'];
 const MAX_CORE_KB = 400;
@@ -60,6 +61,7 @@ function checkDay(f, d, newest = false) {
   if (d.year !== undefined && !(Number.isInteger(d.year) && d.year > 1880 && d.year < 2100)) err(f, `year must be an integer, got ${JSON.stringify(d.year)}`);
   if (d.class && !CLASSES.includes(d.class)) err(f, `class "${d.class}" not one of ${CLASSES.join(', ')}`);
   if (d.hook && words(d.hook) > 30) warn(f, `hook is ${words(d.hook)} words; keep it to one sentence`);
+  if (newest && typeof d.hook === 'string' && splitSentences(d.hook).length > 1) warn(f, `hook is ${splitSentences(d.hook).length} sentences; docs/SCHEMA.md asks for one`);
   const storyWords = words(d.story);
   if (d.story && (storyWords < 100 || storyWords > 220)) err(f, `story is ${storyWords} words; target 120–180`);
   const descWords = words(d.description);

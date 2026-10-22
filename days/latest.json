@@ -1,91 +1,92 @@
 {
-  "date": "2026-10-21",
-  "name": "850 Estate (BTCC)",
-  "year": 1994,
-  "maker": "Volvo",
-  "country": "Sweden",
-  "class": "touring",
-  "hook": "In 1994 Volvo went touring car racing in a family estate, and its drivers had covered only a few hundred metres in it before the first race.",
-  "story": "Spring, 1994. Volvo was joining the British Touring Car Championship with Tom Walkinshaw Racing. The deal ran three seasons, and year one was for learning. Nobody expected to win. So the question became: how do we get noticed? The answer was the family estate. Two Volvo 850 estates rolled onto the grid at Thruxton in April. Rickard Rydell and Jan Lammers had driven them only a few hundred metres, outside the workshop. Rydell had signed that Christmas without knowing about the plan. Rivals grumbled that a load carrier had no place on a race grid. The cameras loved it. And the long roof helped a little. Rydell said the estate's aerodynamics were slightly better than the saloon's. Up front, a two-litre five-cylinder sat sideways, set well back for balance. The best finish was fifth, at Oulton Park. Then bigger wings arrived for 1995, and Volvo switched to the saloon. The estate raced for one season. People still talk about it.",
-  "description": "The Volvo 850 Estate was Volvo's entry in the 1994 British Touring Car Championship. Tom Walkinshaw Racing built and ran two cars, for Rickard Rydell and Jan Lammers. Each used a naturally aspirated two-litre five-cylinder developed from Volvo's road engine, driving the front wheels through a six-speed sequential gearbox. The estate body was chosen mainly to draw attention. Its best finish was fifth, and it raced only that one season before Volvo moved to the 850 saloon for 1995.",
+  "date": "2026-10-22",
+  "name": "Tudor (concept)",
+  "year": 2002,
+  "maker": "Škoda",
+  "country": "Czech Republic",
+  "class": "concept",
+  "hook": "Škoda's 2002 Tudor show car was stolen after an event in India, and the authorities found it months later at a train station.",
+  "story": "Here's a show car with a second life as a crime story. In 2000, Škoda's head of technical development, Wilfried Bockelmann, set a challenge. Show the world what Czech designers can do. Zdeněk Cibulka drew a classic four-seat coupé, with chief designer Thomas Ingenlath guiding the work. Underneath sat the first Superb, lowered, with a sportier chassis. Up front, a 2.8-litre six-cylinder made 142 kilowatts. It drove the front wheels through a five-speed manual. The paint was meant to be a grey-brown metallic. Shortly before the debut, it was changed to dark red. The Tudor made its bow at Geneva in 2002. It was never meant for the showroom. And after an event in India, it vanished. Someone had taken it. The authorities searched hard. Several months later, they found the coupé at a train station. Back home it needed a complete renovation. Today it sits in the Škoda Museum in Mladá Boleslav. Safely parked, this time.",
+  "description": "The Škoda Tudor is a one-off four-seat coupé concept that Škoda showed at the 2002 Geneva Motor Show. It was commissioned in 2000 by technical development chief Wilfried Bockelmann and designed by Zdeněk Cibulka under chief designer Thomas Ingenlath. Built on the first-generation Superb with lowered, sportier suspension, it used a 2.8-litre 30-valve six-cylinder, a five-speed manual gearbox and front-wheel drive. Its purpose was to show what Czech designers could do. It never reached production and now belongs to the Škoda Museum.",
   "stats": [
     {
       "label": "Engine",
-      "value": "2.0 L naturally aspirated inline-5, transverse"
+      "value": "2.8 L 30-valve six-cylinder"
+    },
+    {
+      "label": "Power",
+      "value": "142 kW (193 PS)"
     },
     {
       "label": "Gearbox",
-      "value": "6-speed sequential"
+      "value": "5-speed manual"
     },
     {
       "label": "Drivetrain",
       "value": "Front-wheel drive"
     },
     {
-      "label": "Weight",
-      "value": "950 kg"
+      "label": "Body",
+      "value": "Four-seat coupé"
     },
     {
       "label": "Debut",
-      "value": "Thruxton, April 1994"
+      "value": "Geneva Motor Show, 2002"
     },
     {
-      "label": "Best finish",
-      "value": "5th, Oulton Park"
-    },
-    {
-      "label": "Championship",
-      "value": "14th (Rydell), 15th (Lammers)"
+      "label": "Designer",
+      "value": "Zdeněk Cibulka"
     }
   ],
   "photos": [],
-  "photoQuery": "1994 Volvo 850 Estate BTCC",
+  "photoQuery": "2002 Škoda Tudor",
   "sprite": {
     "w": 16,
     "h": 24,
     "palette": {
-      "w": "#f2f2f2",
       "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
       "k": "#111318",
       "b": "#8fd3ff",
-      "y": "#ffd84a",
+      "s": "#c9ccd1",
+      "w": "#f2f2f2",
       "r": "#ff3b3b"
     },
     "rows": [
-      "....wwwwwwww....",
-      "...wwwawwawww...",
-      "..ywwwawwawwwy..",
-      ".kkwwwawwawwwkk.",
-      ".kkwwwawwawwwkk.",
-      ".kkwwwawwawwwkk.",
-      "..wwbbbbbbbbww..",
-      "..wbbbbbbbbbbw..",
-      "..wbwwawwawwbw..",
-      "..wbwwawwawwbw..",
-      "..wbwwawwawwbw..",
-      "..wbwwawwawwbw..",
-      "..wbwwawwawwbw..",
-      "..wbwwawwawwbw..",
-      ".kkbwwawwawwbkk.",
-      ".kkbwwawwawwbkk.",
-      ".kkbwwawwawwbkk.",
-      "..wwbbbbbbbbww..",
-      "..wrrwwwwwwrrw..",
-      "....kkkkkkkk....",
-      "................",
+      "....aaaaaaaa....",
+      "...aassssssaa...",
+      "..waaaaaaaaaaw..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaalaalaaakk.",
+      ".kkaaalaalaaakk.",
+      "..aaaalaalaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..abaaaaaaaaba..",
+      "..abaaaaaaaaba..",
+      "..abaaaaaaaaba..",
+      "..aabbbbbbbbaa..",
+      "..aaabbbbbbaaa..",
+      "..aaaaaaaaaaaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..arraaaaaarra..",
+      "...aaaaaaaaaa...",
+      "....ssssssss....",
       "................",
       "................",
       "................"
     ]
   },
   "game": {
-    "obstacle": "tire",
-    "scenery": "track",
-    "accent": "#1f3f7a",
+    "obstacle": "cone",
+    "scenery": "city",
+    "accent": "#7a1626",
     "baseSpeed": 1.0,
-    "grip": 0.5,
-    "gears": 6,
-    "curve": 0.5,
+    "grip": 0.6,
+    "gears": 5,
+    "curve": 0.4,
     "stars": [
       300,
       800,
@@ -93,9 +94,8 @@
     ]
   },
   "sources": [
-    "https://www.driving.co.uk/?p=32630",
-    "https://www.matthewsvolvosite.com/volvo-850-wagon-btcc/",
-    "https://www.worldofvolvo.com/en/exhibition-deep-dive/volvo-850-btcc/",
-    "https://touringcartimes.com/2009/11/29/road-cars-of-touring-car-racing-volvo-850-estate"
+    "https://www.skoda-storyboard.com/en/skoda-world/skoda-tudor-a-car-that-still-has-a-lot-to-offer/",
+    "https://www.carscoops.com/2019/04/the-2002-skoda-tudor-concept-was-so-cool-someone-actually-stole-it/",
+    "https://www.autojournal.cz/?p=129656"
   ]
 }

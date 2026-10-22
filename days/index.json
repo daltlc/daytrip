@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-22", "name": "Tudor (concept)", "year": 2002, "class": "concept", "accent": "#7a1626" },
   { "date": "2026-10-21", "name": "850 Estate (BTCC)", "year": 1994, "class": "touring", "accent": "#1f3f7a" },
   { "date": "2026-10-20", "name": "Melkus RS2000", "year": 2009, "class": "exotic", "accent": "#b3202a" },
   { "date": "2026-10-19", "name": "Cunningham C-4R", "year": 1952, "class": "lemans", "accent": "#1f4fa0" },

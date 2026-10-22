@@ -20,6 +20,7 @@ page.js         page render + read-aloud  game.js         simulation, input, sou
 render.js       drawing                   geom.js         shared logical-pixel numbers
 dom.js          DOM helpers               storage.js      localStorage that never throws
 types.js        JSDoc types shared by everything
+text.js         sentence splitter (page + check)
 days/           one JSON per day, latest.json, index.json
 scripts/        roll.mjs (random search brief), check.mjs (validator + tsc), commons.mjs (photo finder)
 docs/           SCHEMA.md, SPRITES.md, GAME.md

@@ -359,3 +359,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. The day page's surprise link could honour a class (e.g. a small "another touring car" link), reusing the same on-tap fetch.
   3. `scripts/check.mjs` could warn when the newest day's `hook` runs past one sentence (using `splitSentences`' rules), matching docs/SCHEMA.md.
+
+## 2026-10-22 — 2002 Škoda Tudor (concept)
+- Engine: `splitSentences` moved from `page.js` into a new DOM-free `text.js`, so `scripts/check.mjs` can import it and warn when the newest day's `hook` splits into more than one sentence (the same splitter the read-aloud uses). Item 3 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener, and item 2 (class-aware surprise link) is still bigger than one small change. Tested by adding a second sentence to today's hook: the warning fired, then cleared. docs/GAME.md and README.md updated. No new field.
+- Content: the roll was concept / 2000s / Czechia / a car with a strange engine or drivetrain layout. The Tudor's layout is ordinary (front engine, front drive), so the story takes the theft angle instead. Engine, 142 kW, five-speed and front drive are from Škoda Storyboard; 193 PS from Autojournal. The engine is given as "six-cylinder", as Škoda words it, not V6. Where in India it was stolen, and when, isn't in any source, so the story doesn't say. Story-only facts (grey-brown paint changed to dark red before Geneva) are from Škoda. Škoda Storyboard and the motoring sites were blocked to WebFetch; facts are from search snippets. Accent is my reading of the Geneva dark red. No photos (Commons blocked); `photoQuery` set. Sprite: a dark red coupé with a long bonnet, silver grille and rear bumper, white headlamps, hood creases in the light tint; 230-ish px. `gears: 5`, `grip: 0.6`, city, cones, curve 0.4.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. The day page's surprise link could honour a class (e.g. a small "another concept car" link), reusing the same on-tap fetch.
+  3. `scripts/check.mjs` could warn when the newest day's `photoQuery` doesn't start with its `year`, matching docs/SCHEMA.md's "<year> <maker> <model>".
