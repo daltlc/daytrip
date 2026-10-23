@@ -1,45 +1,24 @@
 {
-  "date": "2026-10-22",
-  "name": "Tudor (concept)",
-  "year": 2002,
-  "maker": "Škoda",
-  "country": "Czech Republic",
-  "class": "concept",
-  "hook": "Škoda's 2002 Tudor show car was stolen after an event in India, and the authorities found it months later at a train station.",
-  "story": "Here's a show car with a second life as a crime story. In 2000, Škoda's head of technical development, Wilfried Bockelmann, set a challenge. Show the world what Czech designers can do. Zdeněk Cibulka drew a classic four-seat coupé, with chief designer Thomas Ingenlath guiding the work. Underneath sat the first Superb, lowered, with a sportier chassis. Up front, a 2.8-litre six-cylinder made 142 kilowatts. It drove the front wheels through a five-speed manual. The paint was meant to be a grey-brown metallic. Shortly before the debut, it was changed to dark red. The Tudor made its bow at Geneva in 2002. It was never meant for the showroom. And after an event in India, it vanished. Someone had taken it. The authorities searched hard. Several months later, they found the coupé at a train station. Back home it needed a complete renovation. Today it sits in the Škoda Museum in Mladá Boleslav. Safely parked, this time.",
-  "description": "The Škoda Tudor is a one-off four-seat coupé concept that Škoda showed at the 2002 Geneva Motor Show. It was commissioned in 2000 by technical development chief Wilfried Bockelmann and designed by Zdeněk Cibulka under chief designer Thomas Ingenlath. Built on the first-generation Superb with lowered, sportier suspension, it used a 2.8-litre 30-valve six-cylinder, a five-speed manual gearbox and front-wheel drive. Its purpose was to show what Czech designers could do. It never reached production and now belongs to the Škoda Museum.",
+  "date": "2026-10-23",
+  "name": "607 Monopost",
+  "year": 1950,
+  "maker": "Tatra",
+  "country": "Czechoslovakia",
+  "class": "f1",
+  "hook": "Tatra's single-seat racer was really a test bench on wheels for the V8 that later powered its 603 limousine.",
+  "story": "This race car was really an engine laboratory with a steering wheel. In 1949, Tatra raced a sports Tatraplan at the Czechoslovak Grand Prix. It went well. So the factory in Kopřivnice decided to build a pure racing car. Work began in April 1950. The engine sat behind the driver. It was an air-cooled aluminium V8, kept cool by two fans driven by belts from the crankshaft. That engine had a future. It was meant for the Tatra 603 limousine and a light off-road truck. Racing was the hardest test Tatra could give it. On 17 September 1950, Bruno Sojka drove two show laps in Ostrava. A week later the car raced at the Czechoslovak Grand Prix. But the politics of the day kept it from racing in the West. So Adolf Veřmiřovský raced it at home and won sixteen times. In October 1953 he set a national speed record in it. Then the 603 arrived in 1956. The lab had done its job. Tatra ended the racing program after 1958.",
+  "description": "The Tatra 607 Monopost is a single-seat racing car built by Tatra in Kopřivnice, Czechoslovakia, from 1950. It was built to Formula 2 rules, with an air-cooled aluminium V8 mounted behind the driver. The engine doubled as a development test bed for Tatra's road and utility vehicles. Five were made. Adolf Veřmiřovský won sixteen times with it, and an upgraded T607-2 with a larger engine followed in 1953. Tatra ended the program after the 1958 season.",
   "stats": [
-    {
-      "label": "Engine",
-      "value": "2.8 L 30-valve six-cylinder"
-    },
-    {
-      "label": "Power",
-      "value": "142 kW (193 PS)"
-    },
-    {
-      "label": "Gearbox",
-      "value": "5-speed manual"
-    },
-    {
-      "label": "Drivetrain",
-      "value": "Front-wheel drive"
-    },
-    {
-      "label": "Body",
-      "value": "Four-seat coupé"
-    },
-    {
-      "label": "Debut",
-      "value": "Geneva Motor Show, 2002"
-    },
-    {
-      "label": "Designer",
-      "value": "Zdeněk Cibulka"
-    }
+    { "label": "Engine", "value": "Air-cooled V8, mid-mounted" },
+    { "label": "Displacement", "tag": "1950", "value": "1,985 cc" },
+    { "label": "Displacement", "tag": "T607-2, 1953", "value": "2,545 cc" },
+    { "label": "Cooling", "value": "Two belt-driven axial fans" },
+    { "label": "Debut", "value": "Ostrava, 17 September 1950" },
+    { "label": "Built", "value": "5" },
+    { "label": "Wins", "tag": "Veřmiřovský", "value": "16" }
   ],
   "photos": [],
-  "photoQuery": "2002 Škoda Tudor",
+  "photoQuery": "1950 Tatra 607 Monopost",
   "sprite": {
     "w": 16,
     "h": 24,
@@ -48,54 +27,50 @@
       "l": "ACCENT_LIGHT",
       "k": "#111318",
       "b": "#8fd3ff",
-      "s": "#c9ccd1",
-      "w": "#f2f2f2",
+      "s": "#4a4f57",
       "r": "#ff3b3b"
     },
     "rows": [
-      "....aaaaaaaa....",
-      "...aassssssaa...",
-      "..waaaaaaaaaaw..",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaalaalaaakk.",
-      ".kkaaalaalaaakk.",
-      "..aaaalaalaaaa..",
-      "..aabbbbbbbbaa..",
-      "..abbbbbbbbbba..",
-      "..abaaaaaaaaba..",
-      "..abaaaaaaaaba..",
-      "..abaaaaaaaaba..",
-      "..aabbbbbbbbaa..",
-      "..aaabbbbbbaaa..",
-      "..aaaaaaaaaaaa..",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      "..arraaaaaarra..",
-      "...aaaaaaaaaa...",
-      "....ssssssss....",
       "................",
+      "................",
+      ".......aa.......",
+      "......alla......",
+      "......alla......",
+      ".kk..aaaaaa..kk.",
+      ".kkssaallaasskk.",
+      ".kk..aaaaaa..kk.",
+      ".....aaaaaa.....",
+      ".....aabbaa.....",
+      ".....abbbba.....",
+      ".....akkkka.....",
+      ".....aakkaa.....",
+      "....aaaaaaaa....",
+      "....aallllaa....",
+      "....aallllaa....",
+      ".kk.aaaaaaaa.kk.",
+      ".kkssaaaaaasskk.",
+      ".kk.aaaaaaaa.kk.",
+      ".kk..aaaaaa..kk.",
+      "......arra......",
+      ".......ss.......",
       "................",
       "................"
     ]
   },
   "game": {
-    "obstacle": "cone",
-    "scenery": "city",
-    "accent": "#7a1626",
+    "obstacle": "tire",
+    "scenery": "forest",
+    "accent": "#9aa3ad",
     "baseSpeed": 1.0,
-    "grip": 0.6,
-    "gears": 5,
-    "curve": 0.4,
-    "stars": [
-      300,
-      800,
-      1500
-    ]
+    "grip": 0.7,
+    "gears": 4,
+    "curve": 0.7,
+    "stars": [300, 800, 1500]
   },
   "sources": [
-    "https://www.skoda-storyboard.com/en/skoda-world/skoda-tudor-a-car-that-still-has-a-lot-to-offer/",
-    "https://www.carscoops.com/2019/04/the-2002-skoda-tudor-concept-was-so-cool-someone-actually-stole-it/",
-    "https://www.autojournal.cz/?p=129656"
+    "https://en.wikipedia.org/wiki/Tatra_607_Monopost",
+    "https://www.lanemotormuseum.org/collection/cars/item/tatra-t-607-monopost-replica-1950/",
+    "https://www.e15.cz/byznys/fleet-special/monopost-f1-z-koprivnice-na-zapad-se-nedostal-kvuli-politicke-situaci-1341524",
+    "https://www.auto.cz/sportovni-tatry-sberatele-vavrinu-1609"
   ]
 }

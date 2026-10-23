@@ -367,3 +367,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. The day page's surprise link could honour a class (e.g. a small "another concept car" link), reusing the same on-tap fetch.
   3. `scripts/check.mjs` could warn when the newest day's `photoQuery` doesn't start with its `year`, matching docs/SCHEMA.md's "<year> <maker> <model>".
+
+## 2026-10-23 — 1950 Tatra 607 Monopost
+- Engine: `scripts/check.mjs` warns when the newest day's `photoQuery` doesn't start with its `year` and a space, matching docs/SCHEMA.md's "<year> <maker> <model>". Item 3 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener, and item 2 (class-aware surprise link) is still bigger than one small change. Tested by dropping the year from today's query: the warning fired, then cleared. docs/GAME.md updated. No new field.
+- Content: the roll was f1 / 1950s / Czechia or Eastern Europe / a homologation special. No homologation special fits a 1950s Eastern Bloc single-seater, so the story takes a near cousin: a racing car built mainly to prove a road engine (the 603's V8). Power and the 1953 record speed are left out: sources disagree (162 vs 184 hp; ~129 mph vs "just under 200 km/h"). The 1950 displacement is 1,985 cc per Wikipedia and Autosport/Hyan; e15 says 1,987. Sojka's reported second place at the 1950 GP (one source) is left out. WebFetch was blocked; facts are from search snippets. Silver accent is my pick for the aluminium body. No photos (Commons blocked); `photoQuery` set. Sprite: a silver cigar-shaped single-seater, no wings, exposed wheels on dark suspension arms, light louvred engine cover behind the cockpit. `gears: 4`, `grip: 0.7`, forest, tires, curve 0.7.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. The day page's surprise link could honour a class (e.g. a small "another f1 car" link), reusing the same on-tap fetch.
+  3. `scripts/check.mjs` could warn when the newest day's `days/index.json` `name` doesn't equal the day file's `name` (and `year`/`class`), so the garage can't drift from the day page.

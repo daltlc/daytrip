@@ -93,6 +93,7 @@ function checkDay(f, d, newest = false) {
   }
   if (d.photoQuery !== undefined && (typeof d.photoQuery !== 'string' || d.photoQuery.trim().length < 4)) err(f, 'photoQuery must be a short search string like "1975 Lancia Stratos HF"');
   if (!(Array.isArray(d.photos) && d.photos.length) && !d.photoQuery) warn(f, 'no photos and no photoQuery; the page will have no pictures');
+  if (newest && typeof d.photoQuery === 'string' && Number.isInteger(d.year) && !d.photoQuery.startsWith(`${d.year} `)) warn(f, `photoQuery "${d.photoQuery}" should start with the year (${d.year}); docs/SCHEMA.md asks for "<year> <maker> <model>"`);
 
   if (d.sprite) {
     const sp = d.sprite;

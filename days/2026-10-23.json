@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-23",
+  "name": "607 Monopost",
+  "year": 1950,
+  "maker": "Tatra",
+  "country": "Czechoslovakia",
+  "class": "f1",
+  "hook": "Tatra's single-seat racer was really a test bench on wheels for the V8 that later powered its 603 limousine.",
+  "story": "This race car was really an engine laboratory with a steering wheel. In 1949, Tatra raced a sports Tatraplan at the Czechoslovak Grand Prix. It went well. So the factory in Kopřivnice decided to build a pure racing car. Work began in April 1950. The engine sat behind the driver. It was an air-cooled aluminium V8, kept cool by two fans driven by belts from the crankshaft. That engine had a future. It was meant for the Tatra 603 limousine and a light off-road truck. Racing was the hardest test Tatra could give it. On 17 September 1950, Bruno Sojka drove two show laps in Ostrava. A week later the car raced at the Czechoslovak Grand Prix. But the politics of the day kept it from racing in the West. So Adolf Veřmiřovský raced it at home and won sixteen times. In October 1953 he set a national speed record in it. Then the 603 arrived in 1956. The lab had done its job. Tatra ended the racing program after 1958.",
+  "description": "The Tatra 607 Monopost is a single-seat racing car built by Tatra in Kopřivnice, Czechoslovakia, from 1950. It was built to Formula 2 rules, with an air-cooled aluminium V8 mounted behind the driver. The engine doubled as a development test bed for Tatra's road and utility vehicles. Five were made. Adolf Veřmiřovský won sixteen times with it, and an upgraded T607-2 with a larger engine followed in 1953. Tatra ended the program after the 1958 season.",
+  "stats": [
+    { "label": "Engine", "value": "Air-cooled V8, mid-mounted" },
+    { "label": "Displacement", "tag": "1950", "value": "1,985 cc" },
+    { "label": "Displacement", "tag": "T607-2, 1953", "value": "2,545 cc" },
+    { "label": "Cooling", "value": "Two belt-driven axial fans" },
+    { "label": "Debut", "value": "Ostrava, 17 September 1950" },
+    { "label": "Built", "value": "5" },
+    { "label": "Wins", "tag": "Veřmiřovský", "value": "16" }
+  ],
+  "photos": [],
+  "photoQuery": "1950 Tatra 607 Monopost",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "s": "#4a4f57",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      "................",
+      "................",
+      ".......aa.......",
+      "......alla......",
+      "......alla......",
+      ".kk..aaaaaa..kk.",
+      ".kkssaallaasskk.",
+      ".kk..aaaaaa..kk.",
+      ".....aaaaaa.....",
+      ".....aabbaa.....",
+      ".....abbbba.....",
+      ".....akkkka.....",
+      ".....aakkaa.....",
+      "....aaaaaaaa....",
+      "....aallllaa....",
+      "....aallllaa....",
+      ".kk.aaaaaaaa.kk.",
+      ".kkssaaaaaasskk.",
+      ".kk.aaaaaaaa.kk.",
+      ".kk..aaaaaa..kk.",
+      "......arra......",
+      ".......ss.......",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "forest",
+    "accent": "#9aa3ad",
+    "baseSpeed": 1.0,
+    "grip": 0.7,
+    "gears": 4,
+    "curve": 0.7,
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Tatra_607_Monopost",
+    "https://www.lanemotormuseum.org/collection/cars/item/tatra-t-607-monopost-replica-1950/",
+    "https://www.e15.cz/byznys/fleet-special/monopost-f1-z-koprivnice-na-zapad-se-nedostal-kvuli-politicke-situaci-1341524",
+    "https://www.auto.cz/sportovni-tatry-sberatele-vavrinu-1609"
+  ]
+}
