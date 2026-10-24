@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-24",
+  "name": "Saab 92",
+  "year": 1949,
+  "maker": "Saab",
+  "country": "Sweden",
+  "class": "rally",
+  "hook": "Saab's first production car won what was called Europe's most gruelling rally less than a year after the factory started building it.",
+  "story": "Saab built aircraft. Then, in December 1949, it started building cars. The first was the 92. It was a small, round fastback with a two-stroke twin up front, driving the front wheels. Every early one left the factory in the same dark green. Saab's head engineer, Rolf Mellde, wanted to show what it could do. So he went rallying. In January 1950, Saab sent two of its handful of test cars to the Monte Carlo Rally. Greta Molander came second in the women's class. Mellde finished 69th of 280 starters, in a car you couldn't yet buy. That was the warm-up. The real test came that November, at the Rikspokalen. At the time it was called Europe's most gruelling rally. Mellde won it outright. Molander won the women's class. And the Saab team took the team prize too. One event, and a plane maker's first car had a name. Saab and Swedish rallying stayed tied together for decades after that.",
+  "description": "The Saab 92 was the first production car from Saab, the Swedish aircraft maker, built in Trollhättan from December 1949. Its rounded two-door body was designed by Sixten Sason. A transverse 764 cc two-stroke twin, based on a DKW design, made 25 hp and drove the front wheels. Early cars were all dark green. Rally results, starting with Rolf Mellde's 1950 Rikspokalen win, built the brand's name, and the 92 led to the Saab 93.",
+  "stats": [
+    { "label": "Engine", "value": "764 cc two-stroke twin, transverse" },
+    { "label": "Power", "value": "25 hp" },
+    { "label": "Power", "tag": "1952 Monte", "value": "35 hp, tuned" },
+    { "label": "Drivetrain", "value": "Front-wheel drive" },
+    { "label": "Production began", "value": "December 1949" },
+    { "label": "Rikspokalen", "tag": "1950", "value": "1st overall, Rolf Mellde" }
+  ],
+  "photos": [],
+  "photoQuery": "1949 Saab 92",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "y": "#ffe08a",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      "................",
+      ".....aaaaaa.....",
+      "...ayaaaaaaya...",
+      "..aaaaaaaaaaaa..",
+      ".kaaaaaaaaaaaak.",
+      ".kaalaaaaaalaak.",
+      "..aaaaaaaaaaaa..",
+      "..aaabbbbbbaaa..",
+      "..aabbbbbbbbaa..",
+      "..aabbbbbbbbaa..",
+      "..aaaaaaaaaaaa..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aaabbbbbbaaa..",
+      "..aaaabbbbaaaa..",
+      ".kaaaaaaaaaaaak.",
+      ".kaaaaaaaaaaaak.",
+      "..aaaaaaaaaaaa..",
+      "...raaaaaaaar...",
+      "....aaaaaaaa....",
+      "......aaaa......",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "rock",
+    "scenery": "forest",
+    "accent": "#2f5a3e",
+    "baseSpeed": 0.85,
+    "grip": 0.3,
+    "gears": 3,
+    "curve": 0.7,
+    "stars": [250, 700, 1300]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Saab_92",
+    "https://en.wikipedia.org/wiki/Rikspokalen",
+    "https://www.saabplanet.com/greta-molander-the-first-driver-to-win-a-prize-for-saab/",
+    "https://www.saabmuseum.com/92/index.html"
+  ]
+}
