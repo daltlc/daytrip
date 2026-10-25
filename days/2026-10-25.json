@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-25",
+  "name": "Mégane Renault Sport R26.R",
+  "year": 2008,
+  "maker": "Renault",
+  "country": "France",
+  "class": "road",
+  "hook": "To make its fastest Mégane, Renault took things away: the rear seats, most of the airbags, the stereo, and even the glass in the back windows.",
+  "story": "Picture a French hot hatch on a diet. That's the R26.R. Renault Sport started with the Mégane R26 and asked one question. What can we take out? The rear seats went. So did their belts. The passenger and curtain airbags went. Most of the soundproofing went. The bonnet became carbon fibre. The rear screen and side windows became plastic. All told, it lost 123 kilos. The engine stayed exactly the same. Then Renault took it to the Nürburgring Nordschleife. That's the long, scary German track where carmakers chase lap times. On 23 June 2008, test driver Vincent Bayle went out and came back in about eight minutes and seventeen seconds. No front-wheel-drive production car had ever gone round faster. One lap, and a family hatchback with no back seats became a legend. Only 450 were built. The record has fallen since, to later Méganes. But the R26.R is the one that started the fight.",
+  "description": "The Mégane R26.R was a limited-run, lightweight version of the Mégane Renault Sport 230 F1 Team R26, revealed in 2008. Renault Sport kept the 230 hp 2.0-litre turbo engine, gearbox and limited-slip differential, but removed the rear seats, most airbags and much of the soundproofing, and fitted a carbon bonnet, polycarbonate rear glass and carbon-shelled Sabelt seats. It was 123 kg lighter than the R26. It set a front-wheel-drive production car lap record at the Nürburgring. Just 450 were made.",
+  "stats": [
+    { "label": "Engine", "value": "2.0-litre turbo four" },
+    { "label": "Power", "value": "230 hp" },
+    { "label": "Torque", "value": "310 Nm" },
+    { "label": "0–100 km/h", "value": "About 6 s" },
+    { "label": "Weight saved", "value": "123 kg vs the R26" },
+    { "label": "Nordschleife", "tag": "2008", "value": "8:17, Vincent Bayle" },
+    { "label": "Built", "value": "450" }
+  ],
+  "photos": [],
+  "photoQuery": "2008 Renault Mégane R26.R",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "w": "#f2f2f2",
+      "a": "ACCENT",
+      "c": "#2a2c31",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "y": "#ffe08a",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      "................",
+      "....wwwwwwww....",
+      "...ywwwaawwwy...",
+      ".kkwwwwaawwwwkk.",
+      ".kkwccccccccwkk.",
+      ".kkwccccccccwkk.",
+      "..wwccccccccww..",
+      "..wwwwwaawwwww..",
+      "..wbbbbbbbbbbw..",
+      "..wbbbbbbbbbbw..",
+      "..wwwwwaawwwww..",
+      "..wwwwwaawwwww..",
+      "..wwwwwaawwwww..",
+      "..wwwwwaawwwww..",
+      "..wbbbbbbbbbbw..",
+      ".kkwbbbbbbbbwkk.",
+      ".kkwwwwaawwwwkk.",
+      ".kkwwwwaawwwwkk.",
+      "..wwwwwaawwwww..",
+      "..wrrwwaawwrrw..",
+      "..wwwwwwwwwwww..",
+      "...kkkkkkkkkk...",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#d7262f",
+    "baseSpeed": 1.1,
+    "grip": 0.6,
+    "gears": 6,
+    "curve": 0.8,
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Renault_M%C3%A9gane_RS",
+    "https://www.topgear.com/car-reviews/renault/megane/20-t-16v-renaultsport-230-r26r-3dr/first-drive",
+    "https://www.theaa.com/allaboutcars/cartestreports/2009019.html",
+    "https://de.motor1.com/news/166553/renault-megane-r26r-flaggschiff-der-renault-sport-reihe/"
+  ]
+}

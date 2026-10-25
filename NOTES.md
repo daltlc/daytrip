@@ -383,3 +383,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. The day page's surprise link could honour a class (e.g. a small "another rally car" link), reusing the same on-tap fetch.
   3. `scripts/check.mjs` could warn when the newest day's `sources` repeat a URL, or list one that isn't https.
+
+## 2026-10-25 — 2008 Mégane Renault Sport R26.R
+- Engine: `scripts/check.mjs` now warns when the newest day's `sources` repeat a URL exactly or list a plain `http://` one. Item 3 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener, and item 2 (class-aware surprise link) is still bigger than one small change. Newest-only warnings, like the source-count check, since past day files are never rewritten. Tested by duplicating a source and making one `http://`: both warnings fired, then cleared. docs/GAME.md updated. No new field.
+- Content: the first roll (muscle / 2010s / France) had no honest fit, so I rolled again: road / 2000s / France / a car famous for a single race, stage or stunt. The R26.R fits through one lap: 8:17 at the Nordschleife on 23 June 2008, a front-wheel-drive production car record, driven by Vincent Bayle. Timing sources give 8:16.9 too, so the story says "about" 8:17. Kerb weight is left out (1,230 vs 1,305 kg); "123 kg lighter than the R26" is used instead. Top speed wasn't confirmed, so it's out. 0–100 km/h is "about 6 s" from a single source. White with red markings is a documented spec, not the only colour; the red accent is my pick. No photos (Commons blocked); `photoQuery` set. Sprite: a white three-door hatch with a dark carbon bonnet, a red centre stripe, yellow headlamps and red tail lights. `gears: 6`, `grip: 0.6`, track, tires, baseSpeed 1.1, curve 0.8.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. The day page's surprise link could honour a class (e.g. a small "another road car" link), reusing the same on-tap fetch.
+  3. `scripts/check.mjs` could warn when the newest day's `hook` runs longer than one sentence (more than one `. ` inside it).
