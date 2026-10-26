@@ -92,7 +92,8 @@ function render(day) {
       gameMount),
     day.sources?.length ? el('footer', { class: 'sources' }, 'Sources: ',
       day.sources.map((s, i) => [i ? ' · ' : null, el('a', { href: s, target: '_blank', rel: 'noopener' }, hostOf(s))])) : null,
-    el('p', { class: 'day-surprise' }, surpriseLink(day.date)),
+    el('p', { class: 'day-surprise' }, surpriseLink(day.date),
+      day.class ? [' · ', surpriseLink(day.date, day.class)] : null),
   ].filter(present));
   new Game(gameMount, day);
 
@@ -107,20 +108,24 @@ function render(day) {
 
 /**
  * "Surprise me" at the foot of the day: a random other car from `days/index.json`, never the one on screen.
- * The index is fetched on tap, not on load, so a reader who never taps pays nothing. If the fetch fails or
- * there is no other day, the link falls through to its plain `href`, the garage.
+ * Given a class, it is "More Le Mans →" and draws only from that class. The index is fetched on tap, not on
+ * load, so a reader who never taps pays nothing. If the fetch fails or there is no other day to draw, the
+ * link falls through to its plain `href`, the garage (filtered to the class, if there is one).
  * @param {string} current the date on screen
+ * @param {CarClass} [cls] only draw cars of this class
  * @returns {HTMLAnchorElement}
  */
-function surpriseLink(current) {
-  const link = el('a', { class: 'g-surprise', href: 'archive.html' }, 'Surprise me →');
+function surpriseLink(current, cls) {
+  const link = cls
+    ? el('a', { class: 'g-surprise', href: `archive.html?class=${encodeURIComponent(cls)}` }, `More ${CLASS_LABEL[cls] ?? cls} →`)
+    : el('a', { class: 'g-surprise', href: 'archive.html' }, 'Surprise me →');
   link.addEventListener('click', e => {
     e.preventDefault();
     void fetch(`days/index.json?v=${Date.now()}`, { cache: 'no-store' })
       .then(res => (res.ok ? res.json() : []))
       .then((/** @type {unknown} */ days) => {
         const dates = Array.isArray(days)
-          ? days.map(d => (d && typeof d.date === 'string' ? d.date : '')).filter(d => DATE.test(d) && d !== current)
+          ? days.map(d => (d && typeof d.date === 'string' && (!cls || d.class === cls) ? d.date : '')).filter(d => DATE.test(d) && d !== current)
           : [];
         location.href = dates.length ? `index.html?d=${encodeURIComponent(dates[Math.floor(Math.random() * dates.length)])}` : link.href;
       })

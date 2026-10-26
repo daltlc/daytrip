@@ -1,77 +1,101 @@
 {
-  "date": "2026-10-25",
-  "name": "Mégane Renault Sport R26.R",
-  "year": 2008,
-  "maker": "Renault",
-  "country": "France",
-  "class": "road",
-  "hook": "To make its fastest Mégane, Renault took things away: the rear seats, most of the airbags, the stereo, and even the glass in the back windows.",
-  "story": "Picture a French hot hatch on a diet. That's the R26.R. Renault Sport started with the Mégane R26 and asked one question. What can we take out? The rear seats went. So did their belts. The passenger and curtain airbags went. Most of the soundproofing went. The bonnet became carbon fibre. The rear screen and side windows became plastic. All told, it lost 123 kilos. The engine stayed exactly the same. Then Renault took it to the Nürburgring Nordschleife. That's the long, scary German track where carmakers chase lap times. On 23 June 2008, test driver Vincent Bayle went out and came back in about eight minutes and seventeen seconds. No front-wheel-drive production car had ever gone round faster. One lap, and a family hatchback with no back seats became a legend. Only 450 were built. The record has fallen since, to later Méganes. But the R26.R is the one that started the fight.",
-  "description": "The Mégane R26.R was a limited-run, lightweight version of the Mégane Renault Sport 230 F1 Team R26, revealed in 2008. Renault Sport kept the 230 hp 2.0-litre turbo engine, gearbox and limited-slip differential, but removed the rear seats, most airbags and much of the soundproofing, and fitted a carbon bonnet, polycarbonate rear glass and carbon-shelled Sabelt seats. It was 123 kg lighter than the R26. It set a front-wheel-drive production car lap record at the Nürburgring. Just 450 were made.",
+  "date": "2026-10-26",
+  "name": "Bristol 450",
+  "year": 1954,
+  "maker": "Bristol",
+  "country": "United Kingdom",
+  "class": "lemans",
+  "hook": "An aeroplane company built this finned racer, swept its Le Mans class two years running, then broke up all but one.",
+  "story": "Bristol built aeroplanes. Big ones. So when its car division went racing, it thought like an aircraft maker. It bought a Formula Two design from ERA, a team that had just folded, and rebuilt the frame in steel tube. A Bristol six-cylinder went in the front. Just two litres. Then came the body. A teardrop canopy, and two fins sweeping back off the tail. For 1954, the gap between them was raised and filled in, after wind-tunnel work. It looked strange. It was meant to be stable. At Le Mans that June, the cars ran down the Mulsanne Straight at about 150 miles an hour. A gust burst through a gap in the trees. Other cars were thrown about. Peter Wilson's Bristol barely twitched. A small correction, and on he went. Twenty-four hours later, all three Bristols finished. Seventh, eighth and ninth overall. First, second and third in the two-litre class. Open cars did it again in 1955. Then Bristol quit racing and broke them up. Only one survives.",
+  "description": "The Bristol 450 was a sports-racing car built by the car division of the Bristol Aeroplane Company at Filton. Its chassis followed ERA's G-type Formula Two car, remade in round steel tubes, with a de Dion rear axle. A 1,971 cc Bristol straight-six sat up front. The 1954 coupés wore twin rear fins, reshaped after wind-tunnel work. Three cars took the two-litre class 1-2-3 at Le Mans in 1954, and open 450s repeated it in 1955. All but one were broken up.",
   "stats": [
-    { "label": "Engine", "value": "2.0-litre turbo four" },
-    { "label": "Power", "value": "230 hp" },
-    { "label": "Torque", "value": "310 Nm" },
-    { "label": "0–100 km/h", "value": "About 6 s" },
-    { "label": "Weight saved", "value": "123 kg vs the R26" },
-    { "label": "Nordschleife", "tag": "2008", "value": "8:17, Vincent Bayle" },
-    { "label": "Built", "value": "450" }
+    {
+      "label": "Engine",
+      "value": "1,971 cc straight-six"
+    },
+    {
+      "label": "Power",
+      "tag": "1954",
+      "value": "155 bhp"
+    },
+    {
+      "label": "Top speed",
+      "value": "Over 140 mph (Le Mans gearing)"
+    },
+    {
+      "label": "Rear axle",
+      "value": "de Dion"
+    },
+    {
+      "label": "Le Mans",
+      "tag": "1954",
+      "value": "7th, 8th, 9th overall; class 1-2-3"
+    },
+    {
+      "label": "Le Mans",
+      "tag": "1955",
+      "value": "7th, 8th, 9th overall; class 1-2-3"
+    }
   ],
   "photos": [],
-  "photoQuery": "2008 Renault Mégane R26.R",
+  "photoQuery": "1954 Bristol 450",
   "sprite": {
     "w": 16,
     "h": 24,
     "palette": {
-      "w": "#f2f2f2",
       "a": "ACCENT",
-      "c": "#2a2c31",
+      "l": "ACCENT_LIGHT",
       "k": "#111318",
       "b": "#8fd3ff",
+      "w": "#f2f2f2",
       "y": "#ffe08a",
       "r": "#ff3b3b"
     },
     "rows": [
       "................",
-      "....wwwwwwww....",
-      "...ywwwaawwwy...",
-      ".kkwwwwaawwwwkk.",
-      ".kkwccccccccwkk.",
-      ".kkwccccccccwkk.",
-      "..wwccccccccww..",
-      "..wwwwwaawwwww..",
-      "..wbbbbbbbbbbw..",
-      "..wbbbbbbbbbbw..",
-      "..wwwwwaawwwww..",
-      "..wwwwwaawwwww..",
-      "..wwwwwaawwwww..",
-      "..wwwwwaawwwww..",
-      "..wbbbbbbbbbbw..",
-      ".kkwbbbbbbbbwkk.",
-      ".kkwwwwaawwwwkk.",
-      ".kkwwwwaawwwwkk.",
-      "..wwwwwaawwwww..",
-      "..wrrwwaawwrrw..",
-      "..wwwwwwwwwwww..",
-      "...kkkkkkkkkk...",
-      "................",
-      "................"
+      ".....aaaaaa.....",
+      "...yaaaaaaaay...",
+      "..aaaaaaaaaaaa..",
+      "..kaaaaaaaaaak..",
+      "..kaaaaaaaaaak..",
+      "..kaaaaaaaaaak..",
+      "..aaaaaaaaaaaa..",
+      "..aaaawwwwaaaa..",
+      "..aaaawwwwaaaa..",
+      "..aaaabbbbaaaa..",
+      "..aaabbbbbbaaa..",
+      "..aaabbbbbbaaa..",
+      "..aaabbbbbbaaa..",
+      "..aaaabbbbaaaa..",
+      "..aaaallllaaaa..",
+      "..kalaallaalak..",
+      "..kalaallaalak..",
+      "..kalaallaalak..",
+      "..aalaallaalaa..",
+      "..aalaaaaaalaa..",
+      "..ralaaaaaalar..",
+      "...l........l...",
+      "...l........l..."
     ]
   },
   "game": {
     "obstacle": "tire",
     "scenery": "track",
-    "accent": "#d7262f",
-    "baseSpeed": 1.1,
-    "grip": 0.6,
-    "gears": 6,
-    "curve": 0.8,
-    "stars": [300, 800, 1500]
+    "accent": "#1f5c3a",
+    "grip": 0.7,
+    "gears": 4,
+    "baseSpeed": 0.95,
+    "curve": 0.5,
+    "stars": [
+      300,
+      800,
+      1500
+    ]
   },
   "sources": [
-    "https://en.wikipedia.org/wiki/Renault_M%C3%A9gane_RS",
-    "https://www.topgear.com/car-reviews/renault/megane/20-t-16v-renaultsport-230-r26r-3dr/first-drive",
-    "https://www.theaa.com/allaboutcars/cartestreports/2009019.html",
-    "https://de.motor1.com/news/166553/renault-megane-r26r-flaggschiff-der-renault-sport-reihe/"
+    "https://en.wikipedia.org/wiki/Bristol_450",
+    "https://classicandsportscar.com/features/bristol-450-filtons-finned-flyer",
+    "https://www.motorsportmagazine.com/archive/page/august-1999/81",
+    "https://www.themotormuseuminminiature.co.uk/1954-bristol-450-le-mans-coupe.php"
   ]
 }
