@@ -398,4 +398,4 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
 - Next up:
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. The garage's class chips could use the same friendly labels as the day page's badge ("Le Mans" rather than "lemans"), sharing one `CLASS_LABEL` map in a small module.
-  3. `scripts/check.mjs` could warn when the newest day's `hook` runs past 25 words, since a long single sentence is just as hard to read aloud.
+  3. The day page's class link could go quiet when the index has no other car of that class (it currently still shows and falls through to the filtered garage), by checking on first tap and swapping its text to "Garage →".
