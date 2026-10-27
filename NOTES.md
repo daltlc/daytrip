@@ -399,3 +399,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. The garage's class chips could use the same friendly labels as the day page's badge ("Le Mans" rather than "lemans"), sharing one `CLASS_LABEL` map in a small module.
   3. The day page's class link could go quiet when the index has no other car of that class (it currently still shows and falls through to the filtered garage), by checking on first tap and swapping its text to "Garage →".
+
+## 2026-10-27 — 1988 Subaru XT6
+- Engine: the class-label map moved out of `page.js` into a new `classes.js` (`classLabel`), and the garage's chips and count line now use it, so the garage says "Le Mans · 4" and "4 of 44 cars · Le Mans" like the day page's badge. Item 2 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener. Checked in a headless browser: chips, count line and badge all read the friendly names. `classes.js` added to `BROWSER_MODULES` in scripts/check.mjs; docs/GAME.md updated. No new field.
+- Content: the roll was jdm / 1980s / United States / a commercial flop that became a cult classic. The XT6 was sold in the US (and as the Alcyone in Japan), so it fits all three. Engine, 145 hp, AWD, air suspension and the asymmetric wheel are from Hagerty, Curbside Classic and Hooniverse search snippets (all blocked to WebFetch). The 98,928 sales figure is for every XT, not the XT6 alone, so it carries an "all XTs" tag. The 0.29 Cd is Subaru's claim for the XT. Pop-up headlamps were left out: not in any snippet. Weight, 0–60 and top speed omitted (no reliable source). No photos (Commons blocked); `photoQuery` set. Sprite: a red wedge with a pointed nose, long glass, grey lower band and a wide tail-lamp bar. `grip: 0.6`, `gears: 5`, city, cones, curve 0.5.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. The day page's class link could go quiet when the index has no other car of that class (it currently still shows and falls through to the filtered garage), by checking on first tap and swapping its text to "Garage →".
+  3. `scripts/check.mjs` could import `classes.js` and fail if `CLASS_LABEL` is missing a label for any class the validator accepts.

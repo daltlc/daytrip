@@ -7,6 +7,7 @@ import { Game } from './game.js';
 import { buildSprite } from './render.js';
 import { getJson, setJson } from './storage.js';
 import { splitSentences } from './text.js';
+import { classLabel } from './classes.js';
 
 const DEFAULT_ACCENT = '#ff8a3d';
 const THEME_COLOR = '#0b0d10';
@@ -15,13 +16,6 @@ const PHOTO_CACHE_MS = 24 * 60 * 60 * 1000;
 const PHOTO_MIN_WIDTH = 900;
 const CARD_SCALE = 6;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
-
-/** @type {Record<CarClass, string>} */
-const CLASS_LABEL = {
-  road: 'Road car', exotic: 'Exotic', rally: 'Rally', f1: 'Formula 1', gt3: 'GT3',
-  lemans: 'Le Mans', jdm: 'JDM', muscle: 'Muscle', offroad: 'Off-road',
-  vintage: 'Vintage', touring: 'Touring car', concept: 'Concept',
-};
 
 /* ---------- load ---------- */
 /** @returns {Promise<DayFile>} */
@@ -76,7 +70,7 @@ function render(day) {
   const gameMount = el('div', { id: 'game' });
   must('#app').replaceChildren(...[
     el('section', { class: 'card hero' },
-      el('div', { class: 'meta' }, el('span', { class: 'badge' }, (day.class && CLASS_LABEL[day.class]) || day.class || 'Car'), el('span', {}, fmtDate(day.date))),
+      el('div', { class: 'meta' }, el('span', { class: 'badge' }, (day.class && classLabel(day.class)) || 'Car'), el('span', {}, fmtDate(day.date))),
       el('h1', {}, day.year ? el('span', { class: 'year' }, day.year) : null, day.year ? ' ' : null, day.name),
       el('p', { class: 'maker' }, [day.maker, day.country].filter(Boolean).join(' · ')),
       hookSpans.length ? el('p', { class: 'hook' }, hookSpans) : null,
@@ -117,7 +111,7 @@ function render(day) {
  */
 function surpriseLink(current, cls) {
   const link = cls
-    ? el('a', { class: 'g-surprise', href: `archive.html?class=${encodeURIComponent(cls)}` }, `More ${CLASS_LABEL[cls] ?? cls} →`)
+    ? el('a', { class: 'g-surprise', href: `archive.html?class=${encodeURIComponent(cls)}` }, `More ${classLabel(cls)} →`)
     : el('a', { class: 'g-surprise', href: 'archive.html' }, 'Surprise me →');
   link.addEventListener('click', e => {
     e.preventDefault();

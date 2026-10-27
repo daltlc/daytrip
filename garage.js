@@ -2,6 +2,7 @@
 /* Daytrip — the garage: every past day, newest first. */
 /** @import { IndexEntry } from './types.js' */
 import { el, must } from './dom.js';
+import { classLabel } from './classes.js';
 
 const HEX_COLOR = /^#[0-9a-f]{6}$/i;
 
@@ -70,12 +71,12 @@ function row(day) {
  */
 function countLine(shown, total, cls) {
   const cars = total === 1 ? 'car' : 'cars';
-  return cls ? `${shown} of ${total} ${cars} · ${cls}, newest first.` : `${total} ${cars} so far, newest first.`;
+  return cls ? `${shown} of ${total} ${cars} · ${classLabel(cls)}, newest first.` : `${total} ${cars} so far, newest first.`;
 }
 
 /**
  * Filter chips: "all" plus every class in the list, in order of first appearance (newest first).
- * Each chip carries its count ("rally · 2"; "all" counts every day).
+ * Each chip carries its friendly label (classes.js) and count ("Rally · 2"; "all" counts every day).
  * Tapping one shows only that class; the choice rides in `?class=` so a filtered garage can be linked.
  * @param {IndexEntry[]} days
  * @param {HTMLElement} list
@@ -109,7 +110,7 @@ function filters(days, list, count) {
         history.replaceState(null, '', url);
         show();
       },
-    }, `${cls || 'all'} · ${cls ? counts.get(cls) ?? 0 : days.length}`);
+    }, `${cls ? classLabel(cls) : 'all'} · ${cls ? counts.get(cls) ?? 0 : days.length}`);
     chips.push(chip);
   }
   bar.replaceChildren(...chips);

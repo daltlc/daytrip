@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-27",
+  "name": "XT6",
+  "year": 1988,
+  "maker": "Subaru",
+  "country": "Japan",
+  "class": "jdm",
+  "hook": "Subaru built a wedge coupé as slippery as a modern supercar, gave it a steering wheel with one spoke up and one spoke across, and almost nobody bought it.",
+  "story": "Picture a showroom in 1988. Most coupés are soft and round. Then there is this. A sharp wedge, a single windscreen wiper, and headlamps with their own washers. Subaru claimed a drag figure of 0.29. That is close to supercars built decades later. Now open the door. The steering wheel is lopsided. One spoke runs straight down. The other runs sideways. The controls live in pods beside it, and they tilt and telescope with the wheel. On some cars, the instrument cluster tilts too. The XT6 added a flat-six. It added full-time four-wheel drive, anti-lock brakes and air suspension you can raise or lower. It was clever. It was also strange, and buyers walked past it. Before the SVX replaced it, fewer than a hundred thousand XTs had found homes. Too eccentric, the critics said. Today that is exactly why people hunt them down. The odd wheel, the wedge, the flat-six. A flop in its day, and now a cult.",
+  "description": "The XT6 was the six-cylinder version of Subaru's XT coupé, sold as the Alcyone in Japan and the Vortex in Australia. The XT arrived in 1985; the XT6 followed for 1988 with a 2.7-litre flat-six, full-time four-wheel drive, anti-lock brakes and height-adjustable air suspension. Its wedge body, asymmetric steering wheel and tilting control pods made it one of the oddest Japanese cars of its decade. It sold poorly and was replaced by the SVX, but it now has a loyal following.",
+  "stats": [
+    { "label": "Engine", "value": "2,672 cc flat-six, SOHC 12-valve" },
+    { "label": "Power", "value": "145 hp" },
+    { "label": "Drivetrain", "value": "Full-time four-wheel drive" },
+    { "label": "Gearbox", "value": "5-speed manual or 4-speed automatic" },
+    { "label": "Drag coefficient", "value": "0.29 (Subaru claim)" },
+    { "label": "Built", "tag": "all XTs", "value": "98,928" }
+  ],
+  "photos": [],
+  "photoQuery": "1988 Subaru XT6",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "g": "#6b7078",
+      "w": "#f2f2f2",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      "................",
+      "......aaaa......",
+      "....waaaaaaw....",
+      "...aaaaaaaaaa...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaalaaaalaakk.",
+      ".kkaalaaaalaakk.",
+      "..aaaaaaaaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..abbbbbbbbbba..",
+      "..aabbbbbbbbaa..",
+      "..aaaaaaaaaaaa..",
+      "..aaaaaaaaaaaa..",
+      "..aabbbbbbbbaa..",
+      ".kkabbbbbbbbakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..gggggggggggg..",
+      "..rrrraaaarrrr..",
+      "..gggggggggggg..",
+      "................",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "cone",
+    "scenery": "city",
+    "accent": "#a3212b",
+    "grip": 0.6,
+    "gears": 5,
+    "curve": 0.5
+  },
+  "sources": [
+    "https://www.hagerty.com/apps/ValuationTools/1988-Subaru-XT6",
+    "https://www.curbsideclassic.com/blog/car-show-classic/car-show-classic-1985-90-subaru-xt-vortex-the-brightest-star-in-subarus-constellation",
+    "https://www.hooniverse.com/the-subaru-xt6-didnt-inspire-cadillac-but-it-might-inspire-you/",
+    "https://autopartsearch.com/make/subaru/xt/detail"
+  ]
+}

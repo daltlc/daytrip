@@ -1,44 +1,23 @@
 {
-  "date": "2026-10-26",
-  "name": "Bristol 450",
-  "year": 1954,
-  "maker": "Bristol",
-  "country": "United Kingdom",
-  "class": "lemans",
-  "hook": "An aeroplane company built this finned racer, swept its Le Mans class two years running, then broke up all but one.",
-  "story": "Bristol built aeroplanes. Big ones. So when its car division went racing, it thought like an aircraft maker. It bought a Formula Two design from ERA, a team that had just folded, and rebuilt the frame in steel tube. A Bristol six-cylinder went in the front. Just two litres. Then came the body. A teardrop canopy, and two fins sweeping back off the tail. For 1954, the gap between them was raised and filled in, after wind-tunnel work. It looked strange. It was meant to be stable. At Le Mans that June, the cars ran down the Mulsanne Straight at about 150 miles an hour. A gust burst through a gap in the trees. Other cars were thrown about. Peter Wilson's Bristol barely twitched. A small correction, and on he went. Twenty-four hours later, all three Bristols finished. Seventh, eighth and ninth overall. First, second and third in the two-litre class. Open cars did it again in 1955. Then Bristol quit racing and broke them up. Only one survives.",
-  "description": "The Bristol 450 was a sports-racing car built by the car division of the Bristol Aeroplane Company at Filton. Its chassis followed ERA's G-type Formula Two car, remade in round steel tubes, with a de Dion rear axle. A 1,971 cc Bristol straight-six sat up front. The 1954 coupés wore twin rear fins, reshaped after wind-tunnel work. Three cars took the two-litre class 1-2-3 at Le Mans in 1954, and open 450s repeated it in 1955. All but one were broken up.",
+  "date": "2026-10-27",
+  "name": "XT6",
+  "year": 1988,
+  "maker": "Subaru",
+  "country": "Japan",
+  "class": "jdm",
+  "hook": "Subaru built a wedge coupé as slippery as a modern supercar, gave it a steering wheel with one spoke up and one spoke across, and almost nobody bought it.",
+  "story": "Picture a showroom in 1988. Most coupés are soft and round. Then there is this. A sharp wedge, a single windscreen wiper, and headlamps with their own washers. Subaru claimed a drag figure of 0.29. That is close to supercars built decades later. Now open the door. The steering wheel is lopsided. One spoke runs straight down. The other runs sideways. The controls live in pods beside it, and they tilt and telescope with the wheel. On some cars, the instrument cluster tilts too. The XT6 added a flat-six. It added full-time four-wheel drive, anti-lock brakes and air suspension you can raise or lower. It was clever. It was also strange, and buyers walked past it. Before the SVX replaced it, fewer than a hundred thousand XTs had found homes. Too eccentric, the critics said. Today that is exactly why people hunt them down. The odd wheel, the wedge, the flat-six. A flop in its day, and now a cult.",
+  "description": "The XT6 was the six-cylinder version of Subaru's XT coupé, sold as the Alcyone in Japan and the Vortex in Australia. The XT arrived in 1985; the XT6 followed for 1988 with a 2.7-litre flat-six, full-time four-wheel drive, anti-lock brakes and height-adjustable air suspension. Its wedge body, asymmetric steering wheel and tilting control pods made it one of the oddest Japanese cars of its decade. It sold poorly and was replaced by the SVX, but it now has a loyal following.",
   "stats": [
-    {
-      "label": "Engine",
-      "value": "1,971 cc straight-six"
-    },
-    {
-      "label": "Power",
-      "tag": "1954",
-      "value": "155 bhp"
-    },
-    {
-      "label": "Top speed",
-      "value": "Over 140 mph (Le Mans gearing)"
-    },
-    {
-      "label": "Rear axle",
-      "value": "de Dion"
-    },
-    {
-      "label": "Le Mans",
-      "tag": "1954",
-      "value": "7th, 8th, 9th overall; class 1-2-3"
-    },
-    {
-      "label": "Le Mans",
-      "tag": "1955",
-      "value": "7th, 8th, 9th overall; class 1-2-3"
-    }
+    { "label": "Engine", "value": "2,672 cc flat-six, SOHC 12-valve" },
+    { "label": "Power", "value": "145 hp" },
+    { "label": "Drivetrain", "value": "Full-time four-wheel drive" },
+    { "label": "Gearbox", "value": "5-speed manual or 4-speed automatic" },
+    { "label": "Drag coefficient", "value": "0.29 (Subaru claim)" },
+    { "label": "Built", "tag": "all XTs", "value": "98,928" }
   ],
   "photos": [],
-  "photoQuery": "1954 Bristol 450",
+  "photoQuery": "1988 Subaru XT6",
   "sprite": {
     "w": 16,
     "h": 24,
@@ -47,55 +26,49 @@
       "l": "ACCENT_LIGHT",
       "k": "#111318",
       "b": "#8fd3ff",
+      "g": "#6b7078",
       "w": "#f2f2f2",
-      "y": "#ffe08a",
       "r": "#ff3b3b"
     },
     "rows": [
       "................",
-      ".....aaaaaa.....",
-      "...yaaaaaaaay...",
+      "......aaaa......",
+      "....waaaaaaw....",
+      "...aaaaaaaaaa...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaalaaaalaakk.",
+      ".kkaalaaaalaakk.",
       "..aaaaaaaaaaaa..",
-      "..kaaaaaaaaaak..",
-      "..kaaaaaaaaaak..",
-      "..kaaaaaaaaaak..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..abbbbbbbbbba..",
+      "..aabbbbbbbbaa..",
       "..aaaaaaaaaaaa..",
-      "..aaaawwwwaaaa..",
-      "..aaaawwwwaaaa..",
-      "..aaaabbbbaaaa..",
-      "..aaabbbbbbaaa..",
-      "..aaabbbbbbaaa..",
-      "..aaabbbbbbaaa..",
-      "..aaaabbbbaaaa..",
-      "..aaaallllaaaa..",
-      "..kalaallaalak..",
-      "..kalaallaalak..",
-      "..kalaallaalak..",
-      "..aalaallaalaa..",
-      "..aalaaaaaalaa..",
-      "..ralaaaaaalar..",
-      "...l........l...",
-      "...l........l..."
+      "..aaaaaaaaaaaa..",
+      "..aabbbbbbbbaa..",
+      ".kkabbbbbbbbakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..gggggggggggg..",
+      "..rrrraaaarrrr..",
+      "..gggggggggggg..",
+      "................",
+      "................",
+      "................"
     ]
   },
   "game": {
-    "obstacle": "tire",
-    "scenery": "track",
-    "accent": "#1f5c3a",
-    "grip": 0.7,
-    "gears": 4,
-    "baseSpeed": 0.95,
-    "curve": 0.5,
-    "stars": [
-      300,
-      800,
-      1500
-    ]
+    "obstacle": "cone",
+    "scenery": "city",
+    "accent": "#a3212b",
+    "grip": 0.6,
+    "gears": 5,
+    "curve": 0.5
   },
   "sources": [
-    "https://en.wikipedia.org/wiki/Bristol_450",
-    "https://classicandsportscar.com/features/bristol-450-filtons-finned-flyer",
-    "https://www.motorsportmagazine.com/archive/page/august-1999/81",
-    "https://www.themotormuseuminminiature.co.uk/1954-bristol-450-le-mans-coupe.php"
+    "https://www.hagerty.com/apps/ValuationTools/1988-Subaru-XT6",
+    "https://www.curbsideclassic.com/blog/car-show-classic/car-show-classic-1985-90-subaru-xt-vortex-the-brightest-star-in-subarus-constellation",
+    "https://www.hooniverse.com/the-subaru-xt6-didnt-inspire-cadillac-but-it-might-inspire-you/",
+    "https://autopartsearch.com/make/subaru/xt/detail"
   ]
 }

@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-27", "name": "XT6", "year": 1988, "class": "jdm", "accent": "#a3212b" },
   { "date": "2026-10-26", "name": "Bristol 450", "year": 1954, "class": "lemans", "accent": "#1f5c3a" },
   { "date": "2026-10-25", "name": "Mégane Renault Sport R26.R", "year": 2008, "class": "road", "accent": "#d7262f" },
   { "date": "2026-10-24", "name": "Saab 92", "year": 1949, "class": "rally", "accent": "#2f5a3e" },
