@@ -7,6 +7,7 @@ import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { splitSentences } from '../text.js';
+import { classLabel } from '../classes.js';
 
 /** @import { DayFile, IndexEntry } from '../types.js' */
 
@@ -206,6 +207,9 @@ for (const f of BROWSER_MODULES) {
   if (/\bconsole\.\w+\(/.test(src)) err(f, 'console.* call in page code');
   if (!src.startsWith('// @ts-check')) err(f, 'must start with // @ts-check');
 }
+
+// --- every class the validator accepts needs a friendly label (classLabel echoes an unknown class back)
+for (const c of CLASSES) if (classLabel(c) === c) err('classes.js', `CLASS_LABEL has no label for "${c}"`);
 
 // --- local references in html
 for (const f of ['index.html', 'archive.html']) {

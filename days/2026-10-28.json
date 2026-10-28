@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-28",
+  "name": "Volvo Philip",
+  "year": 1952,
+  "maker": "Volvo",
+  "country": "Sweden",
+  "class": "concept",
+  "hook": "In 1952 Volvo built a big American-style sedan with a brand-new V8, then decided it looked too American and stopped at one.",
+  "story": "It is 1952 in Gothenburg. Volvo builds small, tough cars for Swedish roads. But someone is looking across the Atlantic. America wants big sedans. America wants V8s. So Volvo builds one. The designer is a young man called Jan Wilsgaard. He draws a full-size sedan with the long, smooth lines Americans love. Under the bonnet goes a brand-new 3.6-litre V8. Volvo calls the car Philip. It runs. It drives. And then the board takes a good look at it. It looks too much like the American cars it was meant to fight. A Kaiser from 1951 could almost be its brother. It would also cost far too much to build. So the Philip stops at one. It never got the chance to flop in a showroom. Instead it went to work. The bosses of Bolinder-Munktell, Volvo's tractor maker, drove it for years. The V8 lived on in trucks and boats. Wilsgaard went on to draw the Amazon. And the only Philip is still kept by Volvo today.",
+  "description": "The Philip was a 1952 Volvo prototype, a full-size sedan aimed at the United States. It was designed by Jan Wilsgaard, who later shaped the Amazon, and powered by Volvo's new B8B V8 of 3.6 litres and about 120 hp. Only one running car was built. Volvo's board cancelled the project, judging the car too close to American designs and too costly to produce. The V8 was reworked as the B36 for trucks and boats. The prototype survives at the Volvo Museum in Gothenburg.",
+  "stats": [
+    { "label": "Engine", "value": "3.6 L V8 (B8B)" },
+    { "label": "Power", "value": "120 hp" },
+    { "label": "Built", "value": "1 running prototype" },
+    { "label": "Designer", "value": "Jan Wilsgaard" },
+    { "label": "Target market", "value": "United States" },
+    { "label": "Where now", "value": "Volvo Museum, Gothenburg" }
+  ],
+  "photos": [],
+  "photoQuery": "1952 Volvo Philip",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "w": "#d9dde2",
+      "y": "#ffe08a",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      "................",
+      "...wwwwwwwwww...",
+      "..yaaaaaaaaaay..",
+      "..aaaaaaaaaaaa..",
+      ".kaaalaaaalaaak.",
+      ".kaaalaaaalaaak.",
+      ".kaaaaaaaaaaaak.",
+      "..aaaaaaaaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..abbbbbbbbbba..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aabbbbbbbbaa..",
+      "..aaabbbbbbaaa..",
+      ".kaaaaaaaaaaaak.",
+      ".kaaaaaaaaaaaak.",
+      ".kaaaaaaaaaaaak.",
+      "..aaaaaaaaaaaa..",
+      "..raaaaaaaaaar..",
+      "...wwwwwwwwww...",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "cone",
+    "scenery": "coast",
+    "accent": "#2b3f5c",
+    "grip": 0.4,
+    "gears": 3,
+    "baseSpeed": 0.85,
+    "curve": 0.5,
+    "stars": [250, 700, 1300]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Volvo_Philip",
+    "https://jalopnik.com/volvo-made-an-american-style-v8-called-philip-in-1952-1747094174",
+    "https://curbsideclassic.com/blog/concept-classic-1952-volvo-philip-the-swedish-kaiser-intended-for-america-with-a-v8-even",
+    "https://en.wikipedia.org/wiki/Volvo_B36_engine"
+  ]
+}
