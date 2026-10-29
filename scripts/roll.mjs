@@ -22,6 +22,10 @@ const LABEL = {
 };
 const CLASSES = /** @type {CarClass[]} */ (Object.keys(LABEL));
 const DECADES = ['1920s or earlier', '1930s', '1940s', '1950s', '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s'];
+// decades a class can't come from (vintage means pre-1970; muscle and GT racing start in the 1950s),
+// so the brief never contradicts itself. Indices into DECADES, inclusive.
+/** @type {Partial<Record<CarClass, [number, number]>>} */
+const DECADE_RANGE = { vintage: [0, 4], muscle: [3, 10], gt3: [3, 10] };
 const REGIONS = ['Italy', 'Germany', 'Japan', 'United Kingdom', 'France', 'United States', 'Sweden', 'Australia', 'Czechia or Eastern Europe', 'South Korea', 'Spain', 'the Netherlands or Belgium', 'South America', 'somewhere you would not expect a car company'];
 const ANGLES = [
   'a homologation special built only to make a race car legal',
@@ -63,7 +67,8 @@ const eligible = CLASSES.filter(c => !recent.has(c));
 const fewest = Math.min(...eligible.map(c => counts[c]));
 const preferred = eligible.filter(c => counts[c] === fewest);
 const cls = pick(randomInt(OFF_PREFERENCE_ODDS) === 0 ? eligible : preferred);
-const decade = pick(DECADES), region = pick(REGIONS), angle = pick(ANGLES);
+const [lo, hi] = DECADE_RANGE[cls] ?? [0, DECADES.length - 1];
+const decade = pick(DECADES.slice(lo, hi + 1)), region = pick(REGIONS), angle = pick(ANGLES);
 const label = LABEL[cls].toLowerCase();
 
 process.stdout.write([
