@@ -100,11 +100,27 @@ function render(day) {
   } else photoSlot.remove();
 }
 
+/** @type {Promise<unknown> | null} */
+let indexOnce = null;
+
+/**
+ * `days/index.json`, fetched at most once per page view and shared by both surprise links, so a second tap
+ * (or a return through the back-forward cache) reuses it. A failed fetch or a non-OK
+ * response is forgotten, so the next tap retries.
+ * @returns {Promise<unknown>}
+ */
+function surpriseIndex() {
+  indexOnce ??= fetch(`days/index.json?v=${Date.now()}`, { cache: 'no-store' })
+    .then(res => { if (!res.ok) throw new Error(`index ${res.status}`); return res.json(); })
+    .catch(err => { indexOnce = null; throw err; });
+  return indexOnce;
+}
+
 /**
  * "Surprise me" at the foot of the day: a random other car from `days/index.json`, never the one on screen.
- * Given a class, it is "More Le Mans →" and draws only from that class. The index is fetched on tap, not on
- * load, so a reader who never taps pays nothing. If the fetch fails or there is no other day to draw, the
- * link falls through to its plain `href`, the garage (filtered to the class, if there is one).
+ * Given a class, it is "More Le Mans →" and draws only from that class. The index is fetched on the first tap, not
+ * on load, so a reader who never taps pays nothing, and both links share that one fetch. If the fetch fails or
+ * there is no other day to draw, the link falls through to its plain `href`, the garage (filtered to the class, if there is one).
  * @param {string} current the date on screen
  * @param {CarClass} [cls] only draw cars of this class
  * @returns {HTMLAnchorElement}
@@ -115,8 +131,7 @@ function surpriseLink(current, cls) {
     : el('a', { class: 'g-surprise', href: 'archive.html' }, 'Surprise me →');
   link.addEventListener('click', e => {
     e.preventDefault();
-    void fetch(`days/index.json?v=${Date.now()}`, { cache: 'no-store' })
-      .then(res => (res.ok ? res.json() : []))
+    void surpriseIndex()
       .then((/** @type {unknown} */ days) => {
         const dates = Array.isArray(days)
           ? days.map(d => (d && typeof d.date === 'string' && (!cls || d.class === cls) ? d.date : '')).filter(d => DATE.test(d) && d !== current)

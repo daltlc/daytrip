@@ -1,4 +1,5 @@
 [
+  { "date": "2026-10-30", "name": "M1 Procar", "year": 1980, "class": "gt3", "accent": "#1c69d4" },
   { "date": "2026-10-29", "name": "Commodore SS Group A SV (VN)", "year": 1990, "class": "muscle", "accent": "#7a1a2a" },
   { "date": "2026-10-28", "name": "Volvo Philip", "year": 1952, "class": "concept", "accent": "#2b3f5c" },
   { "date": "2026-10-27", "name": "XT6", "year": 1988, "class": "jdm", "accent": "#a3212b" },
