@@ -27,6 +27,11 @@ const DECADES = ['1920s or earlier', '1930s', '1940s', '1950s', '1960s', '1970s'
 /** @type {Partial<Record<CarClass, [number, number]>>} */
 const DECADE_RANGE = { vintage: [0, 4], muscle: [3, 10], gt3: [3, 10] };
 const REGIONS = ['Italy', 'Germany', 'Japan', 'United Kingdom', 'France', 'United States', 'Sweden', 'Australia', 'Czechia or Eastern Europe', 'South Korea', 'Spain', 'the Netherlands or Belgium', 'South America', 'somewhere you would not expect a car company'];
+// classes tied to a place: a JDM car is Japanese by definition, and muscle cars come from the
+// American V8 tradition and its offshoots (Holden and Ford Australia, Chevrolet Brazil), so the
+// brief never pairs one with a region that wastes a search. Every other class draws from REGIONS.
+/** @type {Partial<Record<CarClass, string[]>>} */
+const CLASS_REGIONS = { jdm: ['Japan'], muscle: ['United States', 'Australia', 'South America'] };
 const ANGLES = [
   'a homologation special built only to make a race car legal',
   'an underdog that beat the favorites',
@@ -68,7 +73,7 @@ const fewest = Math.min(...eligible.map(c => counts[c]));
 const preferred = eligible.filter(c => counts[c] === fewest);
 const cls = pick(randomInt(OFF_PREFERENCE_ODDS) === 0 ? eligible : preferred);
 const [lo, hi] = DECADE_RANGE[cls] ?? [0, DECADES.length - 1];
-const decade = pick(DECADES.slice(lo, hi + 1)), region = pick(REGIONS), angle = pick(ANGLES);
+const decade = pick(DECADES.slice(lo, hi + 1)), region = pick(CLASS_REGIONS[cls] ?? REGIONS), angle = pick(ANGLES);
 const label = LABEL[cls].toLowerCase();
 
 process.stdout.write([

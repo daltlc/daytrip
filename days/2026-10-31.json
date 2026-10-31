@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-31",
+  "name": "Leyat Hélica",
+  "year": 1921,
+  "maker": "Leyat",
+  "country": "France",
+  "class": "vintage",
+  "hook": "In 1921 you could buy a car in Paris with no gearbox, no clutch and no driveshaft, because a propeller on its nose pulled it along.",
+  "story": "Picture Paris, 1921. Marcel Leyat is an aviation man. And he has one idea he cannot shake. Why should a car need a gearbox, a clutch or a driveshaft? A plane has none of them. So he builds a plane without wings. A long, light, fish-shaped body. Two seats, one behind the other, like a cockpit. A small air-cooled engine. And right at the front, a big wooden propeller. On the early cars it spins out in the open. The Hélica does not push against the road. It pulls itself through the air. You even steer it with the rear wheels. At the Paris show, hundreds of people ask about buying one. But Leyat cannot raise the money to build it properly. Only around thirty are made. He keeps tinkering anyway. In 1927, a stripped-down special laps the Montlhéry track at about 170 km/h. Then he goes back to aircraft. He lives to 101.",
+  "description": "The Hélica was a propeller-driven car built in Paris by the aviation engineer Marcel Leyat, who made his first one in 1913 and sold cars from 1919. It used a light, aircraft-like body with two seats in tandem, steering on the rear wheels, and an air-cooled two-cylinder engine turning a propeller at the front. With no gearbox or clutch, it was very simple. It drew crowds at the 1921 Paris show, but only about thirty were built.",
+  "stats": [
+    { "label": "Engine", "value": "Air-cooled two-cylinder" },
+    { "label": "Power", "value": "8 hp" },
+    { "label": "Drive", "value": "Front propeller, no gearbox or clutch" },
+    { "label": "Steering", "value": "Rear wheels" },
+    { "label": "Seating", "value": "Two, in tandem" },
+    { "label": "Length", "value": "4.3 m" }
+  ],
+  "photos": [],
+  "photoQuery": "1921 Leyat Hélica",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "p": "#4a2e16",
+      "h": "#c8c8c8",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#e2231a"
+    },
+    "rows": [
+      ".pppppphhpppppp.",
+      ".......hh.......",
+      "......aaaa......",
+      ".kk..aaaaaa..kk.",
+      ".kkaaaaaaaaaakk.",
+      ".kk.aaaaaaaa.kk.",
+      "....aaaaaaaa....",
+      "....abbbbbba....",
+      "....akkkkkka....",
+      "....akkkkkka....",
+      "....aaaaaaaa....",
+      "....abbbbbba....",
+      "....akkkkkka....",
+      "....akkkkkka....",
+      "....aallllaa....",
+      ".....aaaaaa.....",
+      ".kk..aaaaaa..kk.",
+      ".kkaaaaaaaaaakk.",
+      ".kk..aaaaaa..kk.",
+      "......aaaa......",
+      "......arra......",
+      ".......aa.......",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "crate",
+    "scenery": "city",
+    "accent": "#a8743a",
+    "baseSpeed": 0.8,
+    "grip": 0.35,
+    "gears": 3,
+    "curve": 0.5,
+    "stars": [250, 650, 1200]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Leyat",
+    "https://www.louwmanmuseum.nl/en/collections/automobiles/leyat-helica-2h-conduite-interieure",
+    "https://www.lanemotormuseum.org/collection/cars/item/leyat-helico-1919/",
+    "https://www.gracesguide.co.uk/Leyat"
+  ]
+}
