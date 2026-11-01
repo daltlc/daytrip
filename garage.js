@@ -29,10 +29,37 @@ function cameFrom(newest) {
   }
 }
 
+/** sessionStorage key for the garage surprise link's recent picks, newest first. */
+const RECENT_KEY = 'daytrip.surprise.recent';
+/** How many recent picks the next draw leaves out (when enough other cars are shown). */
+const RECENT_MAX = 3;
+
+/**
+ * The dates the surprise link landed on in the last few taps this session. Storage that is off,
+ * missing or hand-edited into anything but a list of strings just means "none".
+ * @returns {string[]}
+ */
+function recentPicks() {
+  try {
+    const raw = JSON.parse(sessionStorage.getItem(RECENT_KEY) || '[]');
+    return Array.isArray(raw) ? raw.filter(d => typeof d === 'string').slice(0, RECENT_MAX) : [];
+  } catch {
+    return [];
+  }
+}
+
+/** @param {string} date */
+function rememberPick(date) {
+  try {
+    const next = [date, ...recentPicks().filter(d => d !== date)].slice(0, RECENT_MAX);
+    sessionStorage.setItem(RECENT_KEY, JSON.stringify(next));
+  } catch { /* unavailable or full: the next draw just skips less */ }
+}
+
 /**
  * "Surprise me": jumps to a random car from the list as it is filtered right now, never the day you came from
- * unless it is the only one shown. The pick happens on click, so every tap is a fresh draw; with nothing shown
- * it just goes to today.
+ * unless it is the only one shown, and not one of the last few cars it picked this session while others are
+ * left. The pick happens on click, so every tap is a fresh draw; with nothing shown it just goes to today.
  * @param {string} skip the date to leave out of the draw ('' for none)
  * @returns {HTMLAnchorElement}
  */
@@ -40,8 +67,13 @@ function surpriseLink(skip) {
   const link = el('a', { class: 'g-surprise', href: 'index.html' }, 'Surprise me →');
   link.addEventListener('click', () => {
     const others = shown.filter(d => d.date !== skip);
-    const pool = others.length ? others : shown;
-    if (pool.length) link.href = dayHref(pool[Math.floor(Math.random() * pool.length)]);
+    const recent = recentPicks();
+    const fresh = others.filter(d => !recent.includes(d.date));
+    const pool = fresh.length ? fresh : others.length ? others : shown;
+    if (!pool.length) return;
+    const pick = pool[Math.floor(Math.random() * pool.length)];
+    rememberPick(pick.date);
+    link.href = dayHref(pick);
   });
   return link;
 }
