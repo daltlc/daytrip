@@ -1,4 +1,5 @@
 [
+  { "date": "2026-11-02", "name": "Volvo XC60 RR", "year": 2012, "class": "offroad", "accent": "#1f4e9c" },
   { "date": "2026-11-01", "name": "Honda S660", "year": 2015, "class": "road", "accent": "#d7262e" },
   { "date": "2026-10-31", "name": "Leyat Hélica", "year": 1921, "class": "vintage", "accent": "#a8743a" },
   { "date": "2026-10-30", "name": "M1 Procar", "year": 1980, "class": "gt3", "accent": "#1c69d4" },

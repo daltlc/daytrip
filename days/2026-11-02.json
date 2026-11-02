@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-02",
+  "name": "Volvo XC60 RR",
+  "year": 2012,
+  "maker": "Pewano",
+  "country": "Sweden",
+  "class": "offroad",
+  "hook": "A small Swedish team spent years turning a Volvo family SUV into a Dakar racer, and it burned out halfway through the very first special stage.",
+  "story": "It's January 2012, in Argentina. The Dakar is starting, and a small Swedish team has brought one car. It looks like a Volvo XC60, the family SUV. It isn't. Under the carbon-fibre skin is a tube frame built for the desert. The body is 180 millimetres wider than the road car. A Volvo diesel sits up front, and the team says it makes over 700 newton-metres of torque. Volvo helped as a technical partner. The team is called Pewano. Its founder, Pelle Wallentheim, did not live to see the start. At the wheel is Alfie Cox, a South African who made his name racing the Dakar on motorbikes. Beside him, Jürgen Schröder reads the notes. They tested the car in Sweden. Now, at last, they are racing. Halfway through the first special stage, there is fire. Cox and Schröder climb out unhurt. The car is destroyed. The team suspects the power-steering pump, but there is too little left to be sure.",
+  "description": "The XC60 RR is a cross-country rally car built by Pewano, a small Swedish team, for the 2012 Dakar Rally. It wears a carbon-fibre body shaped like Volvo's XC60, 180 mm wider than the road car, over a tube-frame chassis. Power comes from a Volvo D5 diesel. Volvo was a technical partner. Alfie Cox and Jürgen Schröder drove it in 2012, until a fire on the first stage ended its race. The team later built a second-generation car.",
+  "stats": [
+    { "label": "Engine", "value": "Volvo D5244 RR diesel" },
+    { "label": "Power", "value": "Over 200 kW" },
+    { "label": "Torque", "value": "Over 700 Nm" },
+    { "label": "Weight", "value": "1,715 kg" },
+    { "label": "Wheelbase", "value": "2,840 mm" },
+    { "label": "Ride height", "value": "330 mm" },
+    { "label": "Body", "value": "Carbon fibre on a tube frame, 180 mm wider than an XC60" }
+  ],
+  "photos": [],
+  "photoQuery": "2012 Pewano Volvo XC60 RR",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "y": "#ffe9a8",
+      "w": "#e8e8e8",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      "................",
+      "....yaaaaaay....",
+      "...aaaaaaaaaa...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..abbbbbbbbbba..",
+      "..abbbbbbbbbba..",
+      "..awwwwwwwwwwa..",
+      "..awkkkkkkkkwa..",
+      "..awkkkkkkkkwa..",
+      "..awkkkkkkkkwa..",
+      "..awwwwwwwwwwa..",
+      "..aabbbbbbbbaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..arraaaaaarra..",
+      "...kkkkkkkkkk...",
+      "................",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "rock",
+    "scenery": "desert",
+    "accent": "#1f4e9c",
+    "baseSpeed": 1.05,
+    "grip": 0.3,
+    "gears": 6,
+    "curve": 0.6
+  },
+  "sources": [
+    "https://www.pewano.com/",
+    "https://www.mynewsdesk.com/uk/textreme/pressreleases/pewano-rally-raid-team-builds-car-with-textreme-564220",
+    "https://www.wheels24.co.za/Motorsport/Dakar/Cox-tells-of-dead-Dakar-dream-20120102?cpid=1",
+    "https://www.vibilagare.se/nyheter/brand-stoppade-svensk-rallysatsning-35890"
+  ]
+}

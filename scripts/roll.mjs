@@ -26,12 +26,16 @@ const DECADES = ['1920s or earlier', '1930s', '1940s', '1950s', '1960s', '1970s'
 // so the brief never contradicts itself. Indices into DECADES, inclusive.
 /** @type {Partial<Record<CarClass, [number, number]>>} */
 const DECADE_RANGE = { vintage: [0, 4], muscle: [3, 10], gt3: [3, 10] };
-const REGIONS = ['Italy', 'Germany', 'Japan', 'United Kingdom', 'France', 'United States', 'Sweden', 'Australia', 'Czechia or Eastern Europe', 'South Korea', 'Spain', 'the Netherlands or Belgium', 'South America', 'somewhere you would not expect a car company'];
+const UNEXPECTED = 'somewhere you would not expect a car company';
+const REGIONS = ['Italy', 'Germany', 'Japan', 'United Kingdom', 'France', 'United States', 'Sweden', 'Australia', 'Czechia or Eastern Europe', 'South Korea', 'Spain', 'the Netherlands or Belgium', 'South America', UNEXPECTED];
 // classes tied to a place: a JDM car is Japanese by definition, and muscle cars come from the
 // American V8 tradition and its offshoots (Holden and Ford Australia, Chevrolet Brazil), so the
 // brief never pairs one with a region that wastes a search. Every other class draws from REGIONS.
 /** @type {Partial<Record<CarClass, string[]>>} */
 const CLASS_REGIONS = { jdm: ['Japan'], muscle: ['United States', 'Australia', 'South America'] };
+// this angle names its own region: it only pairs with UNEXPECTED, and never with a class tied to
+// a place (a JDM car from a country not known for cars contradicts itself)
+const NOT_KNOWN_FOR_CARS = 'a car built in a country not known for building cars';
 const ANGLES = [
   'a homologation special built only to make a race car legal',
   'an underdog that beat the favorites',
@@ -44,7 +48,7 @@ const ANGLES = [
   'a car with a strange engine or drivetrain layout',
   'a car famous for a single race, stage, or stunt',
   'a privateer or small team taking on the factories',
-  'a car built in a country not known for building cars',
+  NOT_KNOWN_FOR_CARS,
 ];
 
 /**
@@ -73,7 +77,10 @@ const fewest = Math.min(...eligible.map(c => counts[c]));
 const preferred = eligible.filter(c => counts[c] === fewest);
 const cls = pick(randomInt(OFF_PREFERENCE_ODDS) === 0 ? eligible : preferred);
 const [lo, hi] = DECADE_RANGE[cls] ?? [0, DECADES.length - 1];
-const decade = pick(DECADES.slice(lo, hi + 1)), region = pick(CLASS_REGIONS[cls] ?? REGIONS), angle = pick(ANGLES);
+const decade = pick(DECADES.slice(lo, hi + 1));
+const placeBound = CLASS_REGIONS[cls];
+const angle = pick(placeBound ? ANGLES.filter(a => a !== NOT_KNOWN_FOR_CARS) : ANGLES);
+const region = angle === NOT_KNOWN_FOR_CARS ? UNEXPECTED : pick(placeBound ?? REGIONS);
 const label = LABEL[cls].toLowerCase();
 
 process.stdout.write([
