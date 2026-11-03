@@ -5,7 +5,7 @@
 import { el, must, ctx2d, present } from './dom.js';
 import { Game } from './game.js';
 import { buildSprite } from './render.js';
-import { getJson, setJson } from './storage.js';
+import { getJson, setJson, recentPicks, rememberPick } from './storage.js';
 import { splitSentences } from './text.js';
 import { classLabel } from './classes.js';
 
@@ -117,7 +117,8 @@ function surpriseIndex() {
 }
 
 /**
- * "Surprise me" at the foot of the day: a random other car from `days/index.json`, never the one on screen.
+ * "Surprise me" at the foot of the day: a random other car from `days/index.json`, never the one on screen, and not one of the
+ * last few cars a surprise link (here or in the garage) picked this session while others are left.
  * Given a class, it is "More Le Mans →" and draws only from that class. The index is fetched on the first tap, not
  * on load, so a reader who never taps pays nothing, and both links share that one fetch. If the fetch fails or
  * there is no other day to draw, the link falls through to its plain `href`, the garage (filtered to the class, if there is one).
@@ -136,7 +137,14 @@ function surpriseLink(current, cls) {
         const dates = Array.isArray(days)
           ? days.map(d => (d && typeof d.date === 'string' && (!cls || d.class === cls) ? d.date : '')).filter(d => DATE.test(d) && d !== current)
           : [];
-        location.href = dates.length ? `index.html?d=${encodeURIComponent(dates[Math.floor(Math.random() * dates.length)])}` : link.href;
+        // Skip the last few cars either surprise link picked this session, while others are left.
+        const recent = recentPicks();
+        const fresh = dates.filter(d => !recent.includes(d));
+        const pool = fresh.length ? fresh : dates;
+        if (!pool.length) { location.href = link.href; return; }
+        const pick = pool[Math.floor(Math.random() * pool.length)];
+        rememberPick(pick);
+        location.href = `index.html?d=${encodeURIComponent(pick)}`;
       })
       // Offline or a bad index: the garage is the next best thing.
       .catch(() => { location.href = link.href; });

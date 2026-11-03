@@ -3,6 +3,7 @@
 /** @import { IndexEntry } from './types.js' */
 import { el, must } from './dom.js';
 import { classLabel } from './classes.js';
+import { recentPicks, rememberPick } from './storage.js';
 
 const HEX_COLOR = /^#[0-9a-f]{6}$/i;
 
@@ -27,33 +28,6 @@ function cameFrom(newest) {
     // No referrer (typed URL, privacy settings) is an empty string, which `new URL` rejects: nothing to skip.
     return '';
   }
-}
-
-/** sessionStorage key for the garage surprise link's recent picks, newest first. */
-const RECENT_KEY = 'daytrip.surprise.recent';
-/** How many recent picks the next draw leaves out (when enough other cars are shown). */
-const RECENT_MAX = 3;
-
-/**
- * The dates the surprise link landed on in the last few taps this session. Storage that is off,
- * missing or hand-edited into anything but a list of strings just means "none".
- * @returns {string[]}
- */
-function recentPicks() {
-  try {
-    const raw = JSON.parse(sessionStorage.getItem(RECENT_KEY) || '[]');
-    return Array.isArray(raw) ? raw.filter(d => typeof d === 'string').slice(0, RECENT_MAX) : [];
-  } catch {
-    return [];
-  }
-}
-
-/** @param {string} date */
-function rememberPick(date) {
-  try {
-    const next = [date, ...recentPicks().filter(d => d !== date)].slice(0, RECENT_MAX);
-    sessionStorage.setItem(RECENT_KEY, JSON.stringify(next));
-  } catch { /* unavailable or full: the next draw just skips less */ }
 }
 
 /**

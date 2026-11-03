@@ -1,24 +1,42 @@
 {
-  "date": "2026-11-02",
-  "name": "Volvo XC60 RR",
-  "year": 2012,
-  "maker": "Pewano",
-  "country": "Sweden",
-  "class": "offroad",
-  "hook": "A small Swedish team spent years turning a Volvo family SUV into a Dakar racer, and it burned out halfway through the very first special stage.",
-  "story": "It's January 2012, in Argentina. The Dakar is starting, and a small Swedish team has brought one car. It looks like a Volvo XC60, the family SUV. It isn't. Under the carbon-fibre skin is a tube frame built for the desert. The body is 180 millimetres wider than the road car. A Volvo diesel sits up front, and the team says it makes over 700 newton-metres of torque. Volvo helped as a technical partner. The team is called Pewano. Its founder, Pelle Wallentheim, did not live to see the start. At the wheel is Alfie Cox, a South African who made his name racing the Dakar on motorbikes. Beside him, Jürgen Schröder reads the notes. They tested the car in Sweden. Now, at last, they are racing. Halfway through the first special stage, there is fire. Cox and Schröder climb out unhurt. The car is destroyed. The team suspects the power-steering pump, but there is too little left to be sure.",
-  "description": "The XC60 RR is a cross-country rally car built by Pewano, a small Swedish team, for the 2012 Dakar Rally. It wears a carbon-fibre body shaped like Volvo's XC60, 180 mm wider than the road car, over a tube-frame chassis. Power comes from a Volvo D5 diesel. Volvo was a technical partner. Alfie Cox and Jürgen Schröder drove it in 2012, until a fire on the first stage ended its race. The team later built a second-generation car.",
+  "date": "2026-11-03",
+  "name": "Hyundai Lantra Super Touring",
+  "year": 1994,
+  "maker": "Hyundai",
+  "country": "South Korea",
+  "class": "touring",
+  "hook": "To fit a racing gearbox into a Korean family sedan, the builders had to turn its engine around in the bay.",
+  "story": "Picture Bathurst, October 1994. Big Holdens and Fords thunder around the mountain. Down in the two-litre class sits a car nobody expected: a Hyundai Lantra. The family sedan from South Korea. Colin Bond built it in his Sydney workshop with Barry Jones. Bond had won Bathurst himself, back in 1969. They used spare parts from an old Toyota Corolla programme. To mate the engine to a six-speed Xtrac gearbox, they had to turn it around. The shift lever sat on the steering column, a sequential flick by the wheel. Steve Hardman and Geoff Full drove it in the 1000. It did not finish. In 1995 Hyundai built a second car and signed Jim Richards. His car was withdrawn before its first race. At the end of that season, Hyundai walked away. But the Lantras did not die. Privateers bought them and kept racing, year after year, into 2001. The odd little Korean sedan outlived its own factory programme by six seasons.",
+  "description": "The Lantra Super Touring was Hyundai's first touring car programme, built in Australia from the Lantra (Elantra) family sedan. Colin Bond's team prepared it for the 2.0-litre class at the 1994 Bathurst 1000, and Bond also raced it in Asia Pacific rounds at Wellington and Macau. It used a six-speed Xtrac sequential gearbox. Hyundai added a second car in 1995, then pulled out at the end of the season. Privateers raced the cars in Australian Super Touring until 2001.",
   "stats": [
-    { "label": "Engine", "value": "Volvo D5244 RR diesel" },
-    { "label": "Power", "value": "Over 200 kW" },
-    { "label": "Torque", "value": "Over 700 Nm" },
-    { "label": "Weight", "value": "1,715 kg" },
-    { "label": "Wheelbase", "value": "2,840 mm" },
-    { "label": "Ride height", "value": "330 mm" },
-    { "label": "Body", "value": "Carbon fibre on a tube frame, 180 mm wider than an XC60" }
+    {
+      "label": "Class",
+      "value": "2.0-litre touring, later Super Touring"
+    },
+    {
+      "label": "Gearbox",
+      "value": "Xtrac six-speed sequential, column shifter"
+    },
+    {
+      "label": "Engine",
+      "tag": "road car",
+      "value": "1.8 L four, 93 kW @ 6,000 rpm"
+    },
+    {
+      "label": "Bathurst 1994",
+      "value": "DNF, #8, Hardman / Full"
+    },
+    {
+      "label": "Factory years",
+      "value": "1994–1995"
+    },
+    {
+      "label": "Last season",
+      "value": "2001, with privateers"
+    }
   ],
   "photos": [],
-  "photoQuery": "2012 Pewano Volvo XC60 RR",
+  "photoQuery": "1994 Hyundai Lantra",
   "sprite": {
     "w": 16,
     "h": 24,
@@ -26,7 +44,7 @@
       "a": "ACCENT",
       "l": "ACCENT_LIGHT",
       "y": "#ffe9a8",
-      "w": "#e8e8e8",
+      "w": "#f2f2f2",
       "k": "#111318",
       "b": "#8fd3ff",
       "r": "#ff3b3b"
@@ -36,41 +54,41 @@
       "....yaaaaaay....",
       "...aaaaaaaaaa...",
       ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      "..aaaaaaaaaaaa..",
-      "..abbbbbbbbbba..",
-      "..abbbbbbbbbba..",
-      "..awwwwwwwwwwa..",
-      "..awkkkkkkkkwa..",
-      "..awkkkkkkkkwa..",
-      "..awkkkkkkkkwa..",
-      "..awwwwwwwwwwa..",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
+      "..aaaaawwaaaaa..",
       "..aabbbbbbbbaa..",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
+      "..abbbbbbbbbba..",
+      "..alllllllllla..",
+      "..alllwwwwllla..",
+      "..alllwwwwllla..",
+      "..alllllllllla..",
+      "..aabbbbbbbbaa..",
+      "..aaaaawwaaaaa..",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
       ".kkaaaaaaaaaakk.",
       "..aaaaaaaaaaaa..",
       "..arraaaaaarra..",
-      "...kkkkkkkkkk...",
-      "................",
+      "..kkkkkkkkkkkk..",
+      "...k........k...",
       "................",
       "................"
     ]
   },
   "game": {
-    "obstacle": "rock",
-    "scenery": "desert",
-    "accent": "#1f4e9c",
-    "baseSpeed": 1.05,
-    "grip": 0.3,
+    "obstacle": "tire",
+    "scenery": "mountain",
+    "accent": "#0b6e8a",
+    "baseSpeed": 1.0,
+    "grip": 0.55,
     "gears": 6,
-    "curve": 0.6
+    "curve": 0.8
   },
   "sources": [
-    "https://www.pewano.com/",
-    "https://www.mynewsdesk.com/uk/textreme/pressreleases/pewano-rally-raid-team-builds-car-with-textreme-564220",
-    "https://www.wheels24.co.za/Motorsport/Dakar/Cox-tells-of-dead-Dakar-dream-20120102?cpid=1",
-    "https://www.vibilagare.se/nyheter/brand-stoppade-svensk-rallysatsning-35890"
+    "https://www.v8sleuth.com.au/?p=166518",
+    "https://garage.repco.co.nz/unlikely-models-used-in-touring-car-racing",
+    "https://supertouringregister.com/register/vehicle/287",
+    "https://en.wikipedia.org/wiki/1994_Tooheys_1000"
   ]
 }

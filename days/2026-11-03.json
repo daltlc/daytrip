@@ -1,0 +1,94 @@
+{
+  "date": "2026-11-03",
+  "name": "Hyundai Lantra Super Touring",
+  "year": 1994,
+  "maker": "Hyundai",
+  "country": "South Korea",
+  "class": "touring",
+  "hook": "To fit a racing gearbox into a Korean family sedan, the builders had to turn its engine around in the bay.",
+  "story": "Picture Bathurst, October 1994. Big Holdens and Fords thunder around the mountain. Down in the two-litre class sits a car nobody expected: a Hyundai Lantra. The family sedan from South Korea. Colin Bond built it in his Sydney workshop with Barry Jones. Bond had won Bathurst himself, back in 1969. They used spare parts from an old Toyota Corolla programme. To mate the engine to a six-speed Xtrac gearbox, they had to turn it around. The shift lever sat on the steering column, a sequential flick by the wheel. Steve Hardman and Geoff Full drove it in the 1000. It did not finish. In 1995 Hyundai built a second car and signed Jim Richards. His car was withdrawn before its first race. At the end of that season, Hyundai walked away. But the Lantras did not die. Privateers bought them and kept racing, year after year, into 2001. The odd little Korean sedan outlived its own factory programme by six seasons.",
+  "description": "The Lantra Super Touring was Hyundai's first touring car programme, built in Australia from the Lantra (Elantra) family sedan. Colin Bond's team prepared it for the 2.0-litre class at the 1994 Bathurst 1000, and Bond also raced it in Asia Pacific rounds at Wellington and Macau. It used a six-speed Xtrac sequential gearbox. Hyundai added a second car in 1995, then pulled out at the end of the season. Privateers raced the cars in Australian Super Touring until 2001.",
+  "stats": [
+    {
+      "label": "Class",
+      "value": "2.0-litre touring, later Super Touring"
+    },
+    {
+      "label": "Gearbox",
+      "value": "Xtrac six-speed sequential, column shifter"
+    },
+    {
+      "label": "Engine",
+      "tag": "road car",
+      "value": "1.8 L four, 93 kW @ 6,000 rpm"
+    },
+    {
+      "label": "Bathurst 1994",
+      "value": "DNF, #8, Hardman / Full"
+    },
+    {
+      "label": "Factory years",
+      "value": "1994–1995"
+    },
+    {
+      "label": "Last season",
+      "value": "2001, with privateers"
+    }
+  ],
+  "photos": [],
+  "photoQuery": "1994 Hyundai Lantra",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "y": "#ffe9a8",
+      "w": "#f2f2f2",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      "................",
+      "....yaaaaaay....",
+      "...aaaaaaaaaa...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
+      "..aaaaawwaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..alllllllllla..",
+      "..alllwwwwllla..",
+      "..alllwwwwllla..",
+      "..alllllllllla..",
+      "..aabbbbbbbbaa..",
+      "..aaaaawwaaaaa..",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..arraaaaaarra..",
+      "..kkkkkkkkkkkk..",
+      "...k........k...",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "mountain",
+    "accent": "#0b6e8a",
+    "baseSpeed": 1.0,
+    "grip": 0.55,
+    "gears": 6,
+    "curve": 0.8
+  },
+  "sources": [
+    "https://www.v8sleuth.com.au/?p=166518",
+    "https://garage.repco.co.nz/unlikely-models-used-in-touring-car-racing",
+    "https://supertouringregister.com/register/vehicle/287",
+    "https://en.wikipedia.org/wiki/1994_Tooheys_1000"
+  ]
+}
