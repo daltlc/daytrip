@@ -1,94 +1,75 @@
 {
-  "date": "2026-11-03",
-  "name": "Hyundai Lantra Super Touring",
-  "year": 1994,
-  "maker": "Hyundai",
-  "country": "South Korea",
-  "class": "touring",
-  "hook": "To fit a racing gearbox into a Korean family sedan, the builders had to turn its engine around in the bay.",
-  "story": "Picture Bathurst, October 1994. Big Holdens and Fords thunder around the mountain. Down in the two-litre class sits a car nobody expected: a Hyundai Lantra. The family sedan from South Korea. Colin Bond built it in his Sydney workshop with Barry Jones. Bond had won Bathurst himself, back in 1969. They used spare parts from an old Toyota Corolla programme. To mate the engine to a six-speed Xtrac gearbox, they had to turn it around. The shift lever sat on the steering column, a sequential flick by the wheel. Steve Hardman and Geoff Full drove it in the 1000. It did not finish. In 1995 Hyundai built a second car and signed Jim Richards. His car was withdrawn before its first race. At the end of that season, Hyundai walked away. But the Lantras did not die. Privateers bought them and kept racing, year after year, into 2001. The odd little Korean sedan outlived its own factory programme by six seasons.",
-  "description": "The Lantra Super Touring was Hyundai's first touring car programme, built in Australia from the Lantra (Elantra) family sedan. Colin Bond's team prepared it for the 2.0-litre class at the 1994 Bathurst 1000, and Bond also raced it in Asia Pacific rounds at Wellington and Macau. It used a six-speed Xtrac sequential gearbox. Hyundai added a second car in 1995, then pulled out at the end of the season. Privateers raced the cars in Australian Super Touring until 2001.",
+  "date": "2026-11-04",
+  "name": "Mazda 717C",
+  "year": 1983,
+  "maker": "Mazda",
+  "country": "Japan",
+  "class": "lemans",
+  "hook": "Mazda's first real Le Mans prototype started 44th, finished 12th, and won its class on the class's very first outing.",
+  "story": "June 1983. Le Mans has a brand-new class for small prototypes, called Group C Junior. Mazda turns up with its first proper sports prototype, the 717C. It is a little thing. Behind the driver hums a twin-rotor engine of just 1.3 litres. The chassis and body come from Mooncraft, a small Japanese shop, working with Mazda. Car 60 qualifies 44th. Nobody is watching it. Its crew are Yoshimi Katayama, Yojiro Terada and Takashi Yorino. The race grinds on through the night. Engines let go. Cars limp into the pits and stay there. The little Mazda just keeps spinning, lap after lap. When the flag falls, car 60 is twelfth overall and first in its class. Its sister car, with Steve Soper, James Weaver and Jeff Allam, comes home eighteenth. They are the only two cars in the class to finish. Twelfth was the best result yet for a Japanese entry at Le Mans. Eight years later, a rotary Mazda would win the whole race.",
+  "description": "The 717C was Mazda's first purpose-built sports prototype, made for the new Group C Junior class of 1983. Mooncraft built the chassis and bodywork with Mazda's help. Power came from a 13B two-rotor rotary engine of 1,308 cc. Mazdaspeed entered two cars at the 1983 Le Mans 24 Hours, and they finished 12th and 18th overall, first and second in class, the only class finishers. The 727C replaced it in 1984.",
   "stats": [
-    {
-      "label": "Class",
-      "value": "2.0-litre touring, later Super Touring"
-    },
-    {
-      "label": "Gearbox",
-      "value": "Xtrac six-speed sequential, column shifter"
-    },
-    {
-      "label": "Engine",
-      "tag": "road car",
-      "value": "1.8 L four, 93 kW @ 6,000 rpm"
-    },
-    {
-      "label": "Bathurst 1994",
-      "value": "DNF, #8, Hardman / Full"
-    },
-    {
-      "label": "Factory years",
-      "value": "1994–1995"
-    },
-    {
-      "label": "Last season",
-      "value": "2001, with privateers"
-    }
+    { "label": "Engine", "value": "13B two-rotor rotary, 1,308 cc" },
+    { "label": "Power", "value": "300 PS @ 9,000 rpm" },
+    { "label": "Chassis", "value": "Aluminium monocoque, built by Mooncraft" },
+    { "label": "Class", "value": "Group C Junior" },
+    { "label": "Le Mans 1983", "value": "12th overall, 1st in class (#60)" },
+    { "label": "Qualified", "value": "44th" }
   ],
   "photos": [],
-  "photoQuery": "1994 Hyundai Lantra",
+  "photoQuery": "1983 Mazda 717C",
   "sprite": {
     "w": 16,
     "h": 24,
     "palette": {
-      "a": "ACCENT",
-      "l": "ACCENT_LIGHT",
-      "y": "#ffe9a8",
       "w": "#f2f2f2",
+      "a": "ACCENT",
       "k": "#111318",
       "b": "#8fd3ff",
-      "r": "#ff3b3b"
+      "r": "#ff3b3b",
+      "y": "#ffe9a8"
     },
     "rows": [
       "................",
-      "....yaaaaaay....",
-      "...aaaaaaaaaa...",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaawwaaaakk.",
-      ".kkaaaawwaaaakk.",
-      "..aaaaawwaaaaa..",
-      "..aabbbbbbbbaa..",
-      "..abbbbbbbbbba..",
-      "..alllllllllla..",
-      "..alllwwwwllla..",
-      "..alllwwwwllla..",
-      "..alllllllllla..",
-      "..aabbbbbbbbaa..",
-      "..aaaaawwaaaaa..",
-      ".kkaaaawwaaaakk.",
-      ".kkaaaawwaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      "..aaaaaaaaaaaa..",
-      "..arraaaaaarra..",
-      "..kkkkkkkkkkkk..",
-      "...k........k...",
-      "................",
+      ".....wwwwww.....",
+      "...ywwwaawwwy...",
+      ".kkwwwwaawwwwkk.",
+      ".kkwwwwaawwwwkk.",
+      ".kkwwwwaawwwwkk.",
+      "..wwwwwaawwwww..",
+      "..wwwbbbbbbwww..",
+      "..wwbbbbbbbbww..",
+      "..wwbkkkkkkbww..",
+      "..wwwwkkkkwwww..",
+      "..wwwwwaawwwww..",
+      "..wwkkwaawkkww..",
+      "..wwkkwaawkkww..",
+      "..wwwwwaawwwww..",
+      ".kkwwwwaawwwwkk.",
+      ".kkwwwwaawwwwkk.",
+      ".kkwwwwaawwwwkk.",
+      "..wwwwwaawwwww..",
+      "..wrrwwaawwrrw..",
+      "..wwwwwwwwwwww..",
+      ".aaaaaaaaaaaaaa.",
+      ".k............k.",
       "................"
     ]
   },
   "game": {
     "obstacle": "tire",
-    "scenery": "mountain",
-    "accent": "#0b6e8a",
-    "baseSpeed": 1.0,
-    "grip": 0.55,
-    "gears": 6,
-    "curve": 0.8
+    "scenery": "track",
+    "accent": "#1f5fbf",
+    "baseSpeed": 0.95,
+    "grip": 0.75,
+    "gears": 5,
+    "curve": 0.45,
+    "stars": [300, 800, 1500]
   },
   "sources": [
-    "https://www.v8sleuth.com.au/?p=166518",
-    "https://garage.repco.co.nz/unlikely-models-used-in-touring-car-racing",
-    "https://supertouringregister.com/register/vehicle/287",
-    "https://en.wikipedia.org/wiki/1994_Tooheys_1000"
+    "https://en.wikipedia.org/wiki/Mazda_717C",
+    "https://mzracing.jp/archive/en/history/1983.html",
+    "https://www.insidemazda.co.uk/?p=6818",
+    "https://www.racingsportscars.com/type/Mazda/717C.html"
   ]
 }

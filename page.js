@@ -120,8 +120,9 @@ function surpriseIndex() {
  * "Surprise me" at the foot of the day: a random other car from `days/index.json`, never the one on screen, and not one of the
  * last few cars a surprise link (here or in the garage) picked this session while others are left.
  * Given a class, it is "More Le Mans →" and draws only from that class. The index is fetched on the first tap, not
- * on load, so a reader who never taps pays nothing, and both links share that one fetch. If the fetch fails or
- * there is no other day to draw, the link falls through to its plain `href`, the garage (filtered to the class, if there is one).
+ * on load, so a reader who never taps pays nothing, and both links share that one fetch. If the fetch fails,
+ * the link falls through to its plain `href`, the garage (filtered to the class, if there is one). If there is no other day to
+ * draw, the tap relabels the link "Back to the garage →" (naming the class when there is one) and the next tap follows it.
  * @param {string} current the date on screen
  * @param {CarClass} [cls] only draw cars of this class
  * @returns {HTMLAnchorElement}
@@ -130,7 +131,10 @@ function surpriseLink(current, cls) {
   const link = cls
     ? el('a', { class: 'g-surprise', href: `archive.html?class=${encodeURIComponent(cls)}` }, `More ${classLabel(cls)} →`)
     : el('a', { class: 'g-surprise', href: 'archive.html' }, 'Surprise me →');
+  // Set once a tap finds no other car to draw: the link has been relabelled, and the next tap is a plain garage link.
+  let exhausted = false;
   link.addEventListener('click', e => {
+    if (exhausted) return;
     e.preventDefault();
     void surpriseIndex()
       .then((/** @type {unknown} */ days) => {
@@ -141,7 +145,12 @@ function surpriseLink(current, cls) {
         const recent = recentPicks();
         const fresh = dates.filter(d => !recent.includes(d));
         const pool = fresh.length ? fresh : dates;
-        if (!pool.length) { location.href = link.href; return; }
+        if (!pool.length) {
+          // Say so rather than jump silently: the label now names where the next tap goes.
+          exhausted = true;
+          link.textContent = cls ? `No other ${classLabel(cls)} car yet · Back to the garage →` : 'Back to the garage →';
+          return;
+        }
         const pick = pool[Math.floor(Math.random() * pool.length)];
         rememberPick(pick);
         location.href = `index.html?d=${encodeURIComponent(pick)}`;
