@@ -1,4 +1,5 @@
 [
+  { "date": "2026-11-05", "name": "Volkswagen Golf A59", "year": 1993, "class": "rally", "accent": "#1e4fa0" },
   { "date": "2026-11-04", "name": "Mazda 717C", "year": 1983, "class": "lemans", "accent": "#1f5fbf" },
   { "date": "2026-11-03", "name": "Hyundai Lantra Super Touring", "year": 1994, "class": "touring", "accent": "#0b6e8a" },
   { "date": "2026-11-02", "name": "Volvo XC60 RR", "year": 2012, "class": "offroad", "accent": "#1f4e9c" },

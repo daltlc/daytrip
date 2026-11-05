@@ -9,6 +9,10 @@ const HEX_COLOR = /^#[0-9a-f]{6}$/i;
 
 /** The days the list is showing right now (all, or one class); the surprise link draws from these. @type {IndexEntry[]} */
 let shown = [];
+/** The class filter that is on ('' for all), so the surprise link can name it. */
+let shownClass = '';
+/** Puts the surprise link back to its plain label; `show()` calls it whenever the filter changes the list. */
+let resetSurprise = () => {};
 
 /** @param {IndexEntry} day */
 const dayHref = day => `index.html?d=${encodeURIComponent(day.date)}`;
@@ -31,19 +35,40 @@ function cameFrom(newest) {
 }
 
 /**
- * "Surprise me": jumps to a random car from the list as it is filtered right now, never the day you came from
- * unless it is the only one shown, and not one of the last few cars it picked this session while others are
- * left. The pick happens on click, so every tap is a fresh draw; with nothing shown it just goes to today.
+ * "Surprise me": jumps to a random car from the list as it is filtered right now, never the day you came from,
+ * and not one of the last few cars it picked this session while others are left. The pick happens on click, so
+ * every tap is a fresh draw; with nothing shown it just goes to today. When the list shows only the car you came
+ * from, the first tap says so ("No other Rally car yet · Back to the …") and the next one goes back to it.
  * @param {string} skip the date to leave out of the draw ('' for none)
  * @returns {HTMLAnchorElement}
  */
 function surpriseLink(skip) {
-  const link = el('a', { class: 'g-surprise', href: 'index.html' }, 'Surprise me →');
-  link.addEventListener('click', () => {
+  const label = 'Surprise me →';
+  const link = el('a', { class: 'g-surprise', href: 'index.html' }, label);
+  // The date the link has said it will go back to; the next tap follows it rather than relabelling again.
+  let backTo = '';
+  resetSurprise = () => {
+    if (!backTo) return;
+    backTo = '';
+    link.textContent = label;
+    link.href = 'index.html';
+  };
+  link.addEventListener('click', e => {
     const others = shown.filter(d => d.date !== skip);
+    const only = others.length ? undefined : shown.find(d => d.date === skip);
+    if (only) {
+      // The list shows only the car you came from: say so once instead of quietly linking back to it.
+      if (backTo === only.date) return;
+      e.preventDefault();
+      backTo = only.date;
+      const what = shownClass ? `${classLabel(shownClass)} car` : 'car';
+      link.textContent = `No other ${what} yet · Back to the ${only.name} →`;
+      link.href = dayHref(only);
+      return;
+    }
     const recent = recentPicks();
     const fresh = others.filter(d => !recent.includes(d.date));
-    const pool = fresh.length ? fresh : others.length ? others : shown;
+    const pool = fresh.length ? fresh : others;
     if (!pool.length) return;
     const pick = pool[Math.floor(Math.random() * pool.length)];
     rememberPick(pick.date);
@@ -102,6 +127,8 @@ function filters(days, list, count) {
   const chips = [];
   const show = () => {
     shown = current ? days.filter(d => d.class === current) : days;
+    shownClass = current;
+    resetSurprise();
     list.replaceChildren(...shown.map(row));
     if (count) count.textContent = countLine(shown.length, days.length, current);
     for (const chip of chips) chip.setAttribute('aria-pressed', String(chip.value === current));

@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-05",
+  "name": "Volkswagen Golf A59",
+  "year": 1993,
+  "maker": "Volkswagen",
+  "country": "Germany",
+  "class": "rally",
+  "hook": "Volkswagen built a turbocharged, four-wheel-drive Golf to win the World Rally Championship, then cancelled it before it ever raced.",
+  "story": "January 1992. Volkswagen wants a Golf that can win the World Rally Championship. It hands the job to an outside firm, Schmidt Motorsport. The brief is wild for a family hatchback. Four-wheel drive. A turbo. A six-speed gearbox. The engine is new from scratch: an all-aluminium two-litre four, good for about 275 PS. A centre differential can send anywhere from a quarter to all of that power to the rear wheels. By April 1993 the engine is ready. The plan is a run of road cars to homologate it, then a works car for 1994. But Volkswagen has changed its mind. Its motorsport arm pulls the plug on the rally programme. The A59 never starts a rally. Volkswagen says only two prototypes were fully built, and only one of them could drive. For almost thirty years it stays out of sight. Then, in November 2022, Volkswagen ships it to the SEMA show in Las Vegas. Surrounded by shiny new cars, the old Golf steals the show.",
+  "description": "The Golf A59 was a rally homologation prototype based on the third-generation Golf, built for Volkswagen by Schmidt Motorsport in 1992 and 1993. It had a bespoke all-aluminium 2.0-litre turbocharged four of about 275 PS, a six-speed manual gearbox and four-wheel drive with a variable centre differential. It was meant to carry Volkswagen into the 1994 World Rally Championship. The programme was cancelled, and the car never raced or reached production.",
+  "stats": [
+    { "label": "Engine", "value": "1,998 cc turbo four, all-aluminium" },
+    { "label": "Power", "value": "275 PS (202 kW)" },
+    { "label": "Torque", "value": "370 Nm" },
+    { "label": "Gearbox", "value": "6-speed manual" },
+    { "label": "Drivetrain", "value": "4WD, 25–100% to the rear axle" },
+    { "label": "Built", "value": "2 complete prototypes, 1 drivable (per VW)" }
+  ],
+  "photos": [],
+  "photoQuery": "1993 Volkswagen Golf A59",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "w": "#f2f2f2",
+      "a": "ACCENT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b",
+      "y": "#ffe9a8"
+    },
+    "rows": [
+      "................",
+      "....wywwwwyw....",
+      "...wwywaawyww...",
+      ".kkwwwwaawwwwkk.",
+      ".kkwwwwaawwwwkk.",
+      ".kkwwwwaawwwwkk.",
+      "..wwwwwaawwwww..",
+      "..wwbbbbbbbbww..",
+      "..wbbbbbbbbbbw..",
+      "..wbbbbbbbbbbw..",
+      "..wwwwwkkwwwww..",
+      "..wwwwwkkwwwww..",
+      "..wwwwwaawwwww..",
+      "..wwwwwaawwwww..",
+      "..wwbbbbbbbbww..",
+      ".kkwwwwaawwwwkk.",
+      ".kkwwwwaawwwwkk.",
+      ".kkwwwwaawwwwkk.",
+      "..wwwwwaawwwww..",
+      "..wrrwwaawwrrw..",
+      "..aaaaaaaaaaaa..",
+      "..k..........k..",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "rock",
+    "scenery": "forest",
+    "accent": "#1e4fa0",
+    "baseSpeed": 1.05,
+    "grip": 0.3,
+    "gears": 6,
+    "curve": 0.8,
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://www.pistonheads.com/news/ph-features/vw-golf-a59-the-stillborn-european-evo/25718",
+    "https://www.fcpeuro.com/blog/standing-alone-the-vw-golf-a59-prototype",
+    "https://www.autobild.de/klassik/artikel/vw-golf-3-rallye-a59-prototyp-16537981.html",
+    "https://www.carthrottle.com/news/forgotten-29yo-vw-golf-rallye-homologation-prototype-upstages-brands-newer-sema-exhibits"
+  ]
+}
