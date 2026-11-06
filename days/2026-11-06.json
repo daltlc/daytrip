@@ -1,0 +1,77 @@
+{
+  "date": "2026-11-06",
+  "name": "Ligier JS2 R",
+  "year": 2018,
+  "maker": "Ligier",
+  "country": "France",
+  "class": "gt3",
+  "hook": "For its fiftieth birthday, Ligier brought back the little coupé that finished second at Le Mans in 1975, and made it a race car only.",
+  "story": "Start with a friendship. Guy Ligier played rugby, then raced cars. His close friend was the driver Jo Schlesser. In 1968 Schlesser was killed at the French Grand Prix. From then on, every car Ligier built carried his initials: JS. The JS2 came in 1972, a low, sharp-nosed coupé. In 1975 one finished second at the 24 Hours of Le Mans. Then Ligier moved on, to Formula 1 and later to tiny city cars. Now jump to 2018, the brand's fiftieth year. Onroak Automotive, which runs Ligier's racing side, wants a birthday present. It calls in Michel Beaujon. He was a Ligier engineer for twenty years, and he now leads the JS2 owners' club. Together they build the JS2 R. R for Revival. R for Racing. A 3.7-litre Ford V6 sits behind the seats, and the whole car weighs under a tonne. There is no road version. It is unveiled at the Paris Motor Show in October 2018, and next season it goes racing in a one-make cup of its own.",
+  "description": "The JS2 R is a track-only GT racing car from Ligier Automotive, the racing arm run by Onroak Automotive. It was unveiled at the 2018 Paris Motor Show for the brand's fiftieth anniversary, as a modern homage to the 1970s Ligier JS2. It has a tubular steel chassis, a mid-mounted 3.7-litre Ford V6 of about 330 hp and a six-speed sequential gearbox with paddles. It first raced in 2019 in the Ligier JS Cup France, a series built around it.",
+  "stats": [
+    { "label": "Engine", "value": "3.7-litre Ford V6, mid-mounted" },
+    { "label": "Power", "value": "330 hp" },
+    { "label": "Rev limit", "value": "7,000 rpm" },
+    { "label": "Weight", "value": "980 kg" },
+    { "label": "Gearbox", "value": "6-speed sequential, paddle shift" },
+    { "label": "Chassis", "value": "FIA-homologated tubular steel" },
+    { "label": "Price", "value": "€89,000 (at launch)" }
+  ],
+  "photos": [],
+  "photoQuery": "2018 Ligier JS2 R",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "w": "#f2f2f2",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b",
+      "y": "#ffe9a8"
+    },
+    "rows": [
+      "................",
+      "......aaaa......",
+      "....aawaawaa....",
+      "..yaaawaawaaay..",
+      ".kkaaawaawaaakk.",
+      ".kkaaawaawaaakk.",
+      ".kkaaawaawaaakk.",
+      "..aaaawaawaaaa..",
+      "..aaabbbbbbaaa..",
+      "..aabbbbbbbbaa..",
+      "..aabkkkkkkbaa..",
+      "..aaaakkkkaaaa..",
+      "..aaaawaawaaaa..",
+      "..alaawaawaala..",
+      "..alaawaawaala..",
+      ".kkaaawaawaaakk.",
+      ".kkaaawaawaaakk.",
+      ".kkaaawaawaaakk.",
+      "..aaaawaawaaaa..",
+      "..arraaaaaarra..",
+      "...aaaaaaaaaa...",
+      "..k..........k..",
+      ".kkkkkkkkkkkkkk.",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#2a6fdb",
+    "baseSpeed": 1.1,
+    "grip": 0.6,
+    "gears": 6,
+    "curve": 0.6,
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://ligierjscup.com/en/ligier-js2-r-2",
+    "https://ligierjscup.com/?p=359",
+    "https://www.racetechmag.com/2018/10/ligier-goes-back-to-its-roots-with-new-model/",
+    "https://carbuzz.com/news/legendary-le-mans-racer-inspires-new-french-sports-car"
+  ]
+}

@@ -10,7 +10,7 @@ You are building today's Daytrip: one real car, a short story, numbers, photos, 
 ## 1. Pick the car
 - Run `node scripts/roll.mjs`. It prints a random brief: a class (hard rule; never one used in the last 5 days, which it lists on the `Recent:` line, with a `Counts:` line of days per class underneath), plus a decade, a region and an angle (strong hints), and the list of cars already covered.
 - Search the web from that brief (2–3 WebSearch queries with different phrasings) and choose ONE specific, real, well-documented car that fits it and is not already covered. Prefer a car an enthusiast would be delighted to discover over the most famous car in that class. Be specific: "1999 Nissan Skyline GT-R V-Spec (R34)", not "a Skyline". A different generation of a covered model is fine only if it has its own story.
-- If nothing good turns up, roll again (at most 3 rolls). Never keep a candidate list in the repo; the daily surprise is the point.
+- If nothing good turns up, relax the hints in the order the `Relax:` line gives (never the class), or roll again (at most 3 rolls). Never keep a candidate list in the repo; the daily surprise is the point.
 
 ## 2. Research
 - Use WebSearch and WebFetch. Two to four solid sources (manufacturer heritage pages, Wikipedia, reputable motoring press, museum pages).

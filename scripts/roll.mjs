@@ -83,6 +83,26 @@ const angle = pick(placeBound ? ANGLES.filter(a => a !== NOT_KNOWN_FOR_CARS) : A
 const region = angle === NOT_KNOWN_FOR_CARS ? UNEXPECTED : pick(placeBound ?? REGIONS);
 const label = LABEL[cls].toLowerCase();
 
+/**
+ * Which hint to drop first when the class, decade, region and angle rarely meet (Swedish
+ * off-roaders, German 1990s rally record-breakers). The class is the hard rule, so it is never
+ * relaxed; the angle is the narrowest hint, so it goes first, then the region, then the decade.
+ * The "country not known for cars" angle names its own region, so the two go together, and a
+ * region a class is tied to (a JDM car is Japanese) or a decade a class is pinned to is kept.
+ * @returns {string}
+ */
+function relaxOrder() {
+  /** @type {string[]} */
+  const steps = [];
+  if (angle === NOT_KNOWN_FOR_CARS) steps.push('the angle and region together');
+  else {
+    steps.push('the angle');
+    if (!placeBound || placeBound.length > 1) steps.push('the region');
+  }
+  if (hi > lo) steps.push(DECADE_RANGE[cls] ? `the decade (stay within ${DECADES[lo]}–${DECADES[hi]})` : 'the decade');
+  return steps.map((s, i) => `${i + 1}. ${s}`).join(', ');
+}
+
 process.stdout.write([
   `Class:   ${cls} (${LABEL[cls]})  <- hard rule`,
   `Recent:  ${index.slice(0, RECENT_DAYS).map(e => e.class).join(', ') || 'none'}  <- the last ${RECENT_DAYS} days, newest first; never reuse these`,
@@ -91,6 +111,7 @@ process.stdout.write([
   `Region:  ${region}  <- strong hint`,
   `Angle:   ${angle}  <- strong hint`,
   `Search:  try phrasings like "${decade} ${region} ${label} ${angle}" and "obscure ${label} ${decade} ${region}"`,
+  `Relax:   if nothing real fits, drop hints in this order, keeping the class: ${relaxOrder()}; say which in NOTES.md`,
   `Avoid (already covered): ${index.map(e => `${e.year ?? ''} ${e.name}`.trim()).join('; ') || 'nothing yet'}`,
   `Stats:   two figures with one label? Use "tag" ({"label": "Power", "tag": "race", ...}), not "Power (race)"; see docs/SCHEMA.md`,
   '',
