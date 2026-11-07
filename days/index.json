@@ -1,4 +1,5 @@
 [
+  { "date": "2026-11-07", "name": "Davis Divan", "year": 1948, "class": "vintage", "accent": "#c8372d" },
   { "date": "2026-11-06", "name": "Ligier JS2 R", "year": 2018, "class": "gt3", "accent": "#2a6fdb" },
   { "date": "2026-11-05", "name": "Volkswagen Golf A59", "year": 1993, "class": "rally", "accent": "#1e4fa0" },
   { "date": "2026-11-04", "name": "Mazda 717C", "year": 1983, "class": "lemans", "accent": "#1f5fbf" },

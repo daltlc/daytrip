@@ -14,6 +14,17 @@ let shownClass = '';
 /** Puts the surprise link back to its plain label; `show()` calls it whenever the filter changes the list. */
 let resetSurprise = () => {};
 
+/**
+ * The day's accent dot, as in the list rows: an entry without a usable accent gets an empty ring.
+ * @param {IndexEntry} day
+ * @returns {HTMLSpanElement}
+ */
+function swatchFor(day) {
+  const swatch = el('span', { class: 'g-swatch', 'aria-hidden': 'true' });
+  if (day.accent && HEX_COLOR.test(day.accent)) swatch.style.backgroundColor = day.accent;
+  return swatch;
+}
+
 /** @param {IndexEntry} day */
 const dayHref = day => `index.html?d=${encodeURIComponent(day.date)}`;
 
@@ -62,7 +73,8 @@ function surpriseLink(skip) {
       e.preventDefault();
       backTo = only.date;
       const what = shownClass ? `${classLabel(shownClass)} car` : 'car';
-      link.textContent = `No other ${what} yet · Back to the ${only.name} →`;
+      // The car's own accent dot sits before its name, so the label reads like its row in the list below.
+      link.replaceChildren(`No other ${what} yet · Back to the `, swatchFor(only), `${only.name} →`);
       link.href = dayHref(only);
       return;
     }
@@ -83,12 +95,10 @@ function surpriseLink(skip) {
  */
 function row(day) {
   const href = dayHref(day);
-  // Always present so the grid columns line up; an entry without an accent gets an empty ring.
-  const swatch = el('span', { class: 'g-swatch', 'aria-hidden': 'true' });
-  if (day.accent && HEX_COLOR.test(day.accent)) swatch.style.backgroundColor = day.accent;
+  // Always present so the grid columns line up.
   return el('li', {}, el('a', { href },
     el('span', { class: 'g-date' }, day.date),
-    swatch,
+    swatchFor(day),
     el('span', { class: 'g-name' }, day.year ? `${day.year} ${day.name}` : day.name),
     el('span', { class: 'badge' }, day.class)));
 }
