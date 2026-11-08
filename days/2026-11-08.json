@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-08",
+  "name": "Subaru Legacy Touring Wagon GT-B (BH)",
+  "year": 1998,
+  "maker": "Subaru",
+  "country": "Japan",
+  "class": "jdm",
+  "hook": "Two months before it reached Japanese showrooms, Subaru's new family estate ran 270.5 km/h on a Colorado highway, a world record for a production wagon.",
+  "story": "Here is a strange way to launch a family car. It is April 1998. Subaru's new Legacy wagon will not reach Japanese showrooms until June. But one is already in America, on a closed stretch of Highway 10 near La Junta, Colorado. The plains are flat. The road runs straight. The job is simple: one kilometre, as fast as the car will go. Under the bonnet sits a two-litre flat-four with two turbochargers that take turns. The first one spools early. The second joins in higher up. All four wheels drive. When the timing is checked, the average is 270.532 kilometres an hour. That is about 168 miles an hour, in a car built to carry the dog. The FIA certifies it as a world record for a production wagon of its engine size. And here is the twist. Subaru was beating itself. The old Legacy wagon held the mark, set on the salt at Bonneville in 1993. So picture the new brochure. Room for the family. Fastest wagon in the world.",
+  "description": "The Legacy Touring Wagon GT-B is the sporting estate of the third-generation Subaru Legacy, the BH series, launched in Japan in June 1998. It uses Subaru's 2.0-litre EJ20 boxer four with a sequential twin-turbo system, rated at 280 PS with the manual gearbox and 260 PS with the automatic. Drive goes to all four wheels, and Bilstein struts sharpen the ride. Before launch, a GT-B set an FIA-certified one-kilometre speed record for production wagons, beating the previous Legacy's 1993 mark.",
+  "stats": [
+    { "label": "Engine", "value": "2.0 L sequential twin-turbo flat-four (EJ20)" },
+    { "label": "Power", "tag": "manual", "value": "280 PS" },
+    { "label": "Torque", "tag": "manual", "value": "35.0 kgf·m (343 N·m)" },
+    { "label": "Drivetrain", "value": "All-wheel drive, 5-speed manual" },
+    { "label": "Record", "value": "270.532 km/h (168.1 mph) over 1 km" },
+    { "label": "Record set", "value": "23 April 1998, La Junta, Colorado" },
+    { "label": "Launched", "value": "June 1998, Japan" }
+  ],
+  "photos": [],
+  "photoQuery": "1998 Subaru Legacy Touring Wagon",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "w": "#c9ced6",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      ".....aaaaaa.....",
+      "...wwaaaaaaww...",
+      "...aaaaaaaaaa...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaakkaaaaa..",
+      "..aaaaaaaaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..awllllllllwa..",
+      "..awllllllllwa..",
+      "..awllllllllwa..",
+      "..awllllllllwa..",
+      "..awllllllllwa..",
+      "..awllllllllwa..",
+      ".kkwllllllllwkk.",
+      ".kkwllllllllwkk.",
+      "..aabbbbbbbbaa..",
+      "..aaaaaaaaaaaa..",
+      "..arraaaaaarra..",
+      "...aaaaaaaaaa...",
+      "...kkkkkkkkkk...",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "cone",
+    "scenery": "desert",
+    "weather": "none",
+    "accent": "#1f4e9c",
+    "baseSpeed": 1.2,
+    "grip": 0.55,
+    "gears": 5,
+    "curve": 0.1,
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://www.subaru.co.jp/en/news/archives/press/2005/05_03_15e.html",
+    "https://motor-fan.jp/article/1519846/",
+    "https://en.wikipedia.org/wiki/Subaru_Legacy_(third_generation)"
+  ]
+}
