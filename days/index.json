@@ -1,4 +1,5 @@
 [
+  { "date": "2026-11-09", "name": "Land Rover Perentie 6x6", "year": 1987, "class": "offroad", "accent": "#4f5d34" },
   { "date": "2026-11-08", "name": "Subaru Legacy Touring Wagon GT-B (BH)", "year": 1998, "class": "jdm", "accent": "#1f4e9c" },
   { "date": "2026-11-07", "name": "Davis Divan", "year": 1948, "class": "vintage", "accent": "#c8372d" },
   { "date": "2026-11-06", "name": "Ligier JS2 R", "year": 2018, "class": "gt3", "accent": "#2a6fdb" },

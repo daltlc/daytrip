@@ -1,76 +1,101 @@
 {
-  "date": "2026-11-08",
-  "name": "Subaru Legacy Touring Wagon GT-B (BH)",
-  "year": 1998,
-  "maker": "Subaru",
-  "country": "Japan",
-  "class": "jdm",
-  "hook": "Two months before it reached Japanese showrooms, Subaru's new family estate ran 270.5 km/h on a Colorado highway, a world record for a production wagon.",
-  "story": "Here is a strange way to launch a family car. It is April 1998. Subaru's new Legacy wagon will not reach Japanese showrooms until June. But one is already in America, on a closed stretch of Highway 10 near La Junta, Colorado. The plains are flat. The road runs straight. The job is simple: one kilometre, as fast as the car will go. Under the bonnet sits a two-litre flat-four with two turbochargers that take turns. The first one spools early. The second joins in higher up. All four wheels drive. When the timing is checked, the average is 270.532 kilometres an hour. That is about 168 miles an hour, in a car built to carry the dog. The FIA certifies it as a world record for a production wagon of its engine size. And here is the twist. Subaru was beating itself. The old Legacy wagon held the mark, set on the salt at Bonneville in 1993. So picture the new brochure. Room for the family. Fastest wagon in the world.",
-  "description": "The Legacy Touring Wagon GT-B is the sporting estate of the third-generation Subaru Legacy, the BH series, launched in Japan in June 1998. It uses Subaru's 2.0-litre EJ20 boxer four with a sequential twin-turbo system, rated at 280 PS with the manual gearbox and 260 PS with the automatic. Drive goes to all four wheels, and Bilstein struts sharpen the ride. Before launch, a GT-B set an FIA-certified one-kilometre speed record for production wagons, beating the previous Legacy's 1993 mark.",
+  "date": "2026-11-09",
+  "name": "Land Rover Perentie 6x6",
+  "year": 1987,
+  "maker": "JRA (Land Rover)",
+  "country": "Australia",
+  "class": "offroad",
+  "hook": "Land Rover had no two-tonne truck, so when the Australian Army asked for one, its Australian arm designed a six-wheeler of its own and gave it a Japanese diesel.",
+  "story": "Picture the Australian Army in the early 1980s. Its old Land Rovers are tired. So it runs a contest called Project Perentie, named after the country's biggest lizard. Jeep turns up. Mercedes-Benz turns up. So does a Unimog. Land Rover's 110 wins. But there is a catch. The Army also wants a bigger truck, one that can carry two tonnes. And Land Rover has nothing that size. So its Australian arm, JRA, does something bold. It builds its own. Take the 110, make it longer, and hang a second driven axle under the back. Now there are six wheels, and all of them pull. Under the bonnet sits a Japanese engine: a 3.9-litre Isuzu diesel with a turbocharger. The Army orders about four hundred. From 1987 they head bush, hauling troops, radios and stores across red dirt and dry creek beds. Some are later rebuilt as long-range patrol trucks for special forces. So here it is. A British badge, a Japanese heart, and six wheels that only Australia ever asked for.",
+  "description": "The Perentie 6x6 is the two-tonne member of the Australian Army's Perentie family, chosen in the Project Perentie trials and in service from 1987. Land Rover had no vehicle for the two-tonne class, so Jaguar Rover Australia developed this six-wheeler from the 110, assembling it at Moorebank, New South Wales. It uses a turbocharged 3.9-litre Isuzu 4BD1 diesel and a four-speed LT95A gearbox. About 400 were ordered alongside 2,500 four-wheel-drive Perenties. Mercedes-Benz G-Wagens began replacing the fleet in the 2010s.",
   "stats": [
-    { "label": "Engine", "value": "2.0 L sequential twin-turbo flat-four (EJ20)" },
-    { "label": "Power", "tag": "manual", "value": "280 PS" },
-    { "label": "Torque", "tag": "manual", "value": "35.0 kgf·m (343 N·m)" },
-    { "label": "Drivetrain", "value": "All-wheel drive, 5-speed manual" },
-    { "label": "Record", "value": "270.532 km/h (168.1 mph) over 1 km" },
-    { "label": "Record set", "value": "23 April 1998, La Junta, Colorado" },
-    { "label": "Launched", "value": "June 1998, Japan" }
+    {
+      "label": "Engine",
+      "value": "3.9 L turbo-diesel inline-four (Isuzu 4BD1-T)"
+    },
+    {
+      "label": "Power",
+      "value": "90 kW (121 hp) @ 3,200 rpm"
+    },
+    {
+      "label": "Torque",
+      "value": "314 N·m @ 2,200 rpm"
+    },
+    {
+      "label": "Drivetrain",
+      "value": "Six-wheel drive, 4-speed manual (LT95A)"
+    },
+    {
+      "label": "Payload class",
+      "value": "2 tonnes"
+    },
+    {
+      "label": "Ordered",
+      "value": "About 400 (6x6)"
+    },
+    {
+      "label": "In service",
+      "value": "From 1987"
+    }
   ],
   "photos": [],
-  "photoQuery": "1998 Subaru Legacy Touring Wagon",
+  "photoQuery": "1987 Land Rover Perentie",
   "sprite": {
     "w": 16,
     "h": 24,
     "palette": {
       "a": "ACCENT",
       "l": "ACCENT_LIGHT",
-      "w": "#c9ced6",
+      "w": "#f2e6b8",
       "k": "#111318",
       "b": "#8fd3ff",
       "r": "#ff3b3b"
     },
     "rows": [
-      ".....aaaaaa.....",
-      "...wwaaaaaaww...",
+      ".....kkkkkk.....",
+      "....aaaaaaaa....",
+      "...waaaaaaaaw...",
+      "kk.aaaaaaaaaa.kk",
+      "kk.aaaaaaaaaa.kk",
+      "kk.aaaaaaaaaa.kk",
+      "...abbbbbbbba...",
+      "...abbbbbbbba...",
       "...aaaaaaaaaa...",
-      ".kkaaaaaaaaaakk.",
-      ".kkaaaaaaaaaakk.",
-      "..aaaaakkaaaaa..",
-      "..aaaaaaaaaaaa..",
-      "..aabbbbbbbbaa..",
-      "..abbbbbbbbbba..",
-      "..awllllllllwa..",
-      "..awllllllllwa..",
-      "..awllllllllwa..",
-      "..awllllllllwa..",
-      "..awllllllllwa..",
-      "..awllllllllwa..",
-      ".kkwllllllllwkk.",
-      ".kkwllllllllwkk.",
-      "..aabbbbbbbbaa..",
-      "..aaaaaaaaaaaa..",
-      "..arraaaaaarra..",
       "...aaaaaaaaaa...",
       "...kkkkkkkkkk...",
+      "...llllllllll...",
+      "...laaaaaaaal...",
+      "kk.llllllllll.kk",
+      "kk.llllllllll.kk",
+      "kk.llllllllll.kk",
+      "...laaaaaaaal...",
+      "kk.llllllllll.kk",
+      "kk.llllllllll.kk",
+      "kk.llllllllll.kk",
+      "...llllllllll...",
+      "...rkkkkkkkkr...",
       "................",
       "................"
     ]
   },
   "game": {
-    "obstacle": "cone",
+    "obstacle": "rock",
     "scenery": "desert",
-    "weather": "none",
-    "accent": "#1f4e9c",
-    "baseSpeed": 1.2,
-    "grip": 0.55,
-    "gears": 5,
-    "curve": 0.1,
-    "stars": [300, 800, 1500]
+    "accent": "#4f5d34",
+    "baseSpeed": 0.8,
+    "grip": 0.3,
+    "gears": 4,
+    "curve": 0.5,
+    "stars": [
+      250,
+      650,
+      1200
+    ]
   },
   "sources": [
-    "https://www.subaru.co.jp/en/news/archives/press/2005/05_03_15e.html",
-    "https://motor-fan.jp/article/1519846/",
-    "https://en.wikipedia.org/wiki/Subaru_Legacy_(third_generation)"
+    "https://en.wikipedia.org/wiki/Land_Rover_Perentie",
+    "https://allisons.org/ll/4/LandRover/Perentie/",
+    "https://6-wheel-drive.org/vehicles/land-rover-perentie.html",
+    "https://www.whichcar.com.au/features/anzac-automotive---6-of-the-best-vehicles-to-serve-australia"
   ]
 }

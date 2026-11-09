@@ -36,6 +36,11 @@ const REGIONS = ['Italy', 'Germany', 'Japan', 'United Kingdom', 'France', 'Unite
 // brief never pairs one with a region that wastes a search. Every other class draws from REGIONS.
 /** @type {Partial<Record<CarClass, string[]>>} */
 const CLASS_REGIONS = { jdm: ['Japan'], muscle: ['United States', 'Australia', 'South America'] };
+// regions that built no cars before a given decade (Korea's first car is the 1955 Sibal), so a
+// roll never pairs them with a decade that always forces the region to be relaxed. Index into
+// DECADES of the first decade the region can be drawn for; a region not listed is always fine.
+/** @type {Record<string, number>} */
+const REGION_FROM = { 'South Korea': 3 };
 // this angle names its own region: it only pairs with UNEXPECTED, and never with a class tied to
 // a place (a JDM car from a country not known for cars contradicts itself)
 const NOT_KNOWN_FOR_CARS = 'a car built in a country not known for building cars';
@@ -120,10 +125,12 @@ const fewest = Math.min(...eligible.map(c => counts[c]));
 const preferred = eligible.filter(c => counts[c] === fewest);
 const cls = pick(randomInt(OFF_PREFERENCE_ODDS) === 0 ? eligible : preferred);
 const [lo, hi] = DECADE_RANGE[cls] ?? [0, DECADES.length - 1];
-const decade = pick(DECADES.slice(lo, hi + 1));
+const decadeIndex = lo + randomInt(hi - lo + 1);
+const decade = DECADES[decadeIndex];
 const placeBound = CLASS_REGIONS[cls];
 const angle = pickWeighted(placeBound ? ANGLES.filter(a => a !== NOT_KNOWN_FOR_CARS) : ANGLES, relaxed);
-const region = angle === NOT_KNOWN_FOR_CARS ? UNEXPECTED : pick(placeBound ?? REGIONS);
+const regions = (placeBound ?? REGIONS).filter(r => (REGION_FROM[r] ?? 0) <= decadeIndex);
+const region = angle === NOT_KNOWN_FOR_CARS ? UNEXPECTED : pick(regions.length ? regions : placeBound ?? REGIONS);
 const label = LABEL[cls].toLowerCase();
 
 /**

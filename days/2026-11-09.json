@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-09",
+  "name": "Land Rover Perentie 6x6",
+  "year": 1987,
+  "maker": "JRA (Land Rover)",
+  "country": "Australia",
+  "class": "offroad",
+  "hook": "Land Rover had no two-tonne truck, so when the Australian Army asked for one, its Australian arm designed a six-wheeler of its own and gave it a Japanese diesel.",
+  "story": "Picture the Australian Army in the early 1980s. Its old Land Rovers are tired. So it runs a contest called Project Perentie, named after the country's biggest lizard. Jeep turns up. Mercedes-Benz turns up. So does a Unimog. Land Rover's 110 wins. But there is a catch. The Army also wants a bigger truck, one that can carry two tonnes. And Land Rover has nothing that size. So its Australian arm, JRA, does something bold. It builds its own. Take the 110, make it longer, and hang a second driven axle under the back. Now there are six wheels, and all of them pull. Under the bonnet sits a Japanese engine: a 3.9-litre Isuzu diesel with a turbocharger. The Army orders about four hundred. From 1987 they head bush, hauling troops, radios and stores across red dirt and dry creek beds. Some are later rebuilt as long-range patrol trucks for special forces. So here it is. A British badge, a Japanese heart, and six wheels that only Australia ever asked for.",
+  "description": "The Perentie 6x6 is the two-tonne member of the Australian Army's Perentie family, chosen in the Project Perentie trials and in service from 1987. Land Rover had no vehicle for the two-tonne class, so Jaguar Rover Australia developed this six-wheeler from the 110, assembling it at Moorebank, New South Wales. It uses a turbocharged 3.9-litre Isuzu 4BD1 diesel and a four-speed LT95A gearbox. About 400 were ordered alongside 2,500 four-wheel-drive Perenties. Mercedes-Benz G-Wagens began replacing the fleet in the 2010s.",
+  "stats": [
+    {
+      "label": "Engine",
+      "value": "3.9 L turbo-diesel inline-four (Isuzu 4BD1-T)"
+    },
+    {
+      "label": "Power",
+      "value": "90 kW (121 hp) @ 3,200 rpm"
+    },
+    {
+      "label": "Torque",
+      "value": "314 N·m @ 2,200 rpm"
+    },
+    {
+      "label": "Drivetrain",
+      "value": "Six-wheel drive, 4-speed manual (LT95A)"
+    },
+    {
+      "label": "Payload class",
+      "value": "2 tonnes"
+    },
+    {
+      "label": "Ordered",
+      "value": "About 400 (6x6)"
+    },
+    {
+      "label": "In service",
+      "value": "From 1987"
+    }
+  ],
+  "photos": [],
+  "photoQuery": "1987 Land Rover Perentie",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "w": "#f2e6b8",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b"
+    },
+    "rows": [
+      ".....kkkkkk.....",
+      "....aaaaaaaa....",
+      "...waaaaaaaaw...",
+      "kk.aaaaaaaaaa.kk",
+      "kk.aaaaaaaaaa.kk",
+      "kk.aaaaaaaaaa.kk",
+      "...abbbbbbbba...",
+      "...abbbbbbbba...",
+      "...aaaaaaaaaa...",
+      "...aaaaaaaaaa...",
+      "...kkkkkkkkkk...",
+      "...llllllllll...",
+      "...laaaaaaaal...",
+      "kk.llllllllll.kk",
+      "kk.llllllllll.kk",
+      "kk.llllllllll.kk",
+      "...laaaaaaaal...",
+      "kk.llllllllll.kk",
+      "kk.llllllllll.kk",
+      "kk.llllllllll.kk",
+      "...llllllllll...",
+      "...rkkkkkkkkr...",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "rock",
+    "scenery": "desert",
+    "accent": "#4f5d34",
+    "baseSpeed": 0.8,
+    "grip": 0.3,
+    "gears": 4,
+    "curve": 0.5,
+    "stars": [
+      250,
+      650,
+      1200
+    ]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Land_Rover_Perentie",
+    "https://allisons.org/ll/4/LandRover/Perentie/",
+    "https://6-wheel-drive.org/vehicles/land-rover-perentie.html",
+    "https://www.whichcar.com.au/features/anzac-automotive---6-of-the-best-vehicles-to-serve-australia"
+  ]
+}
