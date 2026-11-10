@@ -1,101 +1,93 @@
 {
-  "date": "2026-11-09",
-  "name": "Land Rover Perentie 6x6",
-  "year": 1987,
-  "maker": "JRA (Land Rover)",
-  "country": "Australia",
-  "class": "offroad",
-  "hook": "Land Rover had no two-tonne truck, so when the Australian Army asked for one, its Australian arm designed a six-wheeler of its own and gave it a Japanese diesel.",
-  "story": "Picture the Australian Army in the early 1980s. Its old Land Rovers are tired. So it runs a contest called Project Perentie, named after the country's biggest lizard. Jeep turns up. Mercedes-Benz turns up. So does a Unimog. Land Rover's 110 wins. But there is a catch. The Army also wants a bigger truck, one that can carry two tonnes. And Land Rover has nothing that size. So its Australian arm, JRA, does something bold. It builds its own. Take the 110, make it longer, and hang a second driven axle under the back. Now there are six wheels, and all of them pull. Under the bonnet sits a Japanese engine: a 3.9-litre Isuzu diesel with a turbocharger. The Army orders about four hundred. From 1987 they head bush, hauling troops, radios and stores across red dirt and dry creek beds. Some are later rebuilt as long-range patrol trucks for special forces. So here it is. A British badge, a Japanese heart, and six wheels that only Australia ever asked for.",
-  "description": "The Perentie 6x6 is the two-tonne member of the Australian Army's Perentie family, chosen in the Project Perentie trials and in service from 1987. Land Rover had no vehicle for the two-tonne class, so Jaguar Rover Australia developed this six-wheeler from the 110, assembling it at Moorebank, New South Wales. It uses a turbocharged 3.9-litre Isuzu 4BD1 diesel and a four-speed LT95A gearbox. About 400 were ordered alongside 2,500 four-wheel-drive Perenties. Mercedes-Benz G-Wagens began replacing the fleet in the 2010s.",
+  "date": "2026-11-10",
+  "name": "Torino Cherokee (Turismo Carretera)",
+  "year": 2017,
+  "maker": "Torino",
+  "country": "Argentina",
+  "class": "muscle",
+  "hook": "In 2017 the Torinos won eight of the fifteen Turismo Carretera races and still lost the title, by a quarter of a point.",
+  "story": "Picture Argentina's oldest racing series, the Turismo Carretera. For years the fight has been Ford against Chevrolet. But there is a third name on the grid, and its road car went out of production in 1982. Torino. It was Argentina's own muscle coupé, born in the sixties. The race car keeps that long, low shape and carries a Jeep Cherokee straight-six, first raced in 1995. In 2017 the Torinos are flying. They win eight of the season's fifteen races. Facundo Ardusso, driving for the Renault Sport Torino Team, arrives at the final round in La Plata fighting for the title. Then Agustín Canapino's Chevrolet goes to work. He starts eleventh. Lap by lap he climbs. On the very last lap he takes fourth. Now the sums are done. Canapino is champion by a quarter of a point, the smallest margin the series has ever seen. Torino's long wait for a title goes on. Think about that. The car that won more than half the races, beaten by a fraction you could barely write down.",
+  "description": "The Torino Cherokee is the Turismo Carretera racer that carries the shape of the IKA Torino, the Argentine coupé built from 1966 to 1982. It is developed under the rules of the ACTC, the association that runs the series, and takes its name from its engine: a Jeep Cherokee inline-six, first homologated in the Torino in 1995 and later shared with Dodge. In 2017 Torinos won eight of the fifteen races, and Facundo Ardusso finished runner-up by 0.25 points.",
   "stats": [
     {
       "label": "Engine",
-      "value": "3.9 L turbo-diesel inline-four (Isuzu 4BD1-T)"
+      "value": "Jeep Cherokee (AMC) inline-six, OHV"
     },
     {
-      "label": "Power",
-      "value": "90 kW (121 hp) @ 3,200 rpm"
+      "label": "Gearbox",
+      "value": "5-speed manual"
     },
     {
-      "label": "Torque",
-      "value": "314 N·m @ 2,200 rpm"
+      "label": "Engine debut",
+      "value": "1995 (Rubén Luis Di Palma)"
     },
     {
-      "label": "Drivetrain",
-      "value": "Six-wheel drive, 4-speed manual (LT95A)"
+      "label": "Wins",
+      "tag": "2017",
+      "value": "8 of 15 races"
     },
     {
-      "label": "Payload class",
-      "value": "2 tonnes"
+      "label": "Title margin",
+      "tag": "2017",
+      "value": "0.25 points (Ardusso runner-up)"
     },
     {
-      "label": "Ordered",
-      "value": "About 400 (6x6)"
-    },
-    {
-      "label": "In service",
-      "value": "From 1987"
+      "label": "Team",
+      "tag": "2017",
+      "value": "Renault Sport Torino Team"
     }
   ],
   "photos": [],
-  "photoQuery": "1987 Land Rover Perentie",
+  "photoQuery": "2017 Torino Cherokee",
   "sprite": {
     "w": 16,
     "h": 24,
     "palette": {
       "a": "ACCENT",
-      "l": "ACCENT_LIGHT",
-      "w": "#f2e6b8",
       "k": "#111318",
+      "w": "#f2f2f2",
       "b": "#8fd3ff",
       "r": "#ff3b3b"
     },
     "rows": [
-      ".....kkkkkk.....",
-      "....aaaaaaaa....",
-      "...waaaaaaaaw...",
-      "kk.aaaaaaaaaa.kk",
-      "kk.aaaaaaaaaa.kk",
-      "kk.aaaaaaaaaa.kk",
-      "...abbbbbbbba...",
-      "...abbbbbbbba...",
-      "...aaaaaaaaaa...",
-      "...aaaaaaaaaa...",
-      "...kkkkkkkkkk...",
-      "...llllllllll...",
-      "...laaaaaaaal...",
-      "kk.llllllllll.kk",
-      "kk.llllllllll.kk",
-      "kk.llllllllll.kk",
-      "...laaaaaaaal...",
-      "kk.llllllllll.kk",
-      "kk.llllllllll.kk",
-      "kk.llllllllll.kk",
-      "...llllllllll...",
-      "...rkkkkkkkkr...",
+      "......kkkk......",
+      "....aaakkaaa....",
+      "...awaakkaawa...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaakkkkaaakk.",
+      "..aaaaakkaaaaa..",
+      "..aaaaakkaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..aakkkkkkkkaa..",
+      "..aakkkkkkkkaa..",
+      "..aakkkkkkkkaa..",
+      "..aabbbbbbbbaa..",
+      "..aaabbbbbbaaa..",
+      "..aaaaaaaaaaaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..arraaaaaarra..",
+      "..aaaaaaaaaaaa..",
+      ".kkkkkkkkkkkkkk.",
+      "..k..........k..",
       "................",
       "................"
     ]
   },
   "game": {
-    "obstacle": "rock",
-    "scenery": "desert",
-    "accent": "#4f5d34",
-    "baseSpeed": 0.8,
-    "grip": 0.3,
-    "gears": 4,
-    "curve": 0.5,
-    "stars": [
-      250,
-      650,
-      1200
-    ]
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#f2b705",
+    "baseSpeed": 1.1,
+    "grip": 0.5,
+    "gears": 5
   },
   "sources": [
-    "https://en.wikipedia.org/wiki/Land_Rover_Perentie",
-    "https://allisons.org/ll/4/LandRover/Perentie/",
-    "https://6-wheel-drive.org/vehicles/land-rover-perentie.html",
-    "https://www.whichcar.com.au/features/anzac-automotive---6-of-the-best-vehicles-to-serve-australia"
+    "https://en.wikipedia.org/wiki/Torino_Cherokee",
+    "https://www.lanacion.com.ar/deportes/automovilismo/turismo-carretera-en-un-final-de-pelicula-canapino-se-consagro-campeon-nid2090141/",
+    "https://www.diariomotor.com/competicion/noticia/un-cuarto-de-punto-decide-de-forma-emocionante-el-turismo-carretera-2017/",
+    "https://en.wikipedia.org/wiki/IKA-Renault_Torino"
   ]
 }

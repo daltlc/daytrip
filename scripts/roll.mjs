@@ -12,8 +12,8 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const RECENT_DAYS = 5;
 const OFF_PREFERENCE_ODDS = 4; // one roll in four ignores the least-covered weighting
-const RELAX_LOOKBACK = 10; // NOTES.md entries to scan for angles that had to be relaxed
-const RELAXED_WEIGHT = 1; // a recently relaxed angle's draw weight, against NORMAL_WEIGHT
+const RELAX_LOOKBACK = 10; // NOTES.md entries to scan for angles and regions that had to be relaxed
+const RELAXED_WEIGHT = 1; // a recently relaxed angle's or region's draw weight, against NORMAL_WEIGHT
 const NORMAL_WEIGHT = 3;
 
 /** @type {Record<CarClass, string>} */
@@ -78,32 +78,35 @@ function readIndex() {
 const norm = s => s.toLowerCase().replace(/[^a-z ]/g, '').replace(/ +/g, ' ').trim();
 
 /**
- * Angles the last few runs had to relax ("the roll was … / <angle>." followed by "relaxed the
- * angle" or "dropped the angle" on the same Content line of NOTES.md), so impossible pairings
- * come up less. Notes may shorten an angle ("a record breaker"), so either text prefixing the
- * other counts as a match. A missing or odd NOTES.md just means no weighting.
- * @returns {Set<string>}
+ * Angles and regions the last few runs had to relax ("the roll was <class> / <decade> /
+ * <region> / <angle>." followed by "relaxed the angle" / "relaxed the region", or "dropped …",
+ * on the same Content line of NOTES.md), so impossible pairings come up less. Notes may shorten
+ * a hint ("a record breaker"), so either text prefixing the other counts as a match. A missing
+ * or odd NOTES.md just means no weighting.
+ * @returns {{ angles: Set<string>, regions: Set<string> }}
  */
-function recentlyRelaxedAngles() {
-  /** @type {Set<string>} */
-  const out = new Set();
+function recentlyRelaxed() {
+  const out = { angles: new Set(/** @type {string[]} */ ([])), regions: new Set(/** @type {string[]} */ ([])) };
   let notes = '';
   try { notes = readFileSync(path.join(root, 'NOTES.md'), 'utf8'); } catch { return out; }
+  /** @param {readonly string[]} list @param {string} said */
+  const find = (list, said) => list.find(a => norm(a).startsWith(said) || said.startsWith(norm(a)));
   const entries = notes.split(/\n## /).slice(1).slice(-RELAX_LOOKBACK);
   for (const entry of entries) {
     const content = entry.split('\n').find(l => l.startsWith('- Content:')) ?? '';
-    const roll = /the roll was [^/]+\/[^/]+\/[^/]+\/ ([^.]+)\./.exec(content);
-    if (!roll || !/\b(relax(ed)?|dropp?(ed)?) the angle\b/.test(content)) continue;
-    const said = norm(roll[1]);
-    const match = ANGLES.find(a => norm(a).startsWith(said) || said.startsWith(norm(a)));
-    if (match) out.add(match);
+    const roll = /the roll was [^/]+\/[^/]+\/ ([^/]+?) \/ ([^.]+)\./.exec(content);
+    if (!roll) continue;
+    const angle = /\b(relax(ed)?|dropp?(ed)?) the angle\b/.test(content) ? find(ANGLES, norm(roll[2])) : undefined;
+    const region = /\b(relax(ed)?|dropp?(ed)?) the region\b/.test(content) ? find(REGIONS, norm(roll[1])) : undefined;
+    if (angle) out.angles.add(angle);
+    if (region) out.regions.add(region);
   }
   return out;
 }
 
 /**
  * @param {readonly string[]} items
- * @param {Set<string>} down items drawn at RELAXED_WEIGHT instead of NORMAL_WEIGHT
+ * @param {Set<string>} down items drawn at RELAXED_WEIGHT instead of NORMAL_WEIGHT (relaxed recently)
  * @returns {string}
  */
 function pickWeighted(items, down) {
@@ -114,7 +117,7 @@ function pickWeighted(items, down) {
 }
 
 const index = readIndex();
-const relaxed = recentlyRelaxedAngles();
+const { angles: relaxed, regions: relaxedRegions } = recentlyRelaxed();
 const recent = new Set(index.slice(0, RECENT_DAYS).map(e => e.class));
 /** @type {Record<CarClass, number>} */
 const counts = { road: 0, exotic: 0, rally: 0, f1: 0, gt3: 0, lemans: 0, jdm: 0, muscle: 0, offroad: 0, vintage: 0, touring: 0, concept: 0 };
@@ -130,7 +133,7 @@ const decade = DECADES[decadeIndex];
 const placeBound = CLASS_REGIONS[cls];
 const angle = pickWeighted(placeBound ? ANGLES.filter(a => a !== NOT_KNOWN_FOR_CARS) : ANGLES, relaxed);
 const regions = (placeBound ?? REGIONS).filter(r => (REGION_FROM[r] ?? 0) <= decadeIndex);
-const region = angle === NOT_KNOWN_FOR_CARS ? UNEXPECTED : pick(regions.length ? regions : placeBound ?? REGIONS);
+const region = angle === NOT_KNOWN_FOR_CARS ? UNEXPECTED : pickWeighted(regions.length ? regions : placeBound ?? REGIONS, relaxedRegions);
 const label = LABEL[cls].toLowerCase();
 
 /**
@@ -158,7 +161,7 @@ process.stdout.write([
   `Recent:  ${index.slice(0, RECENT_DAYS).map(e => e.class).join(', ') || 'none'}  <- the last ${RECENT_DAYS} days, newest first; never reuse these`,
   `Counts:  ${CLASSES.map(c => `${c} ${counts[c]}`).join(', ')}  <- days per class; rolls favour the fewest${recent.size ? ' (recent ones excluded)' : ''}`,
   `Decade:  ${decade}  <- strong hint`,
-  `Region:  ${region}  <- strong hint`,
+  `Region:  ${region}  <- strong hint${relaxedRegions.has(region) ? ' (relaxed recently, so drawn less often)' : ''}`,
   `Angle:   ${angle}  <- strong hint${relaxed.has(angle) ? ' (relaxed recently, so drawn less often)' : ''}`,
   `Search:  try phrasings like "${decade} ${region} ${label} ${angle}" and "obscure ${label} ${decade} ${region}"`,
   `Relax:   if nothing real fits, drop hints in this order, keeping the class: ${relaxOrder()}; say which in NOTES.md`,
