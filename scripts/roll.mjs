@@ -135,6 +135,11 @@ const angle = pickWeighted(placeBound ? ANGLES.filter(a => a !== NOT_KNOWN_FOR_C
 const regions = (placeBound ?? REGIONS).filter(r => (REGION_FROM[r] ?? 0) <= decadeIndex);
 const region = angle === NOT_KNOWN_FOR_CARS ? UNEXPECTED : pickWeighted(regions.length ? regions : placeBound ?? REGIONS, relaxedRegions);
 const label = LABEL[cls].toLowerCase();
+// the regions REGION_FROM kept out of this roll, named on the brief so a run knows why one never
+// shows (only when the region was drawn from the list, not named by the angle)
+const skipped = angle === NOT_KNOWN_FOR_CARS ? [] : (placeBound ?? REGIONS)
+  .filter(r => (REGION_FROM[r] ?? 0) > decadeIndex)
+  .map(r => `${r} skipped before the ${DECADES[REGION_FROM[r]]}`);
 
 /**
  * Which hint to drop first when the class, decade, region and angle rarely meet (Swedish
@@ -161,7 +166,7 @@ process.stdout.write([
   `Recent:  ${index.slice(0, RECENT_DAYS).map(e => e.class).join(', ') || 'none'}  <- the last ${RECENT_DAYS} days, newest first; never reuse these`,
   `Counts:  ${CLASSES.map(c => `${c} ${counts[c]}`).join(', ')}  <- days per class; rolls favour the fewest${recent.size ? ' (recent ones excluded)' : ''}`,
   `Decade:  ${decade}  <- strong hint`,
-  `Region:  ${region}  <- strong hint${relaxedRegions.has(region) ? ' (relaxed recently, so drawn less often)' : ''}`,
+  `Region:  ${region}  <- strong hint${relaxedRegions.has(region) ? ' (relaxed recently, so drawn less often)' : ''}${skipped.length ? ` (${skipped.join('; ')})` : ''}`,
   `Angle:   ${angle}  <- strong hint${relaxed.has(angle) ? ' (relaxed recently, so drawn less often)' : ''}`,
   `Search:  try phrasings like "${decade} ${region} ${label} ${angle}" and "obscure ${label} ${decade} ${region}"`,
   `Relax:   if nothing real fits, drop hints in this order, keeping the class: ${relaxOrder()}; say which in NOTES.md`,

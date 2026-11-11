@@ -1,4 +1,5 @@
 [
+  { "date": "2026-11-11", "name": "Toyota TF102", "year": 2002, "class": "f1", "accent": "#d6001c" },
   { "date": "2026-11-10", "name": "Torino Cherokee (Turismo Carretera)", "year": 2017, "class": "muscle", "accent": "#f2b705" },
   { "date": "2026-11-09", "name": "Land Rover Perentie 6x6", "year": 1987, "class": "offroad", "accent": "#4f5d34" },
   { "date": "2026-11-08", "name": "Subaru Legacy Touring Wagon GT-B (BH)", "year": 1998, "class": "jdm", "accent": "#1f4e9c" },

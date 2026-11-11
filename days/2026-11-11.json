@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-11",
+  "name": "Toyota TF102",
+  "year": 2002,
+  "maker": "Toyota",
+  "country": "Germany",
+  "class": "f1",
+  "hook": "Toyota's first Formula 1 car scored a point in its very first race, and then scored just one more all season.",
+  "story": "Picture Cologne in the spring of 2001. Toyota has a huge budget, a gleaming factory and a test car that is simply too slow. So it calls Gustav Brunner. He is Austrian, and he has spent almost twenty-five years in Formula 1. He has just come from Minardi, a team that counted every penny. He arrives in May. Now he has money, people and one job: build the first Toyota that will actually race. He does not tidy up the old prototype. He starts again. In December the new car is unveiled in Cologne, home of the only Formula 1 team that builds a whole car in Germany. Brunner says plainly that it is a completely different car. Then comes Melbourne, March 2002. Mika Salo brings it home sixth, and Toyota scores a point in its very first race. Two races later, in Brazil, he does it again. That is the whole season. Two points. And here is the twist. Toyota ties with Minardi, Brunner's old team, and finishes behind it on count-back.",
+  "description": "The Toyota TF102 was the first car Toyota raced in Formula 1, in the 2002 season. It was designed and built by Toyota Motorsport in Cologne, Germany, by a team led by chief designer Gustav Brunner, with Dago Rohrer running the chassis department. A group under Luca Marmorini designed its 3.0-litre RVX-02 V10. Mika Salo and Allan McNish drove it. Salo's two sixth places, in Australia and Brazil, gave Toyota two points and tenth in the constructors' championship.",
+  "stats": [
+    { "label": "Engine", "value": "Toyota RVX-02 V10, 2,998 cc" },
+    { "label": "Gearbox", "value": "6-speed semi-automatic, longitudinal" },
+    { "label": "Chief designer", "value": "Gustav Brunner" },
+    { "label": "Unveiled", "value": "17 December 2001, Cologne" },
+    { "label": "Debut", "value": "2002 Australian GP (Salo 6th)" },
+    { "label": "Points", "tag": "2002", "value": "2 (10th in constructors')" }
+  ],
+  "photos": [],
+  "photoQuery": "2002 Toyota TF102",
+  "sprite": {
+    "w": 16, "h": 24,
+    "palette": { "a": "ACCENT", "w": "#f2f2f2", "k": "#111318", "b": "#8fd3ff", "r": "#ff3b3b" },
+    "rows": [
+      "aaaaaaaaaaaaaaaa",
+      ".a............a.",
+      "......wwww......",
+      ".kk...wwww...kk.",
+      ".kk..wwaaww..kk.",
+      ".kk..wwaaww..kk.",
+      ".....wwaaww.....",
+      ".....wwbbww.....",
+      ".....wbbbbw.....",
+      ".....wkkkkw.....",
+      ".....wwkkww.....",
+      "....aawwwwaa....",
+      "....aawwwwaa....",
+      "...waaawwaaaw...",
+      ".kk.wwwwwwww.kk.",
+      ".kk.wwwwwwww.kk.",
+      ".kk.wwwaawww.kk.",
+      ".kk..wwaaww..kk.",
+      ".....wwwwww.....",
+      "......wrrw......",
+      ".kkkkkkkkkkkkkk.",
+      "aaaaaaaaaaaaaaaa",
+      ".k............k.",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#d6001c",
+    "laneCount": 3,
+    "baseSpeed": 1.2,
+    "curve": 0.6,
+    "grip": 0.85,
+    "gears": 6
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Toyota_TF102",
+    "https://media.toyota.co.uk/panasonic-toyota-racing-unveils-2002-contender/",
+    "https://www.grandprix.com/ns/ns05319.html",
+    "https://www.autosport.com/f1/news/toyota-unveil-2002-car-in-cologne-font-faceverdana-size1iupdated-i-font-5058601/5058601/"
+  ]
+}
