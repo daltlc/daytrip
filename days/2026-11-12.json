@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-12",
+  "name": "Ferrari 166 MM Barchetta",
+  "year": 1949,
+  "maker": "Ferrari",
+  "country": "Italy",
+  "class": "exotic",
+  "hook": "Ferrari's first win at Le Mans came with one man at the wheel for more than twenty-two of the twenty-four hours.",
+  "story": "June 1949. Le Mans is racing again for the first time since the war. On the grid sits a small red Ferrari with a two-litre V12, up against cars with far bigger engines. It belongs to a British lord, Lord Selsdon, who bought it straight from the factory in Maranello. His co-driver is Luigi Chinetti, an Italian who already won this race twice before the war. Then Selsdon falls ill. He manages only a short spell in the car. So Chinetti just keeps driving. Through the evening. Through the night. Shortly after dark he takes the lead, and he never gives it back. When the flag falls he has driven more than twenty-two of the twenty-four hours, almost on his own. The little open car has covered 235 laps at an average of 132 km/h. It is Ferrari's first win at Le Mans, from a company that has been building its own cars for barely two years. And Chinetti? He goes on to sell Ferraris in America.",
+  "description": "The Ferrari 166 MM is a two-seat sports racing car Ferrari built from 1948 to 1950. Its 1,995 cc V12 was designed by Gioacchino Colombo, grown from the 1.5-litre engine of the earlier 125. Carlo Felice Bianchi Anderloni of Carrozzeria Touring shaped the open body, built with Touring's Superleggera method. At the 1948 Turin show it was nicknamed the barchetta, the little boat. MM stands for the Mille Miglia. In 1949 the 166 MM won both the Mille Miglia and Le Mans.",
+  "stats": [
+    { "label": "Engine", "value": "Colombo 60° V12, 1,995 cc" },
+    { "label": "Bore × stroke", "value": "60 × 58.8 mm" },
+    { "label": "Body", "value": "Touring Superleggera barchetta" },
+    { "label": "Unveiled", "value": "Turin show, September 1948" },
+    { "label": "Le Mans", "tag": "1949", "value": "1st, 235 laps (3,178 km)" },
+    { "label": "Average speed", "tag": "Le Mans 1949", "value": "132 km/h" }
+  ],
+  "photos": [],
+  "photoQuery": "1949 Ferrari 166 MM",
+  "sprite": {
+    "w": 16, "h": 24,
+    "palette": { "a": "ACCENT", "k": "#111318", "w": "#f2f2f2", "b": "#8fd3ff", "r": "#ff3b3b", "t": "#c9a26b" },
+    "rows": [
+      ".....aaaaaa.....",
+      "....aakkkkaa....",
+      "...aaaaaaaaaa...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaawwwwaaakk.",
+      "..aaaawwwwaaaa..",
+      "..aaaaaaaaaaaa..",
+      "..aaabbbbbbaaa..",
+      "..aakttkkttkaa..",
+      "..aakttkkttkaa..",
+      "..aakkkkkkkkaa..",
+      "..aaaaaaaaaaaa..",
+      "..aaaaaaaaaaaa..",
+      "..aaaaaaaaaaaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..araaaaaaaara..",
+      "...aaaaaaaaaa...",
+      "................",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#d40000",
+    "laneCount": 3,
+    "baseSpeed": 1.15,
+    "curve": 0.6,
+    "grip": 0.5,
+    "gears": 5,
+    "weather": "none"
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Ferrari_166_S",
+    "https://en.wikipedia.org/wiki/1949_24_Hours_of_Le_Mans",
+    "https://motorsportmagazine.com/special-article/100-years-of-the-worlds-greatest-race/9/1949-post-war-racing-returns-at-le-mans-well-for-one-driver-at-least",
+    "https://www.24h-lemans.com/en/news/ferrari-pioneers-1949-1965-1-luigi-chinetti-1949-the-first-win-47656"
+  ]
+}
