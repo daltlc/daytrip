@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-13",
+  "name": "Chevrolet Master Coupé (Gran Premio del Norte)",
+  "year": 1940,
+  "maker": "Chevrolet",
+  "country": "Argentina",
+  "class": "rally",
+  "hook": "Fangio paid for the car that won him a 9,445 km road race with a raffle, and the prize was the car itself.",
+  "story": "1940, in Balcarce, a small town south of Buenos Aires. A young mechanic named Juan Manuel Fangio has a problem. He has sold his old racing coupé to pay his debts. Now a huge race is coming, and he has no car. So his friends sell raffle tickets. The prize? The very car he will race. With the money he buys a green 1940 Chevrolet coupé and prepares it in his own workshop. The race is the Gran Premio Internacional del Norte. Buenos Aires to Lima, in Peru, and back again. That is 9,445 km, over the Andes and through Bolivia, in thirteen stages on open roads. Ninety-two cars start. The favourites are big names, like Oscar Gálvez in his Ford. Near Lima, Gálvez loses time with engine trouble. Fangio keeps going. After about 109 hours of driving he is first back to Buenos Aires. Only 31 cars finish. The mechanic from Balcarce has arrived.",
+  "description": "The 1940 Chevrolet Master was General Motors' everyday coupé, powered by Chevrolet's 216-cubic-inch overhead-valve straight six. In Argentina, coupés like it were the backbone of Turismo Carretera, long-distance races run in stages on public roads. Juan Manuel Fangio prepared his own green 1940 coupé and won the 1940 Gran Premio Internacional del Norte with it, along with that year's national championship. It made his name a decade before he became a five-time Formula One world champion.",
+  "stats": [
+    { "label": "Engine", "tag": "road car", "value": "216.5 cu in (3.5 L) straight six" },
+    { "label": "Power", "tag": "road car", "value": "85 hp" },
+    { "label": "Distance", "tag": "1940 race", "value": "9,445 km in 13 stages" },
+    { "label": "Winning time", "value": "109 h 36 min" },
+    { "label": "Average speed", "value": "86.2 km/h" },
+    { "label": "Finishers", "value": "31 of 92 starters" }
+  ],
+  "photos": [],
+  "photoQuery": "1940 Chevrolet Master Deluxe coupe",
+  "sprite": {
+    "w": 16, "h": 24,
+    "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "k": "#111318", "w": "#d9d9d9", "b": "#8fd3ff", "r": "#ff3b3b", "y": "#ffe08a" },
+    "rows": [
+      "................",
+      "...y.wwwwww.y...",
+      "...aaawwwwaaa...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaallaaaakk.",
+      ".kkaaaallaaaakk.",
+      "..aaaaallaaaaa..",
+      "..aaaaaaaaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aabbbbbbbbaa..",
+      "..aaaaaaaaaaaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..araaaaaaaara..",
+      "...aaaaaaaaaa...",
+      "....wwwwwwww....",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "rock",
+    "scenery": "mountain",
+    "accent": "#2f6b3a",
+    "laneCount": 3,
+    "baseSpeed": 0.9,
+    "curve": 0.85,
+    "grip": 0.25,
+    "gears": 3,
+    "weather": "dust",
+    "stars": [250, 650, 1200]
+  },
+  "sources": [
+    "https://www.museofangio.com/en/juan-manuel-fangio/championships/6-1940",
+    "https://www.ewrc-results.com/events/8162/",
+    "https://www.motorsportmagazine.com/archive/article/may-2003/66/theres-no-race-like-home/",
+    "https://www.oldcarsweekly.com/features/car-of-the-week-1940-chevrolet-master-deluxe"
+  ]
+}
