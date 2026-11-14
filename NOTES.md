@@ -543,3 +543,11 @@ Newest at the bottom. Each entry: car, engine change, anything notable, and a "N
   1. Try the era pitch in a browser on the 1925 Otomo or 1921 Hélica day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
   2. `scripts/roll.mjs` could let the "country not known for cars" angle skip decades where it has had to be relaxed (1940s and earlier), like `REGION_FROM`.
   3. `scripts/check.mjs` could warn when the newest day's `hook` is over ~25 words, before the one-sentence warning has to catch it.
+
+## 2026-11-14 — 1924 Hispano-Suiza H6C "Tulipwood" Torpedo
+- Engine: `scripts/roll.mjs` no longer draws the "country not known for cars" angle before the 1950s (`NOT_KNOWN_FROM`, like `REGION_FROM`), since it had to be relaxed whenever it met an early decade, and the Angle line says so ("… skipped before the 1950s"). Item 2 of yesterday's list; item 1 (tune the era pitch by ear) still needs a listener. Checked over 300 rolls: the angle came up only with the 1950s or later. No new field.
+- Content: the roll was concept / 1920s or earlier / Spain / a car that started or ended a racing era. I kept class, decade and region and relaxed the angle: André Dubonnet's one-off H6C with a wooden torpedo body by Nieuport-Astra for the 1924 Targa Florio (6th) and Coppa Florio (5th), Best of Show at Pebble Beach 2025. Hispano-Suiza is a Barcelona company but the H6 was built by its French branch, so `country` says "Spain (built in France)". Power left out (45 to 200 hp quoted); body weight left out (one source); rivet count and material left out (brass or aluminium, "over 10,000" or "thousands"). The wood is disputed (tulipwood or mahogany), and the story says so. Facts from search snippets; WebFetch to rmsothebys.com failed DNS. No photos (Commons blocked); `photoQuery` set. Sprite: a tapering wood torpedo with plank stripes, a silver radiator, exposed wheels, a small screen, two dark seats and a pointed tail; accent is the wood colour.
+- Next up:
+  1. Try the era pitch in a browser on the 1925 Otomo or 1921 Hélica day, and tune `ERA_PITCH` by ear if 0.7 sounds wrong.
+  2. `scripts/check.mjs` could warn when the newest day's `hook` is over ~25 words, before the one-sentence warning has to catch it.
+  3. `scripts/roll.mjs` could fold `REGION_FROM` and `NOT_KNOWN_FROM` into one "from decade" table for regions and angles alike.

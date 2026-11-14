@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-14",
+  "name": "Hispano-Suiza H6C \"Tulipwood\" Torpedo",
+  "year": 1924,
+  "maker": "Hispano-Suiza",
+  "country": "Spain (built in France)",
+  "class": "concept",
+  "hook": "This one-off racing car has a body made of thin wooden planks, built by a company that made fighter planes.",
+  "story": "Meet André Dubonnet. He is twenty-six. He flew fighters in the First World War. His family makes the famous aperitif. And in 1924 he wants to race in Sicily, at the Targa Florio. He picks a Hispano-Suiza H6C, with a huge eight-litre six. But the body is the clever part. Dubonnet thinks like a pilot. Weight and wind are the enemy. So he goes to Nieuport-Astra, a firm that built aeroplanes. They make him a long, pointed torpedo. Thin strips of wood, laid over an aluminium frame, held on by thousands of tiny rivets. The world calls it tulipwood. Some restorers say it is really mahogany. Either way, it glows like a boat. Dubonnet finishes sixth in the Targa, then fifth in the Coppa Florio. A century later, in 2025, it wins Best of Show at Pebble Beach.",
+  "description": "Hispano-Suiza began in Barcelona, and its French branch built the H6, one of the finest luxury chassis of the 1920s. This car is an H6C, the eight-litre sports version, on one of only three chassis built lower and with a bigger fuel tank for endurance racing. André Dubonnet had Nieuport-Astra clothe it in a one-off wooden torpedo body for the 1924 Targa Florio. It sold for $9,245,000 in 2022 and was named Best of Show at Pebble Beach in 2025.",
+  "stats": [
+    { "label": "Engine", "value": "8.0 L overhead-cam straight six" },
+    { "label": "Coachwork", "value": "Wood strips on an aluminium frame, by Nieuport-Astra" },
+    { "label": "Targa Florio", "tag": "1924", "value": "6th" },
+    { "label": "Coppa Florio", "tag": "1924", "value": "5th" },
+    { "label": "Sold", "tag": "2022", "value": "$9,245,000" },
+    { "label": "Pebble Beach", "tag": "2025", "value": "Best of Show" }
+  ],
+  "photos": [],
+  "photoQuery": "1924 Hispano-Suiza H6C Tulipwood",
+  "sprite": {
+    "w": 16, "h": 24,
+    "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "k": "#111318", "w": "#d9d9d9", "b": "#8fd3ff", "r": "#ff3b3b", "t": "#3a2a20" },
+    "rows": [
+      "................",
+      "......wwww......",
+      ".....awwwwa.....",
+      ".kk..alaala..kk.",
+      ".kkk.alaala.kkk.",
+      ".kk..alaala..kk.",
+      ".....alaala.....",
+      "....aalaalaa....",
+      "....aabbbbaa....",
+      "....attaatta....",
+      "....attaatta....",
+      "....aalaalaa....",
+      "....aalaalaa....",
+      "....aalaalaa....",
+      ".kk.aalaalaa.kk.",
+      ".kkkaalaalaakkk.",
+      ".kk.aalaalaa.kk.",
+      ".....alaala.....",
+      ".....alaala.....",
+      "......raar......",
+      "......alla......",
+      ".......aa.......",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "rock",
+    "scenery": "mountain",
+    "accent": "#b0662f",
+    "laneCount": 3,
+    "baseSpeed": 1.0,
+    "curve": 0.9,
+    "grip": 0.35,
+    "gears": 4,
+    "weather": "none",
+    "stars": [250, 650, 1200]
+  },
+  "sources": [
+    "https://sothebys.com/en/articles/dubonnets-dream-once-in-a-lifetime-drive-in-a-hispano-suiza",
+    "https://rmsothebys.com/auctions/mo22/lots/p0025-1924-hispanosuiza-h6c-tulipwood-torpedo-by-nieuportastra",
+    "https://www.motorsportmagazine.com/articles/car-shows/hispano-suiza-tulipwood-torpedo-wins-2025-pebble-beach-concours-delegance",
+    "https://www.pebblebeachconcours.net/?p=13274"
+  ]
+}

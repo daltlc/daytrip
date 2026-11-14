@@ -1,4 +1,5 @@
 [
+  { "date": "2026-11-14", "name": "Hispano-Suiza H6C \"Tulipwood\" Torpedo", "year": 1924, "class": "concept", "accent": "#b0662f" },
   { "date": "2026-11-13", "name": "Chevrolet Master Coupé (Gran Premio del Norte)", "year": 1940, "class": "rally", "accent": "#2f6b3a" },
   { "date": "2026-11-12", "name": "Ferrari 166 MM Barchetta", "year": 1949, "class": "exotic", "accent": "#d40000" },
   { "date": "2026-11-11", "name": "Toyota TF102", "year": 2002, "class": "f1", "accent": "#d6001c" },

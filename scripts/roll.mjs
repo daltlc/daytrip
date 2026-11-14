@@ -44,6 +44,10 @@ const REGION_FROM = { 'South Korea': 3 };
 // this angle names its own region: it only pairs with UNEXPECTED, and never with a class tied to
 // a place (a JDM car from a country not known for cars contradicts itself)
 const NOT_KNOWN_FOR_CARS = 'a car built in a country not known for building cars';
+// before the 1950s almost every car came from a handful of car-making countries, so this angle had
+// to be relaxed every time it met an early decade (1940s exotic, 2026-11-12). Index into DECADES of
+// the first decade it can be drawn for, the same idea as REGION_FROM.
+const NOT_KNOWN_FROM = 3;
 const ANGLES = [
   'a homologation special built only to make a race car legal',
   'an underdog that beat the favorites',
@@ -136,13 +140,17 @@ const [lo, hi] = DECADE_RANGE[cls] ?? [0, DECADES.length - 1];
 const decade = pickWeighted(DECADES.slice(lo, hi + 1), relaxedDecades);
 const decadeIndex = DECADES.indexOf(decade);
 const placeBound = CLASS_REGIONS[cls];
-const angle = pickWeighted(placeBound ? ANGLES.filter(a => a !== NOT_KNOWN_FOR_CARS) : ANGLES, relaxed);
+const tooEarly = decadeIndex < NOT_KNOWN_FROM;
+const angle = pickWeighted(placeBound || tooEarly ? ANGLES.filter(a => a !== NOT_KNOWN_FOR_CARS) : ANGLES, relaxed);
 const regions = (placeBound ?? REGIONS).filter(r => (REGION_FROM[r] ?? 0) <= decadeIndex);
 const region = angle === NOT_KNOWN_FOR_CARS ? UNEXPECTED : pickWeighted(regions.length ? regions : placeBound ?? REGIONS, relaxedRegions);
 const label = LABEL[cls].toLowerCase();
 // a place-bound class never draws the "country not known for cars" angle; say so on the brief, the
 // same way skipped regions are named, so a run knows why that angle never shows for it
-const angleSkipped = `"${NOT_KNOWN_FOR_CARS}" skipped for ${cls}, a class tied to a place`;
+// (and an early decade never draws it either; said the same way)
+const angleSkipped = placeBound
+  ? `"${NOT_KNOWN_FOR_CARS}" skipped for ${cls}, a class tied to a place`
+  : tooEarly ? `"${NOT_KNOWN_FOR_CARS}" skipped before the ${DECADES[NOT_KNOWN_FROM]}` : '';
 
 // the regions REGION_FROM kept out of this roll, named on the brief so a run knows why one never
 // shows (only when the region was drawn from the list, not named by the angle)
@@ -176,7 +184,7 @@ process.stdout.write([
   `Counts:  ${CLASSES.map(c => `${c} ${counts[c]}`).join(', ')}  <- days per class; rolls favour the fewest${recent.size ? ' (recent ones excluded)' : ''}`,
   `Decade:  ${decade}  <- strong hint${relaxedDecades.has(decade) ? ' (relaxed recently, so drawn less often)' : ''}`,
   `Region:  ${region}  <- strong hint${relaxedRegions.has(region) ? ' (relaxed recently, so drawn less often)' : ''}${skipped.length ? ` (${skipped.join('; ')})` : ''}`,
-  `Angle:   ${angle}  <- strong hint${relaxed.has(angle) ? ' (relaxed recently, so drawn less often)' : ''}${placeBound ? ` (${angleSkipped})` : ''}`,
+  `Angle:   ${angle}  <- strong hint${relaxed.has(angle) ? ' (relaxed recently, so drawn less often)' : ''}${angleSkipped ? ` (${angleSkipped})` : ''}`,
   `Search:  try phrasings like "${decade} ${region} ${label} ${angle}" and "obscure ${label} ${decade} ${region}"`,
   `Relax:   if nothing real fits, drop hints in this order, keeping the class: ${relaxOrder()}; say which in NOTES.md`,
   `Avoid (already covered): ${index.map(e => `${e.year ?? ''} ${e.name}`.trim()).join('; ') || 'nothing yet'}`,
