@@ -49,6 +49,9 @@ function readJson(rel) {
   catch (e) { err(rel, `invalid JSON — ${e instanceof Error ? e.message : String(e)}`); return null; }
 }
 
+/** Words a newest-day hook should stay within; past 30 already warns on every day. */
+const HOOK_AIM = 25;
+
 /**
  * @param {string} f
  * @param {DayFile} d
@@ -62,6 +65,7 @@ function checkDay(f, d, newest = false) {
   if (d.year !== undefined && !(Number.isInteger(d.year) && d.year > 1880 && d.year < 2100)) err(f, `year must be an integer, got ${JSON.stringify(d.year)}`);
   if (d.class && !CLASSES.includes(d.class)) err(f, `class "${d.class}" not one of ${CLASSES.join(', ')}`);
   if (d.hook && words(d.hook) > 30) warn(f, `hook is ${words(d.hook)} words; keep it to one sentence`);
+  if (newest && d.hook && words(d.hook) > HOOK_AIM && words(d.hook) <= 30) warn(f, `hook is ${words(d.hook)} words; aim for ${HOOK_AIM} or fewer so it reads as one breath`);
   if (newest && typeof d.hook === 'string' && splitSentences(d.hook).length > 1) warn(f, `hook is ${splitSentences(d.hook).length} sentences; docs/SCHEMA.md asks for one`);
   const storyWords = words(d.story);
   if (d.story && (storyWords < 100 || storyWords > 220)) err(f, `story is ${storyWords} words; target 120–180`);
