@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-16",
+  "name": "Stout Scarab",
+  "year": 1936,
+  "maker": "Stout Motor Car Company",
+  "country": "United States",
+  "class": "road",
+  "hook": "In 1936 an aircraft engineer in Detroit hand-built a rear-engined car with a table inside, and sold it by invitation only.",
+  "story": "Picture Detroit in the middle of the 1930s. The big factories turn out cars by the million. Long hoods, engine up front, everyone facing forward. Then there is William Stout. He is not a car man. He builds aeroplanes. And he thinks cars are built all wrong. So he puts the engine at the back. A Ford V8, behind the passengers. That frees the whole cabin. The driver sits right up front. The seats behind can turn and move. There is a folding table in the middle. It looks like a beetle, so he calls it the Scarab. No dealers. No assembly line. His advert promises just one hundred cars, at five thousand dollars each. A new Ford costs a fraction of that. The buyers are friends. Harvey Firestone. Willard Dow. Philip Wrigley, the chewing gum man. In the end only about nine are built. Detroit barely noticed. But fifty years later, the minivan arrives, and it looks oddly familiar.",
+  "description": "The Scarab was a streamlined, rear-engined car designed by aeronautical engineer William Bushnell Stout and built in small numbers by his own company in Detroit. John Tjaarda is credited with the styling. A Ford flathead V8 sat at the back, driving the rear wheels, which left a flat, open cabin with movable seats and a fold-down table. Independent coil-spring suspension smoothed the ride. Sold for about $5,000 without a dealer network, it is often called one of the first minivans.",
+  "stats": [
+    { "label": "Engine", "value": "Ford flathead V8, 221 cu in (3.6 L)" },
+    { "label": "Layout", "value": "Rear engine, rear-wheel drive" },
+    { "label": "Suspension", "value": "Independent, coil springs" },
+    { "label": "Price", "tag": "1936", "value": "About $5,000" },
+    { "label": "Planned", "tag": "1936 advert", "value": "Limited to 100 cars" },
+    { "label": "Built", "value": "About 9" }
+  ],
+  "photos": [],
+  "photoQuery": "1936 Stout Scarab",
+  "sprite": {
+    "w": 16, "h": 24,
+    "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "k": "#111318", "w": "#e8e2d0", "b": "#8fd3ff", "r": "#ff3b3b", "s": "#c9ccd2" },
+    "rows": [
+      "................",
+      ".....aaaaaa.....",
+      "....aaaaaaaa....",
+      "...aaaaaaaaaa...",
+      ".kkaaawwwwaaakk.",
+      ".kkaabbbbbbaakk.",
+      ".kkabbbbbbbbakk.",
+      "..aabbbbbbbbaa..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aallbbbbllaa..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkasasasasaakk.",
+      ".kkasasasasaakk.",
+      "..aasasasasaaa..",
+      "...raaaaaaaar...",
+      "....aaaaaaaa....",
+      "......ssss......",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "cone",
+    "scenery": "city",
+    "accent": "#4a5a6e",
+    "laneCount": 3,
+    "baseSpeed": 0.85,
+    "curve": 0.4,
+    "grip": 0.45,
+    "gears": 3,
+    "weather": "none",
+    "stars": [250, 650, 1200]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Stout_Scarab",
+    "https://www.hagerty.com/media/automotive-history/the-groundbreaking-1930s-stout-scarab-was-the-first-and-coolest-minivan/",
+    "https://www.detroithistorical.org/sites/default/files/pdfs/press-releases/DHS%20scarab%20fact%20sheet.pdf",
+    "https://www.conceptcarz.com/profile/3002,9131/1936-stout-scarab.aspx"
+  ]
+}

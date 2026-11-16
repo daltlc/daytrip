@@ -36,18 +36,18 @@ const REGIONS = ['Italy', 'Germany', 'Japan', 'United Kingdom', 'France', 'Unite
 // brief never pairs one with a region that wastes a search. Every other class draws from REGIONS.
 /** @type {Partial<Record<CarClass, string[]>>} */
 const CLASS_REGIONS = { jdm: ['Japan'], muscle: ['United States', 'Australia', 'South America'] };
-// regions that built no cars before a given decade (Korea's first car is the 1955 Sibal), so a
-// roll never pairs them with a decade that always forces the region to be relaxed. Index into
-// DECADES of the first decade the region can be drawn for; a region not listed is always fine.
-/** @type {Record<string, number>} */
-const REGION_FROM = { 'South Korea': 3 };
 // this angle names its own region: it only pairs with UNEXPECTED, and never with a class tied to
 // a place (a JDM car from a country not known for cars contradicts itself)
 const NOT_KNOWN_FOR_CARS = 'a car built in a country not known for building cars';
-// before the 1950s almost every car came from a handful of car-making countries, so this angle had
-// to be relaxed every time it met an early decade (1940s exotic, 2026-11-12). Index into DECADES of
-// the first decade it can be drawn for, the same idea as REGION_FROM.
-const NOT_KNOWN_FROM = 3;
+// hints that cannot meet an early decade, keyed by region or angle: the index into DECADES of the
+// first decade each can be drawn for; a hint not listed is always fine. Korea built no cars before
+// the 1955 Sibal, and before the 1950s almost every car came from a handful of car-making
+// countries, so the "not known for cars" angle had to be relaxed every time it met an early decade
+// (1940s exotic, 2026-11-12). One table for regions and angles alike, read through `fromDecade`.
+/** @type {Record<string, number>} */
+const FROM_DECADE = { 'South Korea': 3, [NOT_KNOWN_FOR_CARS]: 3 };
+/** @param {string} hint @returns {number} */
+const fromDecade = hint => FROM_DECADE[hint] ?? 0;
 const ANGLES = [
   'a homologation special built only to make a race car legal',
   'an underdog that beat the favorites',
@@ -140,9 +140,9 @@ const [lo, hi] = DECADE_RANGE[cls] ?? [0, DECADES.length - 1];
 const decade = pickWeighted(DECADES.slice(lo, hi + 1), relaxedDecades);
 const decadeIndex = DECADES.indexOf(decade);
 const placeBound = CLASS_REGIONS[cls];
-const tooEarly = decadeIndex < NOT_KNOWN_FROM;
+const tooEarly = decadeIndex < fromDecade(NOT_KNOWN_FOR_CARS);
 const angle = pickWeighted(placeBound || tooEarly ? ANGLES.filter(a => a !== NOT_KNOWN_FOR_CARS) : ANGLES, relaxed);
-const regions = (placeBound ?? REGIONS).filter(r => (REGION_FROM[r] ?? 0) <= decadeIndex);
+const regions = (placeBound ?? REGIONS).filter(r => fromDecade(r) <= decadeIndex);
 const region = angle === NOT_KNOWN_FOR_CARS ? UNEXPECTED : pickWeighted(regions.length ? regions : placeBound ?? REGIONS, relaxedRegions);
 const label = LABEL[cls].toLowerCase();
 // a place-bound class never draws the "country not known for cars" angle; say so on the brief, the
@@ -150,13 +150,13 @@ const label = LABEL[cls].toLowerCase();
 // (and an early decade never draws it either; said the same way)
 const angleSkipped = placeBound
   ? `"${NOT_KNOWN_FOR_CARS}" skipped for ${cls}, a class tied to a place`
-  : tooEarly ? `"${NOT_KNOWN_FOR_CARS}" skipped before the ${DECADES[NOT_KNOWN_FROM]}` : '';
+  : tooEarly ? `"${NOT_KNOWN_FOR_CARS}" skipped before the ${DECADES[fromDecade(NOT_KNOWN_FOR_CARS)]}` : '';
 
-// the regions REGION_FROM kept out of this roll, named on the brief so a run knows why one never
+// the regions FROM_DECADE kept out of this roll, named on the brief so a run knows why one never
 // shows (only when the region was drawn from the list, not named by the angle)
 const skipped = angle === NOT_KNOWN_FOR_CARS ? [] : (placeBound ?? REGIONS)
-  .filter(r => (REGION_FROM[r] ?? 0) > decadeIndex)
-  .map(r => `${r} skipped before the ${DECADES[REGION_FROM[r]]}`);
+  .filter(r => fromDecade(r) > decadeIndex)
+  .map(r => `${r} skipped before the ${DECADES[fromDecade(r)]}`);
 
 /**
  * Which hint to drop first when the class, decade, region and angle rarely meet (Swedish
