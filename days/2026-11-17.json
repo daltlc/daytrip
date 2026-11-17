@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-17",
+  "name": "Civic Type R (FL5)",
+  "year": 2023,
+  "maker": "Honda",
+  "country": "Japan",
+  "class": "jdm",
+  "hook": "A family hatchback with a manual gearbox and only its front wheels driven went round the Nürburgring in under seven minutes forty-five.",
+  "story": "Here is a strange kind of race. Nobody else is on the track. You are racing a stopwatch, and a car from France. Front-wheel drive is supposed to be the sensible layout. The front tyres steer, and pull, and brake. Ask too much and they give up. So Honda keeps asking anyway. In March 2022, a late test car of the new Civic Type R goes round Suzuka, Honda's own circuit in Japan. Two minutes, twenty-three point one two. The fastest front-driver ever there, beating the old Type R. Then, in April 2023, Honda takes it to the Nürburgring in Germany. Twenty point eight kilometres. The record belongs to Renault's Mégane RS Trophy-R. The Civic stops the clock at seven minutes, forty-four point eight eight one. Half a second quicker. Honda admits the car was a lighter version on track tyres. But it is still a five-door hatchback. With a back seat. And a gear lever you move yourself.",
+  "description": "The FL5 is the sixth-generation Civic Type R, built by Honda and launched in 2022 as a 2023 model. It uses a turbocharged 2.0-litre four-cylinder, a six-speed manual gearbox and front-wheel drive. Japanese and European cars make 330 PS. It set front-wheel-drive production lap records at Suzuka in 2022 and at the Nürburgring Nordschleife in 2023, the latter taking the title back from Renault's Mégane.",
+  "stats": [
+    { "label": "Engine", "value": "2.0 L turbocharged four-cylinder (K20C1)" },
+    { "label": "Power", "tag": "Japan, Europe", "value": "330 PS" },
+    { "label": "Torque", "value": "420 Nm" },
+    { "label": "Gearbox", "value": "6-speed manual" },
+    { "label": "Drivetrain", "value": "Front-wheel drive" },
+    { "label": "Lap", "tag": "Suzuka 2022", "value": "2:23.120" },
+    { "label": "Lap", "tag": "Nordschleife", "value": "7:44.881 (20.832 km)" }
+  ],
+  "photos": [],
+  "photoQuery": "2023 Honda Civic Type R",
+  "sprite": {
+    "w": 16, "h": 24,
+    "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "k": "#111318", "b": "#8fd3ff", "r": "#5a0a12", "s": "#c9ccd2" },
+    "rows": [
+      ".....aaaaaa.....",
+      "....aakkkkaa....",
+      "...aaaaaaaaaa...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaakkkkaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "...aaaaaaaaaa...",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..abbbbbbbbbba..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aabbbbbbbbaa..",
+      "...abbbbbbbba...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "...aaaaaaaaaa...",
+      "..rraaaaaaaarr..",
+      "...aaaaaaaaaa...",
+      ".......ss.......",
+      "..kkkkkkkkkkkk..",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#d0202e",
+    "laneCount": 3,
+    "baseSpeed": 1.15,
+    "curve": 0.75,
+    "grip": 0.65,
+    "gears": 6,
+    "weather": "none",
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://hondanews.com/en-US/honda-automobiles/releases/red-hot-2023-honda-civic-type-r-conquers-green-hell-nurburgring-with-new-front-wheel-drive-track-record",
+    "https://www.carscoops.com/2022/04/2023-honda-civic-type-r-sets-new-fwd-lap-record-at-suzuka-beating-current-fk8-by-nearly-1-sec/",
+    "https://www.evo.co.uk/honda/civic-type-r/205844/honda-civic-type-r-sets-fwd-nurburgring-record-again",
+    "https://www.pistonheads.com/news/ph-japanesecars/jdm-civic-type-r-gets-330hp--31k-price/46166"
+  ]
+}

@@ -49,6 +49,12 @@ function readJson(rel) {
   catch (e) { err(rel, `invalid JSON — ${e instanceof Error ? e.message : String(e)}`); return null; }
 }
 
+/**
+ * Lower-cased words with punctuation dropped, for comparing two texts word for word.
+ * @param {string} s
+ */
+const plain = s => s.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean).join(' ');
+
 /** Words a newest-day hook should stay within; past 30 already warns on every day. */
 const HOOK_AIM = 25;
 
@@ -67,6 +73,7 @@ function checkDay(f, d, newest = false) {
   if (d.hook && words(d.hook) > 30) warn(f, `hook is ${words(d.hook)} words; keep it to one sentence`);
   if (newest && d.hook && words(d.hook) > HOOK_AIM && words(d.hook) <= 30) warn(f, `hook is ${words(d.hook)} words; aim for ${HOOK_AIM} or fewer so it reads as one breath`);
   if (newest && typeof d.hook === 'string' && splitSentences(d.hook).length > 1) warn(f, `hook is ${splitSentences(d.hook).length} sentences; docs/SCHEMA.md asks for one`);
+  if (newest && typeof d.hook === 'string' && typeof d.description === 'string' && plain(d.hook) && plain(d.description).includes(plain(d.hook))) warn(f, 'description repeats the hook word for word; say it once, in the hook');
   const storyWords = words(d.story);
   if (d.story && (storyWords < 100 || storyWords > 220)) err(f, `story is ${storyWords} words; target 120–180`);
   const descWords = words(d.description);
