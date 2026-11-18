@@ -1,4 +1,5 @@
 [
+  { "date": "2026-11-18", "name": "Giocattolo Group B", "year": 1986, "class": "exotic", "accent": "#c41e24" },
   { "date": "2026-11-17", "name": "Civic Type R (FL5)", "year": 2023, "class": "jdm", "accent": "#d0202e" },
   { "date": "2026-11-16", "name": "Stout Scarab", "year": 1936, "class": "road", "accent": "#4a5a6e" },
   { "date": "2026-11-15", "name": "EMW R3/55", "year": 1955, "class": "gt3", "accent": "#aab2bc" },

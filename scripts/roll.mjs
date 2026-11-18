@@ -148,15 +148,18 @@ const label = LABEL[cls].toLowerCase();
 // a place-bound class never draws the "country not known for cars" angle; say so on the brief, the
 // same way skipped regions are named, so a run knows why that angle never shows for it
 // (and an early decade never draws it either; said the same way)
-const angleSkipped = placeBound
-  ? `"${NOT_KNOWN_FOR_CARS}" skipped for ${cls}, a class tied to a place`
-  : tooEarly ? `"${NOT_KNOWN_FOR_CARS}" skipped before the ${DECADES[fromDecade(NOT_KNOWN_FOR_CARS)]}` : '';
+/** One wording for every skip note, region or angle: `"<hint>" skipped <why>`. @param {string} hint @param {string} why */
+const skipNote = (hint, why) => `"${hint}" skipped ${why}`;
+/** The ` (a; b)` tail a brief line gets for its skip notes, or nothing. @param {string[]} notes */
+const skipTail = notes => notes.length ? ` (${notes.join('; ')})` : '';
+const angleSkipped = placeBound ? [skipNote(NOT_KNOWN_FOR_CARS, `for ${cls}, a class tied to a place`)]
+  : tooEarly ? [skipNote(NOT_KNOWN_FOR_CARS, `before the ${DECADES[fromDecade(NOT_KNOWN_FOR_CARS)]}`)] : [];
 
 // the regions FROM_DECADE kept out of this roll, named on the brief so a run knows why one never
 // shows (only when the region was drawn from the list, not named by the angle)
 const skipped = angle === NOT_KNOWN_FOR_CARS ? [] : (placeBound ?? REGIONS)
   .filter(r => fromDecade(r) > decadeIndex)
-  .map(r => `${r} skipped before the ${DECADES[fromDecade(r)]}`);
+  .map(r => skipNote(r, `before the ${DECADES[fromDecade(r)]}`));
 
 /**
  * Which hint to drop first when the class, decade, region and angle rarely meet (Swedish
@@ -183,8 +186,8 @@ process.stdout.write([
   `Recent:  ${index.slice(0, RECENT_DAYS).map(e => e.class).join(', ') || 'none'}  <- the last ${RECENT_DAYS} days, newest first; never reuse these`,
   `Counts:  ${CLASSES.map(c => `${c} ${counts[c]}`).join(', ')}  <- days per class; rolls favour the fewest${recent.size ? ' (recent ones excluded)' : ''}`,
   `Decade:  ${decade}  <- strong hint${relaxedDecades.has(decade) ? ' (relaxed recently, so drawn less often)' : ''}`,
-  `Region:  ${region}  <- strong hint${relaxedRegions.has(region) ? ' (relaxed recently, so drawn less often)' : ''}${skipped.length ? ` (${skipped.join('; ')})` : ''}`,
-  `Angle:   ${angle}  <- strong hint${relaxed.has(angle) ? ' (relaxed recently, so drawn less often)' : ''}${angleSkipped ? ` (${angleSkipped})` : ''}`,
+  `Region:  ${region}  <- strong hint${relaxedRegions.has(region) ? ' (relaxed recently, so drawn less often)' : ''}${skipTail(skipped)}`,
+  `Angle:   ${angle}  <- strong hint${relaxed.has(angle) ? ' (relaxed recently, so drawn less often)' : ''}${skipTail(angleSkipped)}`,
   `Search:  try phrasings like "${decade} ${region} ${label} ${angle}" and "obscure ${label} ${decade} ${region}"`,
   `Relax:   if nothing real fits, drop hints in this order, keeping the class: ${relaxOrder()}; say which in NOTES.md`,
   `Avoid (already covered): ${index.map(e => `${e.year ?? ''} ${e.name}`.trim()).join('; ') || 'nothing yet'}`,
