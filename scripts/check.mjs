@@ -87,6 +87,17 @@ function checkDay(f, d, newest = false) {
     else if (newest && (d.stats.length < 5 || d.stats.length > 7)) warn(f, `${d.stats.length} stats; docs/SCHEMA.md asks for 5–7`);
     d.stats.forEach((s, i) => { if (!s || typeof s.label !== 'string' || typeof s.value !== 'string' || !s.label || !s.value) err(f, `stats[${i}] needs string label and value`); });
     if (newest) d.stats.forEach((s, i) => { if (s && typeof s.label === 'string' && /[()]/.test(s.label)) warn(f, `stats[${i}].label "${s.label}" has parentheses; move the qualifier into "tag"`); });
+    if (newest) {
+      /** @type {Map<string, number>} */
+      const pairs = new Map();
+      d.stats.forEach((s, i) => {
+        if (!s || typeof s.label !== 'string') return;
+        const key = `${s.label.trim().toLowerCase()}\u0000${typeof s.tag === 'string' ? s.tag.trim().toLowerCase() : ''}`;
+        const first = pairs.get(key);
+        if (first === undefined) pairs.set(key, i);
+        else warn(f, `stats[${i}] shares label "${s.label}"${typeof s.tag === 'string' && s.tag.trim() ? ` and tag "${s.tag}"` : ' (and no tag)'} with stats[${first}]; give one a tag that tells them apart`);
+      });
+    }
     d.stats.forEach((s, i) => { if (s && s.tag !== undefined && (typeof s.tag !== 'string' || !s.tag.trim() || s.tag.length > STAT_TAG_MAX)) err(f, `stats[${i}].tag must be a non-empty string of at most ${STAT_TAG_MAX} chars`); });
   } else if (d.stats !== undefined) err(f, 'stats must be an array');
 

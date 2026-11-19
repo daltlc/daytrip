@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-19",
+  "name": "A4 quattro Super Touring (STCC)",
+  "year": 2002,
+  "maker": "Audi",
+  "country": "Germany (raced in Sweden)",
+  "class": "touring",
+  "hook": "Years after four-wheel drive was banned from British touring cars, an Audi A4 quattro in its eighth racing season won Sweden's title.",
+  "story": "In 1996, an Audi saloon made touring car racing nervous. It was the A4 quattro, and it drove all four wheels. Its rivals drove two. Frank Biela took the British title with it that year. The rule-makers answered by banning four-wheel drive. The Super 2000 rules that came later allowed front or rear drive only. So where does a banned car go? North. To Sweden. In 2001, Italian driver Roberto Colciago raced an A4 quattro in the Swedish Touring Car Championship. Under the bonnet sat a two-litre four-cylinder, mounted lengthways at the very front. That made the car a little nose-heavy. It liked to push wide in the corners. But out of a slow bend, four driven wheels pull hard. Colciago won the title. Then he did it again in 2002, with five race wins, in a car Audi said was in its eighth racing season. The next year, Audi came back to Sweden with a new front-drive A4. It won too. But the old quattro had already taken its last crown.",
+  "description": "The Audi A4 quattro Super Touring was built for the two-litre Super Touring rules of the mid-1990s. It used a longitudinal four-cylinder engine of about 305 bhp, a six-speed sequential gearbox, Audi's quattro four-wheel drive, and double wishbones at every corner. It won the 1996 British title before four-wheel drive was banned there. In Sweden, Roberto Colciago drove one to the 2001 and 2002 STCC titles, and the KMS team, backed by the Swedish Audi importer, took the 2002 team title.",
+  "stats": [
+    {
+      "label": "Engine",
+      "value": "2.0 L inline-four, 4 valves per cylinder, longitudinal"
+    },
+    {
+      "label": "Power",
+      "tag": "approx.",
+      "value": "305 bhp"
+    },
+    {
+      "label": "Gearbox",
+      "value": "6-speed sequential"
+    },
+    {
+      "label": "Drivetrain",
+      "value": "quattro four-wheel drive"
+    },
+    {
+      "label": "Suspension",
+      "value": "Double wishbones all round"
+    },
+    {
+      "label": "STCC titles",
+      "value": "2001, 2002 (Roberto Colciago)"
+    },
+    {
+      "label": "Wins",
+      "tag": "2002 STCC",
+      "value": "5"
+    }
+  ],
+  "photos": [],
+  "photoQuery": "2002 Audi A4 quattro",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b",
+      "y": "#fff1c0",
+      "s": "#c8102e",
+      "w": "#f2f2f2",
+      "d": "#2a2d33"
+    },
+    "rows": [
+      "................",
+      "....aaaaaaaa....",
+      "...yaaassaaay...",
+      ".kkaaaassaaaakk.",
+      ".kkaaaassaaaakk.",
+      ".kkaaaassaaaakk.",
+      "..aaaaassaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..aalllsslllaa..",
+      "..aallwwwwllaa..",
+      "..aallwddwllaa..",
+      "..aallwwwwllaa..",
+      "..aalllsslllaa..",
+      "..abbbbbbbbbba..",
+      ".kkaaaassaaaakk.",
+      ".kkaaaassaaaakk.",
+      ".kkaaaassaaaakk.",
+      "..aaaaassaaaaa..",
+      "..rraaassaaarr..",
+      "..kkkkkkkkkkkk..",
+      "................",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#b9bfc7",
+    "laneCount": 3,
+    "baseSpeed": 1.1,
+    "curve": 0.7,
+    "grip": 0.75,
+    "gears": 6,
+    "weather": "rain",
+    "stars": [
+      300,
+      800,
+      1500
+    ]
+  },
+  "sources": [
+    "https://audi-mediacenter.com/en/press-releases/stcc-fierce-competition-for-the-new-audi-a4-8815",
+    "https://www.evo.co.uk/audi/a4/21825/the-anatomy-of-a-super-touring-car-history-and-tech-of-2-litre-touring-car-racing-in",
+    "https://www.sportscarmarket.com/profile/1997-audi-a4-quattro-super-touring",
+    "https://en.wikipedia.org/wiki/2002_Swedish_Touring_Car_Championship"
+  ]
+}
