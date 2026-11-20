@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-20",
+  "name": "Škoda Spider II (Type 733)",
+  "year": 1975,
+  "maker": "Škoda",
+  "country": "Czechoslovakia",
+  "class": "lemans",
+  "hook": "In 1975, a little Škoda sports prototype became the first car ever to climb the Ecce Homo hill in under four minutes.",
+  "story": "Picture a narrow road climbing out of Šternberk, in Moravia. This is Ecce Homo, the most famous hill climb in Czechoslovakia. It twists up through the woods. Four minutes was the wall. Nobody had ever beaten it. In 1975, Jaroslav Bobek arrived with something new. It was the Škoda Spider II, a low, open two-seater built in Mladá Boleslav. Behind him sat a two-litre four-cylinder from Škoda's 720 project. It made up to 180 horsepower, in a car Škoda puts at about 630 kilograms. Bobek had already won two national titles in the older Spider B5. Now he had more power and a new body. He went up the hill, and the clock stopped under four minutes. He was the first driver ever to do it. The Spider II won other races too. Then its career ended in the strangest way. At a hill climb in Hlásná Třebáň, Bobek won, crossed the line, and hit a rival who was reversing his car past the finish. The fastest Škoda yet, stopped by a parking manoeuvre.",
+  "description": "The Škoda Spider II, factory type 733, was a sports racing prototype from AZNP Škoda in Mladá Boleslav, Czechoslovakia. It replaced the 1972 Spider B5, whose 1.5-litre engine sat behind the driver. The Spider II used a water-cooled two-litre inline-four derived from the Škoda 720, with up to 180 hp, a five-speed manual gearbox and a redeveloped body. It debuted midway through the 1975 season. Jaroslav Bobek drove it to the first run under four minutes at Ecce Homo. Its career ended in a collision beyond a finish line.",
+  "stats": [
+    { "label": "Engine", "value": "2.0 L water-cooled inline-four (Škoda 720-derived)" },
+    { "label": "Power", "value": "180 hp (132 kW) @ 7,000 rpm" },
+    { "label": "Gearbox", "value": "5-speed manual" },
+    { "label": "Weight", "tag": "Škoda", "value": "630 kg" },
+    { "label": "Top speed", "value": "220 km/h" },
+    { "label": "Debut", "value": "Mid-1975 season" },
+    { "label": "Record", "value": "First run under 4 min at Ecce Homo (1975)" }
+  ],
+  "photos": [],
+  "photoQuery": "1975 Škoda Spider",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b",
+      "y": "#fff1c0",
+      "w": "#f2f2f2",
+      "d": "#2a2d33"
+    },
+    "rows": [
+      "................",
+      ".....aaaaaa.....",
+      "...yaaaaaaaay...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaawwwwaaakk.",
+      ".kkaaawddwaaakk.",
+      "..aaaawwwwaaaa..",
+      "..aaabbbbbbaaa..",
+      "..aaaddddddaaa..",
+      "..aaaddkkddaaa..",
+      "..aaaddddddaaa..",
+      "..aaaaallaaaaa..",
+      "..aalllllllaaa..",
+      "..aallkllkllaa..",
+      "..aalllllllaaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..rraaaaaaaarr..",
+      "...kkkkkkkkkk...",
+      "................",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "rock",
+    "scenery": "forest",
+    "accent": "#2e7d4f",
+    "laneCount": 3,
+    "baseSpeed": 1.1,
+    "curve": 0.85,
+    "grip": 0.8,
+    "gears": 5,
+    "weather": "none",
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://www.skoda-storyboard.com/en/press-kits/125-years-of-skoda-motorsport-press-kit/skoda-spider-b5-1972-and-skoda-spider-ii-1975-prototypes-for-the-racetrack/",
+    "https://www.skoda-storyboard.com/cs/130let/1975-rekordni-spider-na-ecce-homo/",
+    "https://www.secret-classics.com/en/skoda-spider-b5-and-spider-ii/",
+    "https://automobilrevue.cz/rubriky/clanky/historie/skoda-motorsport-1972-1982-prototypy_46796.html"
+  ]
+}

@@ -1,47 +1,24 @@
 {
-  "date": "2026-11-19",
-  "name": "A4 quattro Super Touring (STCC)",
-  "year": 2002,
-  "maker": "Audi",
-  "country": "Germany (raced in Sweden)",
-  "class": "touring",
-  "hook": "Years after four-wheel drive was banned from British touring cars, an Audi A4 quattro in its eighth racing season won Sweden's title.",
-  "story": "In 1996, an Audi saloon made touring car racing nervous. It was the A4 quattro, and it drove all four wheels. Its rivals drove two. Frank Biela took the British title with it that year. The rule-makers answered by banning four-wheel drive. The Super 2000 rules that came later allowed front or rear drive only. So where does a banned car go? North. To Sweden. In 2001, Italian driver Roberto Colciago raced an A4 quattro in the Swedish Touring Car Championship. Under the bonnet sat a two-litre four-cylinder, mounted lengthways at the very front. That made the car a little nose-heavy. It liked to push wide in the corners. But out of a slow bend, four driven wheels pull hard. Colciago won the title. Then he did it again in 2002, with five race wins, in a car Audi said was in its eighth racing season. The next year, Audi came back to Sweden with a new front-drive A4. It won too. But the old quattro had already taken its last crown.",
-  "description": "The Audi A4 quattro Super Touring was built for the two-litre Super Touring rules of the mid-1990s. It used a longitudinal four-cylinder engine of about 305 bhp, a six-speed sequential gearbox, Audi's quattro four-wheel drive, and double wishbones at every corner. It won the 1996 British title before four-wheel drive was banned there. In Sweden, Roberto Colciago drove one to the 2001 and 2002 STCC titles, and the KMS team, backed by the Swedish Audi importer, took the 2002 team title.",
+  "date": "2026-11-20",
+  "name": "Škoda Spider II (Type 733)",
+  "year": 1975,
+  "maker": "Škoda",
+  "country": "Czechoslovakia",
+  "class": "lemans",
+  "hook": "In 1975, a little Škoda sports prototype became the first car ever to climb the Ecce Homo hill in under four minutes.",
+  "story": "Picture a narrow road climbing out of Šternberk, in Moravia. This is Ecce Homo, the most famous hill climb in Czechoslovakia. It twists up through the woods. Four minutes was the wall. Nobody had ever beaten it. In 1975, Jaroslav Bobek arrived with something new. It was the Škoda Spider II, a low, open two-seater built in Mladá Boleslav. Behind him sat a two-litre four-cylinder from Škoda's 720 project. It made up to 180 horsepower, in a car Škoda puts at about 630 kilograms. Bobek had already won two national titles in the older Spider B5. Now he had more power and a new body. He went up the hill, and the clock stopped under four minutes. He was the first driver ever to do it. The Spider II won other races too. Then its career ended in the strangest way. At a hill climb in Hlásná Třebáň, Bobek won, crossed the line, and hit a rival who was reversing his car past the finish. The fastest Škoda yet, stopped by a parking manoeuvre.",
+  "description": "The Škoda Spider II, factory type 733, was a sports racing prototype from AZNP Škoda in Mladá Boleslav, Czechoslovakia. It replaced the 1972 Spider B5, whose 1.5-litre engine sat behind the driver. The Spider II used a water-cooled two-litre inline-four derived from the Škoda 720, with up to 180 hp, a five-speed manual gearbox and a redeveloped body. It debuted midway through the 1975 season. Jaroslav Bobek drove it to the first run under four minutes at Ecce Homo. Its career ended in a collision beyond a finish line.",
   "stats": [
-    {
-      "label": "Engine",
-      "value": "2.0 L inline-four, 4 valves per cylinder, longitudinal"
-    },
-    {
-      "label": "Power",
-      "tag": "approx.",
-      "value": "305 bhp"
-    },
-    {
-      "label": "Gearbox",
-      "value": "6-speed sequential"
-    },
-    {
-      "label": "Drivetrain",
-      "value": "quattro four-wheel drive"
-    },
-    {
-      "label": "Suspension",
-      "value": "Double wishbones all round"
-    },
-    {
-      "label": "STCC titles",
-      "value": "2001, 2002 (Roberto Colciago)"
-    },
-    {
-      "label": "Wins",
-      "tag": "2002 STCC",
-      "value": "5"
-    }
+    { "label": "Engine", "value": "2.0 L water-cooled inline-four (Škoda 720-derived)" },
+    { "label": "Power", "value": "180 hp (132 kW) @ 7,000 rpm" },
+    { "label": "Gearbox", "value": "5-speed manual" },
+    { "label": "Weight", "tag": "Škoda", "value": "630 kg" },
+    { "label": "Top speed", "value": "220 km/h" },
+    { "label": "Debut", "value": "Mid-1975 season" },
+    { "label": "Record", "value": "First run under 4 min at Ecce Homo (1975)" }
   ],
   "photos": [],
-  "photoQuery": "2002 Audi A4 quattro",
+  "photoQuery": "1975 Škoda Spider",
   "sprite": {
     "w": 16,
     "h": 24,
@@ -52,57 +29,52 @@
       "b": "#8fd3ff",
       "r": "#ff3b3b",
       "y": "#fff1c0",
-      "s": "#c8102e",
       "w": "#f2f2f2",
       "d": "#2a2d33"
     },
     "rows": [
       "................",
-      "....aaaaaaaa....",
-      "...yaaassaaay...",
-      ".kkaaaassaaaakk.",
-      ".kkaaaassaaaakk.",
-      ".kkaaaassaaaakk.",
-      "..aaaaassaaaaa..",
-      "..aabbbbbbbbaa..",
-      "..abbbbbbbbbba..",
-      "..aalllsslllaa..",
-      "..aallwwwwllaa..",
-      "..aallwddwllaa..",
-      "..aallwwwwllaa..",
-      "..aalllsslllaa..",
-      "..abbbbbbbbbba..",
-      ".kkaaaassaaaakk.",
-      ".kkaaaassaaaakk.",
-      ".kkaaaassaaaakk.",
-      "..aaaaassaaaaa..",
-      "..rraaassaaarr..",
-      "..kkkkkkkkkkkk..",
+      ".....aaaaaa.....",
+      "...yaaaaaaaay...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaawwwwaaakk.",
+      ".kkaaawddwaaakk.",
+      "..aaaawwwwaaaa..",
+      "..aaabbbbbbaaa..",
+      "..aaaddddddaaa..",
+      "..aaaddkkddaaa..",
+      "..aaaddddddaaa..",
+      "..aaaaallaaaaa..",
+      "..aalllllllaaa..",
+      "..aallkllkllaa..",
+      "..aalllllllaaa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "..aaaaaaaaaaaa..",
+      "..rraaaaaaaarr..",
+      "...kkkkkkkkkk...",
       "................",
       "................",
       "................"
     ]
   },
   "game": {
-    "obstacle": "tire",
-    "scenery": "track",
-    "accent": "#b9bfc7",
+    "obstacle": "rock",
+    "scenery": "forest",
+    "accent": "#2e7d4f",
     "laneCount": 3,
     "baseSpeed": 1.1,
-    "curve": 0.7,
-    "grip": 0.75,
-    "gears": 6,
-    "weather": "rain",
-    "stars": [
-      300,
-      800,
-      1500
-    ]
+    "curve": 0.85,
+    "grip": 0.8,
+    "gears": 5,
+    "weather": "none",
+    "stars": [300, 800, 1500]
   },
   "sources": [
-    "https://audi-mediacenter.com/en/press-releases/stcc-fierce-competition-for-the-new-audi-a4-8815",
-    "https://www.evo.co.uk/audi/a4/21825/the-anatomy-of-a-super-touring-car-history-and-tech-of-2-litre-touring-car-racing-in",
-    "https://www.sportscarmarket.com/profile/1997-audi-a4-quattro-super-touring",
-    "https://en.wikipedia.org/wiki/2002_Swedish_Touring_Car_Championship"
+    "https://www.skoda-storyboard.com/en/press-kits/125-years-of-skoda-motorsport-press-kit/skoda-spider-b5-1972-and-skoda-spider-ii-1975-prototypes-for-the-racetrack/",
+    "https://www.skoda-storyboard.com/cs/130let/1975-rekordni-spider-na-ecce-homo/",
+    "https://www.secret-classics.com/en/skoda-spider-b5-and-spider-ii/",
+    "https://automobilrevue.cz/rubriky/clanky/historie/skoda-motorsport-1972-1982-prototypy_46796.html"
   ]
 }

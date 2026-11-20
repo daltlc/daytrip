@@ -1,4 +1,5 @@
 [
+  { "date": "2026-11-20", "name": "Škoda Spider II (Type 733)", "year": 1975, "class": "lemans", "accent": "#2e7d4f" },
   { "date": "2026-11-19", "name": "A4 quattro Super Touring (STCC)", "year": 2002, "class": "touring", "accent": "#b9bfc7" },
   { "date": "2026-11-18", "name": "Giocattolo Group B", "year": 1986, "class": "exotic", "accent": "#c41e24" },
   { "date": "2026-11-17", "name": "Civic Type R (FL5)", "year": 2023, "class": "jdm", "accent": "#d0202e" },

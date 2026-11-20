@@ -87,17 +87,20 @@ const norm = s => s.toLowerCase().replace(/[^a-z ]/g, '').replace(/ +/g, ' ').tr
  * decade", or "dropped …",
  * on the same Content line of NOTES.md), so impossible pairings come up less. Notes may shorten
  * a hint ("a record breaker"), so either text prefixing the other counts as a match. A missing
- * or odd NOTES.md just means no weighting.
- * @returns {{ angles: Set<string>, regions: Set<string>, decades: Set<string> }}
+ * or odd NOTES.md just means no weighting. Each hint maps to how many entries back it was last
+ * relaxed (1 = the newest entry), so the brief can say how recent it was.
+ * @returns {{ angles: Map<string, number>, regions: Map<string, number>, decades: Map<string, number> }}
  */
 function recentlyRelaxed() {
-  const out = { angles: new Set(/** @type {string[]} */ ([])), regions: new Set(/** @type {string[]} */ ([])), decades: new Set(/** @type {string[]} */ ([])) };
+  /** @type {{ angles: Map<string, number>, regions: Map<string, number>, decades: Map<string, number> }} */
+  const out = { angles: new Map(), regions: new Map(), decades: new Map() };
   let notes = '';
   try { notes = readFileSync(path.join(root, 'NOTES.md'), 'utf8'); } catch { return out; }
   /** @param {readonly string[]} list @param {string} said */
   const find = (list, said) => list.find(a => norm(a).startsWith(said) || said.startsWith(norm(a)));
   const entries = notes.split(/\n## /).slice(1).slice(-RELAX_LOOKBACK);
-  for (const entry of entries) {
+  for (const [i, entry] of entries.entries()) {
+    const ago = entries.length - i; // oldest first, so a later entry overwrites with the smaller count
     const content = entry.split('\n').find(l => l.startsWith('- Content:')) ?? '';
     const roll = /the roll was [^/]+\/ ([^/]+?) \/ ([^/]+?) \/ ([^.]+)\./.exec(content);
     if (!roll) continue;
@@ -106,16 +109,16 @@ function recentlyRelaxed() {
     // decades are matched exactly on their digits ("1940s"), since norm() strips digits
     const decade = /\b(relax(ed)?|dropp?(ed)?) the decade\b/.test(content)
       ? DECADES.find(d => d.slice(0, 5) === roll[1].trim().slice(0, 5)) : undefined;
-    if (angle) out.angles.add(angle);
-    if (region) out.regions.add(region);
-    if (decade) out.decades.add(decade);
+    if (angle) out.angles.set(angle, ago);
+    if (region) out.regions.set(region, ago);
+    if (decade) out.decades.set(decade, ago);
   }
   return out;
 }
 
 /**
  * @param {readonly string[]} items
- * @param {Set<string>} down items drawn at RELAXED_WEIGHT instead of NORMAL_WEIGHT (relaxed recently)
+ * @param {Map<string, number>} down items drawn at RELAXED_WEIGHT instead of NORMAL_WEIGHT (relaxed recently)
  * @returns {string}
  */
 function pickWeighted(items, down) {
@@ -145,6 +148,14 @@ const angle = pickWeighted(placeBound || tooEarly ? ANGLES.filter(a => a !== NOT
 const regions = (placeBound ?? REGIONS).filter(r => fromDecade(r) <= decadeIndex);
 const region = angle === NOT_KNOWN_FOR_CARS ? UNEXPECTED : pickWeighted(regions.length ? regions : placeBound ?? REGIONS, relaxedRegions);
 const label = LABEL[cls].toLowerCase();
+/**
+ * The brief-line note for a hint drawn although it was relaxed recently, naming how long ago.
+ * @param {Map<string, number>} down @param {string} hint
+ */
+const relaxedNote = (down, hint) => {
+  const ago = down.get(hint);
+  return ago === undefined ? '' : ` (relaxed ${ago === 1 ? 'in the last entry' : `${ago} entries ago`}, so drawn less often)`;
+};
 // a place-bound class never draws the "country not known for cars" angle; say so on the brief, the
 // same way skipped regions are named, so a run knows why that angle never shows for it
 // (and an early decade never draws it either; said the same way)
@@ -185,9 +196,9 @@ process.stdout.write([
   `Class:   ${cls} (${LABEL[cls]})  <- hard rule`,
   `Recent:  ${index.slice(0, RECENT_DAYS).map(e => e.class).join(', ') || 'none'}  <- the last ${RECENT_DAYS} days, newest first; never reuse these`,
   `Counts:  ${CLASSES.map(c => `${c} ${counts[c]}`).join(', ')}  <- days per class; rolls favour the fewest${recent.size ? ' (recent ones excluded)' : ''}`,
-  `Decade:  ${decade}  <- strong hint${relaxedDecades.has(decade) ? ' (relaxed recently, so drawn less often)' : ''}`,
-  `Region:  ${region}  <- strong hint${relaxedRegions.has(region) ? ' (relaxed recently, so drawn less often)' : ''}${skipTail(skipped)}`,
-  `Angle:   ${angle}  <- strong hint${relaxed.has(angle) ? ' (relaxed recently, so drawn less often)' : ''}${skipTail(angleSkipped)}`,
+  `Decade:  ${decade}  <- strong hint${relaxedNote(relaxedDecades, decade)}`,
+  `Region:  ${region}  <- strong hint${relaxedNote(relaxedRegions, region)}${skipTail(skipped)}`,
+  `Angle:   ${angle}  <- strong hint${relaxedNote(relaxed, angle)}${skipTail(angleSkipped)}`,
   `Search:  try phrasings like "${decade} ${region} ${label} ${angle}" and "obscure ${label} ${decade} ${region}"`,
   `Relax:   if nothing real fits, drop hints in this order, keeping the class: ${relaxOrder()}; say which in NOTES.md`,
   `Avoid (already covered): ${index.map(e => `${e.year ?? ''} ${e.name}`.trim()).join('; ') || 'nothing yet'}`,
