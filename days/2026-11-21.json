@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-21",
+  "name": "Camry (Turismo Carretera)",
+  "year": 2023,
+  "maker": "Toyota",
+  "country": "Argentina",
+  "class": "muscle",
+  "hook": "In 2023, a Toyota Camry broke into Argentina's oldest racing club and finished first and second at the Desafío de las Estrellas.",
+  "story": "Turismo Carretera is Argentina's great racing series. It has run since 1937. For decades, the grid meant four names: Ford, Chevrolet, Dodge and Torino. Then, in 2022, Toyota showed up with a Camry. A family saloon, of all things. Under the body sat the series' own tubular chassis and a big Cherokee engine. Plenty of fans shrugged. The old brands had generations of wins behind them. Toyota had none. The first season passed without a victory. In February 2023, at Viedma, Matías Rossi was nearly there. Four laps from the end, his engine broke, and Mariano Werner took the win. Then came July, and the Desafío de las Estrellas at Villicum, in San Juan. Rossi had not won in this series since 2019. This time the engine held. Over 35 laps he brought the Camry home first. Right behind him came his teammate, Andrés Jakos, in the other Camry. A one-two, at the brand's 24th race. One report counted Toyota as only the sixth make ever to win at the top level.",
+  "description": "The Toyota Camry of Turismo Carretera is a silhouette racer built for Argentina's premier stock car series. Toyota Argentina and the series' organisers began talks in 2018, and the entry was confirmed in October 2021. Like its rivals, it uses a tubular chassis developed by the organisers, here with a 3.2-litre Cherokee engine. Toyota Gazoo Racing Argentina debuted it at Viedma in 2022. From 2024 the rules allowed modern models, and the Camry was restyled with its production nose.",
+  "stats": [
+    { "label": "Engine", "value": "3,210 cc Cherokee" },
+    { "label": "Power", "tag": "2021 launch", "value": "About 480 CV" },
+    { "label": "Chassis", "value": "Tubular, developed by the ACTC" },
+    { "label": "Debut", "value": "Viedma round, 2022" },
+    { "label": "First win", "value": "Desafío de las Estrellas, Villicum, 23 July 2023" },
+    { "label": "Result", "value": "1-2: Matías Rossi, Andrés Jakos" },
+    { "label": "Distance", "value": "35 laps (148.9 km)" }
+  ],
+  "photos": [],
+  "photoQuery": "2023 Toyota Camry Turismo Carretera",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b",
+      "w": "#f2f2f2",
+      "y": "#fff1c0",
+      "d": "#2a2d33"
+    },
+    "rows": [
+      "................",
+      "....kaaaaaak....",
+      "...yaaawwaaay...",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
+      "..aaaaawwaaaaa..",
+      "..aabbbbbbbbaa..",
+      "..abbbbbbbbbba..",
+      "..aallllllllaa..",
+      "..aallwwwwllaa..",
+      "..aallwddwllaa..",
+      "..aallwwwwllaa..",
+      "..aallllllllaa..",
+      "..aabbbbbbbbaa..",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
+      ".kkaaaawwaaaakk.",
+      "..aaaaawwaaaaa..",
+      "..rraaaaaaaarr..",
+      "..kkkkkkkkkkkk..",
+      "................",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#c8102e",
+    "laneCount": 3,
+    "baseSpeed": 1.1,
+    "curve": 0.6,
+    "grip": 0.6,
+    "gears": 5,
+    "weather": "dust",
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Toyota_Camry_(Turismo_Carretera)",
+    "https://www.losandes.com.ar/mas-deportes/tc-matias-rossi-y-toyota-ganaron-el-desafio-de-las-estrellas",
+    "https://www.diariodecuyo.com.ar/noticias/rossi-logro-meter-a-toyota-en-la-historiagrande-de-la-maxima-54926.html",
+    "https://www.monkeymotor.net/2021/12/toyota-camry-tc-matias-rossi-andres-jakos.html"
+  ]
+}
