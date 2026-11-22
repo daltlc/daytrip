@@ -134,6 +134,13 @@ const recent = new Set(index.slice(0, RECENT_DAYS).map(e => e.class));
 /** @type {Record<CarClass, number>} */
 const counts = { road: 0, exotic: 0, rally: 0, f1: 0, gt3: 0, lemans: 0, jdm: 0, muscle: 0, offroad: 0, vintage: 0, touring: 0, concept: 0 };
 for (const e of index) if (e.class in counts) counts[e.class]++;
+/** @type {Map<CarClass, string>} newest date per class (the index is newest first) */
+const lastUsed = new Map();
+for (const e of index) if (e.class in counts && !lastUsed.has(e.class)) lastUsed.set(e.class, e.date);
+// longest-unused first; a class never used sorts to the front as "never"
+const lastLine = [...CLASSES]
+  .sort((a, b) => (lastUsed.get(a) ?? '').localeCompare(lastUsed.get(b) ?? ''))
+  .map(c => `${c} ${lastUsed.get(c) ?? 'never'}`).join(', ');
 // classes not used in the last few days, weighted toward the least-covered ones
 const eligible = CLASSES.filter(c => !recent.has(c));
 const fewest = Math.min(...eligible.map(c => counts[c]));
@@ -196,6 +203,7 @@ process.stdout.write([
   `Class:   ${cls} (${LABEL[cls]})  <- hard rule`,
   `Recent:  ${index.slice(0, RECENT_DAYS).map(e => e.class).join(', ') || 'none'}  <- the last ${RECENT_DAYS} days, newest first; never reuse these`,
   `Counts:  ${CLASSES.map(c => `${c} ${counts[c]}`).join(', ')}  <- days per class; rolls favour the fewest${recent.size ? ' (recent ones excluded)' : ''}`,
+  `Last:    ${lastLine}  <- last day per class, longest unused first`,
   `Decade:  ${decade}  <- strong hint${relaxedNote(relaxedDecades, decade)}`,
   `Region:  ${region}  <- strong hint${relaxedNote(relaxedRegions, region)}${skipTail(skipped)}`,
   `Angle:   ${angle}  <- strong hint${relaxedNote(relaxed, angle)}${skipTail(angleSkipped)}`,

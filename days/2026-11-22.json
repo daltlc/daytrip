@@ -1,0 +1,79 @@
+{
+  "date": "2026-11-22",
+  "name": "55 (London–Sydney Marathon)",
+  "year": 1968,
+  "maker": "DAF",
+  "country": "the Netherlands",
+  "class": "vintage",
+  "hook": "In 1968, the smallest car in the London–Sydney Marathon had a rubber-belt gearbox, and it still finished seventeenth.",
+  "story": "Picture the start line in London, November 1968. Around a hundred cars, bound for Sydney. Big saloons, works teams, famous rally names. And two little DAF 55s from Eindhoven. They had 1100 cc engines. They were the smallest cars in the field. And they had no gears at all. DAF's Variomatic drove the wheels through rubber belts on cone-shaped pulleys. Plenty of people thought belts would never survive the trip. The route crossed Europe, Turkey, Iran, Afghanistan and India. Then a ship to Perth, and a run across the Australian outback. One DAF crashed in Turkey and lost a day. The other one, with Rob Slotemaker and Rob Janssen aboard, just kept going. Car after car broke or dropped out behind them. On 18 December, in Sydney, they crossed the line seventeenth overall. Bigger, faster cars never got there. DAF was so pleased, it sold a Marathon tuning kit from January 1969.",
+  "description": "The DAF 55 was a small family car built by DAF in Eindhoven from late 1967. Giovanni Michelotti styled the body. It used an 1108 cc four-cylinder based on a Renault engine and DAF's Variomatic, a belt-driven continuously variable transmission. There was no manual option. Two 55s entered the 1968 London–Sydney Marathon. Slotemaker and Janssen finished seventeenth overall. After the event DAF offered a dealer-fitted Marathon package with more power, which led to the Marathon models.",
+  "stats": [
+    { "label": "Engine", "value": "1,108 cc four-cylinder (Renault-based)" },
+    { "label": "Transmission", "value": "Variomatic belt-driven CVT" },
+    { "label": "Body design", "value": "Giovanni Michelotti" },
+    { "label": "Crew", "value": "Rob Slotemaker, Rob Janssen" },
+    { "label": "Result", "value": "17th overall, London–Sydney Marathon 1968" },
+    { "label": "Power", "tag": "Marathon kit", "value": "63 bhp" }
+  ],
+  "photos": [],
+  "photoQuery": "1968 DAF 55",
+  "sprite": {
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "r": "#ff3b3b",
+      "w": "#f2f2f2",
+      "y": "#fff1c0",
+      "d": "#2a2d33"
+    },
+    "rows": [
+      "................",
+      ".....kkkkkk.....",
+      "....yaaaaaay....",
+      "..kkaaaaaaaakk..",
+      "..kkaaaaaaaakk..",
+      "..kkaaaaaaaakk..",
+      "...aaaaaaaaaa...",
+      "...abbbbbbbba...",
+      "...abbbbbbbba...",
+      "...allyllylla...",
+      "...alllllllla...",
+      "...allwwwwlla...",
+      "...allwddwlla...",
+      "...allwwwwlla...",
+      "...abbbbbbbba...",
+      "..kkaaaaaaaakk..",
+      "..kkaaaaaaaakk..",
+      "..kkaaaaaaaakk..",
+      "...aaaaaaaaaa...",
+      "...raaaaaaaar...",
+      "....kkkkkkkk....",
+      "................",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "rock",
+    "scenery": "desert",
+    "accent": "#e2661c",
+    "laneCount": 3,
+    "baseSpeed": 1.0,
+    "curve": 0.5,
+    "grip": 0.6,
+    "gears": 3,
+    "weather": "dust",
+    "stars": [300, 800, 1500]
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/DAF_55",
+    "https://dafclub.nl/DAF/Models/Marathon",
+    "https://www.classic-daf.nl/technische-data-55/",
+    "https://autorai.nl/reportage-london-sydney-marathon-in-daf-museum-eindhoven/"
+  ]
+}
