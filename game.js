@@ -53,6 +53,8 @@ const SLIDE_OMEGA = 18, SLIDE_ZETA = 0.3, SLIDE_MAX = 4;
 // before 2026-09-30 ran, and a day without the field gets exactly that.
 // The blip's pitch falls by SHIFT_DROP_K / gears of itself, so a close-ratio box sounds tighter, not
 // just busier: 5 gears is the old fixed 45% fall, 8 gears 28%, 3 gears 75%.
+// `gears: 0` (CVT_GEARS) is a belt-driven CVT: no fixed ratios, so no blips at all, just the hum.
+const CVT_GEARS = 0;
 const SHIFT_SPAN = 1000, MIN_GEARS = 3, MAX_GEARS = 8, DEFAULT_GEARS = 5, SHIFT_DROP_K = 2.25;
 // A car from before ERA_YEAR (read from the day's `year`, no new field) hums lower: ERA_PITCH of the
 // usual pitch for the hum and the shift blip, so a 1920s tourer chugs instead of buzzing.
@@ -150,7 +152,9 @@ export class Game {
     this.grip = Number.isFinite(gp.grip) ? GRIP_MIN + (GRIP_MAX - GRIP_MIN) * clamp01(/** @type {number} */ (gp.grip)) : GRIP_DEFAULT;
     this.loose = this.reduced || !Number.isFinite(gp.grip) ? 0 : Math.max(0, 1 - 2 * clamp01(/** @type {number} */ (gp.grip)));
     const gears = Number.isInteger(gp.gears) ? Math.min(MAX_GEARS, Math.max(MIN_GEARS, /** @type {number} */ (gp.gears))) : DEFAULT_GEARS;
-    this.shiftStep = SHIFT_SPAN / gears;
+    // A CVT never shifts: an infinite step keeps `dist / shiftStep` at 0, so update() never blips.
+    const cvt = gp.gears === CVT_GEARS;
+    this.shiftStep = cvt ? Infinity : SHIFT_SPAN / gears;
     this.shiftDrop = SHIFT_DROP_K / gears;
     if (Number.isFinite(day.year) && /** @type {number} */ (day.year) < ERA_YEAR) this.sound.setPitch(ERA_PITCH);
     this.accent = gp.accent ?? DEFAULT_ACCENT;
