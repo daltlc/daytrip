@@ -19,6 +19,8 @@ app.js          entry point               garage.js       the garage list
 page.js         page render + read-aloud  game.js         simulation, input, sound
 render.js       drawing                   geom.js         shared logical-pixel numbers
 dom.js          DOM helpers               storage.js      localStorage that never throws
+photos.js       finds free photos: Wikipedia lead image + Commons search
+theme.js        solid page colors from the car's livery, contrast-checked
 types.js        JSDoc types shared by everything
 text.js         sentence splitter (page + check)
 days/           one JSON per day, latest.json, index.json
@@ -33,3 +35,7 @@ Plain ES modules with JSDoc types, checked by TypeScript (`npm run typecheck`) b
 ## Run locally
 
 Any static server works, e.g. `python3 -m http.server 8080` then open http://localhost:8080/. The page is ES modules, so it needs a server — opening `index.html` as a `file://` path will not load it. Validate with `node scripts/check.mjs` (Node 18+).
+
+## Credits
+
+Every day's hook, story, description and numbers are written by Claude, an AI model made by Anthropic, in its own words from the pages listed in that day's `sources`. Each day page shows those pages under "Sources and credits", with Wikipedia text credited to Wikipedia contributors under CC BY-SA 4.0. Photos come from Wikimedia Commons and Wikipedia lead images; each is shown with its title, author and a link to its license. The pixel art and the game are original to this project.

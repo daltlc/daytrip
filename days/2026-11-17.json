@@ -19,6 +19,7 @@
   ],
   "photos": [],
   "photoQuery": "2023 Honda Civic Type R",
+  "wikiTitle": "Honda Civic Type R",
   "sprite": {
     "w": 16, "h": 24,
     "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "k": "#111318", "b": "#8fd3ff", "r": "#5a0a12", "s": "#c9ccd2" },

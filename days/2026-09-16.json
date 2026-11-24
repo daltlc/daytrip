@@ -19,6 +19,7 @@
   ],
   "photos": [],
   "photoQuery": "1969 Dodge Charger Daytona",
+  "wikiTitle": "Dodge Charger Daytona",
   "sprite": {
     "w": 16, "h": 24,
     "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "k": "#111318", "w": "#f2f2f2", "b": "#8fd3ff", "r": "#ff3b3b" },

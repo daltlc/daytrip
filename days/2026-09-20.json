@@ -19,6 +19,7 @@
   ],
   "photos": [],
   "photoQuery": "2010 Lexus LFA",
+  "wikiTitle": "Lexus LFA",
   "sprite": {
     "w": 16, "h": 24,
     "palette": { "a": "ACCENT", "w": "#f2f3f5", "k": "#0a0b0f", "b": "#8fd3ff", "r": "#ff3b3b", "d": "#23262c" },

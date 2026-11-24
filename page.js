@@ -8,12 +8,13 @@ import { buildSprite } from './render.js';
 import { getJson, setJson, recentPicks, rememberPick } from './storage.js';
 import { splitSentences } from './text.js';
 import { classLabel } from './classes.js';
+import { findPhotos, licenseDeed } from './photos.js';
+import { applyTheme } from './theme.js';
 
 const DEFAULT_ACCENT = '#ff8a3d';
-const THEME_COLOR = '#0b0d10';
 const PHOTO_COUNT = 3;
 const PHOTO_CACHE_MS = 24 * 60 * 60 * 1000;
-const PHOTO_MIN_WIDTH = 900;
+const PHOTO_CACHE_VERSION = 'v3';
 const CARD_SCALE = 6;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -49,8 +50,7 @@ function fmtDate(date) {
 /** @param {DayFile} day */
 function render(day) {
   const accent = day.game?.accent ?? DEFAULT_ACCENT;
-  document.documentElement.style.setProperty('--accent', accent);
-  document.querySelector('meta[name=theme-color]')?.setAttribute('content', THEME_COLOR);
+  applyTheme(accent);
   document.title = `${day.year ? `${day.year} ` : ''}${day.name} — Daytrip`;
 
   const hookSpans = sentenceSpans(day.hook);
@@ -79,22 +79,22 @@ function render(day) {
     storySpans.length ? el('section', { class: 'card' }, el('h2', {}, 'The story'), el('p', { class: 'story' }, storySpans)) : null,
     descSpans.length ? el('section', { class: 'card' }, el('h2', {}, 'What it is'), el('p', {}, descSpans)) : null,
     day.stats?.length ? el('section', { class: 'card' }, el('h2', {}, 'Numbers'), statsGrid(day.stats)) : null,
+    el('p', { class: 'credit-note' }, 'Written by Claude, an AI model, from the sources credited ', el('a', { href: '#credits' }, 'below'), '.'),
     el('section', { class: 'card game-card' },
       el('h2', {}, 'Take it for a drive'),
       carCard(day, accent),
       el('p', { class: 'hint' }, 'Tap left or right to change lanes. Swipe works too. One hit ends the run.'),
       gameMount),
-    day.sources?.length ? el('footer', { class: 'sources' }, 'Sources: ',
-      day.sources.map((s, i) => [i ? ' · ' : null, el('a', { href: s, target: '_blank', rel: 'noopener' }, hostOf(s))])) : null,
+    creditsCard(day),
     el('p', { class: 'day-surprise' }, surpriseLink(day.date),
       day.class ? [' · ', surpriseLink(day.date, day.class)] : null),
   ].filter(present));
   new Game(gameMount, day);
 
-  // Hand-picked photos win; otherwise a photoQuery is resolved against Wikimedia Commons here.
+  // Hand-picked photos win; otherwise the article's lead image and a Commons search are resolved here.
   if (day.photos?.length) photoSlot.replaceWith(photoStrip(day.photos));
-  else if (day.photoQuery) {
-    void fetchCommonsPhotos(day.photoQuery, PHOTO_COUNT, day.date)
+  else if (day.photoQuery || day.wikiTitle) {
+    void cachedPhotos(day)
       .then(photos => { if (photos.length) photoSlot.replaceWith(photoStrip(photos)); else photoSlot.remove(); })
       .catch(() => photoSlot.remove());
   } else photoSlot.remove();
@@ -161,18 +161,8 @@ function surpriseLink(current, cls) {
   return link;
 }
 
-/* ---------- photos from Wikimedia Commons (mirrors scripts/commons.mjs) ---------- */
-/** @typedef {{ url: string, thumburl?: string, descriptionurl: string, width: number, height: number, mime?: string, extmetadata?: Record<string, { value?: string }> }} CommonsImageInfo */
-/** @typedef {{ title: string, imageinfo?: CommonsImageInfo[] }} CommonsPage */
+/* ---------- photos (photos.js does the finding; this caches it per day) ---------- */
 /** @typedef {{ t: number, p: Photo[] }} PhotoCache */
-
-const OK_LICENSE = /^(cc0|public domain|pd[- ]|cc[- ]by(?:[- ]sa)?(?: \d(\.\d)?)?$)/i;
-const BAD_LICENSE = /(nc|nd|non-commercial|no derivatives|fair use|copyright)/i;
-const BAD_TITLE = /logo|badge|emblem|brochure|advert|scan|drawing|diagram|model car|toy|scale model|lego/i;
-const YEAR = /^(19|20)\d\d$/;
-
-/** @param {string | undefined} html */
-const stripHtml = html => (html ?? '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 
 /**
  * @param {unknown} value
@@ -183,70 +173,79 @@ function isPhotoCache(value) {
 }
 
 /**
- * @param {string} query
- * @param {number} want
- * @param {string} date cache key
+ * The day's photos, cached for a day so a revisit does not hit Wikimedia again. The key carries
+ * a version so photos cached by an older lookup are not reused.
+ * @param {DayFile} day
  * @returns {Promise<Photo[]>}
  */
-async function fetchCommonsPhotos(query, want, date) {
-  const cacheKey = `daytrip.photos.${date}`;
+async function cachedPhotos(day) {
+  const cacheKey = `daytrip.photos.${PHOTO_CACHE_VERSION}.${day.date}`;
   const cached = getJson(cacheKey);
   if (isPhotoCache(cached) && Date.now() - cached.t < PHOTO_CACHE_MS && cached.p.length) return cached.p;
-
-  const api = new URL('https://commons.wikimedia.org/w/api.php');
-  api.search = new URLSearchParams({
-    action: 'query', format: 'json', origin: '*', generator: 'search', gsrsearch: `${query} filetype:bitmap`, gsrnamespace: '6', gsrlimit: '40',
-    prop: 'imageinfo', iiprop: 'url|extmetadata|size|mime', iiurlwidth: '800',
-  }).toString();
-  const res = await fetch(api);
-  if (!res.ok) throw new Error(`Commons ${res.status}`);
-  /** @type {{ query?: { pages?: Record<string, CommonsPage> } }} */
-  const json = await res.json();
-  const pages = Object.values(json.query?.pages ?? {});
-  const tokens = query.split(/\s+/).filter(t => t.length > 2 && !YEAR.test(t)).map(t => t.toLowerCase());
-
-  /** @type {{ score: number, key: string, photo: Photo }[]} */
-  const picks = [];
-  for (const page of pages) {
-    const info = page.imageinfo?.[0];
-    if (!info) continue;
-    const meta = info.extmetadata ?? {};
-    const license = stripHtml(meta.LicenseShortName?.value);
-    const credit = stripHtml(meta.Artist?.value) || stripHtml(meta.Credit?.value) || 'Unknown';
-    if (!/^image\/(jpeg|png)$/.test(info.mime ?? '') || !OK_LICENSE.test(license) || BAD_LICENSE.test(license) || info.width < PHOTO_MIN_WIDTH) continue;
-    const title = stripHtml(page.title).replace(/^File:/, '');
-    if (BAD_TITLE.test(title)) continue;
-    const lowerTitle = title.toLowerCase();
-    const hits = tokens.filter(t => lowerTitle.includes(t)).length;
-    if (tokens.length && !hits) continue;
-    const url = info.thumburl ?? info.url; // the API-issued URL verbatim; hand-edited sizes return 400
-    picks.push({
-      score: hits * 1.5 + (info.width >= info.height ? 2 : 0) + Math.min(2, info.width / 2000),
-      key: lowerTitle.replace(/[^a-z0-9]/g, '').slice(0, 24),
-      photo: { url, thumb: url, credit: credit.slice(0, 80), license, source: info.descriptionurl, alt: title.replace(/\.(jpe?g|png)$/i, '').replace(/_/g, ' ') },
-    });
-  }
-  picks.sort((a, b) => b.score - a.score);
-
-  const seen = new Set();
-  /** @type {Photo[]} */
-  const out = [];
-  for (const pick of picks) {
-    if (seen.has(pick.key)) continue;
-    seen.add(pick.key);
-    out.push(pick.photo);
-    if (out.length >= want) break;
-  }
-  setJson(cacheKey, /** @type {PhotoCache} */ ({ t: Date.now(), p: out }));
-  return out;
+  const photos = await findPhotos({ query: day.photoQuery, wikiTitle: day.wikiTitle, want: PHOTO_COUNT });
+  if (photos.length) setJson(cacheKey, /** @type {PhotoCache} */ ({ t: Date.now(), p: photos }));
+  return photos;
 }
 
 /** @param {Photo[]} photos */
 function photoStrip(photos) {
   return el('div', { class: 'photos' }, photos.map(p => el('figure', {},
     el('img', { src: p.thumb ?? p.url, alt: p.alt ?? '', loading: 'lazy', decoding: 'async', onerror: (/** @type {Event} */ e) => /** @type {Element} */ (e.target).closest('figure')?.remove() }),
-    el('figcaption', {}, [p.credit, p.license].filter(Boolean).join(' · '), p.source ? [' · ', el('a', { href: p.source, target: '_blank', rel: 'noopener' }, 'source')] : null),
+    photoCaption(p),
   )));
+}
+
+/**
+ * The full credit Creative Commons asks for: the work's title linked to its source, its author,
+ * and its license linked to the license text, plus where it is hosted.
+ * @param {Photo} p
+ */
+function photoCaption(p) {
+  const title = p.alt ? `“${p.alt}”` : 'Photo';
+  const deed = p.licenseUrl ?? licenseDeed(p.license);
+  return el('figcaption', {},
+    p.source ? el('a', { href: p.source, target: '_blank', rel: 'noopener' }, title) : title,
+    p.credit ? ` by ${p.credit}` : null,
+    p.license ? [', ', deed ? el('a', { href: deed, target: '_blank', rel: 'noopener license' }, p.license) : p.license] : null,
+    ', via Wikimedia Commons');
+}
+
+/* ---------- credits ---------- */
+const WIKIPEDIA_LICENSE = { name: 'CC BY-SA 4.0', url: 'https://creativecommons.org/licenses/by-sa/4.0/' };
+
+/**
+ * A readable name for a source: "Wikipedia: <article>" for Wikipedia, otherwise the site.
+ * @param {string} url
+ * @returns {{ label: string, wikipedia: boolean }}
+ */
+function sourceLabel(url) {
+  const host = hostOf(url);
+  const article = /(?:^|\.)wikipedia\.org$/.test(host) ? /\/wiki\/([^?#]+)/.exec(new URL(url).pathname)?.[1] : undefined;
+  if (!article) return { label: host, wikipedia: false };
+  let title = article;
+  try { title = decodeURIComponent(article); } catch { /* keep the raw slug */ }
+  return { label: `Wikipedia: ${title.replace(/_/g, ' ')}`, wikipedia: true };
+}
+
+/**
+ * Every source the day's text was written from, who wrote it, and where the photos and pixel art
+ * come from. Placed after the game so the day reads straight through, and linked from a note
+ * directly under the text.
+ * @param {DayFile} day
+ */
+function creditsCard(day) {
+  const sources = day.sources ?? [];
+  return el('section', { class: 'card credits', id: 'credits' },
+    el('h2', {}, 'Sources and credits'),
+    el('p', {}, 'The hook, story, description and numbers on this page were written by Claude, an AI model made by Anthropic, in its own words from these sources. Facts and figures belong to them.'),
+    sources.length
+      ? el('ul', { class: 'credit-list' }, sources.map(url => {
+        const { label, wikipedia } = sourceLabel(url);
+        return el('li', {}, el('a', { href: url, target: '_blank', rel: 'noopener' }, label),
+          wikipedia ? [' · text under ', el('a', { href: WIKIPEDIA_LICENSE.url, target: '_blank', rel: 'noopener license' }, WIKIPEDIA_LICENSE.name), ', by Wikipedia contributors'] : null);
+      }))
+      : el('p', { class: 'maker' }, 'No sources were recorded for this day.'),
+    el('p', {}, 'Photos come from Wikimedia Commons and Wikipedia, each credited under the photo with its author and license. The pixel art and the game were made by Claude for Daytrip.'));
 }
 
 /* ---------- car card ---------- */

@@ -17,7 +17,8 @@
     { "label": "Production start", "value": "August 1941" }
   ],
   "photos": [],
-  "photoQuery": "1941 GAZ-64",
+  "photoQuery": "GAZ-64",
+  "wikiTitle": "GAZ-64",
   "sprite": {
     "w": 16,
     "h": 24,

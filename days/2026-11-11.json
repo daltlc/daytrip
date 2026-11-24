@@ -18,6 +18,7 @@
   ],
   "photos": [],
   "photoQuery": "2002 Toyota TF102",
+  "wikiTitle": "Toyota TF102",
   "sprite": {
     "w": 16, "h": 24,
     "palette": { "a": "ACCENT", "w": "#f2f2f2", "k": "#111318", "b": "#8fd3ff", "r": "#ff3b3b" },

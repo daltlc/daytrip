@@ -7,7 +7,7 @@
 /** @typedef {'rain' | 'snow' | 'dust'} WeatherKind */
 
 /** @typedef {{ label: string, value: string, tag?: string }} Stat */
-/** @typedef {{ url: string, thumb?: string, credit?: string, license?: string, source?: string, alt?: string }} Photo */
+/** @typedef {{ url: string, thumb?: string, credit?: string, license?: string, licenseUrl?: string, source?: string, alt?: string }} Photo */
 /** @typedef {{ w: number, h: number, palette: Record<string, string>, rows: string[] }} Sprite */
 
 /**
@@ -38,7 +38,8 @@
  * @property {string} [description]
  * @property {Stat[]} [stats]
  * @property {Photo[]} [photos]
- * @property {string} [photoQuery]
+ * @property {string} [photoQuery] `<maker> <model>`, searched on Wikimedia Commons
+ * @property {string} [wikiTitle] English Wikipedia article about this exact car; its lead image leads the photos
  * @property {Sprite} [sprite]
  * @property {GameParams} [game]
  * @property {string[]} [sources]

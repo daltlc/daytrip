@@ -19,6 +19,7 @@
   ],
   "photos": [],
   "photoQuery": "1970 Lancia Stratos Zero Bertone",
+  "wikiTitle": "Lancia Stratos Zero",
   "sprite": {
     "w": 16, "h": 24,
     "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "k": "#0a0b0f", "b": "#8fd3ff", "r": "#ff3b3b", "d": "#5a3a22", "w": "#f6efe4" },

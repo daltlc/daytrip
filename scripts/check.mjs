@@ -23,7 +23,7 @@ const WEATHER = ['auto', 'none', 'rain', 'snow', 'dust'];
 const LANE_COUNTS = [2, 3, 4];
 const STAT_TAG_MAX = 16;
 const BANNED = /\b(forza|horizon festival|playground games|gran turismo|need for speed)\b/i;
-const BROWSER_MODULES = ['app.js', 'dom.js', 'storage.js', 'geom.js', 'types.js', 'page.js', 'render.js', 'sound.js', 'game.js', 'garage.js', 'text.js', 'classes.js'];
+const BROWSER_MODULES = ['app.js', 'dom.js', 'storage.js', 'geom.js', 'types.js', 'page.js', 'render.js', 'sound.js', 'game.js', 'garage.js', 'text.js', 'classes.js', 'photos.js', 'theme.js'];
 const SCRIPTS = ['scripts/check.mjs', 'scripts/commons.mjs', 'scripts/roll.mjs'];
 const CORE_FILES = ['index.html', 'archive.html', 'style.css', ...BROWSER_MODULES, 'days/latest.json'];
 const MAX_CORE_KB = 400;
@@ -111,14 +111,17 @@ function checkDay(f, d, newest = false) {
         if (!p?.credit) err(f, `photos[${i}].credit missing (author attribution is required)`);
         if (!p?.license) err(f, `photos[${i}].license missing`);
         if (!isUrl(p?.source)) err(f, `photos[${i}].source must link to the file page`);
+        if (p?.licenseUrl !== undefined && !isUrl(p.licenseUrl)) err(f, `photos[${i}].licenseUrl must be an http(s) URL`);
       });
     }
   }
-  if (d.photoQuery !== undefined && (typeof d.photoQuery !== 'string' || d.photoQuery.trim().length < 4)) err(f, 'photoQuery must be a short search string like "1975 Lancia Stratos HF"');
-  if (!(Array.isArray(d.photos) && d.photos.length) && !d.photoQuery) warn(f, 'no photos and no photoQuery; the page will have no pictures');
+  if (d.photoQuery !== undefined && (typeof d.photoQuery !== 'string' || d.photoQuery.trim().length < 4)) err(f, 'photoQuery must be a short search string like "Lancia Stratos HF"');
+  if (d.wikiTitle !== undefined && (typeof d.wikiTitle !== 'string' || !d.wikiTitle.trim() || /^https?:|_/.test(d.wikiTitle))) err(f, 'wikiTitle must be the article title as written, like "Lancia Stratos" (not a URL, spaces not underscores)');
+  if (!(Array.isArray(d.photos) && d.photos.length) && !d.photoQuery && !d.wikiTitle) warn(f, 'no photos, photoQuery or wikiTitle; the page will have no pictures');
+  if (newest && d.wikiTitle === undefined) warn(f, 'no wikiTitle; set it to the English Wikipedia article about this exact car (from a search result URL) if one exists, since its lead image is the most reliable photo');
   if (newest && typeof d.photoQuery === 'string' && typeof d.maker === 'string' && plain(d.maker) && !` ${plain(d.photoQuery)} `.includes(` ${plain(d.maker)} `)) warn(f, `photoQuery "${d.photoQuery}" does not mention the maker (${d.maker}); Commons titles name it, so the page search needs it`);
   if (newest && typeof d.name === 'string' && typeof d.maker === 'string' && d.maker.trim() && d.name.trim().toLowerCase().startsWith(`${d.maker.trim().toLowerCase()} `)) warn(f, `name "${d.name}" starts with the maker (${d.maker}); the page shows the maker under the name, so drop it (a hyphenated designation like "GAZ-64" is fine)`);
-  if (newest && typeof d.photoQuery === 'string' && Number.isInteger(d.year) && !d.photoQuery.startsWith(`${d.year} `)) warn(f, `photoQuery "${d.photoQuery}" should start with the year (${d.year}); docs/SCHEMA.md asks for "<year> <maker> <model>"`);
+  if (newest && typeof d.photoQuery === 'string' && /^(19|20)\d\d\b/.test(d.photoQuery.trim())) warn(f, `photoQuery "${d.photoQuery}" starts with a year; Commons file titles rarely carry one, so leave it out ("<maker> <model>")`);
 
   if (d.sprite) {
     const sp = d.sprite;
@@ -154,6 +157,7 @@ function checkDay(f, d, newest = false) {
 
   if (Array.isArray(d.sources)) {
     if (!d.sources.length) err(f, 'sources is empty');
+    else if (newest && d.sources.length < 2) warn(f, 'only one source; cite every page the text and numbers came from (2–4 is normal)');
     else if (newest && (d.sources.length < 2 || d.sources.length > 4)) warn(f, `${d.sources.length} sources; docs/SCHEMA.md asks for 2–4`);
     d.sources.forEach((s, i) => { if (!isUrl(s)) err(f, `sources[${i}] must be an http(s) URL`); });
     if (newest) {

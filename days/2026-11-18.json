@@ -19,6 +19,7 @@
   ],
   "photos": [],
   "photoQuery": "1986 Giocattolo Group B",
+  "wikiTitle": "Giocattolo",
   "sprite": {
     "w": 16, "h": 24,
     "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "k": "#111318", "b": "#8fd3ff", "r": "#ff3b3b", "y": "#ffe38a", "d": "#3a0a0e" },

@@ -19,6 +19,7 @@
   ],
   "photos": [],
   "photoQuery": "1967 Meyers Manx",
+  "wikiTitle": "Meyers Manx",
   "sprite": {
     "w": 16, "h": 24,
     "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "k": "#111318", "b": "#8fd3ff", "i": "#2b2f36", "w": "#e9d8b5", "r": "#ff3b3b" },

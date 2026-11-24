@@ -17,7 +17,7 @@ You are building today's Daytrip: one real car, a short story, numbers, photos, 
 - Collect: one angle for the story, the plain description, 5–7 stats with units, and the source URLs.
 - Never invent a number. If a stat is disputed or missing, leave it out.
 - Network in this sandbox: WebSearch works. WebFetch to Wikipedia, Wikimedia Commons and most motoring sites is blocked by the egress proxy. Do not probe, inspect or work around the proxy; search-result snippets plus manufacturer pages that do load are enough.
-- Photos: set `"photoQuery": "<year> <maker> <model>"` and `"photos": []`. The page fetches and attributes Commons photos itself when viewed. Only fill `photos` by hand if `node scripts/commons.mjs "<query>" 3` actually returns entries.
+- Photos: set `"photoQuery": "<maker> <model>"` (no year) and, when an English Wikipedia article about this exact car exists, `"wikiTitle"` to its title (take it from an `en.wikipedia.org/wiki/...` search result URL; see docs/SCHEMA.md for when to leave it out). Leave `"photos": []`. The page finds and attributes the photos itself when viewed; this sandbox cannot reach Wikimedia, so do not try to fetch them here.
 
 ## 3. Write `days/YYYY-MM-DD.json`
 - Follow `docs/SCHEMA.md` exactly. Voice: a warm, curious guide talking to a friend on a morning drive. Short sentences (it is read aloud). Second person is fine. No filler, no "in conclusion".
@@ -52,6 +52,11 @@ You are building today's Daytrip: one real car, a short story, numbers, photos, 
 ## 7. Ship
 - `git add -A && git commit -m "day N: <year> <car>" && git push origin main` where N is the number of entries in `days/index.json`.
 - Do not open pull requests or branches. If the push is rejected, retry once, then stop and report the error verbatim in your final message. Do not push through any other tool or API, do not export patches, do not force.
+
+## Credit
+- Write the hook, story and description in your own words. Never copy a sentence or a distinctive phrase from a source; if a quote is worth using, put it in quotation marks and name who said it in the text.
+- `sources` must list every page a fact, figure or quote came from, including each Wikipedia article you used. The page turns this list into the day's credits, so a page you used but did not list goes uncredited.
+- Never take photos from anywhere but Wikimedia Commons or a Wikipedia lead image. The page credits each with its title, author and license.
 
 ## Hard rules
 - No runtime dependencies, no build step, no frameworks. Plain HTML, CSS, JS modules with JSDoc types, checked by TypeScript (`jsconfig.json`). Every module starts with `// @ts-check`; no `console.*` in page code. See `docs/GAME.md` → Code rules.

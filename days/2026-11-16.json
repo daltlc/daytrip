@@ -18,6 +18,7 @@
   ],
   "photos": [],
   "photoQuery": "1936 Stout Scarab",
+  "wikiTitle": "Stout Scarab",
   "sprite": {
     "w": 16, "h": 24,
     "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "k": "#111318", "w": "#e8e2d0", "b": "#8fd3ff", "r": "#ff3b3b", "s": "#c9ccd2" },

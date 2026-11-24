@@ -18,6 +18,7 @@
   ],
   "photos": [],
   "photoQuery": "1924 Hispano-Suiza H6C Tulipwood",
+  "wikiTitle": "Hispano-Suiza H6",
   "sprite": {
     "w": 16, "h": 24,
     "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "k": "#111318", "w": "#d9d9d9", "b": "#8fd3ff", "r": "#ff3b3b", "t": "#3a2a20" },
