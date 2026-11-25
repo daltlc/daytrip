@@ -55,6 +55,22 @@ function readJson(rel) {
  */
 const plain = s => s.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(Boolean).join(' ');
 
+/** A run of this many identical words shared by the newest day's story and description warns. */
+const ECHO_RUN = 8;
+
+/**
+ * The first run of `n` consecutive words (after `plain()`) that appears in both texts, or ''.
+ * @param {string} a @param {string} b @param {number} n
+ */
+function sharedRun(a, b, n) {
+  const wa = plain(a).split(' '), hay = ` ${plain(b)} `;
+  for (let i = 0; i + n <= wa.length; i++) {
+    const run = wa.slice(i, i + n).join(' ');
+    if (hay.includes(` ${run} `)) return run;
+  }
+  return '';
+}
+
 /** Words a newest-day hook should stay within; past 30 already warns on every day. */
 const HOOK_AIM = 25;
 
@@ -74,6 +90,7 @@ function checkDay(f, d, newest = false) {
   if (newest && d.hook && words(d.hook) > HOOK_AIM && words(d.hook) <= 30) warn(f, `hook is ${words(d.hook)} words; aim for ${HOOK_AIM} or fewer so it reads as one breath`);
   if (newest && typeof d.hook === 'string' && splitSentences(d.hook).length > 1) warn(f, `hook is ${splitSentences(d.hook).length} sentences; docs/SCHEMA.md asks for one`);
   if (newest && typeof d.hook === 'string' && typeof d.description === 'string' && plain(d.hook) && plain(d.description).includes(plain(d.hook))) warn(f, 'description repeats the hook word for word; say it once, in the hook');
+  if (newest && typeof d.story === 'string' && typeof d.description === 'string') { const run = sharedRun(d.story, d.description, ECHO_RUN); if (run) warn(f, `story and description share ${ECHO_RUN}+ words in a row ("${run}"); let each section say it in its own words`); }
   const storyWords = words(d.story);
   if (d.story && (storyWords < 100 || storyWords > 220)) err(f, `story is ${storyWords} words; target 120–180`);
   const descWords = words(d.description);

@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-25",
+  "name": "4x4 (Paris–Dakar)",
+  "year": 1984,
+  "maker": "UMM",
+  "country": "Portugal",
+  "class": "rally",
+  "hook": "In 1984 a Lisbon metalworks sent five of its boxy farm 4x4s across the Sahara in the Paris–Dakar.",
+  "story": "Portugal was hardly known for building cars. But it had a Lisbon metalworks called União Metalo-Mecânica, and a French licence to build a square-jawed 4x4. It was meant for farms and building sites. So why not point it at the Sahara? In January 1984, five UMMs joined 427 starters in the Paris–Dakar. José Megre led the effort. He had already done this race twice, in 1982 and 1983. Picture the cabin. Flat glass, steel panels, sand in everything. A 2.3-litre Peugeot diesel clattering under the bonnet, with about 67 horsepower in road trim. Thousands of kilometres of desert between you and the sea. Two of the UMMs show up in the final results. Pedro Cortês and João Teixeira Gomes, in number 216, came home 34th overall. Megre and Pedro Vilas-Boas, in number 217, finished 42nd. No trophy. But a small country's workhorse crossed Africa alongside the factory teams. In Portugal they still tell that story. It even became a comic book.",
+  "description": "The UMM 4x4 was a Portuguese off-roader built in Lisbon by União Metalo-Mecânica, a metalworks that took up a French Cournil design under licence in 1977 to make four-wheel drives for farm, industrial and utility work. From 1982 it used a 2.3-litre Indenor-Peugeot diesel. The company raced it in the Paris–Dakar in the early 1980s, with five vehicles involved in 1984. It reached British buyers that same year, and the Alter replaced it in 1985.",
+  "stats": [
+    { "label": "Engine", "value": "Indenor-Peugeot 2.3-litre diesel" },
+    { "label": "Power", "tag": "road", "value": "67 bhp (49 kW)" },
+    { "label": "Wheelbase", "value": "2,565 mm" },
+    { "label": "Drivetrain", "value": "Four-wheel drive" },
+    { "label": "UMM entries", "value": "5 of 427 starters (1984)" },
+    { "label": "Best finish", "value": "34th overall, car no. 216" }
+  ],
+  "photos": [],
+  "photoQuery": "UMM 4x4",
+  "wikiTitle": "UMM 4x4",
+  "sprite": {
+    "w": 16, "h": 24,
+    "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "w": "#f2f2f2", "y": "#ffd84a", "k": "#111318", "b": "#8fd3ff", "r": "#ff3b3b", "g": "#6b6b6b" },
+    "rows": [
+      "................",
+      "...yy......yy...",
+      "..aaaaaaaaaaaa..",
+      "kkkaaaaaaaaaakkk",
+      "kkkaawwwwwwaakkk",
+      "kkkaaaaaaaaaakkk",
+      "..aaaaaaaaaaaa..",
+      "..abbbbbbbbbba..",
+      "..abbbbbbbbbba..",
+      "..alllllllllla..",
+      "..allwwllwwlla..",
+      "..alllrrrrllla..",
+      "..allwwllwwlla..",
+      "..alllllllllla..",
+      "..alllllllllla..",
+      "kkkaaaaaaaaaakkk",
+      "kkkaaaaaaaaaakkk",
+      "kkkaaaaaaaaaakkk",
+      "...aaaaaaaaaa...",
+      "..raaaaaaaaaar..",
+      "..aaaakkkkaaaa..",
+      ".....kkggkk.....",
+      "................",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "barrel",
+    "scenery": "desert",
+    "accent": "#2f6b3a",
+    "laneCount": 3,
+    "baseSpeed": 0.95,
+    "curve": 0.5,
+    "grip": 0.3
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/UMM_4x4",
+    "https://en.wikipedia.org/wiki/Uni%C3%A3o_Metalo-Mec%C3%A2nica",
+    "https://www.forbespt.com/?p=196320",
+    "https://archive.commercialmotor.com/article/28th-july-1984/26/portuguese-umm-arrives-in-britain"
+  ]
+}
