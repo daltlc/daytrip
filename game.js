@@ -54,7 +54,9 @@ const SLIDE_OMEGA = 18, SLIDE_ZETA = 0.3, SLIDE_MAX = 4;
 // The blip's pitch falls by SHIFT_DROP_K / gears of itself, so a close-ratio box sounds tighter, not
 // just busier: 5 gears is the old fixed 45% fall, 8 gears 28%, 3 gears 75%.
 // `gears: 0` (CVT_GEARS) is a belt-driven CVT: no fixed ratios, so no blips at all, just the hum.
-const CVT_GEARS = 0;
+// A belt holds the engine near one speed while the car gathers pace, so a CVT's hum jumps to
+// CVT_HOLD of the rev range off the line and creeps up by only CVT_CREEP of it over the whole ramp.
+const CVT_GEARS = 0, CVT_HOLD = 0.45, CVT_CREEP = 0.3;
 const SHIFT_SPAN = 1000, MIN_GEARS = 3, MAX_GEARS = 8, DEFAULT_GEARS = 5, SHIFT_DROP_K = 2.25;
 // A car from before ERA_YEAR (read from the day's `year`, no new field) hums lower: ERA_PITCH of the
 // usual pitch for the hum and the shift blip, so a 1920s tourer chugs instead of buzzing.
@@ -79,6 +81,7 @@ export class Game {
   loose = 0;
   shiftStep = SHIFT_SPAN / DEFAULT_GEARS;
   shiftDrop = SHIFT_DROP_K / DEFAULT_GEARS;
+  cvt = false;
   accent = DEFAULT_ACCENT;
   /** @type {Scenery} */ scenery = SCENERY.track;
   /** @type {HTMLCanvasElement} */ sprite;
@@ -154,6 +157,7 @@ export class Game {
     const gears = Number.isInteger(gp.gears) ? Math.min(MAX_GEARS, Math.max(MIN_GEARS, /** @type {number} */ (gp.gears))) : DEFAULT_GEARS;
     // A CVT never shifts: an infinite step keeps `dist / shiftStep` at 0, so update() never blips.
     const cvt = gp.gears === CVT_GEARS;
+    this.cvt = cvt;
     this.shiftStep = cvt ? Infinity : SHIFT_SPAN / gears;
     this.shiftDrop = SHIFT_DROP_K / gears;
     if (Number.isFinite(day.year) && /** @type {number} */ (day.year) < ERA_YEAR) this.sound.setPitch(ERA_PITCH);
@@ -448,7 +452,7 @@ export class Game {
     this.sparks.length = live;
 
     const rev = (this.speed - this.baseSpeed) / (this.maxSpeed - this.baseSpeed);
-    this.sound.engine(rev, true);
+    this.sound.engine(this.cvt ? CVT_HOLD + CVT_CREEP * clamp01(rev) : rev, true);
     const gear = Math.floor(this.dist / this.shiftStep);
     if (gear > this.gear) { this.gear = gear; this.sound.shift(rev, this.shiftDrop); }
     this.updateHud();

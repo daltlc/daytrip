@@ -1,4 +1,5 @@
 [
+  { "date": "2026-11-26", "name": "C65 Mazda", "year": 2005, "class": "lemans", "accent": "#1f4e9c" },
   { "date": "2026-11-25", "name": "4x4 (Paris–Dakar)", "year": 1984, "class": "rally", "accent": "#2f6b3a" },
   { "date": "2026-11-24", "name": "SA05", "year": 2006, "class": "f1", "accent": "#c8102e" },
   { "date": "2026-11-23", "name": "GAZ-64", "year": 1941, "class": "offroad", "accent": "#5b6b3a" },

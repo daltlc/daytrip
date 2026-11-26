@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-26",
+  "name": "C65 Mazda",
+  "year": 2005,
+  "maker": "Courage",
+  "country": "France",
+  "class": "lemans",
+  "hook": "A Wisconsin team put a three-rotor Mazda rotary in a French prototype, and its rookies won their class in their second race.",
+  "story": "Most prototype engines have pistons. This one had three spinning triangles. In 2005 a small Wisconsin outfit, B-K Motorsports, took a French-built Courage C65 and bolted in a Mazda rotary. The three-rotor R20B grew out of the RX-8 road car's Renesis engine. Mazdaspeed and SpeedSource developed it. It did not slot in like the usual V8s and V10s. It was longer than the Judd and AER engines the chassis was drawn around, so it needed its own bellhousing adapter. Breathing was a puzzle too. At first the air came in through the roll hoop over the driver's head. By Road America a tall periscope stood behind him, feeding straighter runners. A restrictor held the rotary to around 400 horsepower. It was enough. Jamie Bach and Guy Cosmo, both new to the series, took second in class on debut at Road Atlanta. Weeks later, at Mid-Ohio, they won LMP2. Imagine it going by: not a rumble, a howl.",
+  "description": "The Courage C65 was a Le Mans Prototype designed and built by the French constructor Courage in 2003 and raced until 2006, with Judd, AER and Mazda engines among its options. B-K Motorsports ran a Mazda-powered C65 in the LMP2 class of the 2005 American Le Mans Series, using a three-rotor R20B derived from the RX-8's rotary. Its one class win, at Mid-Ohio, was the first in the series for both the team and Mazda, and the effort finished third in the class standings.",
+  "stats": [
+    { "label": "Engine", "value": "Mazda R20B three-rotor rotary" },
+    { "label": "Power", "tag": "restricted", "value": "about 400 hp (49.1 mm restrictor)" },
+    { "label": "Chassis", "value": "Courage C65, built in France" },
+    { "label": "Class", "value": "LMP2, 2005 American Le Mans Series" },
+    { "label": "Debut", "value": "2nd in class, Road Atlanta, April 2005" },
+    { "label": "Best finish", "value": "LMP2 win, 14th overall, Mid-Ohio 2005" },
+    { "label": "Season", "value": "3rd in the LMP2 standings" }
+  ],
+  "photos": [],
+  "photoQuery": "Courage C65",
+  "wikiTitle": "Courage C65",
+  "sprite": {
+    "w": 16, "h": 24,
+    "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "w": "#f2f2f2", "k": "#111318", "b": "#8fd3ff", "r": "#ff3b3b", "g": "#6b6b6b" },
+    "rows": [
+      "......aaaa......",
+      "....aaaaaaaa....",
+      "...aaawwwwaaa...",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "...aaaaaaaaaa...",
+      "...aaabbbbaaa...",
+      "...aabkkkkbaa...",
+      "...aaakkkkaaa...",
+      "...aaaakkaaaa...",
+      "...aaaaggaaaa...",
+      "...laaaggaaal...",
+      "...laawwwwaal...",
+      "...laawllwaal...",
+      ".kkaaawwwwaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "...aaaaaaaaaa...",
+      "..arraaaaaarra..",
+      "...aaaaaaaaaa...",
+      ".kkkkkkkkkkkkkk.",
+      "kaaaaaaaaaaaaaak",
+      ".k............k."
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#1f4e9c",
+    "laneCount": 3,
+    "baseSpeed": 1.1,
+    "curve": 0.6,
+    "grip": 0.8
+  },
+  "sources": [
+    "https://en.wikipedia.org/wiki/Courage_C65",
+    "https://www.mulsannescorner.com/couragec65-9.html",
+    "https://www.guycosmo.com/news/2005/4/20/cosmo-bach-take-2nd-in-american-le-mans-series-debut.html",
+    "https://en.wikipedia.org/wiki/2005_American_Le_Mans_at_Mid-Ohio"
+  ]
+}
