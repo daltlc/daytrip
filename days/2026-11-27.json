@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-27",
+  "name": "F40 LM by Michelotto (chassis 95448)",
+  "year": 1993,
+  "maker": "Ferrari",
+  "country": "Italy",
+  "class": "gt3",
+  "hook": "A racing Ferrari with almost no races to its name sold for $11,005,000 in 2025, more than any F40 before it.",
+  "story": "Picture a Ferrari built for the race track that hardly ever raced. That is chassis 95448. It is one of only nineteen F40 LMs, the competition cars prepared by Michelotto, a race shop in Padua. This one was the fourteenth. It was finished in Rosso Corsa at the end of 1992, to a spec called GTC. Its auction house says it carries the most powerful F40 engine there is. Then it mostly waited. One price guide says it has no race history to speak of. It came out for historic events and was kept healthy. The paperwork stayed tidy too. There are factory build sheets, an invoice, and Ferrari's own certificate that the engine, gearbox and body are the ones it left with. In August 2025 it crossed the block in Monterey, California. The estimate was eight and a half to nine and a half million dollars. The bidding kept going. It sold for $11,005,000. No F40 had ever fetched more. A car made to win races set its record standing still.",
+  "description": "The F40 LM was the racing version of Ferrari's F40, a twin-turbo V8 supercar. The Padua race shop Michelotto converted nineteen of them, first for the American IMSA GTO class, where Jean Alesi drove one to third on its 1989 debut at Laguna Seca. Chassis 95448, the fourteenth, was built to the later GTC specification and completed in 1992. In 2025 it sold at RM Sotheby's Monterey for $11,005,000, the highest price yet paid for any F40.",
+  "stats": [
+    { "label": "Engine", "value": "2.9-litre twin-turbo V8" },
+    { "label": "Built", "value": "19 F40 LMs by Michelotto; this is no. 14" },
+    { "label": "Spec", "value": "GTC, completed December 1992" },
+    { "label": "Top speed", "tag": "1989 test", "value": "367 km/h at Nardò" },
+    { "label": "Debut", "tag": "F40 LM", "value": "3rd in GTO, Laguna Seca 1989 (Jean Alesi)" },
+    { "label": "Estimate", "value": "$8.5–9.5 million" },
+    { "label": "Sold", "value": "$11,005,000, Monterey, August 2025" }
+  ],
+  "photos": [],
+  "photoQuery": "Ferrari F40 LM",
+  "wikiTitle": "Ferrari F40",
+  "sprite": {
+    "w": 16, "h": 24,
+    "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "w": "#f2f2f2", "k": "#111318", "b": "#8fd3ff", "r": "#ff3b3b", "y": "#ffd23f" },
+    "rows": [
+      "......aaaa......",
+      "....aaaaaaaa....",
+      "..awwaaaaaawwa..",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaayyaaaakk.",
+      "...aaaaaaaaaa...",
+      "..aaabbbbbbaaa..",
+      "..aabbbbbbbbaa..",
+      "..aalkkkkkklaa..",
+      "..aaaakkkkaaaa..",
+      "..aakakaakakaa..",
+      "..aaaaaaaaaaaa..",
+      "..aakakaakakaa..",
+      "..aaaaaaaaaaaa..",
+      ".kkaakakkakaakk.",
+      ".kkaaaaaaaaaakk.",
+      ".kkaaaaaaaaaakk.",
+      "...aaaaaaaaaa...",
+      "..arraaaaaarra..",
+      "...aaaaaaaaaa...",
+      "...k........k...",
+      "..aaaaaaaaaaaa..",
+      "................"
+    ]
+  },
+  "game": {
+    "obstacle": "tire",
+    "scenery": "track",
+    "accent": "#d40000",
+    "laneCount": 3,
+    "baseSpeed": 1.15,
+    "curve": 0.6,
+    "grip": 0.6
+  },
+  "sources": [
+    "https://rmsothebys.com/auctions/mo25/lots/r0053-1993-ferrari-f40-lm-by-michelotto/",
+    "https://www.hagerty.com/valuation-tools/past-sales/1993-ferrari-f40_lm/ZFFGX34X000095448/79a1751e-9221-4bb5-a6a2-f4739ea5483c",
+    "https://www.auto-motor-und-sport.de/oldtimer/ferrari-f40-lm-warum-dieser-f40-8-mio-euro-kosten-soll/",
+    "https://www.supercars.net/blog/?p=349754"
+  ]
+}
