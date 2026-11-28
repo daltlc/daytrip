@@ -1,68 +1,92 @@
 {
-  "date": "2026-11-27",
-  "name": "F40 LM by Michelotto (chassis 95448)",
-  "year": 1993,
-  "maker": "Ferrari",
-  "country": "Italy",
-  "class": "gt3",
-  "hook": "A racing Ferrari with almost no races to its name sold for $11,005,000 in 2025, more than any F40 before it.",
-  "story": "Picture a Ferrari built for the race track that hardly ever raced. That is chassis 95448. It is one of only nineteen F40 LMs, the competition cars prepared by Michelotto, a race shop in Padua. This one was the fourteenth. It was finished in Rosso Corsa at the end of 1992, to a spec called GTC. Its auction house says it carries the most powerful F40 engine there is. Then it mostly waited. One price guide says it has no race history to speak of. It came out for historic events and was kept healthy. The paperwork stayed tidy too. There are factory build sheets, an invoice, and Ferrari's own certificate that the engine, gearbox and body are the ones it left with. In August 2025 it crossed the block in Monterey, California. The estimate was eight and a half to nine and a half million dollars. The bidding kept going. It sold for $11,005,000. No F40 had ever fetched more. A car made to win races set its record standing still.",
-  "description": "The F40 LM was the racing version of Ferrari's F40, a twin-turbo V8 supercar. The Padua race shop Michelotto converted nineteen of them, first for the American IMSA GTO class, where Jean Alesi drove one to third on its 1989 debut at Laguna Seca. Chassis 95448, the fourteenth, was built to the later GTC specification and completed in 1992. In 2025 it sold at RM Sotheby's Monterey for $11,005,000, the highest price yet paid for any F40.",
+  "date": "2026-11-28",
+  "name": "Director (VL)",
+  "year": 1987,
+  "maker": "HDT",
+  "country": "Australia",
+  "class": "muscle",
+  "hook": "The car that ended Peter Brock's partnership with Holden came with an optional box of crystal and magnets.",
+  "story": "Peter Brock was Australia's favourite racing driver. He won Bathurst again and again in Holdens. His own company turned Commodores into fast road cars that carried his signature. Then, in 1986, Brock showed off a small black box. Inside sat a sliver of crystal ringed by magnets. He called it the Energy Polarizer. He said it worked by \"aligning the molecules\" of the car. No test ever showed it doing a thing. Holden wanted nothing to do with it. Brock would not back down. He also planned an independent rear end borrowed from Opel, which Holden thought was not tested enough. On 20 February 1987 he launched his new flagship anyway. It was the Director, and the box cost an extra 480 dollars. Within days, Holden withdrew all support. A group of sceptics had already handed Brock their Bent Spoon award for the gadget. So here is a big V8 sedan shaped by one man's belief. It is also the car that cost him his partner.",
+  "description": "The HDT Director was the last flagship of HDT Special Vehicles, Peter Brock's road-car company, before Holden cut its ties with him. Based on the VL Commodore, it used a 4,987 cc version of Holden's locally built V8 rated at 177 kW. A handful got independent rear suspension sourced from Opel. Buyers could add the Energy Polarizer for AU$480, a crystal-and-magnet device with no proven effect. Holden withdrew its support days after the February 1987 launch.",
   "stats": [
-    { "label": "Engine", "value": "2.9-litre twin-turbo V8" },
-    { "label": "Built", "value": "19 F40 LMs by Michelotto; this is no. 14" },
-    { "label": "Spec", "value": "GTC, completed December 1992" },
-    { "label": "Top speed", "tag": "1989 test", "value": "367 km/h at Nardò" },
-    { "label": "Debut", "tag": "F40 LM", "value": "3rd in GTO, Laguna Seca 1989 (Jean Alesi)" },
-    { "label": "Estimate", "value": "$8.5–9.5 million" },
-    { "label": "Sold", "value": "$11,005,000, Monterey, August 2025" }
+    {
+      "label": "Engine",
+      "value": "4,987 cc V8"
+    },
+    {
+      "label": "Power",
+      "value": "177 kW (237 hp)"
+    },
+    {
+      "label": "Based on",
+      "value": "Holden Commodore (VL)"
+    },
+    {
+      "label": "Rear suspension",
+      "value": "Independent, from Opel (a handful)"
+    },
+    {
+      "label": "Polarizer option",
+      "value": "AU$480"
+    },
+    {
+      "label": "Unveiled",
+      "value": "20 February 1987"
+    }
   ],
   "photos": [],
-  "photoQuery": "Ferrari F40 LM",
-  "wikiTitle": "Ferrari F40",
+  "photoQuery": "HDT Director",
   "sprite": {
-    "w": 16, "h": 24,
-    "palette": { "a": "ACCENT", "l": "ACCENT_LIGHT", "w": "#f2f2f2", "k": "#111318", "b": "#8fd3ff", "r": "#ff3b3b", "y": "#ffd23f" },
+    "w": 16,
+    "h": 24,
+    "palette": {
+      "a": "ACCENT",
+      "l": "ACCENT_LIGHT",
+      "k": "#111318",
+      "b": "#8fd3ff",
+      "w": "#d9dde2",
+      "y": "#ffe08a",
+      "r": "#ff3b3b"
+    },
     "rows": [
-      "......aaaa......",
-      "....aaaaaaaa....",
-      "..awwaaaaaawwa..",
+      "................",
+      "................",
+      "..yywkkkkkkwyy..",
+      "..aaaaaaaaaaaa..",
       ".kkaaaaaaaaaakk.",
       ".kkaaaaaaaaaakk.",
-      ".kkaaaayyaaaakk.",
-      "...aaaaaaaaaa...",
-      "..aaabbbbbbaaa..",
+      ".kkaaawwwwaaakk.",
+      "..aaaaaaaaaaaa..",
       "..aabbbbbbbbaa..",
-      "..aalkkkkkklaa..",
-      "..aaaakkkkaaaa..",
-      "..aakakaakakaa..",
-      "..aaaaaaaaaaaa..",
-      "..aakakaakakaa..",
-      "..aaaaaaaaaaaa..",
-      ".kkaakakkakaakk.",
+      "..abbbbbbbbbba..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aallllllllaa..",
+      "..aabbbbbbbbaa..",
       ".kkaaaaaaaaaakk.",
       ".kkaaaaaaaaaakk.",
-      "...aaaaaaaaaa...",
-      "..arraaaaaarra..",
-      "...aaaaaaaaaa...",
-      "...k........k...",
+      ".kkaaaaaaaaaakk.",
       "..aaaaaaaaaaaa..",
+      "..rrraaaaaarrr..",
+      "..kkkkkkkkkkkk..",
+      "................",
+      "................",
       "................"
     ]
   },
   "game": {
-    "obstacle": "tire",
-    "scenery": "track",
-    "accent": "#d40000",
-    "laneCount": 3,
-    "baseSpeed": 1.15,
-    "curve": 0.6,
-    "grip": 0.6
+    "obstacle": "cone",
+    "scenery": "city",
+    "accent": "#22304f",
+    "grip": 0.5,
+    "baseSpeed": 1.0,
+    "curve": 0.5
   },
   "sources": [
-    "https://rmsothebys.com/auctions/mo25/lots/r0053-1993-ferrari-f40-lm-by-michelotto/",
-    "https://www.hagerty.com/valuation-tools/past-sales/1993-ferrari-f40_lm/ZFFGX34X000095448/79a1751e-9221-4bb5-a6a2-f4739ea5483c",
-    "https://www.auto-motor-und-sport.de/oldtimer/ferrari-f40-lm-warum-dieser-f40-8-mio-euro-kosten-soll/",
-    "https://www.supercars.net/blog/?p=349754"
+    "https://en.wikipedia.org/wiki/Energy_Polarizer_controversy",
+    "https://www.whichcar.com.au/features/hdt-director-the-car-that-split-peter-brock-and-holden",
+    "https://en.wikipedia.org/wiki/Holden_Dealer_Team",
+    "https://kiwix.lema.org/rationalwiki_en_all_maxi_2021-03/A/Energy_Polarizer"
   ]
 }

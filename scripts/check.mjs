@@ -115,6 +115,10 @@ function checkDay(f, d, newest = false) {
         if (first === undefined) pairs.set(key, i);
         else warn(f, `stats[${i}] shares label "${s.label}"${typeof s.tag === 'string' && s.tag.trim() ? ` and tag "${s.tag}"` : ' (and no tag)'} with stats[${first}]; give one a tag that tells them apart`);
       });
+      /** @type {Map<string, number>} */
+      const labels = new Map();
+      d.stats.forEach((s) => { if (s && typeof s.label === 'string') labels.set(s.label.trim().toLowerCase(), (labels.get(s.label.trim().toLowerCase()) ?? 0) + 1); });
+      d.stats.forEach((s, i) => { if (s && typeof s.label === 'string' && typeof s.tag === 'string' && s.tag.trim() && labels.get(s.label.trim().toLowerCase()) === 1) warn(f, `stats[${i}] tags "${s.label}" with "${s.tag}" but no other stat shares that label; a tag tells apart figures that share one, so fold it into the value or drop it`); });
     }
     d.stats.forEach((s, i) => { if (s && s.tag !== undefined && (typeof s.tag !== 'string' || !s.tag.trim() || s.tag.length > STAT_TAG_MAX)) err(f, `stats[${i}].tag must be a non-empty string of at most ${STAT_TAG_MAX} chars`); });
   } else if (d.stats !== undefined) err(f, 'stats must be an array');

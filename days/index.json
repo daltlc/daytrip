@@ -1,4 +1,5 @@
 [
+  { "date": "2026-11-28", "name": "Director (VL)", "year": 1987, "class": "muscle", "accent": "#22304f" },
   { "date": "2026-11-27", "name": "F40 LM by Michelotto (chassis 95448)", "year": 1993, "class": "gt3", "accent": "#d40000" },
   { "date": "2026-11-26", "name": "C65 Mazda", "year": 2005, "class": "lemans", "accent": "#1f4e9c" },
   { "date": "2026-11-25", "name": "4x4 (Paris–Dakar)", "year": 1984, "class": "rally", "accent": "#2f6b3a" },
